@@ -1,0 +1,17 @@
+Contact: mailto:christendijoux@gmail.com
+Expires: 2026-11-20T23:59:59.000Z
+Preferred-Languages: fr, en
+Canonical: https://christendijoux.com/.well-known/security.txt
+
+# Security Policy
+# If you discover a security vulnerability, please report it responsibly.
+# Do not publicly disclose the issue until it has been addressed.
+
+# Response Time
+# We aim to respond to security reports within 48 hours.
+
+# Bug Bounty
+# This is a personal portfolio site. No bug bounty program is available.
+
+# Acknowledgments
+# Thank you for helping keep this site secure!

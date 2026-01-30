@@ -1,0 +1,305 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://christendijoux.com/#person",
+      "name": "Christen Dijoux",
+      "url": "https://christendijoux.com",
+      "image": "https://christendijoux.com/assets/capture.webp",
+      "sameAs": [
+        "https://github.com/Akiyo974",
+        "https://christendijoux.com"
+      ],
+      "jobTitle": "Développeur Full-stack",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Saguenay",
+        "addressRegion": "Quebec",
+        "addressCountry": "CA"
+      },
+      "email": "christendijoux@gmail.com",
+      "telephone": "+1-418-376-2612",
+      "knowsAbout": [
+        "Full-stack Development",
+        "React",
+        "Node.js",
+        "TypeScript",
+        "WordPress Headless",
+        "GSAP",
+        "Three.js",
+        "UI/UX Design",
+        "Web Performance",
+        "SEO"
+      ],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Cégep de Jonquière",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Saguenay",
+            "addressRegion": "Quebec",
+            "addressCountry": "CA"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://christendijoux.com/#localbusiness",
+      "name": "Christen Dijoux - Développeur Full-stack Freelance",
+      "image": "https://christendijoux.com/assets/capture.webp",
+      "url": "https://christendijoux.com",
+      "telephone": "+1-418-376-2612",
+      "email": "christendijoux@gmail.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Saguenay",
+        "addressRegion": "QC",
+        "postalCode": "G7H",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "48.4167",
+        "longitude": "-71.0667"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Saguenay"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        },
+        {
+          "@type": "Country",
+          "name": "Canada"
+        }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://github.com/Akiyo974",
+        "https://linkedin.com/in/christen-dijoux"
+      ],
+      "founder": {
+        "@id": "https://christendijoux.com/#person"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services de Développement Web",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Développement React/Next.js",
+              "description": "Création d'applications web modernes avec React 18 et Next.js 13+"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "WordPress Headless",
+              "description": "Architecture headless avec WPGraphQL, ACF et Next.js"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI/UX avec Animations",
+              "description": "Interfaces modernes avec GSAP, Framer Motion et Three.js"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Optimisation Performance",
+              "description": "Optimisation Lighthouse, Core Web Vitals et accessibilité WCAG"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://christendijoux.com/#website",
+      "url": "https://christendijoux.com",
+      "name": "Christen Dijoux - Portfolio",
+      "description": "Portfolio interactif de Christen Dijoux, développeur full-stack spécialisé en React, Node.js, TypeScript et WordPress Headless.",
+      "publisher": {
+        "@id": "https://christendijoux.com/#person"
+      },
+      "inLanguage": ["fr-CA", "en-CA"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://christendijoux.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://christendijoux.com/#profilepage",
+      "url": "https://christendijoux.com",
+      "name": "Christen Dijoux | Développeur Full-stack & Créatif",
+      "isPartOf": {
+        "@id": "https://christendijoux.com/#website"
+      },
+      "about": {
+        "@id": "https://christendijoux.com/#person"
+      },
+      "description": "Portfolio de Christen Dijoux - Développeur Full-stack spécialisé en React, Node.js, TypeScript et WordPress Headless.",
+      "breadcrumb": {
+        "@id": "https://christendijoux.com/#breadcrumb"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://christendijoux.com/#projects",
+      "name": "Projets Portfolio",
+      "description": "Collection de projets web développés par Christen Dijoux",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "WebApplication",
+            "name": "CTREQ",
+            "url": "https://christendijoux.com/project/ctreq",
+            "description": "Plateforme de gestion académique complète avec WordPress Headless",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web Browser"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "WebApplication",
+            "name": "Webana",
+            "url": "https://christendijoux.com/project/webana",
+            "description": "Plateforme d'analytics web avec React et TypeScript",
+            "applicationCategory": "AnalyticsApplication",
+            "operatingSystem": "Web Browser"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "WebApplication",
+            "name": "AkiProject",
+            "url": "https://christendijoux.com/project/akiproject",
+            "description": "Portfolio créatif interactif avec animations GSAP et Three.js",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Web Browser"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "WebApplication",
+            "name": "AkiMusic",
+            "url": "https://christendijoux.com/project/akimusic",
+            "description": "Plateforme de streaming musical avec gestion de playlists",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Web Browser"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://christendijoux.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quels services de développement web proposez-vous ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Je propose des services de développement full-stack incluant : création d'applications React/Next.js, architecture WordPress Headless avec WPGraphQL, développement d'interfaces UI/UX avec animations GSAP et Three.js, optimisation des performances web (Lighthouse, Core Web Vitals), et mise en conformité accessibilité WCAG AA/AAA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelles technologies utilisez-vous principalement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Je me spécialise en React 18, TypeScript, Next.js 13+, Node.js, WordPress Headless (WPGraphQL, ACF), TailwindCSS, GSAP, Framer Motion, Three.js, Vite, et diverses technologies de base de données (MySQL, PostgreSQL, MongoDB). J'utilise également des outils d'optimisation comme Lighthouse, GTmetrix et WebPageTest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Êtes-vous disponible pour des projets freelance ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, je suis disponible pour des projets freelance dans la région du Saguenay-Lac-Saint-Jean, au Québec, et à distance partout au Canada. Je suis disponible du lundi au vendredi de 9h à 18h (heure de l'Est). Contactez-moi par email à christendijoux@gmail.com ou par téléphone au +1 (418) 376-2612 pour discuter de votre projet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps faut-il pour développer un site web ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le délai dépend de la complexité du projet. Un site vitrine simple peut prendre 2-3 semaines, une application web complexe avec WordPress Headless peut nécessiter 6-12 semaines, et des projets d'envergure avec animations avancées et fonctionnalités personnalisées peuvent s'étendre sur plusieurs mois. Je fournis toujours un calendrier détaillé lors de la phase de planification."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Offrez-vous des services d'optimisation de performance web ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolument ! Je me spécialise dans l'optimisation des performances web en visant des scores Lighthouse de 90%+ sur mobile et desktop. Cela inclut : optimisation des images WebP avec srcset responsive, lazy loading, code splitting, compression Gzip/Brotli, élimination du JavaScript inutilisé, amélioration du LCP, FCP et TBT, et mise en conformité Core Web Vitals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Travaillez-vous avec WordPress ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, je me spécialise dans les architectures WordPress Headless modernes. J'utilise WordPress comme CMS backend avec WPGraphQL pour l'API, ACF (Advanced Custom Fields) pour la gestion de contenu flexible, et Next.js ou React comme frontend. Cette approche offre les avantages de WordPress tout en bénéficiant des performances et de la flexibilité d'une application React moderne."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Proposez-vous la maintenance et le support après le lancement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, je propose des forfaits de maintenance incluant : mises à jour de sécurité, corrections de bugs, ajout de nouvelles fonctionnalités, optimisation continue des performances, sauvegardes régulières, et support technique. Les forfaits peuvent être mensuels ou annuels selon vos besoins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vos sites sont-ils optimisés pour le SEO et l'accessibilité ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tous mes projets sont développés avec le SEO et l'accessibilité en priorité. Cela inclut : meta tags Open Graph complets, Schema.org JSON-LD, sitemap.xml dynamique, robots.txt optimisé, fichiers AI/LLM discovery (llms.txt, ai-plugin.json), conformité WCAG AA (minimum 4.5:1 de contraste), navigation au clavier, ARIA labels, focus management, et support des lecteurs d'écran."
+          }
+        }
+      ]
+    }
+  ]
+}

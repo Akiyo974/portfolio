@@ -1,0 +1,61 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Developer & Designer -- Christen Dijoux
+  Site: https://christendijoux.com
+  Location: Saguenay, Quebec, Canada
+
+# THANKS
+
+  To all open-source contributors
+
+# TECHNOLOGY COLOPHON
+
+  ## Frontend
+  React 18.3.1
+  TypeScript 5.6.2
+  TailwindCSS 3.4.1
+  Vite 5.4.10
+  
+  ## Animations
+  GSAP 3.12.5
+  Framer Motion 11.0.8
+  Three.js 0.162.0
+  
+  ## Backend & APIs
+  WordPress Headless
+  WPGraphQL
+  Advanced Custom Fields Pro
+  Node.js
+  Supabase
+  EmailJS
+  
+  ## Build Tools
+  Vite
+  TypeScript Compiler
+  PostCSS
+  Autoprefixer
+  
+  ## Optimization
+  Code Splitting
+  Lazy Loading
+  Gzip/Brotli Compression
+  PWA with Service Worker
+  Image Optimization (WebP)
+  
+  ## SEO & Analytics
+  react-helmet-async
+  i18next (FR/EN)
+  JSON-LD Structured Data
+  Sitemap.xml
+  Open Graph & Twitter Cards
+  
+  ## Version Control
+  Git
+  GitHub
+  
+  ## Hosting
+  cPanel
+  DigitalOcean

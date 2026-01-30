@@ -1,0 +1,44 @@
+# Christen Dijoux - Portfolio Brand Guidelines
+
+## Couleurs Primaires
+- **Noir**: #000000 (Fond principal)
+- **Blanc**: #FFFFFF (Texte principal)
+- **Blanc Transparent**: rgba(255, 255, 255, 0.6) (Texte secondaire)
+- **Blanc Transparent Léger**: rgba(255, 255, 255, 0.1) (Bordures)
+
+## Typographie
+- **Police Principale**: System UI Stack (-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto)
+- **Tailles**: 
+  - Titre Hero: 5xl (3rem / 48px)
+  - Titres sections: 4xl (2.25rem / 36px)
+  - Corps de texte: base (1rem / 16px)
+  - Petits textes: sm (0.875rem / 14px)
+
+## Espacement
+- **Sections**: py-24 (6rem / 96px vertical)
+- **Conteneur max-width**: 6xl (1152px)
+- **Padding latéral**: px-8 (2rem / 32px)
+
+## Animations
+- **Librairies**: GSAP, Framer Motion, Three.js
+- **Durée standard**: 0.5s - 1s
+- **Easing**: power2.out, ease-in-out
+
+## Accessibilité
+- **Contraste minimum**: 8.59:1 (WCAG AAA)
+- **Focus states**: Anneau blanc 2px avec décalage 2px
+- **ARIA**: Rôles, labels et live regions systématiques
+
+## Assets
+- **Logo**: /assets/logo.webp (1364x129px)
+- **Logo Mobile**: /assets/logo-400.webp (400x38px)
+- **Favicon**: /assets/favicon.svg (vectoriel)
+- **OG Image**: /assets/capture.webp (1200x630px)
+
+## Format Images
+- **Préférence**: WebP (qualité 85%)
+- **Fallback**: PNG pour compatibilité legacy
+- **Responsive**: srcset avec 400w, 640w, 800w, 879w, 1364w
+
+---
+Dernière mise à jour: Novembre 2025

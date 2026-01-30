@@ -1,0 +1,63 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Christen Dijoux Portfolio API",
+    "description": "API pour accéder aux informations du portfolio de Christen Dijoux",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Christen Dijoux",
+      "email": "christendijoux@gmail.com",
+      "url": "https://christendijoux.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://christendijoux.com",
+      "description": "Portfolio Production"
+    }
+  ],
+  "paths": {
+    "/structured-data.json": {
+      "get": {
+        "summary": "Données structurées JSON-LD",
+        "description": "Retourne les informations professionnelles au format Schema.org",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sitemap.xml": {
+      "get": {
+        "summary": "Sitemap XML",
+        "description": "8 URLs (2 pages + 6 projets)",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/ai.txt": {
+      "get": {
+        "summary": "Profil IA-lisible",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "Documentation LLM complète",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

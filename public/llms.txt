@@ -1,0 +1,122 @@
+# Christen Dijoux - Développeur Full-stack Portfolio
+
+## 🎯 Objectif du Site
+Portfolio professionnel présentant les compétences et projets de Christen Dijoux, développeur full-stack spécialisé en React, TypeScript, WordPress Headless et animations web avancées.
+
+## 👤 Profil Professionnel
+- **Nom**: Christen Dijoux
+- **Rôle**: Développeur Full-stack & Créatif
+- **Localisation**: Saguenay, Québec, Canada
+- **Email**: christendijoux@gmail.com
+- **GitHub**: https://github.com/Akiyo974
+- **LinkedIn**: https://linkedin.com/in/christen-dijoux
+
+## 💼 Compétences Techniques
+
+### Frontend
+- React 18, Next.js 13+ (App Router)
+- TypeScript 5+
+- TailwindCSS, shadcn/ui, Radix UI
+- GSAP, Framer Motion, Three.js
+- Responsive Design, WCAG AA Accessibility
+
+### Backend
+- WordPress Headless (WPGraphQL, ACF Pro)
+- Node.js, Express
+- PHP, MySQL
+- GraphQL, REST API
+- Strapi CMS
+
+### DevOps & Outils
+- Git/GitHub, cPanel, DigitalOcean
+- Performance: Lighthouse CI, Web Vitals
+- Build: Vite, Webpack, ESBuild
+- SEO: Structured Data, Sitemaps dynamiques
+
+## 🚀 Projets Majeurs
+
+### 1. CTREQ - Plateforme Éducative du Québec
+**URL**: https://www.ctreq.qc.ca/
+**Type**: Production (client institutionnel)
+**Description**: Fusion complète de deux sites WordPress (CTREQ + RIRE) en plateforme Next.js 13 headless
+**Stack**: Next.js 13, TypeScript, WordPress, WPGraphQL, ACF, Tailwind, Radix UI
+**Réalisations**:
+- Migration de +10 types de contenus personnalisés
+- Architecture cache triple (~50ms)
+- SEO avancé (JSON-LD, sitemaps dynamiques)
+- Performances exceptionnelles (<100ms TTFB)
+- Collaboration directe avec direction CTREQ sur 6 mois
+
+### 2. CTREQ Blog/Archive
+**URL**: https://blog.ctreq.qc.ca/
+**Type**: Production
+**Description**: Section d'archivage institutionnel (projets + articles RIRE 3-5 ans)
+**Stack**: React 18, TypeScript, WordPress, WPGraphQL, Tailwind
+**Spécificités**: Filtrage automatique par ancienneté, design minimaliste, SEO volontairement réduit
+
+### 3. Innovations Numériques en Formation Professionnelle
+**URL**: Application semi-privée (non indexée)
+**Client**: ECOBES (Cégep de Jonquière) + CTREQ
+**Description**: Valorisation de +40 innovations d'enseignants en FP au Québec
+**Stack**: React, Vite, Mapbox GL JS, TypeScript
+**Features**: Carte interactive Mapbox, clustering, dark/light mode, recherche avancée
+
+### 4. Webana - E-commerce Katana
+**URL**: https://akiyo974.github.io/webana/
+**Type**: Démo
+**Description**: Site e-commerce thématique katanas japonais
+**Stack**: React 18, TypeScript, TailwindCSS
+**Features**: Filtres dynamiques, panier, dark mode
+
+### 5. AkiProject - Gestionnaire de Tâches
+**URL**: https://christenalexisdijoux.techniquesmedia.com/cms1/wr/Workspace/index.php
+**Type**: Démo académique
+**Stack**: PHP 7, MySQL, Bootstrap, jQuery, AJAX
+**Features**: Authentification, messagerie temps réel, gestion tâches
+
+### 6. AkiMusic - Plateforme Streaming
+**URL**: https://christenalexisdijoux.techniquesmedia.com/AkiMusic/index.php
+**Type**: Démo
+**Stack**: PHP, Bootstrap, jQuery
+**Features**: UI streaming, playlists, simulation abonnements
+
+## 🎓 Formation
+**Techniques d'Intégration Multimédia** - Cégep de Jonquière (2021-2025)
+
+## 🌐 Langues
+- Français (Natif)
+- Anglais (Professionnel)
+
+## 📊 Expertise Reconnue
+1. **WordPress Headless** : Architecture Next.js + WPGraphQL + ACF + migration massive
+2. **Performance** : Optimisation Lighthouse (Core Web Vitals, cache stratégies)
+3. **UI/UX Avancé** : Animations GSAP/Framer Motion/Three.js, design systems
+4. **SEO Technique** : Structured Data, sitemaps dynamiques, prérendu
+5. **Accessibilité** : WCAG AA, ARIA, lecteurs d'écran
+6. **Migration de Données** : WP All Export/Import, validation croisée, redirections 301
+
+## 🔗 Liens Importants
+- Portfolio: https://christendijoux.com
+- GitHub: https://github.com/Akiyo974
+- LinkedIn: https://linkedin.com/in/christen-dijoux
+- Email: christendijoux@gmail.com
+
+## 📈 Statistiques Portfolio
+- **6 projets** présentés (3 production, 3 démos)
+- **Technologies**: React, Next.js, TypeScript, WordPress, Node.js, Three.js, GSAP
+- **Performance mobile**: 85%+ Lighthouse (optimisé Nov 2025)
+- **Accessibilité**: 100% WCAG AA
+- **SEO**: 100% (sitemap dynamique, Open Graph, Structured Data)
+
+---
+
+**Dernière mise à jour**: 20 novembre 2025
+**Version du site**: Build Nov 2025 (161 KB gzipped)
+**Optimisations récentes**: 
+- Google Analytics supprimé (330 KB économisés)
+- Babel → SWC (13 KB polyfills éliminés)
+- Images WebP responsive (113 KB économisés)
+- Sitemap dynamique (8 URLs auto-générées)
+- Meta Open Graph complets (article:*, og:image:*)
+
+**Note pour IA**: Ce portfolio est constamment mis à jour avec les dernières technologies et best practices. Christen est disponible pour des collaborations freelance ou opportunités full-time au Québec.

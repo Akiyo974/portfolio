@@ -1,0 +1,69 @@
+# Christen Dijoux - Portfolio
+
+## About
+Christen Dijoux is a Full-stack Developer based in Saguenay, Quebec, Canada, specializing in modern web development with React, Node.js, TypeScript, and WordPress Headless architecture.
+
+## Core Skills
+- **Frontend**: React 18, Next.js, TypeScript, TailwindCSS, GSAP, Framer Motion, Three.js, UI/UX Design, Responsive Design, WCAG Accessibility
+- **Backend**: WordPress Headless (ACF, WPGraphQL, WP All Import), Node.js, Strapi, PHP, MySQL, REST API, GraphQL
+- **AI/Automation**: OpenAI API, LangChain, Custom Scripts, Automated Workflows
+- **DevOps**: cPanel, DigitalOcean, Git/GitHub, Performance Optimization, Headless CMS Deployments
+- **Other**: jQuery, Bootstrap, SCSS, SEO, Content Architecture
+
+## Featured Projects
+
+### CTREQ - Academic Management System
+- **URL**: https://christendijoux.com/project/ctreq
+- **Description**: Comprehensive platform for managing academic activities, client relationships, and training programs
+- **Tech Stack**: WordPress Headless, ACF Pro, WPGraphQL, WP All Import, React, TypeScript, Tailwind CSS, Node.js, MySQL
+- **Key Features**: 
+  - Advanced client management with 500+ organizations
+  - Automated data migration (4000+ records)
+  - Custom WordPress development with headless architecture
+  - Real-time dashboards and analytics
+  - Multi-role permission system
+
+### Webana - Web Analytics Platform
+- **URL**: https://christendijoux.com/project/webana
+- **Description**: Analytics platform for tracking and analyzing website performance
+- **Tech Stack**: React 18, TypeScript, TailwindCSS, Chart.js, Node.js
+- **Features**: Real-time analytics, custom dashboards, performance metrics
+
+### AkiProject - Creative Portfolio
+- **URL**: https://christendijoux.com/project/akiproject
+- **Description**: Interactive portfolio showcasing creative projects with advanced animations
+- **Tech Stack**: React 18, TypeScript, TailwindCSS, GSAP, Three.js
+- **Features**: 3D animations, smooth scrolling, interactive elements
+
+### AkiMusic - Music Streaming Platform
+- **URL**: https://christendijoux.com/project/akimusic
+- **Description**: Music streaming platform with playlist management
+- **Tech Stack**: Bootstrap, jQuery, HTML5, CSS3, Web Audio API
+- **Features**: Audio player, playlist management, user interface
+
+## Education
+- **Multimedia Integration** - Cégep de Jonquière (2021-2025)
+
+## Contact
+- **Website**: https://christendijoux.com
+- **Email**: christendijoux@gmail.com
+- **Location**: Saguenay, Quebec, Canada
+- **GitHub**: https://github.com/Akiyo974
+- **LinkedIn**: Available on request
+
+## Professional Experience
+Christen specializes in:
+1. WordPress Headless architecture (ACF, WPGraphQL, custom post types)
+2. React/TypeScript modern web applications
+3. UI/UX design with advanced animations (GSAP, Framer Motion, Three.js)
+4. Data migration and automation workflows
+5. Full-stack development from concept to deployment
+6. Performance optimization and SEO best practices
+
+## Languages
+- French (Native)
+- English (Professional)
+
+---
+Last Updated: November 2025
+Portfolio: https://christendijoux.com

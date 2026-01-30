@@ -1,0 +1,44 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# AI Crawlers - Enhanced access
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://christendijoux.com/sitemap.xml
+
+# AI-readable information
+# See /ai.txt for structured information about this site
+
+# Fichiers à ne pas indexer
+Disallow: /assets/*.js
+Disallow: /assets/*.css
+
+# Autoriser fichiers SEO importants
+Allow: /structured-data.json
+Allow: /manifest.json
+Allow: /sitemap.xml
+Allow: /.well-known/
+
+# Bloquer autres fichiers JSON
+Disallow: /*.json

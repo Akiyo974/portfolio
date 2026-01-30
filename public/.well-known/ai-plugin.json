@@ -1,0 +1,28 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Christen Dijoux Portfolio",
+  "name_for_model": "christendijoux_portfolio",
+  "description_for_human": "Portfolio professionnel de Christen Dijoux - Développeur Full-stack spécialisé en React, TypeScript, WordPress Headless et animations web.",
+  "description_for_model": "Portfolio showcasing 6 major projects (CTREQ Next.js platform, Webana analytics, AkiProject creative portfolio). Expertise: React 18, Next.js 13, TypeScript, WordPress Headless (WPGraphQL + ACF), GSAP, Three.js, performance optimization, accessibility WCAG AA, SEO. Available for freelance/full-time opportunities in Quebec.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://christendijoux.com/.well-known/openapi.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://christendijoux.com/assets/logo.webp",
+  "contact_email": "christendijoux@gmail.com",
+  "legal_info_url": "https://christendijoux.com",
+  "metadata": {
+    "location": "Saguenay, Quebec, Canada",
+    "languages": ["fr", "en"],
+    "skills": [
+      "React", "Next.js", "TypeScript", "WordPress Headless",
+      "GSAP", "Three.js", "TailwindCSS", "Node.js", "GraphQL"
+    ],
+    "project_count": 6,
+    "availability": "open_to_opportunities"
+  }
+}

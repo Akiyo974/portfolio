@@ -1,0 +1,346 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "navigation": "Navigation"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "projects": "Projects",
+    "project": "Project"
+  },
+  "hero": {
+    "location": "Saguenay",
+    "region": "Quebec, Canada",
+    "role": "Developer",
+    "roleDetail": "Full-stack",
+    "tagline": "Creative Developer Portfolio"
+  },
+  "about": {
+    "title": "About",
+    "intro": "Currently studying Multimedia Integration Techniques at Cégep de Jonquière, I am passionate about creating captivating user experiences through web development and design.",
+    "experience": "My background includes a position as Communication Officer at CHU de La Réunion, where I managed website updates and created various communication materials. This experience fueled my passion for web development and pushed me to deepen my technical skills.",
+    "passion": "I thrive in dynamic environments where I can apply my creativity to design aesthetic and functional user interfaces, while seeking new challenges and opportunities for innovation.",
+    "viewCV": "View Resume",
+    "downloadCV": "Download Resume",
+    "education": "Education",
+    "skills": "Skills"
+  },
+  "projects": {
+    "title": "Selected Projects",
+    "allProjects": "All Projects",
+    "viewAll": "View All Projects",
+    "demo": "View Site",
+    "viewSiteProduction": "View Site",
+    "viewSiteDemo": "View Demo",
+    "code": "View Code",
+    "technologies": "Technologies",
+    "repositories": "Repositories",
+    "backHome": "Back to Home",
+    "viewDetails": "View Details",
+    "personalProject": "Personal Project",
+    "githubProject": "GitHub"
+  },
+  "projectDetail": {
+    "back": "Back",
+    "notFound": "Project not found",
+    "backToProjects": "Back to projects",
+    "personalProject": "Personal Project",
+    "viewSite": "View Site",
+    "viewDemo": "View Demo",
+    "sourceCode": "Source Code",
+    "about": "About the project",
+    "features": "Main Features",
+    "challenges": "Technical Challenges",
+    "languages": "Languages",
+    "technologies": "Technologies",
+    "frontend": "Front-end",
+    "backend": "Back-end",
+    "tools": "Tools",
+    "tags": "Tags",
+    "relatedProjects": "Related Projects",
+    "allProjects": "View all projects",
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "archived": "Archived"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's Stay in Touch",
+    "description": "I am always open to new opportunities and collaborations. Feel free to contact me!",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "messagePlaceholder": "Your message...",
+    "successMessage": "Message sent successfully!",
+    "errorMessage": "Error sending message."
+  },
+  "chatbot": {
+    "welcome": "👋 Hello! How can I help you today?",
+    "typing": "Typing...",
+    "placeholder": "Type your message...",
+    "assistant": "Assistant"
+  },
+  "game": {
+    "title": "Star Game",
+    "collected": "stars",
+    "continue": "Keep exploring!",
+    "start": "Start",
+    "restart": "Play Again",
+    "score": "Score",
+    "time": "Time",
+    "gameOver": "Game Over!",
+    "enterNickname": "Enter your nickname (3 letters)",
+    "submit": "Submit",
+    "leaderboard": "Leaderboard"
+  },
+  "footer": {
+    "description": "Creative developer crafting digital experiences with code and design.",
+    "location": "Location",
+    "backToTop": "Back to top",
+    "allRightsReserved": "All rights reserved",
+    "manageCookies": "Manage cookies"
+  },
+  "cookieConsent": {
+    "title": "🍪 Cookies & Privacy",
+    "description": "This site uses cookies to improve your experience (Google Analytics, preferences) and track technical errors (Sentry). Your data is protected in accordance with GDPR.",
+    "privacyLink": "privacy policy",
+    "accept": "Accept all cookies",
+    "decline": "Decline non-essential cookies",
+    "details": "Essential cookies: language, consent. Analytics cookies: Google Analytics (anonymized)."
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleLanguage": "Change language",
+    "currentLanguage": "Current language"
+  },
+  "education": {
+    "tim": {
+      "title": "Multimedia Integration Techniques",
+      "school": "Cégep de Jonquière",
+      "role": "Front-end development, UX/UI",
+      "period": "2021 - 2025"
+    },
+    "react": {
+      "title": "Front-End Application Development (React) Training",
+      "school": "edX, in partnership with IBM",
+      "role": "React.js, JSX, ES6, Redux, hooks",
+      "period": "2024"
+    },
+    "gameDesign": {
+      "title": "Video Game Design Certificate",
+      "school": "Cégep de Jonquière",
+      "role": "Level design and interactive experience creation",
+      "period": "2023"
+    }
+  },
+  "customProjects": {
+    "ctreq": {
+      "title": "CTREQ - Quebec Educational Platform",
+      "description": "Complete redesign and merger of two WordPress sites (CTREQ + RIRE) into a headless Next.js 13 platform. Structured migration of +10 content types, triple cache architecture (~50ms), advanced SEO and skills transfer plan for client team.",
+      "longDescription": "Large-scale institutional project for the Quebec Center for Educational Success Transfer: complete merger of two historic WordPress platforms (CTREQ + RIRE) into a unified modern system. Structured migration of +10 custom content types with complete architecture reconstruction (CPT + ACF + taxonomies), data schema harmonization and cross-validation of relationships. Headless Next.js 13 App Router architecture with exceptional performance (<100ms) thanks to a sophisticated triple cache strategy (memory + ISR + SWR). Direct collaboration with CTREQ management over 6 months in complete autonomy, including business needs analysis, request prioritization, continuous deliverable validation with Caroline B. and Pape-Moussa D. Production of official transfer plan with complete technical documentation, WordPress editor training and maintenance procedures. Next.js standalone deployment on cPanel with Passenger configuration, log monitoring and automated Lighthouse CI tests.",
+      "features": [
+        "Complete merger of two historic WordPress sites (CTREQ + RIRE) into unified system",
+        "Structured migration of +10 content types: CPT, taxonomies and ACF fields recovery from old plugin",
+        "Clean WordPress architecture reconstruction with ACF schema harmonization",
+        "Controlled Export/Import via WP All Export/Import with cross-validation of data and relationships",
+        "Complete 301 redirect plan between both ecosystems to preserve SEO",
+        "Headless CMS architecture with Next.js 13 App Router and React Server Components",
+        "Unified aggregation of 3 WordPress sources (RIRE, Thematic Files, Resources) via WPGraphQL",
+        "Sophisticated triple cache system: memory (~50ms) + Next.js ISR + Stale-While-Revalidate",
+        "WordPress webhook for automatic real-time cache invalidation",
+        "Advanced SEO: JSON-LD Structured Data (Organization, WebSite, WebPage), dynamic XML sitemaps",
+        "Quebec-targeted geolocation (fr-CA) with enriched metadata and canonical URLs",
+        "WCAG AA accessible interface with 30+ Radix UI components (Accordion, Dialog, Select, etc.)",
+        "shadcn/ui design system with custom Tailwind theme and CSS variables (dark mode ready)",
+        "Advanced multi-criteria filters: educational themes, resource types, school levels",
+        "Robust forms with React Hook Form + Zod validation",
+        "Strict Content Security Policy and reinforced security headers (HSTS, X-Frame-Options)",
+        "Complete GDPR management: cookie consent, privacy policy",
+        "Google Analytics 4 with custom event tracking",
+        "Next.js standalone deployment on cPanel: Node.js 18 + Passenger + optimized .htaccess",
+        "Automated deployment scripts with static files support /_next/",
+        "Monitoring & structured logs: Next.js/Express server logs, cPanel production debugging",
+        "Automated Lighthouse CI tests and webhook logging for integrity",
+        "Official Transfer Plan production: complete Next.js/WPGraphQL technical documentation",
+        "WordPress editor training with content addition procedures and architecture guide",
+        "Dynamic breadcrumbs, scroll progress indicator and elegant loading states"
+      ],
+      "challenges": [
+        "Merger of two WordPress platforms with different histories and inconsistency detection",
+        "Massive migration: +10 content types, data standardization, complex relationships",
+        "Complete WordPress architecture reconstruction (CPT + ACF + taxonomies) without data loss",
+        "Cross-validation of exports/imports: media files, dynamic taxonomies, relational fields",
+        "Complete 301 redirect plan to preserve SEO of both sites",
+        "Unification of 3 heterogeneous WordPress sources via unified GraphQL API model",
+        "Intelligent multi-layer cache architecture with SWR strategy for zero downtime",
+        "Selective cache invalidation via webhooks without impacting global performance",
+        "Multi-environment SEO with automatic staging/production detection (X-Robots-Tag)",
+        "Extreme performance: First Contentful Paint < 1s, Time to Interactive < 2s, CLS < 0.1",
+        "TypeScript strict mode on 100% of codebase with automatic GraphQL type generation",
+        "GraphQL complexity management: N+1 problem resolution, overfetching via fragments and caching",
+        "cPanel deployment with constraints: Node.js standalone, absolute paths, Apache rewrite",
+        "Production debugging: Node.js, rewrite rules, _next/ assets management",
+        "Client collaboration: regular exchanges with management, business needs analysis, prioritization",
+        "Complete autonomy over 6 months: design, development, migration, DevOps, documentation",
+        "Technical documentation production for skills transfer to CTREQ team",
+        "User training and post-delivery support"
+      ]
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "metaDescription": "Privacy policy for Christen Dijoux's portfolio - Personal data protection and GDPR compliance",
+    "lastUpdated": "Last updated",
+    "intro": {
+      "title": "Introduction",
+      "content": "This privacy policy explains how this website collects, uses, and protects your personal data in accordance with the General Data Protection Regulation (GDPR) and Quebec's Personal Information Protection Act."
+    },
+    "dataCollected": {
+      "title": "Data Collected",
+      "analytics": {
+        "title": "Google Analytics 4",
+        "description": "We use Google Analytics to analyze website usage:",
+        "items": {
+          "ip": "IP address (anonymized)",
+          "browser": "Browser type and device",
+          "pages": "Pages visited and session duration",
+          "location": "Approximate location (country/city)"
+        }
+      },
+      "contact": {
+        "title": "Contact Form",
+        "description": "When you send me a message via the form:",
+        "items": {
+          "name": "Full name",
+          "email": "Email address",
+          "message": "Message content"
+        }
+      },
+      "errors": {
+        "title": "Error Monitoring (Sentry)",
+        "description": "To improve site stability, we collect:",
+        "items": {
+          "errors": "JavaScript error messages",
+          "browser": "Technical information (browser, OS)",
+          "interactions": "Actions leading to the error (breadcrumbs)"
+        }
+      }
+    },
+    "purpose": {
+      "title": "Purpose of Collection",
+      "items": {
+        "improve": "Improve user experience and site performance",
+        "respond": "Respond to your contact requests",
+        "fix": "Fix bugs and technical errors",
+        "analyze": "Analyze traffic and site usage"
+      }
+    },
+    "thirdParty": {
+      "title": "Third-Party Services",
+      "ga4": "We use Google Analytics 4 to analyze traffic. Google may use this data according to its own privacy policy.",
+      "emailjs": "Contact form messages are transmitted via EmailJS. Your data is not stored by this service.",
+      "sentry": "Sentry collects technical errors to improve stability. Data is stored on servers in Germany (EU).",
+      "supabase": "Supabase hosts star game data (nicknames and scores). Servers located in Canada.",
+      "viewPolicy": "View their privacy policy"
+    },
+    "cookies": {
+      "title": "Cookies",
+      "description": "This site uses the following cookies:",
+      "items": {
+        "ga": "Google Analytics (visit statistics, 2 years)",
+        "consent": "Record of your consent (1 year)",
+        "lang": "Language preference (permanent)"
+      }
+    },
+    "rights": {
+      "title": "Your Rights",
+      "description": "Under GDPR, you have the following rights:",
+      "items": {
+        "access": "Right to access your personal data",
+        "rectification": "Right to rectification of inaccurate data",
+        "deletion": "Right to erasure ('right to be forgotten')",
+        "opposition": "Right to object to processing",
+        "portability": "Right to data portability"
+      },
+      "contact": "To exercise your rights, contact me at"
+    },
+    "retention": {
+      "title": "Data Retention",
+      "items": {
+        "analytics": "Analytics data: 26 months (configured in Google Analytics)",
+        "contact": "Contact messages: deleted after processing (max. 6 months)",
+        "errors": "Sentry error logs: 90 days"
+      }
+    },
+    "changes": {
+      "title": "Changes to this Policy",
+      "description": "This policy may be updated. The last modification date is shown at the top of this page."
+    },
+    "contact": {
+      "title": "Contact"
+    }
+  },
+  "legal": {
+    "title": "Legal Notice",
+    "metaDescription": "Legal notice for Christen Dijoux's portfolio - Information about the publisher, hosting, and copyright",
+    "lastUpdated": "Last updated",
+    "editor": {
+      "title": "Site Publisher",
+      "name": "Name",
+      "type": "Status",
+      "typeValue": "Independent developer (personal portfolio)",
+      "location": "Location",
+      "email": "Email",
+      "website": "Website"
+    },
+    "hosting": {
+      "title": "Hosting",
+      "provider": "Host",
+      "providerName": "o2switch",
+      "address": "Chemin des Pardiaux, 63000 Clermont-Ferrand, France",
+      "phone": "+33 4 44 44 60 40",
+      "website": "https://www.o2switch.fr"
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "copyright": "All content on this site (text, images, code, design) is the exclusive property of Christen Dijoux, unless otherwise stated.",
+      "usage": "Any reproduction, distribution, or use of content without prior authorization is prohibited.",
+      "projects": "Presented projects may be subject to specific open-source licenses (see GitHub repositories)."
+    },
+    "personalData": {
+      "title": "Personal Data",
+      "description": "For information regarding the collection and processing of your personal data, please consult our privacy policy.",
+      "link": "View",
+      "linkText": "Privacy Policy"
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "content": "Information provided on this site is for informational purposes. It may be modified without notice.",
+      "links": "Links to external sites are provided for your convenience. I am not responsible for the content of these third-party sites.",
+      "availability": "While I strive to ensure site availability, I cannot guarantee uninterrupted access."
+    },
+    "applicable": {
+      "title": "Applicable Law",
+      "law": "This site is subject to Canadian and Quebec law. Any dispute will fall under the exclusive jurisdiction of Quebec courts, Canada."
+    },
+    "technologies": {
+      "title": "Technologies Used",
+      "frontend": "Front-end",
+      "animation": "Animation",
+      "services": "Services"
+    },
+    "contact": {
+      "title": "Contact"
+    }
+  }
+}

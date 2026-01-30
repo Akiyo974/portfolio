@@ -1,0 +1,346 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact",
+    "navigation": "Navigation"
+  },
+  "breadcrumbs": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "project": "Projet"
+  },
+  "hero": {
+    "location": "Saguenay",
+    "region": "Québec, Canada",
+    "role": "Développeur",
+    "roleDetail": "Full-stack",
+    "tagline": "Portfolio de Développeur Créatif"
+  },
+  "about": {
+    "title": "À propos",
+    "intro": "Actuellement étudiant en Techniques d'Intégration Multimédia au Cégep de Jonquière, je suis passionné par la création d'expériences utilisateurs captivantes à travers le développement web et le design.",
+    "experience": "Mon parcours inclut un poste de Chargé de Communication au CHU de La Réunion, où j'ai géré les mises à jour du site web et créé divers supports de communication. Cette expérience a alimenté ma passion pour le développement web et m'a poussé à approfondir mes compétences techniques.",
+    "passion": "Je m'épanouis dans des environnements dynamiques où je peux appliquer ma créativité pour concevoir des interfaces utilisateurs esthétiques et fonctionnelles, tout en recherchant de nouveaux défis et opportunités d'innovation.",
+    "viewCV": "Voir le CV",
+    "downloadCV": "Télécharger le CV",
+    "education": "Formations",
+    "skills": "Compétences"
+  },
+  "projects": {
+    "title": "Projets Sélectionnés",
+    "allProjects": "Tous les Projets",
+    "viewAll": "Voir Tous les Projets",
+    "demo": "Voir le site",
+    "viewSiteProduction": "Voir le site",
+    "viewSiteDemo": "Voir la démo",
+    "code": "Voir le code",
+    "technologies": "Technologies",
+    "repositories": "Dépôts",
+    "backHome": "Retour à l'accueil",
+    "viewDetails": "Voir Détails",
+    "personalProject": "Projet Personnel",
+    "githubProject": "GitHub"
+  },
+  "projectDetail": {
+    "back": "Retour",
+    "notFound": "Projet non trouvé",
+    "backToProjects": "Retour aux projets",
+    "personalProject": "Projet Personnel",
+    "viewSite": "Voir le site",
+    "viewDemo": "Voir la démo",
+    "sourceCode": "Code source",
+    "about": "À propos du projet",
+    "features": "Fonctionnalités principales",
+    "challenges": "Défis techniques",
+    "languages": "Langages",
+    "technologies": "Technologies",
+    "frontend": "Front-end",
+    "backend": "Back-end",
+    "tools": "Outils",
+    "tags": "Tags",
+    "relatedProjects": "Projets en lien",
+    "allProjects": "Voir tous les projets",
+    "status": {
+      "completed": "Terminé",
+      "inProgress": "En cours",
+      "archived": "Archivé"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Restons en Contact",
+    "description": "Je suis toujours ouvert à de nouvelles opportunités et collaborations. N'hésitez pas à me contacter !",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer le Message",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "votre@email.com",
+    "messagePlaceholder": "Votre message...",
+    "successMessage": "Message envoyé avec succès !",
+    "errorMessage": "Erreur lors de l'envoi du message."
+  },
+  "chatbot": {
+    "welcome": "👋 Bonjour ! Comment puis-je vous aider aujourd'hui ?",
+    "typing": "En train d'écrire...",
+    "placeholder": "Tapez votre message...",
+    "assistant": "Assistant"
+  },
+  "game": {
+    "title": "Jeu des Étoiles",
+    "collected": "étoiles",
+    "continue": "Continuez à explorer !",
+    "start": "Commencer",
+    "restart": "Rejouer",
+    "score": "Score",
+    "time": "Temps",
+    "gameOver": "Partie terminée !",
+    "enterNickname": "Entrez votre pseudo (3 lettres)",
+    "submit": "Soumettre",
+    "leaderboard": "Classement"
+  },
+  "footer": {
+    "description": "Développeur créatif créant des expériences numériques avec du code et du design.",
+    "location": "Localisation",
+    "backToTop": "Retour en haut",
+    "allRightsReserved": "Tous droits réservés",
+    "manageCookies": "Gérer les cookies"
+  },
+  "cookieConsent": {
+    "title": "🍪 Cookies et Confidentialité",
+    "description": "Ce site utilise des cookies pour améliorer votre expérience (Google Analytics, préférences) et suivre les erreurs techniques (Sentry). Vos données sont protégées conformément au RGPD.",
+    "privacyLink": "politique de confidentialité",
+    "accept": "Accepter tous les cookies",
+    "decline": "Refuser les cookies non essentiels",
+    "details": "Cookies essentiels : langue, consentement. Cookies analytiques : Google Analytics (anonymisé)."
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu principal",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "toggleLanguage": "Changer de langue",
+    "currentLanguage": "Langue actuelle"
+  },
+  "education": {
+    "tim": {
+      "title": "Techniques d'Intégration Multimédia",
+      "school": "Cégep de Jonquière",
+      "role": "Développement front-end, UX/UI",
+      "period": "2021 - 2025"
+    },
+    "react": {
+      "title": "Formation en Développement d'Applications Front-End (React)",
+      "school": "edX, en partenariat avec IBM",
+      "role": "React.js, JSX, ES6, Redux, hooks",
+      "period": "2024"
+    },
+    "gameDesign": {
+      "title": "Certificat en Design de Jeux Vidéo",
+      "school": "Cégep de Jonquière",
+      "role": "Level design et création d'expériences interactives",
+      "period": "2023"
+    }
+  },
+  "customProjects": {
+    "ctreq": {
+      "title": "CTREQ - Plateforme Éducative du Québec",
+      "description": "Refonte complète et fusion de deux sites WordPress (CTREQ + RIRE) en plateforme headless Next.js 13. Migration structurée de +10 types de contenus, architecture cache triple (~50ms), SEO avancé et plan de transfert de compétences pour l'équipe cliente.",
+      "longDescription": "Projet d'envergure institutionnelle pour le Centre de Transfert pour la Réussite Éducative du Québec : fusion complète de deux plateformes WordPress historiques (CTREQ + RIRE) en un système unifié moderne. Migration structurée de +10 types de contenus personnalisés avec reconstruction complète de l'architecture (CPT + ACF + taxonomies), harmonisation des schémas de données et validation croisée des relations. Architecture headless Next.js 13 App Router avec performances exceptionnelles (<100ms) grâce à une stratégie de cache triple sophistiquée (mémoire + ISR + SWR). Collaboration directe avec la direction du CTREQ sur 6 mois en autonomie complète, incluant analyse des besoins métier, priorisation des demandes, validation continue des livrables avec Caroline B. et Pape-Moussa D. Production du plan de transfert officiel avec documentation technique complète, formation des éditeurs WordPress et procédures de maintenance. Déploiement Next.js standalone sur cPanel avec configuration Passenger, monitoring des logs et tests Lighthouse CI automatisés.",
+      "features": [
+        "Fusion complète de deux sites WordPress historiques (CTREQ + RIRE) en système unifié",
+        "Migration structurée de +10 types de contenus : reprise CPT, taxonomies et champs ACF depuis ancien plugin",
+        "Reconstruction propre de l'architecture WordPress avec harmonisation des schémas ACF",
+        "Export/Import contrôlé via WP All Export/Import avec validation croisée des données et relations",
+        "Plan complet de redirections 301 entre les deux écosystèmes pour préserver le SEO",
+        "Architecture headless CMS avec Next.js 13 App Router et React Server Components",
+        "Agrégation unifiée de 3 sources WordPress (RIRE, Dossiers thématiques, Ressources) via WPGraphQL",
+        "Système de cache triple sophistiqué : mémoire (~50ms) + ISR Next.js + Stale-While-Revalidate",
+        "Webhook WordPress pour invalidation automatique du cache en temps réel",
+        "SEO avancé : Structured Data JSON-LD (Organization, WebSite, WebPage), sitemaps XML dynamiques",
+        "Géolocalisation ciblée Québec (fr-CA) avec métadonnées enrichies et canonical URLs",
+        "Interface accessible WCAG AA avec 30+ composants Radix UI (Accordion, Dialog, Select, etc.)",
+        "Design system shadcn/ui avec thème Tailwind personnalisé et variables CSS (dark mode ready)",
+        "Filtres avancés multi-critères : thèmes éducatifs, types de ressources, niveaux scolaires",
+        "Formulaires robustes avec React Hook Form + validation Zod",
+        "Content Security Policy stricte et headers de sécurité renforcés (HSTS, X-Frame-Options)",
+        "Gestion RGPD complète : consentement cookies, politique de confidentialité",
+        "Google Analytics 4 avec tracking d'événements personnalisés",
+        "Déploiement Next.js standalone sur cPanel : Node.js 18 + Passenger + .htaccess optimisé",
+        "Scripts de déploiement automatisés avec support des fichiers statiques /_next/",
+        "Monitoring & logs structurés : logs serveur Next.js/Express, debugging production cPanel",
+        "Tests Lighthouse CI automatisés et logging des webhooks pour intégrité",
+        "Production du Plan de transfert officiel : documentation technique complète Next.js/WPGraphQL",
+        "Formation des éditeurs WordPress avec procédures d'ajout de contenu et guide architecture",
+        "Breadcrumbs dynamiques, scroll progress indicator et loading states élégants"
+      ],
+      "challenges": [
+        "Fusion de deux plateformes WordPress avec historiques différents et détection d'incohérences",
+        "Migration massive : +10 types de contenus, standardisation des données, relations complexes",
+        "Reconstruction complète de l'architecture WordPress (CPT + ACF + taxonomies) sans perte de données",
+        "Validation croisée des exports/imports : fichiers médias, taxonomies dynamiques, champs relationnels",
+        "Plan de redirections 301 complet pour préserver le référencement des deux sites",
+        "Unification de 3 sources WordPress hétérogènes via modèle d'API GraphQL unifié",
+        "Architecture de cache intelligent multicouche avec stratégie SWR pour zéro downtime",
+        "Invalidation sélective du cache via webhooks sans impact sur performances globales",
+        "SEO multi-environnement avec détection automatique staging/production (X-Robots-Tag)",
+        "Performance extrême : First Contentful Paint < 1s, Time to Interactive < 2s, CLS < 0.1",
+        "TypeScript strict mode sur 100% de la codebase avec génération automatique des types GraphQL",
+        "Gestion complexité GraphQL : résolution du N+1 problem, overfetching via fragments et caching",
+        "Déploiement cPanel avec contraintes : Node.js standalone, paths absolus, réécriture Apache",
+        "Debug en production : Node.js, rewrite rules, gestion des assets _next/",
+        "Collaboration client : échanges réguliers avec direction, analyse besoins métier, priorisation",
+        "Autonomie complète sur 6 mois : conception, développement, migration, DevOps, documentation",
+        "Production documentation technique pour transfert de compétences à l'équipe CTREQ",
+        "Formation utilisateurs et support post-livraison"
+      ]
+    }
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "metaDescription": "Politique de confidentialité du portfolio de Christen Dijoux - Protection des données personnelles et respect du RGPD",
+    "lastUpdated": "Dernière mise à jour",
+    "intro": {
+      "title": "Introduction",
+      "content": "Cette politique de confidentialité explique comment ce site collecte, utilise et protège vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et à la Loi sur la protection des renseignements personnels du Québec."
+    },
+    "dataCollected": {
+      "title": "Données Collectées",
+      "analytics": {
+        "title": "Google Analytics 4",
+        "description": "Nous utilisons Google Analytics pour analyser l'utilisation du site :",
+        "items": {
+          "ip": "Adresse IP (anonymisée)",
+          "browser": "Type de navigateur et appareil",
+          "pages": "Pages visitées et durée des sessions",
+          "location": "Localisation approximative (pays/ville)"
+        }
+      },
+      "contact": {
+        "title": "Formulaire de Contact",
+        "description": "Lorsque vous m'envoyez un message via le formulaire :",
+        "items": {
+          "name": "Nom complet",
+          "email": "Adresse email",
+          "message": "Contenu du message"
+        }
+      },
+      "errors": {
+        "title": "Monitoring des Erreurs (Sentry)",
+        "description": "Pour améliorer la stabilité du site, nous collectons :",
+        "items": {
+          "errors": "Messages d'erreur JavaScript",
+          "browser": "Informations techniques (navigateur, OS)",
+          "interactions": "Actions ayant mené à l'erreur (breadcrumbs)"
+        }
+      }
+    },
+    "purpose": {
+      "title": "Finalité de la Collecte",
+      "items": {
+        "improve": "Améliorer l'expérience utilisateur et les performances du site",
+        "respond": "Répondre à vos demandes de contact",
+        "fix": "Corriger les bugs et erreurs techniques",
+        "analyze": "Analyser le trafic et l'utilisation du site"
+      }
+    },
+    "thirdParty": {
+      "title": "Services Tiers",
+      "ga4": "Nous utilisons Google Analytics 4 pour analyser le trafic. Google peut utiliser ces données selon sa propre politique de confidentialité.",
+      "emailjs": "Les messages du formulaire de contact sont transmis via EmailJS. Vos données ne sont pas stockées par ce service.",
+      "sentry": "Sentry collecte les erreurs techniques pour améliorer la stabilité. Les données sont stockées sur des serveurs en Allemagne (EU).",
+      "supabase": "Supabase héberge les données du jeu des étoiles (pseudonymes et scores). Serveurs situés au Canada.",
+      "viewPolicy": "Voir leur politique de confidentialité"
+    },
+    "cookies": {
+      "title": "Cookies",
+      "description": "Ce site utilise les cookies suivants :",
+      "items": {
+        "ga": "Google Analytics (statistiques de visite, 2 ans)",
+        "consent": "Enregistrement de votre consentement (1 an)",
+        "lang": "Préférence de langue (permanent)"
+      }
+    },
+    "rights": {
+      "title": "Vos Droits",
+      "description": "Conformément au RGPD, vous disposez des droits suivants :",
+      "items": {
+        "access": "Droit d'accès à vos données personnelles",
+        "rectification": "Droit de rectification des données inexactes",
+        "deletion": "Droit à l'effacement (« droit à l'oubli »)",
+        "opposition": "Droit d'opposition au traitement",
+        "portability": "Droit à la portabilité des données"
+      },
+      "contact": "Pour exercer vos droits, contactez-moi à"
+    },
+    "retention": {
+      "title": "Durée de Conservation",
+      "items": {
+        "analytics": "Données Analytics : 26 mois (configuré dans Google Analytics)",
+        "contact": "Messages de contact : supprimés après traitement (max. 6 mois)",
+        "errors": "Logs d'erreurs Sentry : 90 jours"
+      }
+    },
+    "changes": {
+      "title": "Modifications de cette Politique",
+      "description": "Cette politique peut être mise à jour. La date de dernière modification est indiquée en haut de cette page."
+    },
+    "contact": {
+      "title": "Contact"
+    }
+  },
+  "legal": {
+    "title": "Mentions Légales",
+    "metaDescription": "Mentions légales du portfolio de Christen Dijoux - Informations sur l'éditeur, l'hébergement et les droits d'auteur",
+    "lastUpdated": "Dernière mise à jour",
+    "editor": {
+      "title": "Éditeur du Site",
+      "name": "Nom",
+      "type": "Statut",
+      "typeValue": "Développeur indépendant (portfolio personnel)",
+      "location": "Localisation",
+      "email": "Email",
+      "website": "Site web"
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "provider": "Hébergeur",
+      "providerName": "o2switch",
+      "address": "Chemin des Pardiaux, 63000 Clermont-Ferrand, France",
+      "phone": "+33 4 44 44 60 40",
+      "website": "https://www.o2switch.fr"
+    },
+    "intellectual": {
+      "title": "Propriété Intellectuelle",
+      "copyright": "L'ensemble du contenu de ce site (textes, images, code, design) est la propriété exclusive de Christen Dijoux, sauf mention contraire.",
+      "usage": "Toute reproduction, distribution ou utilisation du contenu sans autorisation préalable est interdite.",
+      "projects": "Les projets présentés peuvent être soumis à des licences open-source spécifiques (voir repositories GitHub)."
+    },
+    "personalData": {
+      "title": "Données Personnelles",
+      "description": "Pour toute information concernant la collecte et le traitement de vos données personnelles, veuillez consulter notre politique de confidentialité.",
+      "link": "Consulter",
+      "linkText": "Politique de Confidentialité"
+    },
+    "liability": {
+      "title": "Limitation de Responsabilité",
+      "content": "Les informations fournies sur ce site le sont à titre informatif. Elles peuvent être modifiées sans préavis.",
+      "links": "Les liens vers des sites externes sont fournis pour votre commodité. Je ne suis pas responsable du contenu de ces sites tiers.",
+      "availability": "Bien que je m'efforce d'assurer la disponibilité du site, je ne peux garantir un accès ininterrompu."
+    },
+    "applicable": {
+      "title": "Droit Applicable",
+      "law": "Ce site est soumis au droit canadien et québécois. Tout litige sera de la compétence exclusive des tribunaux du Québec, Canada."
+    },
+    "technologies": {
+      "title": "Technologies Utilisées",
+      "frontend": "Front-end",
+      "animation": "Animation",
+      "services": "Services"
+    },
+    "contact": {
+      "title": "Contact"
+    }
+  }
+}
