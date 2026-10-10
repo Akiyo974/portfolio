@@ -69,17 +69,17 @@ export const ProjectsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen w-full bg-black text-white py-24 px-8">
+    <section ref={sectionRef} className="min-h-screen w-full bg-black text-white py-14 sm:py-18 md:py-24 px-4 sm:px-6 md:px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-16 border-b border-white/20 pb-4">{t('projects.title')}</h2>
-        <div className="grid grid-cols-1 gap-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 border-b border-white/20 pb-3 md:pb-4">{t('projects.title')}</h2>
+        <div className="grid grid-cols-1 gap-8 md:gap-16">
           {customProjects.slice(0, 3).map((project, index) => (
             <div
               key={project.id}
               ref={(el) => (projectRefs.current[index] = el)}
               className="group relative bg-white/5 rounded-lg overflow-hidden h-full"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 h-full">
                 <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden bg-white/10">
                   <img
                     src={project.image}
@@ -93,10 +93,10 @@ export const ProjectsSection = () => {
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <div className="p-8 flex flex-col justify-between min-h-[500px]">
+                <div className="p-4 md:p-8 flex flex-col justify-between min-h-[420px] md:min-h-[500px]">
                   <div className="flex-1">
                     <div className="mb-4">
-                      <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-2">{project.title}</h3>
                       <span className="inline-block px-3 py-1 border border-white/30 text-white/80 rounded-full text-xs font-medium">
                         {t('projects.personalProject')}
                       </span>
@@ -105,7 +105,7 @@ export const ProjectsSection = () => {
                       {project.description}
                     </p>
 
-                    <div className="mb-8">
+                    <div className="mb-6 md:mb-8">
                       <h4 className="text-sm uppercase tracking-wider text-white/50 mb-3">{t('projects.technologies')}</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.languages.slice(0, 5).map((lang) => (
@@ -126,7 +126,7 @@ export const ProjectsSection = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-auto">
                     <Link
                       to={`/project/${project.id}`}
                       className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors duration-300 font-medium"
@@ -169,11 +169,11 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-10 md:mt-20 text-center">
           <Link
             to="/projects"
             ref={buttonRef}
-            className="inline-flex items-center gap-3 px-8 py-4 text-lg font-medium 
+            className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium
                      border-2 border-white rounded-lg hover:bg-white hover:text-black 
                      transition-colors duration-300 group"
           >

@@ -5,7 +5,28 @@ import { AboutSection } from '../components/AboutSection';
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
+    i18n: { language: 'fr' },
     t: (key: string) => {
+      if (key === 'about.interestsList') {
+        return ['IA', 'Cloud', 'DevOps'];
+      }
+
+      if (key === 'about.experienceList') {
+        return [
+          {
+            title: 'Titre',
+            company: 'Entreprise',
+            period: '2026',
+            description: 'Description',
+            highlights: ['Point 1']
+          }
+        ];
+      }
+
+      if (key === 'about.impactList') {
+        return ['Impact 1', 'Impact 2'];
+      }
+
       const translations: Record<string, string> = {
         'about.title': 'À propos',
         'about.intro': 'Introduction',
@@ -20,6 +41,11 @@ vi.mock('react-i18next', () => ({
 
 vi.mock('gsap', () => ({
   gsap: {
+    registerPlugin: vi.fn(),
+    context: vi.fn((cb: () => void) => {
+      cb();
+      return { revert: vi.fn() };
+    }),
     fromTo: vi.fn(),
     set: vi.fn()
   }

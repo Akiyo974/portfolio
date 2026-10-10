@@ -67,14 +67,14 @@ describe('HeroSection', () => {
 
   it('devrait afficher l\'heure locale', () => {
     renderHeroSection();
-    expect(screen.getByText('14')).toBeInTheDocument();
-    expect(screen.getByText('30')).toBeInTheDocument();
+    expect(screen.getAllByText('14')).toHaveLength(2);
+    expect(screen.getAllByText('30')).toHaveLength(2);
   });
 
   it('devrait afficher l\'année courante dans le tagline', () => {
     renderHeroSection();
     const currentYear = new Date().getFullYear();
-    expect(screen.getByText(new RegExp(currentYear.toString()))).toBeInTheDocument();
+    expect(screen.getAllByText(new RegExp(currentYear.toString()))).toHaveLength(2);
   });
 
   it('devrait afficher le bouton étoile', () => {

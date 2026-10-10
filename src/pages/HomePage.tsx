@@ -1,14 +1,13 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { HeroSection } from '../components/HeroSection';
+import { AboutSection } from '../components/AboutSection';
+import { ProjectsSection } from '../components/ProjectsSection';
+import { ContactSection } from '../components/ContactSection';
+import { Chatbot } from '../components/Chatbot/Chatbot';
 import { Footer } from '../components/Footer';
 import { useLenis } from '../hooks/useLenis';
-
-const AboutSection = lazy(() => import('../components/AboutSection').then(m => ({ default: m.AboutSection })));
-const ProjectsSection = lazy(() => import('../components/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
-const ContactSection = lazy(() => import('../components/ContactSection').then(m => ({ default: m.ContactSection })));
-const Chatbot = lazy(() => import('../components/Chatbot/Chatbot').then(module => ({ default: module.Chatbot })));
 
 export const HomePage = () => {
   const { t } = useTranslation();
@@ -26,19 +25,15 @@ export const HomePage = () => {
         <link rel="canonical" href="https://christendijoux.com/" />
       </Helmet>
       <HeroSection />
-      <Suspense fallback={<div className="min-h-screen bg-black" />}>
-        <AboutSection />
-        <ProjectsSection />
-        <ContactSection />
-      </Suspense>
+      <AboutSection />
+      <ProjectsSection />
+      <ContactSection />
       <Footer />
-      <Suspense fallback={null}>
-        <Chatbot
-          botName="Assistant"
-          welcomeMessage="👋 Bonjour ! Comment puis-je vous aider aujourd'hui ?"
-          position="bottom-right"
-        />
-      </Suspense>
+      <Chatbot
+        botName="Assistant"
+        welcomeMessage="👋 Bonjour ! Comment puis-je vous aider aujourd'hui ?"
+        position="bottom-right"
+      />
     </main>
   );
 };

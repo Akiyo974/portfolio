@@ -81,19 +81,19 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full py-24 px-8 bg-black text-white" id="contact">
+    <section ref={sectionRef} className="w-full py-14 sm:py-18 md:py-24 px-4 sm:px-6 md:px-8 bg-black text-white" id="contact">
       <div className="max-w-6xl mx-auto contact-content">
-        <h2 className="text-5xl font-bold mb-12 text-center">{t('contact.title')}</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-12 text-center">{t('contact.title')}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Informations de contact */}
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">{t('contact.subtitle')}</h3>
-            <p className="text-white/60 mb-8 text-lg">
+          <div className="space-y-6 md:space-y-8">
+            <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">{t('contact.subtitle')}</h3>
+            <p className="text-white/60 mb-6 md:mb-8 text-base md:text-lg">
               {t('contact.description')}
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <a href="mailto:christen.dijoux@gmail.com" className="flex items-center gap-4 text-white/60 hover:text-white transition-colors">
                 <Mail className="w-6 h-6" />
                 <span>christen.dijoux@gmail.com</span>
@@ -109,7 +109,7 @@ export const ContactSection: React.FC = () => {
                 <span>Saguenay, Québec, Canada</span>
               </div>
 
-              <div className="flex gap-6 pt-4">
+              <div className="flex gap-4 md:gap-6 pt-3 md:pt-4">
                 <a
                   href="https://github.com/Akiyo974"
                   target="_blank"

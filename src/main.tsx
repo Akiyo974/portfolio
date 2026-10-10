@@ -12,6 +12,27 @@ import { initSentry } from './lib/sentry';
 // Initialize Sentry
 initSentry();
 
+if (import.meta.env.DEV && typeof window !== 'undefined') {
+  // Avoid stale SW/cached chunks in local dev causing mixed React runtime chunks.
+  window.addEventListener('load', () => {
+    if ('serviceWorker' in navigator) {
+      void navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => {
+          void registration.unregister();
+        });
+      });
+    }
+
+    if ('caches' in window) {
+      void caches.keys().then((keys) => {
+        keys.forEach((key) => {
+          void caches.delete(key);
+        });
+      });
+    }
+  });
+}
+
 const rootElement = document.getElementById('root');
 
 if (rootElement) {

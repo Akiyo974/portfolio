@@ -44,8 +44,19 @@ vi.mock('react-i18next', () => ({
 // Mock de GSAP
 vi.mock('gsap', () => ({
   gsap: {
+    registerPlugin: vi.fn(),
+    context: vi.fn((cb: () => void) => {
+      cb();
+      return { revert: vi.fn() };
+    }),
     fromTo: vi.fn(),
     set: vi.fn()
+  }
+}));
+
+vi.mock('gsap/ScrollTrigger', () => ({
+  ScrollTrigger: {
+    create: vi.fn()
   }
 }));
 

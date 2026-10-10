@@ -6,6 +6,8 @@ import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import LegalNoticePage from './pages/LegalNoticePage';
+import CVPage from './pages/CVPage';
+import LetterGeneratorPage from './pages/LetterGeneratorPage';
 import { CustomCursor } from './components/CustomCursor';
 import { StarProvider } from './contexts/StarContext';
 import { Achievement } from './components/Achievement';
@@ -23,7 +25,9 @@ import { initGA, usePageTracking } from './hooks/useAnalytics';
 
 function App() {
   // Initialize PWA
-  usePWA();
+  if (import.meta.env.PROD) {
+    usePWA();
+  }
 
   // Initialize Google Analytics
   useEffect(() => {
@@ -52,6 +56,8 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectDetailPage />} />
+                <Route path="/cv" element={<CVPage />} />
+                <Route path="/generateur-lettre" element={<LetterGeneratorPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 <Route path="/legal-notice" element={<LegalNoticePage />} />
                 <Route path="*" element={<NotFoundPage />} />

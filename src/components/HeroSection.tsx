@@ -99,7 +99,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full overflow-hidden">
+    <section ref={containerRef} className="relative h-[78vh] md:h-screen w-full overflow-hidden">
       {shouldLoadThree && (
         <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
           <ThreeScene />
@@ -107,7 +107,50 @@ export const HeroSection: React.FC = () => {
       )}
 
       <div ref={contentRef} className="relative z-10 h-full text-white opacity-0">
-        <div ref={containerRef} className="absolute top-0 left-0 right-0 pt-8">
+        <div className="md:hidden h-full flex flex-col justify-between px-4 pt-5 pb-4">
+          <div className="flex-1 flex items-center justify-center">
+            <div className="animate-in text-center rounded-2xl px-6 py-5 bg-black/30 backdrop-blur-sm border border-white/15 shadow-[0_0_40px_rgba(255,255,255,0.08)]">
+              <div className="flex items-end justify-center gap-4">
+                <p className="text-7xl font-bold leading-none text-white tracking-tight">
+                  {hours}
+                  <span className="text-2xl ml-1">h</span>
+                </p>
+                <p className="text-7xl font-bold leading-none text-white tracking-tight">
+                  {minutes}
+                  <span className="text-2xl ml-1">m</span>
+                </p>
+              </div>
+              <p className="mt-3 text-xs uppercase tracking-[0.2em] text-white/75">{t('hero.location')} · {t('hero.region')}</p>
+            </div>
+          </div>
+
+          <div className="animate-in">
+            <picture>
+              <source
+                srcSet="/assets/logo-400.webp 400w, /assets/logo-800.webp 800w, /assets/logo.webp 1364w"
+                sizes="(max-width: 768px) 400px, (max-width: 1024px) 800px, 1364px"
+                type="image/webp"
+              />
+              <img
+                src="/assets/logo-800.webp"
+                srcSet="/assets/logo-400.webp 400w, /assets/logo-800.webp 800w, /assets/logo.webp 1364w"
+                sizes="(max-width: 768px) 400px, (max-width: 1024px) 800px, 1364px"
+                alt="Logo Christen Dijoux"
+                width="1364"
+                height="129"
+                loading="eager"
+                decoding="async"
+                className="w-full mb-3"
+              />
+            </picture>
+            <div className="w-full h-px bg-white/20 mb-3"></div>
+            <div className="text-[11px] uppercase tracking-wider text-white/90">
+              {t('hero.tagline')} — {new Date().getFullYear()}
+            </div>
+          </div>
+        </div>
+
+        <div ref={containerRef} className="hidden md:block absolute top-0 left-0 right-0 pt-8">
           <div className="w-full grid grid-cols-3 text-left px-8">
             <div className="flex flex-col">
               <h2 className="animate-in text-2xl font-bold tracking-tight text-white">Christen</h2>
@@ -139,7 +182,7 @@ export const HeroSection: React.FC = () => {
 
         <button
           onClick={handleStarClick}
-          className="animate-in absolute top-4 right-4 md:top-8 md:right-8 p-2 hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded"
+          className="animate-in absolute right-4 top-4 md:top-8 md:right-8 p-2 hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded"
           aria-label={stars.hero ? "Retirer l'étoile" : "Ajouter l'étoile"}
         >
           <Star
@@ -149,7 +192,7 @@ export const HeroSection: React.FC = () => {
           />
         </button>
 
-        <div className="animate-in absolute bottom-0 left-0 right-0 px-8 pb-8">
+        <div className="animate-in hidden md:block absolute bottom-0 left-0 right-0 px-8 pb-8">
           <picture>
             <source
               srcSet="/assets/logo-400.webp 400w, /assets/logo-800.webp 800w, /assets/logo.webp 1364w"
@@ -163,7 +206,7 @@ export const HeroSection: React.FC = () => {
               alt="Logo Christen Dijoux"
               width="1364"
               height="129"
-              fetchPriority="high"
+              loading="eager"
               decoding="async"
               className="w-full mb-8"
             />

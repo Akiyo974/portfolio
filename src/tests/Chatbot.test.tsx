@@ -5,12 +5,12 @@ import { Chatbot } from '../components/Chatbot/Chatbot';
 vi.mock('../components/Chatbot/botLogic/messageHandler', () => ({
   handleMessage: (message: string) => {
     if (/bonjour|salut|hello/i.test(message)) {
-      return "Bonjour ! Comment puis-je vous aider ?";
+      return 'Bonjour ! Comment puis-je vous aider ?';
     }
     if (/projet/i.test(message)) {
-      return "Je peux vous parler de CTREQ, Webana, AkiProject et AkiMusic.";
+      return 'Je peux vous parler de CTREQ, Webana, AkiProject et AkiMusic.';
     }
-    return "Je ne suis pas sûr de comprendre.";
+    return 'Je ne suis pas sûr de comprendre.';
   }
 }));
 
@@ -32,7 +32,7 @@ describe('Chatbot', () => {
     fireEvent.click(chatButton);
     
     await waitFor(() => {
-      expect(screen.getByPlaceholderText(/Tapez votre message/i)).toBeInTheDocument();
+      expect(screen.getByRole('textbox')).toBeInTheDocument();
     });
   });
 
@@ -56,12 +56,12 @@ describe('Chatbot', () => {
     fireEvent.click(chatButton);
     
     await waitFor(() => {
-      const input = screen.getByPlaceholderText(/Tapez votre message/i);
+      const input = screen.getByRole('textbox');
       expect(input).toBeInTheDocument();
     });
     
     // Envoyer un message
-    const input = screen.getByPlaceholderText(/Tapez votre message/i);
+    const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'Bonjour' } });
     
     const sendButton = screen.getByRole('button', { name: /envoyer/i });
@@ -93,7 +93,7 @@ describe('Chatbot', () => {
     fireEvent.click(chatButton);
     
     await waitFor(() => {
-      expect(screen.getByPlaceholderText(/Tapez votre message/i)).toBeInTheDocument();
+      expect(screen.getByRole('textbox')).toBeInTheDocument();
     });
     
     // Fermer le chat
@@ -101,7 +101,7 @@ describe('Chatbot', () => {
     fireEvent.click(closeButton);
     
     await waitFor(() => {
-      expect(screen.queryByPlaceholderText(/Tapez votre message/i)).not.toBeInTheDocument();
+      expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
     });
   });
 
@@ -112,19 +112,19 @@ describe('Chatbot', () => {
     fireEvent.click(chatButton);
     
     await waitFor(() => {
-      const input = screen.getByPlaceholderText(/Tapez votre message/i);
+      const input = screen.getByRole('textbox');
       expect(input).toBeInTheDocument();
     });
     
     const sendButton = screen.getByRole('button', { name: /envoyer/i });
-    const initialMessagesCount = screen.getAllByRole('listitem').length;
+    expect(sendButton).toBeDisabled();
     
     // Essayer d'envoyer sans texte
     fireEvent.click(sendButton);
     
-    // Le nombre de messages ne devrait pas changer
+    // Le bouton reste desactive sans saisie
     await waitFor(() => {
-      expect(screen.getAllByRole('listitem')).toHaveLength(initialMessagesCount);
+      expect(sendButton).toBeDisabled();
     });
   });
 });

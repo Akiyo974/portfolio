@@ -14,19 +14,54 @@
   "hero": {
     "location": "Saguenay",
     "region": "Québec, Canada",
-    "role": "Développeur",
-    "roleDetail": "Full-stack",
-    "tagline": "Portfolio de Développeur Créatif"
+    "role": "Spécialiste en Innovation Numérique",
+    "roleDetail": "IA • Automatisation • Cloud • DevOps",
+    "tagline": "Développeur Full-Stack & IA Engineer"
   },
   "about": {
     "title": "À propos",
-    "intro": "Actuellement étudiant en Techniques d'Intégration Multimédia au Cégep de Jonquière, je suis passionné par la création d'expériences utilisateurs captivantes à travers le développement web et le design.",
-    "experience": "Mon parcours inclut un poste de Chargé de Communication au CHU de La Réunion, où j'ai géré les mises à jour du site web et créé divers supports de communication. Cette expérience a alimenté ma passion pour le développement web et m'a poussé à approfondir mes compétences techniques.",
-    "passion": "Je m'épanouis dans des environnements dynamiques où je peux appliquer ma créativité pour concevoir des interfaces utilisateurs esthétiques et fonctionnelles, tout en recherchant de nouveaux défis et opportunités d'innovation.",
+    "intro": "Développeur Full-Stack, spécialiste en automatisation, intelligence artificielle et transformation numérique. Je travaille actuellement comme Spécialiste en innovation numérique chez Gagnon Frères, où je conçois des solutions technologiques permettant d'automatiser les opérations, améliorer la prise de décision et moderniser les outils internes de l'entreprise.",
+    "experience": "Mon expertise couvre le développement web moderne, les infrastructures cloud, l'intelligence artificielle appliquée aux affaires et l'automatisation de processus. J'interviens autant sur le développement d'applications que sur l'intégration de systèmes, l'administration cloud et l'optimisation des infrastructures. Au quotidien, je développe avec React, Next.js, TypeScript, Python et Node.js, tout en travaillant sur des environnements Microsoft Dynamics NAV, Power Platform, Azure, Cloudflare et DigitalOcean.",
+    "passion": "Passionné par l'innovation, je m'intéresse particulièrement à l'intelligence artificielle et aux agents IA, au Machine Learning et à l'analyse de données, à l'automatisation des processus métiers, au développement SaaS, à l'architecture cloud et DevOps, ainsi qu'à l'observabilité et la performance des systèmes. À travers mon entreprise Synaptia Web, je réalise également des projets web sur mesure, des plateformes e-commerce et des intégrations d'IA pour des organisations souhaitant accélérer leur croissance numérique.",
     "viewCV": "Voir le CV",
     "downloadCV": "Télécharger le CV",
     "education": "Formations",
-    "skills": "Compétences"
+    "skills": "Compétences",
+    "interests": "Domaines d'expertise",
+    "interestsList": ["Intelligence artificielle & Agents IA", "Machine Learning & Analyse de données", "Automatisation des processus métiers", "Développement SaaS & applications internes", "Architecture cloud & DevOps", "Observabilité, monitoring & performance", "Transformation numérique des entreprises"],
+    "experience": "Expérience Professionnelle",
+    "experienceList": [
+      {
+        "title": "Spécialiste en Innovation Numérique",
+        "company": "Gagnon Frères",
+        "period": "Fév. 2026 - Présent",
+        "description": "Responsable des initiatives d'innovation et de transformation numérique. Conception d'applications internes sur mesure, automatisation des flux de données (catalogues, fournisseurs, rapports), intégration de solutions IA et assistants intelligents, développement Power Platform, mise en place de monitoring/alerting et optimisation de l'infrastructure.",
+        "highlights": ["Applications internes & outils numériques sur mesure", "Automatisation avec Python, n8n, Power Automate", "Intégration IA générative & assistants intelligents", "Power Apps, Power BI & Dynamics NAV", "Monitoring, alerting & observabilité"]
+      },
+      {
+        "title": "Co-fondateur & Développeur Web",
+        "company": "Synaptia Web",
+        "period": "Avr. 2025 - Présent",
+        "description": "Responsable du développement web de la conception à l'intégration. Création de sites vitrines et boutiques en ligne performantes avec focus sur l'ergonomie, la fluidité et la rapidité. Accompagnement des entreprises dans leur transformation numérique.",
+        "highlights": ["Sites vitrines & e-commerce sur mesure", "Intégrations Shopify", "Optimisation technique & performance"]
+      },
+      {
+        "title": "Développeur Full-Stack & DevOps",
+        "company": "CTREQ",
+        "period": "Mars - Août 2025",
+        "description": "Refonte complète du site web du CTREQ en tant que seul développeur. Prise en charge de l'ensemble du cycle de développement : design Figma, front-end Next.js/React, back-end WordPress headless (ACF, WPGraphQL), migration de contenu et déploiement serveur.",
+        "highlights": ["Architecture Next.js + WordPress headless", "Design UI/UX & intégration Figma", "Migration de données avec WP All Import", "DevOps : cPanel, DigitalOcean, optimisation"]
+      }
+    ],
+    "impact": "Impact & Résultats",
+    "impactList": [
+      "Automatisation de processus internes réduisant les tâches manuelles chez Gagnon Frères",
+      "Déploiement de solutions IA (agents, RAG, intégrations OpenAI) en production",
+      "Mise en place d'outils de monitoring et d'observabilité (New Relic, alerting)",
+      "Refonte complète du site CTREQ avec architecture headless Next.js (<100ms)",
+      "Création et lancement de Synaptia Web comme entreprise indépendante",
+      "Intégration Power Platform et Dynamics NAV pour digitaliser les processus"
+    ]
   },
   "projects": {
     "title": "Projets Sélectionnés",
@@ -102,7 +137,7 @@
     "leaderboard": "Classement"
   },
   "footer": {
-    "description": "Développeur créatif créant des expériences numériques avec du code et du design.",
+    "description": "J'aide les entreprises à automatiser, optimiser et moderniser leurs opérations grâce au développement logiciel, au cloud et à l'intelligence artificielle.",
     "location": "Localisation",
     "backToTop": "Retour en haut",
     "allRightsReserved": "Tous droits réservés",

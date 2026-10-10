@@ -29,6 +29,8 @@ export const Breadcrumbs = () => {
     const labels: Record<string, string> = {
       'projects': t('breadcrumbs.projects', { defaultValue: 'Projets' }),
       'project': t('breadcrumbs.projects', { defaultValue: 'Projets' }),
+      'cv': 'CV',
+      'generateur-lettre': 'Générateur de lettre',
     };
     
     return labels[segment] || segment;

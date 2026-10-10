@@ -1,41 +1,104 @@
-# Christen Dijoux - Développeur Full-stack Portfolio
+# Christen Dijoux - Spécialiste en Innovation Numérique
 
 ## 🎯 Objectif du Site
-Portfolio professionnel présentant les compétences et projets de Christen Dijoux, développeur full-stack spécialisé en React, TypeScript, WordPress Headless et animations web avancées.
+Portfolio professionnel présentant les compétences et projets de Christen Dijoux, Spécialiste en Innovation Numérique et Développeur Full-Stack. Actuellement en poste chez Gagnon Frères, je conçois des solutions technologiques pour automatiser les opérations, intégrer l'IA et moderniser les infrastructures. Également fondateur de Synaptia Web, spécialisé en projets web sur mesure et intégrations IA.
 
 ## 👤 Profil Professionnel
 - **Nom**: Christen Dijoux
-- **Rôle**: Développeur Full-stack & Créatif
+- **Rôle**: Spécialiste en Innovation Numérique
+- **Sous-titre**: IA • Automatisation • Cloud • DevOps
+- **Poste actuel**: Spécialiste en Innovation Numérique @ Gagnon Frères
+- **Entreprise**: Synaptia Web (fondateur)
 - **Localisation**: Saguenay, Québec, Canada
 - **Email**: christendijoux@gmail.com
 - **GitHub**: https://github.com/Akiyo974
 - **LinkedIn**: https://linkedin.com/in/christen-dijoux
 
-## 💼 Compétences Techniques
+## 💼 Expérience Professionnelle
 
-### Frontend
-- React 18, Next.js 13+ (App Router)
-- TypeScript 5+
-- TailwindCSS, shadcn/ui, Radix UI
-- GSAP, Framer Motion, Three.js
-- Responsive Design, WCAG AA Accessibility
+### Spécialiste en Innovation Numérique @ Gagnon Frères (Fév. 2026 - Présent)
+Responsable des initiatives d'innovation et de transformation numérique visant à moderniser les outils internes, automatiser les processus et améliorer l'efficacité opérationnelle de l'entreprise.
+- Conception et développement d'applications internes et d'outils numériques sur mesure
+- Automatisation des tâches répétitives et des flux de données (catalogues, fournisseurs, rapports, opérations)
+- Prototypage rapide et déploiement de solutions à fort impact (POC)
+- Intégration de solutions basées sur l'intelligence artificielle et d'assistants intelligents pour faciliter la recherche et la prise de décision
+- Développement de solutions Power Platform (Power Apps, Power Automate) et automatisation des processus métiers
+- Optimisation, stabilisation et amélioration d'applications critiques pour les opérations
+- Mise en place de pratiques de monitoring, d'alerting et d'observabilité afin d'améliorer la fiabilité et la performance des systèmes
+- Optimisation de l'infrastructure et de la sécurité (gestion du trafic, performance, cache et protection contre les bots)
+- Connexion et intégration des systèmes d'affaires (Power BI, ERP, APIs, bases de données)
+- Amélioration continue des processus internes et de l'expérience numérique des employés
 
-### Backend
-- WordPress Headless (WPGraphQL, ACF Pro)
-- Node.js, Express
-- PHP, MySQL
-- GraphQL, REST API
-- Strapi CMS
+### Co-fondateur & Développeur Web @ Synaptia Web (Avr. 2025 - Présent)
+Responsable du développement web, de la conception à l'intégration, en passant par l'optimisation technique. Création de sites vitrines et boutiques en ligne performantes, avec une attention particulière à l'ergonomie, à la fluidité et à la rapidité. Travail en duo avec Sébastien, co-fondateur et spécialiste e-commerce, pour accompagner les entreprises dans leur transformation numérique.
 
-### DevOps & Outils
-- Git/GitHub, cPanel, DigitalOcean
-- Performance: Lighthouse CI, Web Vitals
-- Build: Vite, Webpack, ESBuild
-- SEO: Structured Data, Sitemaps dynamiques
+### Développeur Full-Stack & DevOps @ CTREQ (Mars - Août 2025)
+Refonte complète du site web du CTREQ en tant que seul développeur full-stack / DevOps. Prise en charge de l'ensemble du cycle de développement, de la conception du design jusqu'au déploiement serveur.
+- Front-end : développement de l'interface avec Next.js + React + Tailwind CSS, intégrant un design conçu avec Figma
+- Back-end : configuration d'un WordPress headless (ACF Pro, WPGraphQL, WP All Import), création et paramétrage de Custom Post Types (CPT) et taxonomies personnalisées
+- API : mise en place des échanges REST / GraphQL entre WordPress et le front-end Next.js
+- Migration & gestion de contenu : nettoyage complet et reprise des données, automatisation import avec WP All Import, configuration avancée des groupes ACF
+- DevOps & infrastructure : gestion des serveurs cPanel et DigitalOcean, mise en place du routage dynamique Next.js, optimisation des performances et sécurisation
+- Formation et accompagnement de l'équipe interne pour l'autonomie sur la gestion des contenus
+
+## 🏆 Impact & Résultats
+- Automatisation de processus internes réduisant les tâches manuelles chez Gagnon Frères
+- Déploiement de solutions IA (agents, RAG, intégrations OpenAI) en production
+- Mise en place d'outils de monitoring et d'observabilité (New Relic, alerting)
+- Refonte complète du site CTREQ avec architecture headless Next.js (<100ms)
+- Création et lancement de Synaptia Web comme entreprise indépendante
+- Intégration Power Platform et Dynamics NAV pour digitaliser les processus
+
+## 💻 Compétences Techniques
+
+### Développement
+- React, Next.js, TypeScript, JavaScript, Python, Node.js, PHP, C#
+- SQL, MySQL, PostgreSQL, GraphQL, REST API
+
+### IA & Data
+- OpenAI API, LangChain, RAG, Vector Databases, Machine Learning
+- Prompt Engineering, AI Agents, Data Analysis, Embeddings, LLM Integration
+
+### ERP & Systèmes d'entreprise
+- Microsoft Dynamics NAV, Power Apps, Power Automate, Power BI
+- ERP Integration, Data Synchronization, Business Process Automation
+- Microsoft 365, SharePoint
+
+### Cloud & DevOps
+- Microsoft Azure (App Services, Functions, Storage, AI Services)
+- DigitalOcean, Linux Administration, Nginx, Docker
+- CI/CD, GitHub Actions, Cloudflare, DNS Management, SSL/TLS
+
+### Observabilité
+- New Relic, Synthetic Monitoring, APM, Alerting, Performance Monitoring, Log Analysis
+
+### Automatisation
+- n8n, Python Automation, API Integration, Workflow Automation, ETL Pipelines, Scripting
 
 ## 🚀 Projets Majeurs
 
-### 1. CTREQ - Plateforme Éducative du Québec
+### 1. AkiWorkspace - Workspace Productivité
+**URL**: https://akiworkspace.christendijoux.com
+**Type**: SaaS (Production)
+**Description**: Application SaaS de gestion d'idées, notes, tâches et projets avec architecture full-stack moderne, sécurité renforcée et système de partage granulaire. Plateforme collaborative inspirée de Notion/Linear.
+**Stack**: Next.js 14, React, TypeScript, TailwindCSS, Prisma ORM, PostgreSQL, NextAuth v5, Zod, Server Actions
+**Réalisations**:
+- Architecture full Server Actions sans API REST
+- Authentification obligatoire NextAuth v5 (JWT sécurisés)
+- Vérification d'email à l'inscription
+- Dashboard privé avec CRUD complet (notes, idées, tâches, projets)
+- Multi-catégories & multi-tags (relations many-to-many Prisma)
+- Éditeur Markdown riche
+- Visibilité granulaire : PRIVATE, PUBLIC, UNLISTED (lien secret), SHARED (groupes)
+- Panel admin (gestion utilisateurs + rôles)
+- Tutoriel d'onboarding interactif
+- React Server Components (SSR par défaut)
+- Protection XSS/CSRF complète
+- Sessions JWT httpOnly + secure
+- Sanitization DOMPurify contre XSS
+- Content Security Policy
+
+### 2. CTREQ - Plateforme Éducative du Québec
 **URL**: https://www.ctreq.qc.ca/
 **Type**: Production (client institutionnel)
 **Description**: Fusion complète de deux sites WordPress (CTREQ + RIRE) en plateforme Next.js 13 headless
@@ -47,34 +110,34 @@ Portfolio professionnel présentant les compétences et projets de Christen Dijo
 - Performances exceptionnelles (<100ms TTFB)
 - Collaboration directe avec direction CTREQ sur 6 mois
 
-### 2. CTREQ Blog/Archive
+### 3. CTREQ Blog/Archive
 **URL**: https://blog.ctreq.qc.ca/
 **Type**: Production
 **Description**: Section d'archivage institutionnel (projets + articles RIRE 3-5 ans)
 **Stack**: React 18, TypeScript, WordPress, WPGraphQL, Tailwind
 **Spécificités**: Filtrage automatique par ancienneté, design minimaliste, SEO volontairement réduit
 
-### 3. Innovations Numériques en Formation Professionnelle
+### 4. Innovations Numériques en Formation Professionnelle
 **URL**: Application semi-privée (non indexée)
 **Client**: ECOBES (Cégep de Jonquière) + CTREQ
 **Description**: Valorisation de +40 innovations d'enseignants en FP au Québec
 **Stack**: React, Vite, Mapbox GL JS, TypeScript
 **Features**: Carte interactive Mapbox, clustering, dark/light mode, recherche avancée
 
-### 4. Webana - E-commerce Katana
+### 5. Webana - E-commerce Katana
 **URL**: https://akiyo974.github.io/webana/
 **Type**: Démo
 **Description**: Site e-commerce thématique katanas japonais
 **Stack**: React 18, TypeScript, TailwindCSS
 **Features**: Filtres dynamiques, panier, dark mode
 
-### 5. AkiProject - Gestionnaire de Tâches
+### 6. AkiProject - Gestionnaire de Tâches
 **URL**: https://christenalexisdijoux.techniquesmedia.com/cms1/wr/Workspace/index.php
 **Type**: Démo académique
 **Stack**: PHP 7, MySQL, Bootstrap, jQuery, AJAX
 **Features**: Authentification, messagerie temps réel, gestion tâches
 
-### 6. AkiMusic - Plateforme Streaming
+### 7. AkiMusic - Plateforme Streaming
 **URL**: https://christenalexisdijoux.techniquesmedia.com/AkiMusic/index.php
 **Type**: Démo
 **Stack**: PHP, Bootstrap, jQuery

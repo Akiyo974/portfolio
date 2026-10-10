@@ -14,19 +14,54 @@
   "hero": {
     "location": "Saguenay",
     "region": "Quebec, Canada",
-    "role": "Developer",
-    "roleDetail": "Full-stack",
-    "tagline": "Creative Developer Portfolio"
+    "role": "Digital Innovation Specialist",
+    "roleDetail": "AI • Automation • Cloud • DevOps",
+    "tagline": "Full-Stack Developer & AI Engineer"
   },
   "about": {
     "title": "About",
-    "intro": "Currently studying Multimedia Integration Techniques at Cégep de Jonquière, I am passionate about creating captivating user experiences through web development and design.",
-    "experience": "My background includes a position as Communication Officer at CHU de La Réunion, where I managed website updates and created various communication materials. This experience fueled my passion for web development and pushed me to deepen my technical skills.",
-    "passion": "I thrive in dynamic environments where I can apply my creativity to design aesthetic and functional user interfaces, while seeking new challenges and opportunities for innovation.",
+    "intro": "Full-Stack Developer specializing in automation, artificial intelligence, and digital transformation. I currently work as a Digital Innovation Specialist at Gagnon Frères, where I design technological solutions to automate operations, improve decision-making, and modernize the company's internal tools.",
+    "experience": "My expertise covers modern web development, cloud infrastructure, business-applied artificial intelligence, and process automation. I work on application development, system integration, cloud administration, and infrastructure optimization. On a daily basis, I develop with React, Next.js, TypeScript, Python, and Node.js, while working with Microsoft Dynamics NAV, Power Platform, Azure, Cloudflare, and DigitalOcean environments.",
+    "passion": "Passionate about innovation, I am particularly interested in artificial intelligence and AI agents, Machine Learning and data analysis, business process automation, SaaS development, cloud architecture and DevOps, as well as system observability and performance. Through my company Synaptia Web, I also create custom web projects, e-commerce platforms, and AI integrations for organizations looking to accelerate their digital growth.",
     "viewCV": "View Resume",
     "downloadCV": "Download Resume",
     "education": "Education",
-    "skills": "Skills"
+    "skills": "Skills",
+    "interests": "Areas of Expertise",
+    "interestsList": ["Artificial Intelligence & AI Agents", "Machine Learning & Data Analysis", "Business Process Automation", "SaaS & Internal Applications Development", "Cloud Architecture & DevOps", "Observability, Monitoring & Performance", "Enterprise Digital Transformation"],
+    "experience": "Professional Experience",
+    "experienceList": [
+      {
+        "title": "Digital Innovation Specialist",
+        "company": "Gagnon Frères",
+        "period": "Feb. 2026 - Present",
+        "description": "Leading innovation and digital transformation initiatives. Designing custom internal applications, automating data flows (catalogs, suppliers, reports), integrating AI solutions and smart assistants, Power Platform development, monitoring/alerting setup, and infrastructure optimization.",
+        "highlights": ["Custom internal apps & digital tools", "Automation with Python, n8n, Power Automate", "Generative AI & smart assistants integration", "Power Apps, Power BI & Dynamics NAV", "Monitoring, alerting & observability"]
+      },
+      {
+        "title": "Co-founder & Web Developer",
+        "company": "Synaptia Web",
+        "period": "Apr. 2025 - Present",
+        "description": "Responsible for web development from design to integration. Creating high-performance showcase sites and online stores with focus on ergonomics, fluidity, and speed. Supporting businesses in their digital transformation.",
+        "highlights": ["Custom showcase & e-commerce sites", "Shopify integrations", "Technical optimization & performance"]
+      },
+      {
+        "title": "Full-Stack Developer & DevOps",
+        "company": "CTREQ",
+        "period": "Mar. - Aug. 2025",
+        "description": "Complete redesign of CTREQ website as sole developer. Managing the entire development cycle: Figma design, Next.js/React front-end, WordPress headless back-end (ACF, WPGraphQL), content migration, and server deployment.",
+        "highlights": ["Next.js + WordPress headless architecture", "UI/UX design & Figma integration", "Data migration with WP All Import", "DevOps: cPanel, DigitalOcean, optimization"]
+      }
+    ],
+    "impact": "Impact & Results",
+    "impactList": [
+      "Internal process automation reducing manual tasks at Gagnon Frères",
+      "Production deployment of AI solutions (agents, RAG, OpenAI integrations)",
+      "Implementation of monitoring and observability tools (New Relic, alerting)",
+      "Complete redesign of CTREQ website with headless Next.js architecture (<100ms)",
+      "Creation and launch of Synaptia Web as an independent business",
+      "Power Platform and Dynamics NAV integration to digitize processes"
+    ]
   },
   "projects": {
     "title": "Selected Projects",
@@ -102,7 +137,7 @@
     "leaderboard": "Leaderboard"
   },
   "footer": {
-    "description": "Creative developer crafting digital experiences with code and design.",
+    "description": "I help businesses automate, optimize, and modernize their operations through software development, cloud, and artificial intelligence.",
     "location": "Location",
     "backToTop": "Back to top",
     "allRightsReserved": "All rights reserved",

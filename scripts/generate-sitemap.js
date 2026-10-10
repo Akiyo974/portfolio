@@ -26,7 +26,8 @@ const projects = projectMatches.map((match, index) => ({
 const generateSitemap = () => {
   const staticPages = [
     { loc: '/', priority: '1.0', changefreq: 'weekly' },
-    { loc: '/projects', priority: '0.9', changefreq: 'weekly' }
+    { loc: '/projects', priority: '0.9', changefreq: 'weekly' },
+    { loc: '/cv', priority: '0.8', changefreq: 'monthly' }
   ];
 
   const projectPages = projects.map(project => ({

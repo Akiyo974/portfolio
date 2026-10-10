@@ -40,3 +40,9 @@ global.requestAnimationFrame = (cb: FrameRequestCallback) => {
 };
 
 global.cancelAnimationFrame = () => {};
+
+// Mock scrollIntoView for jsdom
+Object.defineProperty(Element.prototype, 'scrollIntoView', {
+  writable: true,
+  value: () => {},
+});

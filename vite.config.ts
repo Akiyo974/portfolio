@@ -1,14 +1,24 @@
 import { defineConfig, Plugin } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import { splitVendorChunkPlugin } from 'vite'
 import { compression } from 'vite-plugin-compression2'
 import { VitePWA } from 'vite-plugin-pwa'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
+import path from 'node:path'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  resolve: {
+    // Force a single React runtime instance across all optimized deps.
+    dedupe: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-i18next'],
+    alias: {
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-i18next'],
+  },
   plugins: [
     react(),
-    splitVendorChunkPlugin(),
     compression({
       algorithm: 'gzip',
       exclude: [/\.(br)$/, /\.(gz)$/],
@@ -92,7 +102,7 @@ export default defineConfig({
           'three-vendor': ['three'],
           'gsap-vendor': ['gsap'],
           'framer-motion': ['framer-motion'],
-          'i18n': ['react-i18next', 'i18next']
+          'i18n': ['i18next', 'react-i18next'],
         },
       },
     },
@@ -115,7 +125,8 @@ export default defineConfig({
   },
   server: {
     headers: {
-      'Cache-Control': 'public, max-age=31536000',
+      // Never cache dev modules to avoid stale mixed dependency graphs.
+      'Cache-Control': command === 'serve' ? 'no-store' : 'public, max-age=31536000',
     },
   },
-});
+}));
