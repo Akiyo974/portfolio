@@ -4,6 +4,7 @@ import { HomePage } from './pages/HomePage';
 import { CustomCursor } from './components/CustomCursor';
 import { StarProvider } from './contexts/StarContext';
 import { Achievement } from './components/Achievement';
+import { NegativeMode } from './components/NegativeMode';
 import { LoadingScreen } from './components/LoadingScreen';
 import { ScrollToTop } from './components/ScrollToTop';
 import { PageTransition } from './components/PageTransition';
@@ -47,6 +48,7 @@ function App() {
         <CustomCursor />
         <SiteHeader />
         <Achievement />
+        <NegativeMode />
         <Suspense fallback={null}>
           <StarGame />
         </Suspense>

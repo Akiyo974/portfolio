@@ -19,17 +19,22 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'fr',
+    fallbackLng: 'en', // anglais par défaut (public international) ; ?lang=fr ou le sélecteur pour le français
     debug: false,
     interpolation: {
       escapeValue: false
     },
     detection: {
-      // ?lang=en|fr force la langue (liens partagés, génération du CV PDF)
-      order: ['querystring', 'localStorage', 'navigator'],
+      // ?lang=en|fr force la langue (liens partagés, CV PDF) ; sinon le choix mémorisé, sinon l'anglais
+      order: ['querystring', 'localStorage'],
       lookupQuerystring: 'lang',
       caches: ['localStorage']
     }
   });
+
+// Attribut lang du document synchronisé (lecteurs d'écran, césure, SEO)
+const syncLang = (lng: string) => document.documentElement.setAttribute('lang', lng.startsWith('fr') ? 'fr' : 'en');
+syncLang(i18n.language || 'en');
+i18n.on('languageChanged', syncLang);
 
 export default i18n;

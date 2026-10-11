@@ -7,6 +7,7 @@ import { Github, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
 import { SectionLabel } from './ui/Editorial';
 import { PixelImage } from './ui/PixelImage';
+import { useProjectTransition } from '../lib/projectTransition';
 import { SplitText } from './ui/Kinetic';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export const ProjectsSection = () => {
   const { t } = useTranslation();
+  const openProject = useProjectTransition();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
@@ -105,6 +107,7 @@ export const ProjectsSection = () => {
 
             <Link
               to={`/project/${project.id}`}
+              onClick={(e) => openProject(e, project.id, e.currentTarget.querySelector<HTMLElement>('[role="img"]'))}
               data-cursor={t('ui.cursorView')}
               aria-label={`${t('projects.viewDetails')} — ${t(`customProjects.${project.id}.title`, { defaultValue: project.title })}`}
               className="relative block overflow-hidden lg:min-h-0 lg:flex-1"
@@ -131,7 +134,12 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  <Link to={`/project/${project.id}`} className="btn-solid" data-magnetic>
+                  <Link
+                    to={`/project/${project.id}`}
+                    onClick={(e) => openProject(e, project.id, e.currentTarget.closest('article')?.querySelector<HTMLElement>('[role="img"]'))}
+                    className="btn-solid"
+                    data-magnetic
+                  >
                     {t('projects.viewDetails')}
                   </Link>
                   {project.siteUrl && (

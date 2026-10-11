@@ -11,6 +11,8 @@ import { SectionLabel, MetaRow } from '../components/ui/Editorial';
 import { PixelImage } from '../components/ui/PixelImage';
 import { ScrollWords, SplitText } from '../components/ui/Kinetic';
 import { Counter } from '../components/ui/Counter';
+import { caseGallery } from '../data/caseGallery';
+import { finishImageTransition, useProjectTransition } from '../lib/projectTransition';
 import { useLenis } from '../hooks/useLenis';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -30,9 +32,16 @@ const ShowAllButton: FC<{ count: number; open: boolean; onClick: () => void }> =
 };
 
 export const ProjectDetailPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const openProject = useProjectTransition();
   const [showAll, setShowAll] = useState({ features: false, challenges: false });
   const { id } = useParams<{ id: string }>();
+
+  // Arrivée par la transition « image partagée » : l'image se retire une fois la page peinte
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => requestAnimationFrame(finishImageTransition));
+    return () => cancelAnimationFrame(raf);
+  }, [id]);
   const navigate = useNavigate();
   const pageRef = useRef<HTMLElement>(null);
   const nextFillRef = useRef<HTMLDivElement>(null);
@@ -117,8 +126,10 @@ export const ProjectDetailPage = () => {
   const total = customProjects.length;
   const next = customProjects[(index + 1) % total];
   const nextTitle = t(`customProjects.${next.id}.title`, { defaultValue: next.title }).split(' - ')[0];
+  const gallery = caseGallery[project.id] ?? [];
+  const lang = i18n.language?.startsWith('fr') ? 'fr' : 'en';
   let section = 0;
-  const sectionCount = 1 + (features.length ? 1 : 0) + (challenges.length ? 1 : 0) + 1;
+  const sectionCount = 1 + (gallery.length ? 1 : 0) + (features.length ? 1 : 0) + (challenges.length ? 1 : 0) + 1;
 
   return (
     <main ref={pageRef} className="min-h-screen bg-ink text-paper">
@@ -256,6 +267,38 @@ export const ProjectDetailPage = () => {
         </section>
       )}
 
+      {/* Galerie : captures du projet en ligne (noir et blanc, couleur au survol) */}
+      {gallery.length > 0 && (
+        <section className="border-b border-line px-4 py-20 sm:px-6 md:px-10 md:py-28">
+          <div className="mb-10 flex items-end justify-between gap-6">
+            <div>
+              <SectionLabel index={++section} total={sectionCount}>{t('ui.gallery')}</SectionLabel>
+              <SplitText as="h2" text={t('ui.galleryTitle')} className="heading mt-6 block text-[clamp(2.4rem,4vw,4rem)] uppercase" />
+            </div>
+            <p className="label hidden md:block">{t('ui.galleryHint')}</p>
+          </div>
+          {/* Première image en pleine largeur, les suivantes sur deux colonnes (la dernière s'étire si impaire) */}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+            {gallery.map((g, i) => (
+              <figure
+                key={g.file}
+                className={`reveal group overflow-hidden border border-line ${i === 0 || (i === gallery.length - 1 && gallery.length % 2 === 0) ? 'md:col-span-2' : ''}`}
+              >
+                <img
+                  src={`/assets/cases/${g.file}.webp`}
+                  alt={g.alt[lang]}
+                  width={1600}
+                  height={1000}
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-auto w-full grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.015] group-hover:grayscale-0"
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Fonctionnalités */}
       {features.length > 0 && (
         <section className="border-b border-line px-4 py-20 sm:px-6 md:px-10 md:py-28">
@@ -341,6 +384,7 @@ export const ProjectDetailPage = () => {
       {/* Projet suivant */}
       <Link
         to={`/project/${next.id}`}
+        onClick={(e) => openProject(e, next.id, e.currentTarget.querySelector<HTMLElement>('[data-next-image]'))}
         data-cursor={t('ui.cursorOpen')}
         className="group relative block overflow-hidden border-t border-line px-4 pb-12 pt-10 sm:px-6 md:px-10 md:pb-16"
       >
@@ -355,7 +399,7 @@ export const ProjectDetailPage = () => {
           <p className="display text-[clamp(3.5rem,11vw,12rem)] transition-transform duration-700 ease-out group-hover:translate-x-4 lg:col-span-8">
             {nextTitle}
           </p>
-          <div className="relative aspect-[4/3] overflow-hidden lg:col-span-4">
+          <div data-next-image className="relative aspect-[4/3] overflow-hidden lg:col-span-4">
             <img
               src={`/assets/art/${next.id}-halftone.png`}
               alt=""

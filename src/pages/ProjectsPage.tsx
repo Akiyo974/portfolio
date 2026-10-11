@@ -29,7 +29,19 @@ interface Repository {
   showCode?: boolean;
 }
 
-const EXCLUDED_REPOS = ['Akiyo974', 'repo-a-cacher-2'];
+// Dépôts masqués de l'index : profil, exercices d'école et tests (on garde les projets représentatifs)
+const EXCLUDED_REPOS = [
+  'Akiyo974',
+  'repo-a-cacher-2',
+  'AkiSpotify',
+  'AkiSupport',
+  'cas-pratique-scss',
+  'form-multi-etape',
+  'react-animated-service-selector',
+  'Gsap_Project_Test',
+  'FireCrawlDemo',
+  'UP---Appli-sur-cellulaire',
+];
 
 const CUSTOM_REPO_INFO: Record<string, {
   label?: string;

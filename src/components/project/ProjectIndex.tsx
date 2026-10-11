@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { customProjects } from '../../data/customProjects';
+import { useProjectTransition } from '../../lib/projectTransition';
 
 interface IndexItem {
   id: number | string;
@@ -23,6 +24,7 @@ interface IndexItem {
  */
 export const ProjectIndex: React.FC<{ projects: IndexItem[] }> = ({ projects }) => {
   const { t } = useTranslation();
+  const openProject = useProjectTransition();
   const previewRef = useRef<HTMLDivElement>(null);
   const [preview, setPreview] = useState<{ src: string; label: string } | null>(null);
   const [finePointer, setFinePointer] = useState(false);
@@ -97,7 +99,12 @@ export const ProjectIndex: React.FC<{ projects: IndexItem[] }> = ({ projects }) 
           return (
             <li key={p.id} onPointerEnter={onEnter}>
               {custom ? (
-                <Link to={`/project/${custom.id}`} className={className} data-cursor={t('ui.cursorView')}>
+                <Link
+                  to={`/project/${custom.id}`}
+                  onClick={(e) => openProject(e, custom.id, finePointer && preview ? previewRef.current : null)}
+                  className={className}
+                  data-cursor={t('ui.cursorView')}
+                >
                   {row}
                 </Link>
               ) : (

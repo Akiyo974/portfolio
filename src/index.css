@@ -633,3 +633,20 @@ html.lenis body {
 
 .cvp-skill + .cvp-skill, .cvp-edu + .cvp-edu { margin-top: 2.2mm; }
 .cvp-skill p:last-child { color: #222; }
+
+/* ---------- Easter egg : mode « négatif » (Konami code / 5 tapotements sur le logo) ---------- */
+html.negative {
+  filter: invert(1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: negative-reveal 0.9s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+@keyframes negative-reveal {
+  from { clip-path: circle(0% at 50% 50%); }
+  to { clip-path: circle(75% at 50% 50%); }
+}

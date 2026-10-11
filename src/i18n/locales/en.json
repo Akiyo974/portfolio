@@ -99,7 +99,8 @@
     "backHome": "Back to Home",
     "viewDetails": "View Details",
     "personalProject": "Personal Project",
-    "githubProject": "GitHub"
+    "githubProject": "GitHub",
+    "description": "Index of projects by Christen Dijoux: case studies (headless platforms, SaaS, e-commerce) and open-source work."
   },
   "projectDetail": {
     "back": "Back",
@@ -678,6 +679,17 @@
     "journeyTo": "Now",
     "journeyText": "Originally from Réunion Island, now based in Saguenay, Québec. Two ends of the world, one drive: building useful tools and memorable experiences.",
     "journeySr": "Journey from Réunion Island to Saguenay: {{km}} km as the crow flies.",
-    "showAll": "Show all"
+    "showAll": "Show all",
+    "gallery": "Gallery",
+    "galleryTitle": "In the wild",
+    "galleryHint": "Live captures · hover for colour",
+    "negativeOn": "Negative mode",
+    "negativeOff": "Back to positive",
+    "negativeHint": "You found the hidden inversion. Same code to flip back.",
+    "negativeBye": "Everything is back in order."
+  },
+  "home": {
+    "title": "Christen Dijoux — Full-stack & AI Developer | Saguenay, QC",
+    "description": "Christen Dijoux — full-stack & AI developer in Saguenay, Québec. Web experiences, internal platforms, automation and applied AI. React, Next.js, TypeScript, GSAP, WebGL."
   }
 }

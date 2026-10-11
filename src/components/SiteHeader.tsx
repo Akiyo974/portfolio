@@ -4,6 +4,18 @@ import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { getLenis } from '../lib/motion';
+import { NEGATIVE_EVENT } from './NegativeMode';
+
+// 5 tapotements rapides sur le monogramme : mode « négatif » (easter egg)
+let taps: number[] = [];
+const countLogoTap = () => {
+  const now = Date.now();
+  taps = [...taps.filter((tt) => now - tt < 2500), now];
+  if (taps.length >= 5) {
+    taps = [];
+    window.dispatchEvent(new Event(NEGATIVE_EVENT));
+  }
+};
 
 const sections = [
   { id: 'about', key: 'nav.about' },
@@ -64,7 +76,10 @@ export const SiteHeader: React.FC = () => {
 
           <Link
             to="/"
-            onClick={() => window.scrollTo(0, 0)}
+            onClick={() => {
+              window.scrollTo(0, 0);
+              countLogoTap();
+            }}
             aria-label={`CD — ${t('nav.home')}`}
             className="justify-self-center border border-paper/70 px-1.5 pb-0.5 pt-1 font-display text-[18px] font-semibold uppercase leading-none tracking-tight text-paper transition-colors hover:bg-paper hover:text-ink md:text-[20px]"
           >
