@@ -1,57 +1,28 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
+import { ArrowDownToLine, ArrowRight } from 'lucide-react';
+import { MetaRow, SectionLabel } from './ui/Editorial';
+import { PixelImage } from './ui/PixelImage';
+import { ScrollWords, SplitText } from './ui/Kinetic';
+import { skillCategories } from '../data/skills';
+import { JourneySection } from './JourneySection';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Compétences organisées par catégories
-const skillCategories = {
-  development: {
-    title: 'Développement',
-    titleEn: 'Development',
-    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Python', 'Node.js', 'PHP', 'C#',
-             'SQL', 'MySQL', 'PostgreSQL', 'GraphQL', 'REST API']
-  },
-  aiData: {
-    title: 'IA & Data',
-    titleEn: 'AI & Data',
-    skills: ['OpenAI API', 'LangChain', 'RAG', 'Vector Databases', 'Machine Learning',
-             'Prompt Engineering', 'AI Agents', 'Data Analysis', 'Embeddings', 'LLM Integration']
-  },
-  erpEnterprise: {
-    title: 'ERP & Systèmes d\'entreprise',
-    titleEn: 'ERP & Enterprise Systems',
-    skills: ['Microsoft Dynamics NAV', 'Power Apps', 'Power Automate', 'Power BI',
-         'ERP Integration', 'Data Synchronization', 'Business Process Automation',
-             'Microsoft 365', 'SharePoint']
-  },
-  cloudDevops: {
-    title: 'Cloud & DevOps',
-    titleEn: 'Cloud & DevOps',
-    skills: ['Microsoft Azure', 'Azure App Services', 'Azure Functions', 'Azure Storage',
-         'Azure AI Services', 'DigitalOcean', 'Linux Administration', 'Nginx', 'Docker',
-             'CI/CD', 'GitHub Actions', 'Cloudflare', 'DNS Management', 'SSL/TLS']
-  },
-  observability: {
-    title: 'Observabilité',
-    titleEn: 'Observability',
-    skills: ['New Relic', 'Synthetic Monitoring', 'APM', 'Alerting', 'Performance Monitoring', 'Log Analysis']
-  },
-  automation: {
-    title: 'Automatisation',
-    titleEn: 'Automation',
-    skills: ['n8n', 'Python Automation', 'API Integration', 'Workflow Automation', 'ETL Pipelines', 'Scripting']
-  }
-};
+type Experience = { title: string; company: string; period: string; description: string; highlights?: string[] };
+
+// Mobile : listes en carrousel horizontal (moins de défilement vertical)
+const CAROUSEL = 'max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:border-0 max-md:px-4 max-md:pb-2 no-scrollbar';
+const SLIDE = 'max-md:w-[82vw] max-md:shrink-0 max-md:snap-start max-md:border';
 
 export const AboutSection = () => {
+  const [showMore, setShowMore] = useState(false);
   const { t, i18n } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
-  const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
-  const skillsRef = useRef<HTMLDivElement>(null);
-  const experienceRef = useRef<HTMLDivElement>(null);
+  const isFr = i18n.language?.startsWith('fr');
 
   const formations = [
     {
@@ -74,222 +45,204 @@ export const AboutSection = () => {
     }
   ];
 
+  const pillars = [
+    { img: '/assets/art/ray-burst-800.webp', title: t('ui.aboutAI'), text: t('ui.aboutAIText'), tag: 'IA' },
+    { img: '/assets/art/ridge-lines.png', title: t('ui.aboutOps'), text: t('ui.aboutOpsText'), tag: 'OPS' },
+    { img: '/assets/art/globe-halftone.png', title: t('ui.aboutCloud'), text: t('ui.aboutCloudText'), tag: 'CLOUD' },
+  ];
+
+  const experiences = t('about.experienceList', { returnObjects: true }) as Experience[];
+  const impacts = t('about.impactList', { returnObjects: true }) as string[];
+  const interests = t('about.interestsList', { returnObjects: true }) as string[];
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animation des paragraphes de texte
-      textRefs.current.forEach((text, index) => {
-        if (text) {
-          gsap.fromTo(text,
-            { y: 50, opacity: 0 },
-            {
-              scrollTrigger: {
-                trigger: text,
-                start: "top bottom-=100",
-                end: "top center",
-                scrub: false,
-                markers: false,
-              },
-              y: 0,
-              opacity: 1,
-              duration: 1,
-              ease: "power4.out"
-            }
-          );
-        }
+      sectionRef.current?.querySelectorAll<HTMLElement>('.reveal').forEach((el) => {
+        gsap.fromTo(
+          el,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power4.out',
+            scrollTrigger: { trigger: el, start: 'top bottom-=80' },
+          }
+        );
       });
-
-      // Animation des compétences
-      if (skillsRef.current) {
-        gsap.fromTo(skillsRef.current.children,
-          { scale: 0.8, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: skillsRef.current,
-              start: "top bottom-=100",
-              end: "top center",
-              scrub: false,
-              markers: false,
-            },
-            scale: 1,
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.05,
-            ease: "power2.out"
-          }
-        );
-      }
-
-      // Animation des éléments de formation
-      if (experienceRef.current) {
-        gsap.fromTo(experienceRef.current.children,
-          { x: -50, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: experienceRef.current,
-              start: "top bottom-=100",
-              end: "top center",
-              scrub: false,
-              markers: false,
-            },
-            x: 0,
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out"
-          }
-        );
-      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="min-h-screen w-full bg-black text-white py-14 sm:py-18 md:py-24 px-4 sm:px-6 md:px-8">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 border-b border-white/20 pb-3 md:pb-4">{t('about.title')}</h2>
+    <section ref={sectionRef} id="about" className="w-full scroll-mt-16 bg-ink text-paper">
+      {/* En-tête */}
+      <div className="px-4 pt-20 sm:px-6 md:px-10 md:pt-28">
+        <SectionLabel index={1} total={4}>{t('about.title')}</SectionLabel>
+        <SplitText as="h2" text={t('ui.aboutTitle')} className="display mt-6 block text-[clamp(3rem,8vw,8rem)]" />
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
-          <div className="space-y-6 md:space-y-8">
-            <p ref={el => textRefs.current[0] = el} className="text-base md:text-lg leading-relaxed text-white">
-              {t('about.intro')}
-            </p>
-
-            <p ref={el => textRefs.current[1] = el} className="text-base md:text-lg leading-relaxed text-white">
-              {t('about.experience')}
-            </p>
-
-            <p ref={el => textRefs.current[2] = el} className="text-base md:text-lg leading-relaxed text-white">
-              {t('about.passion')}
-            </p>
-
-            {/* Boutons pour afficher et télécharger le CV */}
-            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link
-                to="/cv"
-                className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-              >
-                {t('about.viewCV')}
+      {/* Intro */}
+      <div className="grid grid-cols-1 gap-10 border-b border-line px-4 py-12 sm:px-6 md:px-10 md:py-16 lg:grid-cols-12">
+        <div className="space-y-6 lg:col-span-7">
+          <ScrollWords text={t('about.intro')} className="heading text-[clamp(1.6rem,2.6vw,2.6rem)] leading-[1.12] text-paper" />
+          <div id="about-more" className={`space-y-6 ${showMore ? '' : 'max-md:hidden'}`}>
+            <p className="reveal leading-relaxed text-paper/70">{t('about.expertise')}</p>
+            <p className="reveal leading-relaxed text-paper/70">{t('about.passion')}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowMore((v) => !v)}
+            aria-expanded={showMore}
+            aria-controls="about-more"
+            className="label flex items-center gap-2 text-paper md:hidden"
+          >
+            {showMore ? t('ui.readLess', { defaultValue: 'Réduire' }) : t('ui.readMore', { defaultValue: 'Lire la suite' })} {showMore ? '−' : '+'}
+          </button>
+        </div>
+        <aside className="reveal lg:col-span-4 lg:col-start-9">
+          <div className="crosshair border border-line p-5">
+            <p className="label mb-3">{t('ui.aboutKicker')}</p>
+            <MetaRow k={isFr ? 'Basé à' : 'Based in'} v={`${t('hero.location')}, QC`} />
+            <MetaRow k={isFr ? 'Rôle' : 'Role'} v={experiences[0]?.title ?? '—'} />
+            <MetaRow k={isFr ? 'Chez' : 'At'} v={experiences[0]?.company ?? '—'} />
+            <MetaRow k="Studio" v="Synaptia Web" />
+            <MetaRow k="Focus" v={t('hero.roleDetail')} />
+            {/* Boutons empilés tant que la colonne est étroite : jamais de libellé sur deux lignes */}
+            <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 [&>a]:whitespace-nowrap">
+              <Link to="/cv" className="btn-solid justify-between">
+                {t('about.viewCV')} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
               <a
-                href="/assets/Dij_Ch_Cv.pdf"
-                download
-                className="px-6 py-3 text-sm border border-white/20 rounded-lg font-semibold
-                    hover:bg-white hover:text-black transition-colors duration-300"
+                href={isFr ? '/assets/cv-christen-dijoux-fr.pdf' : '/assets/cv-christen-dijoux-en.pdf'}
+                download={isFr ? 'Christen-Dijoux-CV.pdf' : 'Christen-Dijoux-Resume.pdf'}
+                className="btn-ghost justify-between"
               >
-                {t('about.downloadCV')}
+                {t('about.downloadCV')} <span className="flex items-center gap-2 text-paper/55">PDF <ArrowDownToLine className="h-3.5 w-3.5" aria-hidden="true" /></span>
               </a>
             </div>
           </div>
+        </aside>
+      </div>
 
-          <div className="space-y-10 md:space-y-16">
+      {/* Trajet La Réunion → Saguenay */}
+      <JourneySection />
+
+      {/* Piliers en alternance */}
+      <div className={`px-4 sm:px-6 md:px-10 max-md:py-10 ${CAROUSEL}`}>
+        {pillars.map((p, i) => (
+          <article
+            key={p.tag}
+            className={`reveal grid grid-cols-1 items-center gap-8 border-b border-line py-12 md:grid-cols-2 md:gap-16 md:py-16 ${SLIDE} max-md:gap-5 max-md:border-line max-md:p-4 ${
+              i % 2 ? 'md:[&>*:first-child]:order-2' : ''
+            }`}
+          >
+            <PixelImage src={p.img} alt={p.title} className="aspect-[4/3]" />
             <div>
-              <h3 className="text-xl md:text-2xl font-semibold mb-5 md:mb-6">{t('about.education')}</h3>
-              <div ref={experienceRef} className="space-y-6 md:space-y-8">
-                {formations.map((exp, index) => (
-                  <div key={index} className="group border-l-2 border-white/20 hover:border-white/40 pl-4 md:pl-6 transition-colors duration-200">
-                    <h4 className="text-lg md:text-xl font-medium text-white">{exp.title}</h4>
-                    <p className="text-white mt-1">{exp.place}</p>
-                    <p className="text-white">{exp.role}</p>
-                    <p className="text-sm text-white/60 mt-2">{exp.period}</p>
-                  </div>
+              <p className="label mb-4">#{String(i + 1).padStart(2, '0')} · {p.tag}</p>
+              <h3 className="heading text-[clamp(2.4rem,4.5vw,4.25rem)]">{p.title}</h3>
+              <p className="mt-5 max-w-md leading-relaxed text-paper/70">{p.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Stack */}
+      <div className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mb-10 flex items-end justify-between gap-6">
+          <SplitText as="h3" text={t('about.skills')} className="heading block text-[clamp(2.4rem,5vw,4.5rem)] uppercase" />
+          <p className="label hidden md:block">{t('ui.stackKicker')} · {Object.values(skillCategories).reduce((n, c) => n + c.skills.length, 0)}</p>
+        </div>
+        <div className={`grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:grid-cols-3 ${CAROUSEL}`}>
+          {Object.entries(skillCategories).map(([key, category], i) => (
+            <div key={key} className={`reveal crosshair border-b border-r border-line p-5 md:p-6 ${SLIDE}`}>
+              <div className="mb-4 flex items-center justify-between">
+                <h4 className="font-mono text-[12px] uppercase tracking-[0.12em] text-paper">
+                  {isFr ? category.title : category.titleEn}
+                </h4>
+                <span className="label">0{i + 1}</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {category.skills.map((skill) => (
+                  <span key={skill} className="chip">{skill}</span>
                 ))}
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Compétences - Par catégories */}
-        <div className="mt-10 md:mt-16">
-          <h3 className="text-xl md:text-2xl font-semibold mb-6 md:mb-8">{t('about.skills')}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {Object.entries(skillCategories).map(([key, category]) => (
-              <div key={key} className="space-y-4">
-                <h4 className="text-lg font-medium text-white/80 border-b border-white/10 pb-2">
-                  {i18n.language === 'fr' ? category.title : category.titleEn}
-                </h4>
-                <div ref={skillsRef} className="flex flex-wrap gap-1.5 md:gap-2">
-                  {category.skills.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1.5 text-xs border border-white/15 rounded-full
-                                text-white/70 hover:text-white hover:border-white/40
-                                transition-all duration-200 cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+        <div className="mt-10">
+          <p className="label mb-4">{t('about.interests')}</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {interests.map((interest) => (
+              <li key={interest} className="font-display text-2xl text-paper/80 md:text-3xl">
+                {interest}<span className="ml-6 text-paper/25" aria-hidden="true">/</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Parcours */}
+      <div className="border-t border-line px-4 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mb-10 flex items-end justify-between">
+          <SplitText as="h3" text={t('about.experience')} className="heading block text-[clamp(2.4rem,5vw,4.5rem)] uppercase" />
+          <p className="label hidden md:block">{t('ui.pathKicker')}</p>
+        </div>
+
+        <ol className="border-t border-line">
+          {experiences.map((exp, i) => (
+            <li key={exp.company} className="reveal group grid grid-cols-1 gap-4 border-b border-line py-8 transition-colors hover:bg-white/[0.025] md:grid-cols-12 md:gap-8">
+              <div className="label md:col-span-2">
+                <span className="text-paper">#{i + 1}</span> · {exp.period}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Domaines d'expertise */}
-        <div className="mt-10 md:mt-16">
-          <h3 className="text-xl md:text-2xl font-semibold mb-5 md:mb-6">{t('about.interests')}</h3>
-          <div className="flex flex-wrap gap-2 md:gap-3">
-            {(t('about.interestsList', { returnObjects: true }) as string[]).map((interest, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 text-sm bg-white/[0.03] border border-white/10 rounded-lg
-                          hover:border-white/25 text-white/70 hover:text-white/90
-                          transition-all duration-200"
-              >
-                {interest}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Expérience Professionnelle */}
-        <div className="mt-10 md:mt-16">
-          <h3 className="text-xl md:text-2xl font-semibold mb-6 md:mb-8">{t('about.experience')}</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-            {(t('about.experienceList', { returnObjects: true }) as Array<{title: string, company: string, period: string, description: string, highlights?: string[]}>).map((exp, index) => (
-              <div
-                key={index}
-                className="group p-4 md:p-6 bg-white/5 border border-white/10 rounded-xl
-                          hover:bg-white/[0.08] hover:border-white/20 hover:-translate-y-1
-                          transition-all duration-300 ease-out flex flex-col"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-base md:text-lg font-semibold text-white group-hover:text-white/90">{exp.title}</h4>
-                </div>
-                <p className="text-white/80 font-medium">{exp.company}</p>
-                <span className="text-xs text-white/50 mb-3">{exp.period}</span>
-                <p className="text-sm text-white/60 leading-relaxed mb-4">{exp.description}</p>
+              <div className="md:col-span-4">
+                <h4 className="heading text-3xl md:text-4xl">{exp.title}</h4>
+                <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.1em] text-paper/60">{exp.company}</p>
+              </div>
+              <div className="md:col-span-6">
+                <p className="leading-relaxed text-paper/70 max-md:line-clamp-4">{exp.description}</p>
                 {exp.highlights && (
-                  <ul className="mt-auto space-y-1.5">
-                    {exp.highlights.map((highlight, hIndex) => (
-                      <li key={hIndex} className="text-xs text-white/50 flex items-start gap-2">
-                        <span className="text-white/40 mt-0.5">—</span>
-                        {highlight}
-                      </li>
+                  <ul className="mt-4 flex flex-wrap gap-1.5 max-md:hidden">
+                    {exp.highlights.map((h) => (
+                      <li key={h} className="chip normal-case tracking-normal">{h}</li>
                     ))}
                   </ul>
                 )}
               </div>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ol>
 
-        {/* Impact & Résultats */}
-        <div className="mt-10 md:mt-16">
-          <h3 className="text-xl md:text-2xl font-semibold mb-6 md:mb-8">{t('about.impact')}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-            {(t('about.impactList', { returnObjects: true }) as string[]).map((impact, index) => (
-              <div
-                key={index}
-                className="group p-4 bg-white/[0.03] border border-white/10 rounded-lg
-                          hover:bg-white/[0.06] hover:border-white/20
-                          transition-all duration-200 flex items-start gap-3"
-              >
-                <span className="text-white/60 group-hover:text-white/80 transition-colors text-sm">→</span>
-                <p className="text-sm text-white/70 group-hover:text-white/85 leading-relaxed transition-colors">{impact}</p>
-              </div>
-            ))}
-          </div>
+        <h4 className="label mb-4 mt-14">{t('about.education')}</h4>
+        <ul className="grid grid-cols-1 border-l border-t border-line md:grid-cols-3">
+          {formations.map((f) => (
+            <li key={f.title} className="reveal border-b border-r border-line p-5">
+              <p className="label">{f.period}</p>
+              <p className="heading mt-3 text-2xl">{f.title}</p>
+              <p className="mt-2 text-sm text-paper/70">{f.place}</p>
+              <p className="text-sm text-paper/50">{f.role}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Impact */}
+      <div className="border-t border-line px-4 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mb-10 flex items-end justify-between">
+          <SplitText as="h3" text={t('about.impact')} className="heading block text-[clamp(2.4rem,5vw,4.5rem)] uppercase" />
+          <p className="label hidden md:block">{t('ui.impactKicker')}</p>
+        </div>
+        <div className={`grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:grid-cols-3 ${CAROUSEL}`}>
+          {impacts.map((impact, i) => (
+            <div key={impact} className={`reveal group border-b border-r border-line p-6 transition-colors hover:bg-paper hover:text-ink ${SLIDE}`}>
+              <p className="font-display text-6xl font-light text-paper/40 transition-colors group-hover:text-ink/40">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <p className="mt-6 leading-relaxed">{impact}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

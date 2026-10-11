@@ -28,3 +28,8 @@ dist-ssr
 .env.local
 .env.production
 .env.development
+
+# Artefacts locaux (zips de déploiement cPanel, visuels réseaux sociaux, config outil)
+deploy/
+banners/
+.claude/

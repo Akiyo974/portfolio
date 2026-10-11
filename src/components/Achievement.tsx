@@ -1,40 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { Star } from 'lucide-react';
-import { useStar } from '../contexts/StarContext';
+import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { STAR_LOCATIONS, useStar } from '../contexts/StarContext';
 
+/**
+ * Notification de progression de la chasse aux étoiles, avec un indice pour la suivante.
+ */
 export const Achievement = () => {
-  const { collectedStars, totalStars } = useStar();
+  const { t } = useTranslation();
+  const { stars, collectedStars, totalStars } = useStar();
   const [show, setShow] = useState(false);
+  const prev = useRef(collectedStars);
 
   useEffect(() => {
-    if (collectedStars > 0) {
-      setShow(true);
-      const timer = setTimeout(() => setShow(false), 3000);
-      return () => clearTimeout(timer);
-    }
+    const increased = collectedStars > prev.current;
+    prev.current = collectedStars;
+    if (!increased) return;
+    setShow(true);
+    const timer = setTimeout(() => setShow(false), 4200);
+    return () => clearTimeout(timer);
   }, [collectedStars]);
 
   if (!show) return null;
 
+  const complete = collectedStars === totalStars;
+  const next = STAR_LOCATIONS.find((l) => !stars[l]);
+  const hints: Record<string, string> = {
+    hero: t('game.hintHero', { defaultValue: "Indice : tout en haut de l'accueil." }),
+    contact: t('game.hintContact', { defaultValue: 'Indice : près du formulaire de contact.' }),
+    footer: t('game.hintFooter', { defaultValue: 'Indice : tout en bas de la page.' }),
+  };
+
   return (
-    <div 
-      className="fixed inset-x-0 top-8 mx-auto z-50 flex justify-center items-center"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    >
-      <div className="bg-white text-black px-8 py-4 rounded-xl shadow-2xl flex items-center gap-4 animate-fade-in max-w-sm mx-4">
-        <div className="p-2 bg-black/5 rounded-full">
-          <Star className="w-6 h-6 fill-black" aria-hidden="true" />
+    <div className="pointer-events-none fixed inset-x-0 top-20 z-[70] flex justify-center px-4" role="status" aria-live="polite" aria-atomic="true">
+      <div className="animate-fade-in crosshair w-full max-w-sm border border-line bg-ink/95 p-4 backdrop-blur-md">
+        <div className="flex items-baseline justify-between">
+          <p className="label text-paper">✦ {t('game.found', { defaultValue: 'Étoile trouvée' })}</p>
+          <p className="font-mono text-[12px] tabular-nums text-paper">
+            {collectedStars} / {totalStars}
+          </p>
         </div>
-        <div className="flex flex-col">
-          <span className="font-medium text-lg">
-            {collectedStars} sur {totalStars} étoiles
-          </span>
-          <span className="text-sm text-black/60">
-            Continuez à explorer !
-          </span>
+        <div className="mt-3 flex gap-1" aria-hidden="true">
+          {Array.from({ length: totalStars }, (_, i) => (
+            <span key={i} className={`h-1 flex-1 ${i < collectedStars ? 'bg-paper' : 'bg-line'}`} />
+          ))}
         </div>
+        <p className="mt-3 text-sm text-paper/80">
+          {complete ? t('game.unlockedToast', { defaultValue: 'Toutes les étoiles sont trouvées — un jeu se débloque…' }) : next ? hints[next] : ''}
+        </p>
       </div>
     </div>
   );

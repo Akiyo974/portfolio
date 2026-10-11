@@ -33,10 +33,11 @@ export const ScrollToTop = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-24 right-8 p-3 bg-white text-black rounded-full shadow-lg hover:scale-110 transition-transform z-40"
+          data-magnetic
+          className="fixed bottom-24 right-6 z-40 hidden md:block border border-line bg-ink/80 p-3 text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink md:right-8"
           aria-label="Retour en haut"
         >
-          <ArrowUp className="w-6 h-6" />
+          <ArrowUp className="h-4 w-4" />
         </motion.button>
       )}
     </AnimatePresence>

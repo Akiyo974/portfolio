@@ -31,12 +31,12 @@ vi.mock('../data/customProjects', () => ({
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => {
+    t: (key: string, opts?: { defaultValue?: string }) => {
       const translations: Record<string, string> = {
         'projects.title': 'Projets',
         'projects.description': 'Découvrez mes réalisations'
       };
-      return translations[key] || key;
+      return translations[key] || opts?.defaultValue || key;
     }
   })
 }));

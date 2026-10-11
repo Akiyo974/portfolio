@@ -2,15 +2,14 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import * as Sentry from '@sentry/react';
 import App from './App';
 import './index.css';
 import './i18n/config';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { initSentry } from './lib/sentry';
 
-// Initialize Sentry
-initSentry();
+// Sentry : uniquement si les cookies ont déjà été acceptés (chargé à la demande)
+void initSentry();
 
 if (import.meta.env.DEV && typeof window !== 'undefined') {
   // Avoid stale SW/cached chunks in local dev causing mixed React runtime chunks.
@@ -38,13 +37,13 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
-      <Sentry.ErrorBoundary fallback={<div>Une erreur est survenue</div>} showDialog>
+      <ErrorBoundary>
         <HelmetProvider>
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </HelmetProvider>
-      </Sentry.ErrorBoundary>
+      </ErrorBoundary>
     </StrictMode>
   );
 }

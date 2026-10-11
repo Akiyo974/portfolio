@@ -1,50 +1,76 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 /**
- * Star collection context for gamification features
- * Manages star collection state across the portfolio
+ * Chasse aux étoiles : 3 étoiles cachées dans le site débloquent le jeu.
+ * La progression est conservée dans le navigateur.
  */
+export const STAR_LOCATIONS = ['hero', 'contact', 'footer'] as const;
+export type StarLocation = (typeof STAR_LOCATIONS)[number];
+
+const STORAGE_KEY = 'cd-stars';
+const OPEN_EVENT = 'cd:open-star-game';
+
 interface StarContextType {
-  /** Object mapping location IDs to their collected state */
-  stars: { [key: string]: boolean };
-  /** Function to toggle star collection at a specific location */
+  /** État de collecte par emplacement */
+  stars: Record<string, boolean>;
+  /** Collecte l'étoile d'un emplacement (définitif jusqu'à réinitialisation) */
   toggleStar: (location: string) => void;
-  /** Total number of collectible stars */
+  /** Remet la chasse à zéro */
+  resetStars: () => void;
+  /** Nombre total d'étoiles à trouver */
   totalStars: number;
-  /** Number of stars currently collected */
+  /** Nombre d'étoiles trouvées */
   collectedStars: number;
+  /** Ouvre le jeu (une fois débloqué) */
+  openGame: () => void;
 }
+
+const empty = (): Record<string, boolean> => Object.fromEntries(STAR_LOCATIONS.map((l) => [l, false]));
+
+const load = (): Record<string, boolean> => {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null');
+    if (saved && typeof saved === 'object') return { ...empty(), ...saved };
+  } catch {
+    /* stockage indisponible */
+  }
+  return empty();
+};
 
 const StarContext = createContext<StarContextType | undefined>(undefined);
 
 export const StarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [stars, setStars] = useState<{ [key: string]: boolean }>({
-    hero: false,
-    footer: false,
-  });
+  const [stars, setStars] = useState<Record<string, boolean>>(load);
 
-  const toggleStar = (location: string) => {
-    setStars(prev => ({
-      ...prev,
-      [location]: !prev[location]
-    }));
-  };
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stars));
+    } catch {
+      /* stockage indisponible */
+    }
+  }, [stars]);
+
+  const toggleStar = useCallback((location: string) => {
+    setStars((prev) => (prev[location] ? prev : { ...prev, [location]: true }));
+  }, []);
+
+  const resetStars = useCallback(() => setStars(empty()), []);
+  const openGame = useCallback(() => window.dispatchEvent(new CustomEvent(OPEN_EVENT)), []);
 
   const totalStars = Object.keys(stars).length;
   const collectedStars = Object.values(stars).filter(Boolean).length;
 
   return (
-    <StarContext.Provider value={{ stars, toggleStar, totalStars, collectedStars }}>
+    <StarContext.Provider value={{ stars, toggleStar, resetStars, totalStars, collectedStars, openGame }}>
       {children}
     </StarContext.Provider>
   );
 };
 
+export const STAR_GAME_OPEN_EVENT = OPEN_EVENT;
+
 /**
- * Hook to access star collection context
- * Must be used within a StarProvider
- * @throws Error if used outside of StarProvider
- * @returns StarContextType with star state and actions
+ * Accès au contexte des étoiles (doit être utilisé dans un StarProvider).
  * @example
  * const { stars, toggleStar, collectedStars } = useStar();
  */

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga4';
+import { hasConsent } from '../lib/consent';
 
 let isInitialized = false;
 
@@ -12,10 +13,8 @@ export const initGA = () => {
     return;
   }
 
-  // Vérifier le consentement des cookies
-  const consent = localStorage.getItem('cookie_consent');
-  if (consent === 'declined') {
-    console.log('Analytics disabled: user declined cookies');
+  // Consentement explicite requis (opt-in, Loi 25 / RGPD)
+  if (!hasConsent()) {
     return;
   }
 
@@ -47,6 +46,12 @@ export const usePageTracking = () => {
       title: document.title,
     });
   }, [location]);
+};
+
+/** Page vue envoyée manuellement (ex. juste après l'acceptation des cookies). */
+export const trackPageview = () => {
+  if (!isInitialized) return;
+  ReactGA.send({ hitType: 'pageview', page: window.location.pathname + window.location.search, title: document.title });
 };
 
 export const trackEvent = (category: string, action: string, label?: string, value?: number) => {

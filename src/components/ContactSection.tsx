@@ -1,14 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Phone, MapPin, Github, Linkedin, X } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, X, ArrowRight, ArrowUpRight, Star } from 'lucide-react';
+import { useStar } from '../contexts/StarContext';
 import emailjs from 'emailjs-com';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SectionLabel } from './ui/Editorial';
+import { SplitText } from './ui/Kinetic';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const ContactSection: React.FC = () => {
   const { t } = useTranslation();
+  const { stars, toggleStar } = useStar();
   const formRef = useRef<HTMLFormElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
@@ -59,7 +63,7 @@ export const ContactSection: React.FC = () => {
       formRef.current!,
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     ).then(
-      (result) => {
+      () => {
         setPopupMessage(t('contact.successMessage'));
         setPopupType('success');
         setPopupVisible(true);
@@ -80,70 +84,122 @@ export const ContactSection: React.FC = () => {
     }, 3000);
   };
 
+  const inputClass =
+    'w-full border-b border-line bg-transparent px-0 py-3 text-paper placeholder:text-paper/30 focus:border-paper focus:outline-none transition-colors';
+  const contactLinks = [
+    { icon: Mail, label: 'Email', value: 'christen.dijoux@gmail.com', href: 'mailto:christen.dijoux@gmail.com' },
+    { icon: Phone, label: 'Tel', value: '+1 (418) 376-2612', href: 'tel:+14183762612' },
+    { icon: MapPin, label: 'Base', value: 'Saguenay, Québec, Canada' },
+  ];
+
   return (
-    <section ref={sectionRef} className="w-full py-14 sm:py-18 md:py-24 px-4 sm:px-6 md:px-8 bg-black text-white" id="contact">
-      <div className="max-w-6xl mx-auto contact-content">
-        <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-12 text-center">{t('contact.title')}</h2>
+    <section ref={sectionRef} className="relative w-full scroll-mt-16 overflow-hidden border-t border-line bg-ink px-4 py-20 text-paper sm:px-6 md:px-10 md:py-28" id="contact">
+      <img
+        src="/assets/art/globe-halftone.png"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="pointer-events-none absolute -right-40 top-10 hidden w-[620px] opacity-25 lg:block"
+      />
+      <div className="contact-content relative">
+        <SectionLabel index={3} total={4}>{t('ui.contactKicker')}</SectionLabel>
+        <SplitText as="h2" text={t('ui.contactTitle')} className="display mt-6 block text-[clamp(3rem,9vw,9rem)]" />
+        <a
+          href="mailto:christen.dijoux@gmail.com"
+          data-cursor={t('ui.cursorWrite')}
+          className="group mt-6 inline-flex max-w-full items-center gap-4 border-b border-line pb-2 font-display text-[clamp(1.6rem,4.4vw,4.6rem)] font-light leading-none text-paper/80 transition-colors hover:border-paper hover:text-paper"
+        >
+          <span className="truncate">christen.dijoux@gmail.com</span>
+          <ArrowUpRight className="h-[0.7em] w-[0.7em] shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
+        </a>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Informations de contact */}
-          <div className="space-y-6 md:space-y-8">
-            <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">{t('contact.subtitle')}</h3>
-            <p className="text-white/60 mb-6 md:mb-8 text-base md:text-lg">
-              {t('contact.description')}
-            </p>
+          <div className="lg:col-span-5">
+            <h3 className="heading text-3xl md:text-4xl">{t('contact.subtitle')}</h3>
+            <p className="mt-4 max-w-md leading-relaxed text-paper/70">{t('contact.description')}</p>
 
-            <div className="space-y-4 md:space-y-6">
-              <a href="mailto:christen.dijoux@gmail.com" className="flex items-center gap-4 text-white/60 hover:text-white transition-colors">
-                <Mail className="w-6 h-6" />
-                <span>christen.dijoux@gmail.com</span>
+            <ul className="mt-8 border-t border-line">
+              {contactLinks.map(({ icon: Icon, label, value, href }) => {
+                const content = (
+                  <>
+                    <span className="label w-14">{label}</span>
+                    <Icon className="h-4 w-4 text-paper/50" aria-hidden="true" />
+                    <span className="flex-1 font-mono text-[13px]">{value}</span>
+                    {href && (
+                      <ArrowUpRight
+                        className="h-4 w-4 text-paper/55 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </>
+                );
+                return (
+                  <li key={label} className="border-b border-line">
+                    {href ? (
+                      <a href={href} className="group flex items-center gap-4 py-4 text-paper/80 transition-colors hover:text-paper">
+                        {content}
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-4 py-4 text-paper/80">{content}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-6 flex gap-2">
+              <a
+                href="https://github.com/Akiyo974"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                aria-label="Profil GitHub de Christen Dijoux"
+              >
+                <Github className="h-3.5 w-3.5" aria-hidden="true" />
+                <span>GitHub</span>
               </a>
-
-              <a href="tel:+14183762612" className="flex items-center gap-4 text-white/60 hover:text-white transition-colors">
-                <Phone className="w-6 h-6" />
-                <span>+1 (418) 376-2612</span>
+              <a
+                href="https://www.linkedin.com/in/christen-dijoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                aria-label="Profil LinkedIn de Christen Dijoux"
+              >
+                <Linkedin className="h-3.5 w-3.5" aria-hidden="true" />
+                <span>LinkedIn</span>
               </a>
-
-              <div className="flex items-center gap-4 text-white/60">
-                <MapPin className="w-6 h-6" />
-                <span>Saguenay, Québec, Canada</span>
-              </div>
-
-              <div className="flex gap-4 md:gap-6 pt-3 md:pt-4">
-                <a
-                  href="https://github.com/Akiyo974"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
-                  aria-label="Profil GitHub de Christen Dijoux"
-                >
-                  <Github className="w-6 h-6" />
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/christen-dijoux"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
-                  aria-label="Profil LinkedIn de Christen Dijoux"
-                >
-                  <Linkedin className="w-6 h-6" />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
-
             </div>
           </div>
 
           {/* Formulaire de contact */}
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="contact-form crosshair space-y-8 border border-line bg-ink/80 p-5 backdrop-blur-sm md:p-8 lg:col-span-6 lg:col-start-7"
+          >
+            <div className="label flex items-center justify-between">
+              <span aria-hidden="true">
+                {'>'} new_message <span className="animate-blink">_</span>
+              </span>
+              {/* Étoile cachée n° 2 de la chasse */}
+              <button
+                type="button"
+                onClick={() => toggleStar('contact')}
+                className="p-1 transition-transform duration-300 hover:scale-125 focus:outline-none focus-visible:ring-1 focus-visible:ring-paper"
+                aria-label={stars.contact ? t('game.starFound', { defaultValue: 'Étoile trouvée' }) : t('game.hiddenStar', { defaultValue: 'Étoile cachée' })}
+                aria-pressed={stars.contact}
+              >
+                <Star className={`h-3.5 w-3.5 transition-colors ${stars.contact ? 'fill-paper text-paper' : 'fill-transparent text-paper/40'}`} />
+              </button>
+            </div>
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">{t('contact.name')}</label>
+              <label htmlFor="name" className="label block">01 · {t('contact.name')}</label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/20 transition-colors"
+                className={inputClass}
                 placeholder={t('contact.namePlaceholder')}
                 value={formData.name}
                 onChange={(e) => {
@@ -160,13 +216,13 @@ export const ContactSection: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">{t('contact.email')}</label>
+              <label htmlFor="email" className="label block">02 · {t('contact.email')}</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/20 transition-colors"
+                className={inputClass}
                 placeholder={t('contact.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleChange}
@@ -179,13 +235,13 @@ export const ContactSection: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">{t('contact.message')}</label>
+              <label htmlFor="message" className="label block">03 · {t('contact.message')}</label>
               <textarea
                 id="message"
                 name="message"
-                rows={6}
+                rows={5}
                 maxLength={1000}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 focus:ring-2 focus:ring-white/20 transition-colors resize-none"
+                className={`${inputClass} resize-none`}
                 placeholder={t('contact.messagePlaceholder')}
                 value={formData.message}
                 onChange={handleChange}
@@ -194,40 +250,37 @@ export const ContactSection: React.FC = () => {
                 aria-label="Entrez votre message"
                 aria-describedby="message-counter"
               />
-              <div id="message-counter" className="text-xs text-white/40 mt-1 text-right">
+              <div id="message-counter" className="mt-2 text-right font-mono text-[11px] text-paper/55">
                 {formData.message.length} / 1000 caractères
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 px-6 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
-              aria-label="Envoyer le formulaire de contact"
-            >
-              {t('contact.send')}
+            <button type="submit" className="btn-solid w-full py-4" data-magnetic aria-label="Envoyer le formulaire de contact">
+              {t('contact.send')} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
             </button>
           </form>
         </div>
 
         {/* Popup personnalisé */}
         {popupVisible && (
-          <div 
-            className={`fixed inset-0 flex items-center justify-center z-50 bg-black/50`} 
-            role="dialog" 
-            aria-modal="true" 
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
             aria-labelledby="popup-message"
             aria-live="assertive"
             aria-atomic="true"
           >
-            <div className="bg-white p-6 rounded-lg shadow-lg w-80 md:w-96 relative">
+            <div className="crosshair relative w-80 border border-line bg-ink p-6 md:w-96">
               <button
                 onClick={() => setPopupVisible(false)}
-                className="absolute top-2 right-2 text-gray-500 hover:text-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 rounded"
+                className="absolute right-3 top-3 text-paper/50 transition-colors hover:text-paper focus:outline-none focus-visible:ring-1 focus-visible:ring-paper"
                 aria-label="Fermer la notification"
               >
-                <X size={20} aria-hidden="true" />
+                <X size={18} aria-hidden="true" />
               </button>
-              <h3 id="popup-message" className={`text-lg font-medium ${popupType === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+              <p className="label">{popupType === 'success' ? '✓ 200 OK' : '× ERROR'}</p>
+              <h3 id="popup-message" className={`heading mt-3 text-2xl ${popupType === 'success' ? 'text-paper' : 'text-red-400'}`}>
                 {popupMessage}
               </h3>
             </div>

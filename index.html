@@ -31,7 +31,7 @@
     <link rel="author" href="/humans.txt" />
     <link type="application/ld+json" href="/structured-data.json" />
     <meta name="ai:description" content="Portfolio of Christen Dijoux - Full-stack Developer specializing in React, Node.js, TypeScript, WordPress Headless, GSAP, and Three.js" />
-    <meta name="ai:contact" content="christendijoux@gmail.com" />
+    <meta name="ai:contact" content="christen.dijoux@gmail.com" />
     <meta name="ai:location" content="Saguenay, Quebec, Canada" />
     <meta name="generator" content="React 18.3.1, Vite 5.4.10, TypeScript 5.6.2" />
 
@@ -42,11 +42,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/site.webmanifest" />
     <meta name="application-name" content="Portfolio | Christen Dijoux" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#050505" />
 
     <!-- Preload Critical Resources -->
     <link rel="preload" as="image" imagesrcset="/assets/logo-400.webp 400w, /assets/logo-800.webp 800w, /assets/logo.webp 1364w" imagesizes="(max-width: 768px) 400px, (max-width: 1024px) 800px, 1364px" fetchpriority="high" type="image/webp" />
     <link rel="preconnect" href="https://o4510394913456128.ingest.de.sentry.io" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Polices chargées sans bloquer le premier rendu -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Geist+Mono:wght@400;500&family=Geist:wght@300..600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Geist+Mono:wght@400;500&family=Geist:wght@300..600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Geist+Mono:wght@400;500&family=Geist:wght@300..600&display=swap" /></noscript>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
@@ -54,7 +60,7 @@
     <meta property="og:site_name" content="Christen Dijoux - Portfolio" />
     <meta property="og:title" content="Christen Dijoux | Développeur Full-stack & Créatif" />
     <meta property="og:description" content="Portfolio interactif présentant mes projets en développement web : React, TypeScript, animations GSAP, Three.js. Découvrez mon travail créatif et mes compétences techniques." />
-    <meta property="og:image" content="https://christendijoux.com/assets/capture.webp" />
+    <meta property="og:image" content="https://christendijoux.com/assets/art/og-cover.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Aperçu du portfolio de Christen Dijoux" />
@@ -64,7 +70,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Christen Dijoux | Développeur Full-stack & Créatif" />
     <meta name="twitter:description" content="Portfolio interactif présentant mes projets en développement web : React, TypeScript, animations GSAP, Three.js." />
-    <meta name="twitter:image" content="https://christendijoux.com/assets/capture.webp" />
+    <meta name="twitter:image" content="https://christendijoux.com/assets/art/og-cover.png" />
     <meta name="twitter:image:alt" content="Aperçu du portfolio de Christen Dijoux" />
     <meta name="twitter:creator" content="@ChristenDijoux" />
 
@@ -75,7 +81,7 @@
       "@type": "Person",
       "name": "Christen Dijoux",
       "url": "https://christendijoux.com",
-      "image": "https://christendijoux.com/assets/capture.webp",
+      "image": "https://christendijoux.com/assets/art/og-cover.png",
       "jobTitle": "Développeur Full-stack",
       "worksFor": {
         "@type": "Organization",
@@ -154,7 +160,7 @@
           "name": "Êtes-vous disponible pour des projets freelance ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui, je suis disponible pour des projets freelance dans la région du Saguenay-Lac-Saint-Jean, au Québec, et à distance partout au Canada. Je travaille du lundi au vendredi de 9h à 18h (heure de l'Est). Contactez-moi par email à christendijoux@gmail.com ou par téléphone au +1 (418) 376-2612 pour discuter de votre projet."
+            "text": "Oui, je suis disponible pour des projets freelance dans la région du Saguenay-Lac-Saint-Jean, au Québec, et à distance partout au Canada. Je travaille du lundi au vendredi de 9h à 18h (heure de l'Est). Contactez-moi par email à christen.dijoux@gmail.com ou par téléphone au +1 (418) 376-2612 pour discuter de votre projet."
           }
         },
         {
@@ -201,76 +207,50 @@
     }
     </script>
 
-    <title>Christen Dijoux | Développeur Full-stack & Créatif</title>
+    <title>Christen Dijoux — Développeur Full-stack & IA | Saguenay</title>
 
     <style>
-      html, body {
-        background-color: #000000;
-        margin: 0;
-        padding: 0;
-      }
-      /* Critical CSS */
-      .loading {
-        position: fixed;
-        inset: 0;
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-      }
-      .loading-spinner {
-        position: relative;
-        width: 64px;
-        height: 64px;
-      }
-      .loading-spinner::before,
-      .loading-spinner::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-      }
-      .loading-spinner::before {
-        border: 4px solid rgba(255, 255, 255, 0.1);
-      }
-      .loading-spinner::after {
-        border: 4px solid transparent;
-        border-top-color: #fff;
-        animation: spin 1.5s linear infinite;
-      }
-      .loading-dot {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .loading-dot::before {
-        content: '';
-        width: 12px;
-        height: 12px;
-        background: #fff;
-        border-radius: 50%;
-        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-      }
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
-      @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: .5; }
-      }
+      /* CSS critique : écran de démarrage affiché avant le JavaScript (premier rendu immédiat) */
+      html, body { background-color: #050505; margin: 0; padding: 0; color: #f2f2ee; }
+      .shell { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; justify-content: space-between;
+        padding: 20px 16px; background: #050505; color: #f2f2ee; font-family: 'Geist Mono', ui-monospace, Consolas, monospace; }
+      .shell-top { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .6; }
+      .shell-count { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 300; line-height: .78;
+        font-size: clamp(7rem, 26vw, 24rem); font-variant-numeric: tabular-nums; }
+      .shell-bar { margin-top: 16px; height: 1px; background: rgba(242,242,238,.12); }
+      .shell-bar i { display: block; height: 1px; background: #f2f2ee; transform-origin: left; transform: scaleX(0); transition: transform .3s; }
+      .shell-quiet .shell-top, .shell-quiet .shell-count, .shell-quiet .shell-bar { visibility: hidden; }
+      @media (min-width: 768px) { .shell { padding: 32px 40px; } }
     </style>
   </head>
   <body>
     <div id="root">
-      <div class="loading">
-        <div class="loading-spinner">
-          <div class="loading-dot"></div>
+      <div class="shell" id="shell" role="status" aria-label="Chargement">
+        <div class="shell-top"><span>Christen Dijoux — Portfolio</span><span>©2026</span></div>
+        <div>
+          <span class="shell-count" id="shell-count">000</span>
+          <div class="shell-bar"><i id="shell-bar"></i></div>
         </div>
       </div>
     </div>
+    <script>
+      // Compteur pendant le chargement du JavaScript ; le préchargeur React reprend à cette valeur
+      (function () {
+        var quiet = false;
+        try { quiet = sessionStorage.getItem('cd-intro-seen') === '1' || matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+        var el = document.getElementById('shell');
+        if (quiet) { el.className += ' shell-quiet'; return; }
+        var c = document.getElementById('shell-count'), bar = document.getElementById('shell-bar'), v = 0;
+        window.__plCount = 0;
+        var id = setInterval(function () {
+          if (!document.getElementById('shell-count')) return clearInterval(id);
+          v = Math.min(60, v + Math.max(1, (60 - v) * 0.08));
+          window.__plCount = v;
+          c.textContent = ('00' + Math.round(v)).slice(-3);
+          bar.style.transform = 'scaleX(' + v / 100 + ')';
+        }, 60);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

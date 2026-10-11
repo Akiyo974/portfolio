@@ -1,187 +1,178 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Github, ExternalLink, ArrowRight, FileText } from 'lucide-react';
+import { Github, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
+import { SectionLabel } from './ui/Editorial';
+import { PixelImage } from './ui/PixelImage';
+import { SplitText } from './ui/Kinetic';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Projets : galerie horizontale épinglée sur grand écran, pile verticale sur mobile.
+ */
 export const ProjectsSection = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
-  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const featured = customProjects.slice(0, 4);
+  const total = String(featured.length).padStart(2, '0');
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      projectRefs.current.forEach((project, index) => {
-        if (project) {
-          gsap.fromTo(project,
-            {
-              y: 100,
-              opacity: 0,
-              scale: 0.95
-            },
-            {
-              scrollTrigger: {
-                trigger: project,
-                start: "top bottom-=100",
-                end: "top center",
-                scrub: 1,
-                markers: false,
-              },
-              y: 0,
-              opacity: 1,
-              scale: 1,
-              duration: 1,
-              ease: "power4.out",
-            }
-          );
-        }
+  // useLayoutEffect : le pin GSAP est retiré avant que React ne supprime le DOM
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track || typeof gsap.matchMedia !== 'function') return;
+
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+      const distance = () => track.scrollWidth - window.innerWidth;
+      const tween = gsap.to(track, {
+        x: () => -distance(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${distance()}`,
+          pin: true,
+          scrub: 0.8,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (progressRef.current) progressRef.current.style.transform = `scaleX(${self.progress})`;
+          },
+        },
       });
 
-      if (buttonRef.current) {
-        gsap.fromTo(buttonRef.current,
+      // léger parallaxe des visuels pendant le défilement horizontal
+      track.querySelectorAll<HTMLElement>('[data-parallax]').forEach((el) => {
+        gsap.fromTo(
+          el,
+          { xPercent: 6 },
           {
-            y: 30,
-            opacity: 0
-          },
-          {
-            scrollTrigger: {
-              trigger: buttonRef.current,
-              start: "top bottom-=50",
-              end: "top center",
-              scrub: 1,
-              markers: false,
-            },
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
+            xPercent: -6,
+            ease: 'none',
+            scrollTrigger: { trigger: el, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true },
           }
         );
-      }
-    }, sectionRef);
+      });
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen w-full bg-black text-white py-14 sm:py-18 md:py-24 px-4 sm:px-6 md:px-8">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 border-b border-white/20 pb-3 md:pb-4">{t('projects.title')}</h2>
-        <div className="grid grid-cols-1 gap-8 md:gap-16">
-          {customProjects.slice(0, 3).map((project, index) => (
-            <div
-              key={project.id}
-              ref={(el) => (projectRefs.current[index] = el)}
-              className="group relative bg-white/5 rounded-lg overflow-hidden h-full"
+    // Conteneur stable : GSAP y insère son pin-spacer sans perturber React
+    <div>
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="relative w-full scroll-mt-16 overflow-hidden border-t border-line bg-ink text-paper lg:h-screen"
+    >
+      <div
+        ref={trackRef}
+        className="flex flex-col gap-16 px-4 py-20 sm:px-6 md:px-10 lg:h-full lg:w-max lg:flex-row lg:items-stretch lg:gap-0 lg:p-0"
+      >
+        {/* Panneau d'ouverture */}
+        <div className="flex flex-col justify-between lg:h-full lg:w-[44vw] lg:border-r lg:border-line lg:px-10 lg:pb-14 lg:pt-24">
+          <div>
+            <SectionLabel index={2} total={4}>{t('ui.projectsKicker')}</SectionLabel>
+            <SplitText as="h2" text={t('projects.title')} className="display mt-6 block text-[clamp(3.2rem,8vw,9rem)]" />
+          </div>
+          <div className="mt-8 flex items-end justify-between gap-6">
+            <p className="max-w-xs text-paper/60">{t('ui.projectsLead')}</p>
+            <p className="label hidden lg:block">{t('ui.dragHint')} →</p>
+          </div>
+        </div>
+
+        {featured.map((project, index) => (
+          <article
+            key={project.id}
+            className="group flex flex-col lg:h-full lg:w-[62vw] lg:border-r lg:border-line lg:px-10 lg:pb-14 lg:pt-24 xl:w-[56vw]"
+          >
+            <div className="label mb-5 flex items-baseline justify-between">
+              <span>
+                <span className="text-paper">{String(index + 1).padStart(2, '0')}</span> / {total}
+              </span>
+              <span>
+                {t('projects.personalProject')}
+                {project.year ? ` · ${project.year}` : ''}
+              </span>
+            </div>
+
+            <Link
+              to={`/project/${project.id}`}
+              data-cursor={t('ui.cursorView')}
+              aria-label={`${t('projects.viewDetails')} — ${t(`customProjects.${project.id}.title`, { defaultValue: project.title })}`}
+              className="relative block overflow-hidden lg:min-h-0 lg:flex-1"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 h-full">
-                <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden bg-white/10">
-                  <img
-                    src={project.image}
-                    alt={`Aperçu du projet ${project.title}`}
-                    width="800"
-                    height="600"
-                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div data-parallax className="h-full w-full lg:absolute lg:inset-y-0 lg:-left-[6%] lg:w-[112%]">
+                <PixelImage
+                  src={`/assets/art/${project.id}-halftone.png`}
+                  original={project.image}
+                  alt={`Aperçu du projet ${t(`customProjects.${project.id}.title`, { defaultValue: project.title })}`}
+                  position="top"
+                  className="aspect-[4/3] h-full w-full lg:aspect-auto"
+                />
+              </div>
+            </Link>
+
+            <div className="mt-6 grid gap-5 lg:grid-cols-12 lg:gap-8">
+              <h3 className="heading text-[clamp(2rem,3.2vw,3.4rem)] lg:col-span-6">{t(`customProjects.${project.id}.title`, { defaultValue: project.title })}</h3>
+              <div className="lg:col-span-6">
+                <p className="line-clamp-2 leading-relaxed text-paper/65 md:line-clamp-3">{t(`customProjects.${project.id}.description`, { defaultValue: project.description })}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5 max-md:hidden">
+                  <h4 className="sr-only">{t('projects.technologies')}</h4>
+                  {project.languages.slice(0, 5).map((lang) => (
+                    <span key={lang} className="chip">{lang}</span>
+                  ))}
                 </div>
-
-                <div className="p-4 md:p-8 flex flex-col justify-between min-h-[420px] md:min-h-[500px]">
-                  <div className="flex-1">
-                    <div className="mb-4">
-                      <h3 className="text-xl md:text-2xl font-bold mb-2">{project.title}</h3>
-                      <span className="inline-block px-3 py-1 border border-white/30 text-white/80 rounded-full text-xs font-medium">
-                        {t('projects.personalProject')}
-                      </span>
-                    </div>
-                    <p className="text-white/70 mb-6 leading-relaxed line-clamp-4">
-                      {project.description}
-                    </p>
-
-                    <div className="mb-6 md:mb-8">
-                      <h4 className="text-sm uppercase tracking-wider text-white/50 mb-3">{t('projects.technologies')}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.languages.slice(0, 5).map((lang) => (
-                          <span
-                            key={lang}
-                            className="px-3 py-1 text-sm border border-white/20 rounded-full 
-                                     hover:bg-white hover:text-black transition-colors duration-300"
-                          >
-                            {lang}
-                          </span>
-                        ))}
-                        {project.languages.length > 5 && (
-                          <span className="px-3 py-1 text-sm text-white/50">
-                            +{project.languages.length - 5}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-auto">
-                    <Link
-                      to={`/project/${project.id}`}
-                      className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors duration-300 font-medium"
-                    >
-                      <FileText className="w-4 h-4" />
-                      <span>{t('projects.viewDetails')}</span>
-                    </Link>
-
-                    {project.siteUrl && (
-                      <a
-                        href={project.siteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors duration-300"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        <span>
-                          {project.siteType === 'production' 
-                            ? t('projects.viewSiteProduction') 
-                            : t('projects.viewSiteDemo')}
-                        </span>
-                      </a>
-                    )}
-
-                    {project.codeUrl && (
-                      <a
-                        href={project.codeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 border border-white/20 rounded-lg hover:bg-white hover:text-black transition-colors duration-300"
-                      >
-                        <Github className="w-4 h-4" />
-                        <span>{t('projects.code')}</span>
-                      </a>
-                    )}
-                  </div>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <Link to={`/project/${project.id}`} className="btn-solid" data-magnetic>
+                    {t('projects.viewDetails')}
+                  </Link>
+                  {project.siteUrl && (
+                    <a href={project.siteUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost" data-magnetic>
+                      {project.siteType === 'production' ? t('projects.viewSiteProduction') : t('projects.viewSiteDemo')}
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </a>
+                  )}
+                  {project.codeUrl && (
+                    <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost" data-magnetic>
+                      <Github className="h-3.5 w-3.5" aria-hidden="true" />
+                      {t('projects.code')}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </article>
+        ))}
 
-        <div className="mt-10 md:mt-20 text-center">
-          <Link
-            to="/projects"
-            ref={buttonRef}
-            className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium
-                     border-2 border-white rounded-lg hover:bg-white hover:text-black 
-                     transition-colors duration-300 group"
-          >
+        {/* Panneau de clôture */}
+        <Link
+          to="/projects"
+          data-cursor={t('ui.cursorOpen')}
+          className="group flex flex-col justify-between border border-line p-6 transition-colors duration-500 hover:bg-paper hover:text-ink lg:h-full lg:w-[38vw] lg:border-0 lg:px-10 lg:pb-14 lg:pt-24"
+        >
+          <span className="label group-hover:text-ink/60">
+            {t('projects.allProjects')} · {customProjects.length}
+          </span>
+          <span className="display mt-10 flex items-end justify-between gap-4 text-[clamp(3rem,6vw,7rem)]">
             {t('projects.viewAll')}
-            <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-        </div>
+            <ArrowRight className="mb-3 h-10 w-10 shrink-0 transition-transform duration-500 group-hover:-rotate-45" aria-hidden="true" />
+          </span>
+        </Link>
+      </div>
+
+      {/* Progression */}
+      <div className="pointer-events-none absolute inset-x-10 bottom-6 hidden h-px bg-line lg:block" aria-hidden="true">
+        <div ref={progressRef} className="h-px origin-left scale-x-0 bg-paper" />
       </div>
     </section>
+    </div>
   );
 };

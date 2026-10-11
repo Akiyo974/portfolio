@@ -1,66 +1,117 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github, Calendar, CheckCircle2, AlertCircle, Archive } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
 import { Footer } from '../components/Footer';
+import { SectionLabel, MetaRow } from '../components/ui/Editorial';
+import { PixelImage } from '../components/ui/PixelImage';
+import { ScrollWords, SplitText } from '../components/ui/Kinetic';
+import { Counter } from '../components/ui/Counter';
+import { useLenis } from '../hooks/useLenis';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const ProjectDetailPage = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const project = customProjects.find(p => p.id === id);
+  const pageRef = useRef<HTMLElement>(null);
+  const nextFillRef = useRef<HTMLDivElement>(null);
+  const index = customProjects.findIndex((p) => p.id === id);
+  const project = index >= 0 ? customProjects[index] : undefined;
+  useLenis();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  // Révélations au défilement + jauge du projet suivant
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || !project) return;
+    const triggers: ScrollTrigger[] = [];
+    page.querySelectorAll<HTMLElement>('.reveal').forEach((el) => {
+      const tween = gsap.fromTo(
+        el,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top bottom-=60' } }
+      );
+      if (tween?.scrollTrigger) triggers.push(tween.scrollTrigger);
+    });
+    if (nextFillRef.current) {
+      const tween = gsap.fromTo(
+        nextFillRef.current,
+        { scaleX: 0 },
+        { scaleX: 1, ease: 'none', scrollTrigger: { trigger: nextFillRef.current, start: 'top bottom', end: 'top 35%', scrub: true } }
+      );
+      if (tween?.scrollTrigger) triggers.push(tween.scrollTrigger);
+    }
+    return () => triggers.forEach((st) => st.kill());
+  }, [project]);
+
   if (!project) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <main className="flex min-h-[80vh] flex-col items-center justify-center bg-ink px-4 text-center text-paper">
         <Helmet>
           <title>404 - {t('projectDetail.notFound')} | Christen Dijoux</title>
           <meta name="robots" content="noindex" />
         </Helmet>
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">{t('projectDetail.notFound')}</h1>
-          <Link to="/projects" className="text-white/60 hover:text-white transition-colors">
-            {t('projectDetail.backToProjects')}
-          </Link>
-        </div>
-      </div>
+        <p className="label">Error · 404</p>
+        <h1 className="display mt-4 text-[clamp(3rem,10vw,9rem)]">{t('projectDetail.notFound')}</h1>
+        <Link to="/projects" className="btn-ghost mt-8">
+          <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> {t('projectDetail.backToProjects')}
+        </Link>
+      </main>
     );
   }
 
-  const statusConfig = {
-    completed: { icon: CheckCircle2, label: t('projectDetail.status.completed'), color: 'text-green-400' },
-    'in-progress': { icon: AlertCircle, label: t('projectDetail.status.inProgress'), color: 'text-yellow-400' },
-    archived: { icon: Archive, label: t('projectDetail.status.archived'), color: 'text-gray-400' }
+  const statusLabels = {
+    completed: t('projectDetail.status.completed'),
+    'in-progress': t('projectDetail.status.inProgress'),
+    archived: t('projectDetail.status.archived'),
   };
-
-  const StatusIcon = project.status ? statusConfig[project.status].icon : CheckCircle2;
-  const statusLabel = project.status ? statusConfig[project.status].label : 'Terminé';
-  const statusColor = project.status ? statusConfig[project.status].color : 'text-green-400';
+  const statusLabel = project.status ? statusLabels[project.status] : statusLabels.completed;
 
   // Récupérer les traductions i18n pour le SEO
   const translatedTitle = t(`customProjects.${project.id}.title`, { defaultValue: project.title });
   const translatedDescription = t(`customProjects.${project.id}.description`, { defaultValue: project.description });
   const translatedLongDescription = t(`customProjects.${project.id}.longDescription`, { defaultValue: project.longDescription || project.description });
+  const [titleMain, ...titleRest] = translatedTitle.split(' - ');
+  const subtitle = titleRest.join(' - ');
+
+  const features = (project.features ?? []).map((f, i) => t(`customProjects.${project.id}.features.${i}`, { defaultValue: f }));
+  const challenges = (project.challenges ?? []).map((c, i) => t(`customProjects.${project.id}.challenges.${i}`, { defaultValue: c }));
+  const techGroups = [
+    { key: 'frontend', label: t('projectDetail.frontend'), items: project.technologies?.frontend ?? [] },
+    { key: 'backend', label: t('projectDetail.backend'), items: project.technologies?.backend ?? [] },
+    { key: 'tools', label: t('projectDetail.tools'), items: project.technologies?.tools ?? [] },
+  ].filter((g) => g.items.length > 0);
+  const techCount = techGroups.reduce((n, g) => n + g.items.length, 0) || project.languages.length;
+
+  const stats = [
+    { label: t('projectDetail.features'), value: features.length },
+    { label: t('projectDetail.challenges'), value: challenges.length },
+    { label: t('projectDetail.technologies'), value: techCount },
+    { label: t('ui.statYear'), value: Number(project.year) || 0, pad: 4 },
+  ].filter((s) => s.value > 0);
+
+  const total = customProjects.length;
+  const next = customProjects[(index + 1) % total];
+  const nextTitle = t(`customProjects.${next.id}.title`, { defaultValue: next.title }).split(' - ')[0];
+  let section = 0;
+  const sectionCount = 1 + (features.length ? 1 : 0) + (challenges.length ? 1 : 0) + 1;
 
   return (
-    <motion.main
-      className="min-h-screen bg-black text-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <main ref={pageRef} className="min-h-screen bg-ink text-paper">
       <Helmet>
-        <title>{translatedTitle} - Projet | Christen Dijoux</title>
+        <title>{`${translatedTitle} — ${t('ui.caseStudy')} | Christen Dijoux`}</title>
         <meta name="description" content={translatedDescription} />
         <meta name="keywords" content={`${project.languages.join(', ')}, ${project.topics.join(', ')}, web development, portfolio`} />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content={`${translatedTitle} - Projet Personnel`} />
         <meta property="og:description" content={translatedDescription} />
@@ -78,7 +129,7 @@ export const ProjectDetailPage = () => {
         <meta property="article:modified_time" content="2025-11-20" />
         <meta property="article:author" content="Christen Dijoux" />
         <meta property="article:tag" content={project.topics.join(', ')} />
-        
+
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${translatedTitle} - Projet Personnel`} />
@@ -90,7 +141,7 @@ export const ProjectDetailPage = () => {
           </>
         )}
         <meta name="twitter:creator" content="@ChristenDijoux" />
-        
+
         {/* Canonical */}
         <link rel="canonical" href={`https://christendijoux.com/project/${project.id}`} />
 
@@ -100,369 +151,194 @@ export const ProjectDetailPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Accueil",
-                "item": "https://christendijoux.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Projets",
-                "item": "https://christendijoux.com/projects"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": translatedTitle,
-                "item": `https://christendijoux.com/project/${project.id}`
-              }
+              { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://christendijoux.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Projets", "item": "https://christendijoux.com/projects" },
+              { "@type": "ListItem", "position": 3, "name": translatedTitle, "item": `https://christendijoux.com/project/${project.id}` }
             ]
           })}
         </script>
       </Helmet>
-      <div className="max-w-6xl mx-auto px-8 py-12">
-        {/* Header */}
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors group mb-8"
-          >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            <span>{t('projectDetail.back')}</span>
+
+      {/* En-tête */}
+      <header className="px-4 pb-10 pt-8 sm:px-6 md:px-10 md:pb-14 md:pt-12">
+        <div className="flex items-center justify-between">
+          <button onClick={() => navigate(-1)} className="label group flex items-center gap-2 hover:text-paper">
+            <ArrowLeft className="h-3 w-3 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
+            {t('projectDetail.back')}
           </button>
+          <p className="label">
+            {t('ui.caseStudy')} · <span className="text-paper">{String(index + 1).padStart(2, '0')}</span> / {String(total).padStart(2, '0')}
+          </p>
+        </div>
 
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-4xl md:text-5xl font-bold">{translatedTitle}</h1>
-              <span className="px-3 py-1 border border-white/30 text-white/80 rounded-full text-sm font-medium">
-                {t('projectDetail.personalProject')}
-              </span>
-            </div>
-            {project.year && (
-              <div className="flex items-center gap-2 text-white/60 mt-2">
-                <Calendar className="w-4 h-4" />
-                <span>{project.year}</span>
-                {project.status && (
-                  <>
-                    <span className="mx-2">•</span>
-                    <StatusIcon className={`w-4 h-4 ${statusColor}`} />
-                    <span className={statusColor}>{statusLabel}</span>
-                  </>
-                )}
-              </div>
-            )}
+        <SplitText as="h1" trigger="intro" text={titleMain} className="display mt-10 block text-[clamp(3.4rem,11vw,12rem)] md:mt-14" />
+        {subtitle && <p className="heading mt-3 max-w-3xl text-[clamp(1.5rem,3vw,2.75rem)] text-paper/60">{subtitle}</p>}
+
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <MetaRow k={t('ui.statYear')} v={project.year ?? '—'} />
+            <MetaRow k={t('ui.statusLabel')} v={statusLabel} />
+            <MetaRow k={t('ui.typeLabel')} v={t('projectDetail.personalProject')} />
+            <MetaRow k={t('projectDetail.languages')} v={project.languages.join(' · ')} />
           </div>
-
-          <div className="flex flex-wrap gap-3 mb-6">
+          <div className="flex flex-wrap items-end gap-2 lg:col-span-6 lg:col-start-7 lg:justify-end">
             {project.siteUrl && (
-              <a
-                href={project.siteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-white/90 transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" />
-                <span>
-                  {project.siteType === 'production' 
-                    ? t('projectDetail.viewSite') 
-                    : t('projectDetail.viewDemo')}
-                </span>
+              <a href={project.siteUrl} target="_blank" rel="noopener noreferrer" className="btn-solid" data-magnetic>
+                {project.siteType === 'production' ? t('projectDetail.viewSite') : t('projectDetail.viewDemo')}
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
               </a>
             )}
             {project.codeUrl && (
-              <a
-                href={project.codeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 border border-white/20 rounded-lg hover:bg-white hover:text-black transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                <span>{t('projectDetail.sourceCode')}</span>
+              <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost" data-magnetic>
+                <Github className="h-3.5 w-3.5" aria-hidden="true" />
+                {t('projectDetail.sourceCode')}
               </a>
             )}
           </div>
-        </motion.div>
+        </div>
+      </header>
 
-        {/* Image principale */}
-        <motion.div
-          className="relative aspect-video rounded-xl overflow-hidden mb-12 bg-white/5"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <img
-            src={project.image}
-            alt={`Capture d'écran du projet ${translatedTitle}`}
-            width="1200"
-            height="675"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
+      {/* Visuel principal */}
+      <div className="px-4 sm:px-6 md:px-10">
+        <PixelImage
+          src={`/assets/art/${project.id}-halftone.png`}
+          original={project.image}
+          alt={`Capture d'écran du projet ${translatedTitle}`}
+          position="top"
+          className="aspect-[4/3] w-full md:aspect-[21/9]"
+        />
+        <p className="label mt-3 flex justify-between">
+          <span>Fig. 01 — {titleMain}</span>
+          <span className="hidden sm:inline">{t('ui.hoverReveal')}</span>
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contenu principal */}
-          <motion.div
-            className="lg:col-span-2 space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            {/* Description */}
-            <section className="bg-white/5 rounded-xl p-6 border border-white/10 hover:border-white/20 transition-colors">
-              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <span className="w-1 h-6 bg-white rounded-full"></span>
-                {t('projectDetail.about')}
-              </h2>
-              <p className="text-white/80 leading-relaxed">
-                {translatedLongDescription}
-              </p>
-            </section>
+      {/* Aperçu */}
+      <section className="grid grid-cols-1 gap-10 border-b border-line px-4 py-20 sm:px-6 md:px-10 md:py-28 lg:grid-cols-12">
+        <div className="lg:sticky lg:top-24 lg:col-span-3 lg:self-start">
+          <SectionLabel index={++section} total={sectionCount}>{t('projectDetail.about')}</SectionLabel>
+        </div>
+        <div className="lg:col-span-9">
+          <ScrollWords text={translatedDescription} className="heading text-[clamp(1.8rem,3.4vw,3.4rem)] leading-[1.08]" />
+          <p className="reveal mt-10 max-w-3xl leading-relaxed text-paper/70 md:text-lg">{translatedLongDescription}</p>
+        </div>
+      </section>
 
-            {/* Fonctionnalités */}
-            {project.features && project.features.length > 0 && (
-              <section className="bg-white/5 rounded-xl p-6 border border-white/10 hover:border-white/20 transition-colors">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <span className="w-1 h-6 bg-green-400 rounded-full"></span>
-                  {t('projectDetail.features')}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {project.features.map((feature, index) => {
-                    const translatedFeature = t(`customProjects.${project.id}.features.${index}`, { defaultValue: feature });
-                    return (
-                      <div 
-                        key={index} 
-                        className="flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-                      >
-                        <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-white/80 text-sm leading-relaxed">{translatedFeature}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
-
-            {/* Défis */}
-            {project.challenges && project.challenges.length > 0 && (
-              <section className="bg-white/5 rounded-xl p-6 border border-white/10 hover:border-white/20 transition-colors">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <span className="w-1 h-6 bg-yellow-400 rounded-full"></span>
-                  {t('projectDetail.challenges')}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {project.challenges.map((challenge, index) => {
-                    const translatedChallenge = t(`customProjects.${project.id}.challenges.${index}`, { defaultValue: challenge });
-                    return (
-                      <div 
-                        key={index} 
-                        className="flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-                      >
-                        <AlertCircle className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-white/80 text-sm leading-relaxed">{translatedChallenge}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
-          </motion.div>
-
-          {/* Sidebar */}
-          <motion.aside
-            className="space-y-4"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            {/* Langages */}
-            <div className="bg-white/5 rounded-xl p-5 border border-white/10 hover:border-white/20 transition-colors">
-              <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                <span className="w-1 h-5 bg-white rounded-full"></span>
-                {t('projectDetail.languages')}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {project.languages.map((lang) => (
-                  <span
-                    key={lang}
-                    className="px-3 py-1.5 bg-white/10 hover:bg-white hover:text-black rounded-lg text-sm font-medium transition-colors"
-                  >
-                    {lang}
-                  </span>
-                ))}
-              </div>
+      {/* Chiffres */}
+      {stats.length > 0 && (
+        <section aria-label={t('ui.caseStats')} className="grid grid-cols-2 border-b border-line md:grid-cols-4">
+          {stats.map((s, i) => (
+            <div key={s.label} className={`reveal border-line p-6 md:p-10 ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''} md:border-r md:last:border-r-0`}>
+              <Counter value={s.value} pad={s.pad ?? 2} className="display block text-[clamp(3.5rem,8vw,8rem)]" />
+              <p className="label mt-2">{s.label}</p>
             </div>
+          ))}
+        </section>
+      )}
 
-            {/* Technologies */}
-            {project.technologies && (
-              <div className="bg-white/5 rounded-xl p-5 border border-white/10 hover:border-white/20 transition-colors">
-                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <span className="w-1 h-5 bg-white rounded-full"></span>
-                  {t('projectDetail.technologies')}
-                </h3>
-                <div className="space-y-4">
-                  {project.technologies.frontend && (
-                    <div>
-                      <h4 className="text-xs uppercase tracking-wider text-white/50 mb-2 font-semibold">
-                        {t('projectDetail.frontend')}
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.frontend.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2.5 py-1 border border-white/20 hover:border-white hover:bg-white hover:text-black rounded-md text-xs transition-colors"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  {project.technologies.backend && (
-                    <div>
-                      <h4 className="text-xs uppercase tracking-wider text-white/50 mb-2 font-semibold">
-                        {t('projectDetail.backend')}
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.backend.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2.5 py-1 border border-white/20 hover:border-white hover:bg-white hover:text-black rounded-md text-xs transition-colors"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  {project.technologies.tools && (
-                    <div>
-                      <h4 className="text-xs uppercase tracking-wider text-white/50 mb-2 font-semibold">
-                        {t('projectDetail.tools')}
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.tools.map((tool) => (
-                          <span
-                            key={tool}
-                            className="px-2.5 py-1 border border-white/20 hover:border-white hover:bg-white hover:text-black rounded-md text-xs transition-colors"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
+      {/* Fonctionnalités */}
+      {features.length > 0 && (
+        <section className="border-b border-line px-4 py-20 sm:px-6 md:px-10 md:py-28">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+            <div className="lg:sticky lg:top-24 lg:col-span-3 lg:self-start">
+              <SectionLabel index={++section} total={sectionCount}>{t('projectDetail.features')}</SectionLabel>
+              <SplitText as="h2" text={t('ui.whatItDoes')} className="heading mt-6 block text-[clamp(2.4rem,4vw,4rem)] uppercase" />
+            </div>
+            <ol className="grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:col-span-9">
+              {features.map((f, i) => (
+                <li key={i} className="reveal group flex gap-5 border-b border-r border-line p-5 transition-colors hover:bg-white/[0.03] md:p-6">
+                  <span className="label shrink-0 pt-1 text-paper/55 group-hover:text-paper">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="leading-relaxed text-paper/80">{f}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
 
-            {/* Tags */}
-            {project.topics && project.topics.length > 0 && (
-              <div className="bg-white/5 rounded-xl p-5 border border-white/10 hover:border-white/20 transition-colors">
-                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                  <span className="w-1 h-5 bg-white rounded-full"></span>
-                  {t('projectDetail.tags')}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {project.topics.map((topic) => (
-                    <span
-                      key={topic}
-                      className="px-3 py-1.5 border border-white/20 hover:border-white rounded-lg text-sm hover:bg-white hover:text-black transition-colors cursor-default"
-                    >
-                      {topic}
-                    </span>
+      {/* Défis */}
+      {challenges.length > 0 && (
+        <section className="border-b border-line px-4 py-20 sm:px-6 md:px-10 md:py-28">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+            <div className="lg:sticky lg:top-24 lg:col-span-3 lg:self-start">
+              <SectionLabel index={++section} total={sectionCount}>{t('projectDetail.challenges')}</SectionLabel>
+              <SplitText as="h2" text={t('ui.howItWasSolved')} className="heading mt-6 block text-[clamp(2.4rem,4vw,4rem)] uppercase" />
+            </div>
+            <ol className="border-t border-line lg:col-span-9">
+              {challenges.map((c, i) => (
+                <li key={i} className="reveal grid grid-cols-[3.5rem_1fr] items-baseline gap-4 border-b border-line py-6 md:grid-cols-[6rem_1fr] md:py-8">
+                  <span className="display text-4xl text-paper/40 md:text-6xl">{String(i + 1).padStart(2, '0')}</span>
+                  <p className="text-lg leading-relaxed text-paper/85 md:text-xl">{c}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* Stack */}
+      <section className="px-4 py-20 sm:px-6 md:px-10 md:py-28">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+          <div className="lg:sticky lg:top-24 lg:col-span-3 lg:self-start">
+            <SectionLabel index={++section} total={sectionCount}>{t('projectDetail.technologies')}</SectionLabel>
+            <SplitText as="h2" text="Stack" className="heading mt-6 block text-[clamp(2.4rem,4vw,4rem)] uppercase" />
+          </div>
+          <div className="border-t border-line lg:col-span-9">
+            {(techGroups.length ? techGroups : [{ key: 'lang', label: t('projectDetail.languages'), items: project.languages }]).map((g) => (
+              <div key={g.key} className="reveal grid grid-cols-1 gap-3 border-b border-line py-5 md:grid-cols-[12rem_1fr]">
+                <p className="label pt-1">{g.label}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {g.items.map((item) => (
+                    <span key={item} className="chip">{item}</span>
                   ))}
                 </div>
               </div>
+            ))}
+            {project.topics.length > 0 && (
+              <div className="reveal grid grid-cols-1 gap-3 py-5 md:grid-cols-[12rem_1fr]">
+                <p className="label pt-1">{t('projectDetail.tags')}</p>
+                <p className="font-mono text-[12px] uppercase tracking-[0.06em] text-paper/50">
+                  {project.topics.map((topic) => `#${topic}`).join('  ')}
+                </p>
+              </div>
             )}
-          </motion.aside>
+          </div>
         </div>
+      </section>
 
-        {/* Projets en lien */}
-        {project.relatedProjects && project.relatedProjects.length > 0 && (
-          <motion.section
-            className="mt-12 bg-white/5 rounded-xl p-6 border border-white/10 hover:border-white/20 transition-colors"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-1 h-6 bg-blue-400 rounded-full"></span>
-              {t('projectDetail.relatedProjects')}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {project.relatedProjects.map((relatedId) => {
-                const relatedProject = customProjects.find(p => p.id === relatedId);
-                if (!relatedProject) return null;
-                
-                const translatedTitle = t(`customProjects.${relatedProject.id}.title`, { defaultValue: relatedProject.title });
-                const translatedDescription = t(`customProjects.${relatedProject.id}.description`, { defaultValue: relatedProject.description });
-                
-                return (
-                  <Link
-                    key={relatedId}
-                    to={`/project/${relatedId}`}
-                    className="group bg-white/5 rounded-lg p-4 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all"
-                  >
-                    <div className="aspect-video rounded-lg overflow-hidden mb-3 bg-white/5">
-                      <img
-                        src={relatedProject.image}
-                        alt={`Aperçu du projet ${translatedTitle}`}
-                        width="400"
-                        height="225"
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-white/90 transition-colors">
-                      {translatedTitle}
-                    </h3>
-                    <p className="text-white/60 text-sm line-clamp-2">
-                      {translatedDescription}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mt-3">
-                      {relatedProject.languages.slice(0, 3).map((lang) => (
-                        <span
-                          key={lang}
-                          className="px-2 py-0.5 bg-white/10 rounded text-xs"
-                        >
-                          {lang}
-                        </span>
-                      ))}
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.section>
-        )}
+      {/* Projet suivant */}
+      <Link
+        to={`/project/${next.id}`}
+        data-cursor={t('ui.cursorOpen')}
+        className="group relative block overflow-hidden border-t border-line px-4 pb-12 pt-10 sm:px-6 md:px-10 md:pb-16"
+      >
+        <div className="mb-8 h-px w-full bg-line">
+          <div ref={nextFillRef} className="h-px w-full origin-left bg-paper" />
+        </div>
+        <div className="flex items-baseline justify-between">
+          <p className="label">{t('ui.nextProject')}</p>
+          <p className="label">{String(((index + 1) % total) + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</p>
+        </div>
+        <div className="mt-6 grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
+          <p className="display text-[clamp(3.5rem,11vw,12rem)] transition-transform duration-700 ease-out group-hover:translate-x-4 lg:col-span-8">
+            {nextTitle}
+          </p>
+          <div className="relative aspect-[4/3] overflow-hidden lg:col-span-4">
+            <img
+              src={`/assets/art/${next.id}-halftone.png`}
+              alt=""
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+            <span className="pointer-events-none absolute inset-0 border border-line" aria-hidden="true" />
+          </div>
+        </div>
+        <span className="label mt-6 inline-flex items-center gap-2 group-hover:text-paper">
+          {t('ui.readCase')} <ArrowRight className="h-3 w-3" aria-hidden="true" />
+        </span>
+      </Link>
 
-        {/* Navigation vers autres projets */}
-        <motion.div
-          className="mt-16 pt-8 border-t border-white/10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>{t('projectDetail.allProjects')}</span>
-          </Link>
-        </motion.div>
-      </div>
       <Footer variant="minimal" />
-    </motion.main>
+    </main>
   );
 };

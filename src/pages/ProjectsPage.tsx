@@ -6,8 +6,11 @@ import { ArrowLeft, Github } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
 import { Footer } from '../components/Footer';
 import { ProjectFilter } from '../components/project/ProjectFilter';
-import { ProjectsList } from '../components/project/ProjectsList';
-import { motion } from 'framer-motion';
+import { ProjectIndex } from '../components/project/ProjectIndex';
+import { SectionLabel } from '../components/ui/Editorial';
+import { SplitText } from '../components/ui/Kinetic';
+import { Counter } from '../components/ui/Counter';
+import { useLenis } from '../hooks/useLenis';
 
 const Chatbot = lazy(() => import('../components/Chatbot/Chatbot').then(module => ({ default: module.Chatbot })));
 
@@ -56,6 +59,7 @@ export const ProjectsPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
+  useLenis();
 
   // Cache pour les repos GitHub
   const CACHE_KEY = 'github_repos_cache';
@@ -121,7 +125,8 @@ export const ProjectsPage = () => {
             showCode: !!project.codeUrl
           }));
 
-          const allRepos = [...customRepos, ...filteredRepos];
+          const customIds = new Set(customProjects.map((c) => c.id.toLowerCase()));
+          const allRepos = [...customRepos, ...filteredRepos.filter((r) => !customIds.has(r.name.toLowerCase()))];
 
           const languages = Array.from(new Set(allRepos
             .map(repo => repo.language)
@@ -167,7 +172,8 @@ export const ProjectsPage = () => {
           showCode: !!project.codeUrl
         }));
 
-        const allRepos = [...customRepos, ...filteredRepos];
+        const customIds = new Set(customProjects.map((c) => c.id.toLowerCase()));
+          const allRepos = [...customRepos, ...filteredRepos.filter((r) => !customIds.has(r.name.toLowerCase()))];
 
         const languages = Array.from(new Set(allRepos
           .map(repo => repo.language)
@@ -192,67 +198,63 @@ export const ProjectsPage = () => {
      repo.description?.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+  const customCount = repos.filter((r) => r.isCustom).length;
+
   return (
-    <motion.main
-      className="min-h-screen bg-black text-white pt-20"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <main className="min-h-screen bg-ink text-paper">
       <Helmet>
         <title>{t('projects.title')} - Christen Dijoux</title>
         <meta name="description" content={t('projects.description')} />
-        
+
         {/* Breadcrumb JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Accueil",
-                "item": "https://christendijoux.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Projets",
-                "item": "https://christendijoux.com/projects"
-              }
+              { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://christendijoux.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Projets", "item": "https://christendijoux.com/projects" }
             ]
           })}
         </script>
       </Helmet>
-      <div className="max-w-6xl mx-auto px-8 py-12">
-        <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link 
-            to="/" 
-            className="flex items-center gap-2 text-white hover:text-white/80 transition-colors group"
-          >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            <span>{t('projects.backHome')}</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <h1 className="text-4xl font-bold">{t('projects.allProjects')}</h1>
-            <a
-              href="https://github.com/Akiyo974"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors group"
-            >
-              <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              <span>{repoCount} {t('projects.repositories')}</span>
-            </a>
-          </div>
-        </motion.div>
 
+      <header className="px-4 pb-12 pt-8 sm:px-6 md:px-10 md:pb-16 md:pt-12">
+        <div className="flex items-center justify-between">
+          <Link to="/" className="label group flex items-center gap-2 hover:text-paper">
+            <ArrowLeft className="h-3 w-3 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
+            {t('projects.backHome')}
+          </Link>
+          <a
+            href="https://github.com/Akiyo974"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label group flex items-center gap-2 hover:text-paper"
+          >
+            <Github className="h-3.5 w-3.5" aria-hidden="true" />
+            {repoCount} {t('projects.repositories')}
+          </a>
+        </div>
+
+        <div className="mt-10 flex flex-col justify-between gap-6 md:mt-14 md:flex-row md:items-end">
+          <div>
+            <SectionLabel index={1} total={1}>{t('projects.allProjects')}</SectionLabel>
+            <SplitText as="h1" trigger="intro" text={t('ui.indexTitle')} className="display mt-6 block text-[clamp(3.6rem,13vw,14rem)]" />
+          </div>
+          <div className="grid grid-cols-2 gap-8 md:mb-4">
+            <div>
+              <Counter value={customCount} className="display block text-6xl" />
+              <p className="label mt-1">{t('ui.caseStudies')}</p>
+            </div>
+            <div>
+              <Counter value={repoCount} className="display block text-6xl" />
+              <p className="label mt-1">{t('ui.totalEntries')}</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className="px-4 pb-24 sm:px-6 md:px-10">
         <ProjectFilter
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -262,30 +264,26 @@ export const ProjectsPage = () => {
         />
 
         {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+          <div className="border-y border-line py-16 font-mono text-[12px] text-paper/60">
+            <span className="text-paper/40">{'>'}</span> fetching github.com/Akiyo974 <span className="animate-blink">_</span>
           </div>
         ) : error ? (
-          <motion.div 
-            className="text-center py-16 bg-red-500/10 rounded-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h3 className="text-xl font-semibold mb-2">Erreur</h3>
-            <p className="text-white/60">{error}</p>
-          </motion.div>
+          <div className="border border-line p-8">
+            <p className="label">× Error</p>
+            <p className="mt-3 text-paper/70">{error}</p>
+          </div>
         ) : (
-          <ProjectsList projects={filteredRepos} />
+          <ProjectIndex projects={filteredRepos} />
         )}
-      </div>
+      </section>
+
       <Footer variant="minimal" />
       <Suspense fallback={null}>
         <Chatbot
           botName="Assistant"
-          welcomeMessage="👋 Bonjour ! Comment puis-je vous aider aujourd'hui ?"
           position="bottom-right"
         />
       </Suspense>
-    </motion.main>
+    </main>
   );
 };

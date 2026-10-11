@@ -10,7 +10,7 @@ Portfolio professionnel présentant les compétences et projets de Christen Dijo
 - **Poste actuel**: Spécialiste en Innovation Numérique @ Gagnon Frères
 - **Entreprise**: Synaptia Web (fondateur)
 - **Localisation**: Saguenay, Québec, Canada
-- **Email**: christendijoux@gmail.com
+- **Email**: christen.dijoux@gmail.com
 - **GitHub**: https://github.com/Akiyo974
 - **LinkedIn**: https://linkedin.com/in/christen-dijoux
 
@@ -162,7 +162,7 @@ Refonte complète du site web du CTREQ en tant que seul développeur full-stack 
 - Portfolio: https://christendijoux.com
 - GitHub: https://github.com/Akiyo974
 - LinkedIn: https://linkedin.com/in/christen-dijoux
-- Email: christendijoux@gmail.com
+- Email: christen.dijoux@gmail.com
 
 ## 📈 Statistiques Portfolio
 - **6 projets** présentés (3 production, 3 démos)

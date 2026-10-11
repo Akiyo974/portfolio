@@ -18,26 +18,26 @@ export default function PrivacyPolicyPage() {
         <meta name="robots" content="index, follow" />
       </Helmet>
 
-      <div className="min-h-screen bg-black text-white">
-        <div className="container mx-auto px-4 py-20 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8">{t('privacy.title')}</h1>
+      <div className="min-h-screen bg-ink text-paper">
+        <div className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
+          <h1 className="display mb-14 text-[clamp(3.2rem,9vw,9rem)]">{t('privacy.title')}</h1>
           
-          <div className="space-y-8 text-gray-300 leading-relaxed">
+          <div className="max-w-3xl space-y-12 leading-relaxed text-paper/70 lg:ml-[25%]">
             <section>
-              <p className="text-sm text-gray-400 mb-8">
+              <p className="label mb-8">
                 {t('privacy.lastUpdated')}: 19 novembre 2025
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.intro.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.intro.title')}</h2>
               <p>{t('privacy.intro.content')}</p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.dataCollected.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.dataCollected.title')}</h2>
               
-              <h3 className="text-xl font-semibold text-white mb-3 mt-6">{t('privacy.dataCollected.analytics.title')}</h3>
+              <h3 className="label mb-3 mt-8 text-paper">{t('privacy.dataCollected.analytics.title')}</h3>
               <p className="mb-2">{t('privacy.dataCollected.analytics.description')}</p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>{t('privacy.dataCollected.analytics.items.ip')}</li>
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
                 <li>{t('privacy.dataCollected.analytics.items.location')}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold text-white mb-3 mt-6">{t('privacy.dataCollected.contact.title')}</h3>
+              <h3 className="label mb-3 mt-8 text-paper">{t('privacy.dataCollected.contact.title')}</h3>
               <p className="mb-2">{t('privacy.dataCollected.contact.description')}</p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>{t('privacy.dataCollected.contact.items.name')}</li>
@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
                 <li>{t('privacy.dataCollected.contact.items.message')}</li>
               </ul>
 
-              <h3 className="text-xl font-semibold text-white mb-3 mt-6">{t('privacy.dataCollected.errors.title')}</h3>
+              <h3 className="label mb-3 mt-8 text-paper">{t('privacy.dataCollected.errors.title')}</h3>
               <p className="mb-2">{t('privacy.dataCollected.errors.description')}</p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>{t('privacy.dataCollected.errors.items.errors')}</li>
@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.purpose.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.purpose.title')}</h2>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>{t('privacy.purpose.items.improve')}</li>
                 <li>{t('privacy.purpose.items.respond')}</li>
@@ -74,65 +74,57 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.thirdParty.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.thirdParty.title')}</h2>
               
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Google Analytics 4</h3>
+                  <h3 className="text-lg font-semibold text-paper mb-2">Google Analytics 4</h3>
                   <p>{t('privacy.thirdParty.ga4')}</p>
                   <a 
                     href="https://policies.google.com/privacy" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 underline"
+                    className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper"
                   >
                     {t('privacy.thirdParty.viewPolicy')}
                   </a>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">EmailJS</h3>
+                  <h3 className="text-lg font-semibold text-paper mb-2">EmailJS</h3>
                   <p>{t('privacy.thirdParty.emailjs')}</p>
                   <a 
                     href="https://www.emailjs.com/legal/privacy-policy/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 underline"
+                    className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper"
                   >
                     {t('privacy.thirdParty.viewPolicy')}
                   </a>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Sentry</h3>
+                  <h3 className="text-lg font-semibold text-paper mb-2">Sentry</h3>
                   <p>{t('privacy.thirdParty.sentry')}</p>
                   <a 
                     href="https://sentry.io/privacy/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 underline"
+                    className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper"
                   >
                     {t('privacy.thirdParty.viewPolicy')}
                   </a>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Supabase</h3>
-                  <p>{t('privacy.thirdParty.supabase')}</p>
-                  <a 
-                    href="https://supabase.com/privacy" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 underline"
-                  >
-                    {t('privacy.thirdParty.viewPolicy')}
-                  </a>
+                  <h3 className="text-lg font-semibold text-paper mb-2">{t('privacy.thirdParty.starGameTitle')}</h3>
+                  <p>{t('privacy.thirdParty.starGame')}</p>
                 </div>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.cookies.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.cookies.title')}</h2>
               <p className="mb-4">{t('privacy.cookies.description')}</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li><strong>_ga, _ga_*</strong>: {t('privacy.cookies.items.ga')}</li>
@@ -142,7 +134,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.rights.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.rights.title')}</h2>
               <p className="mb-4">{t('privacy.rights.description')}</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>{t('privacy.rights.items.access')}</li>
@@ -152,12 +144,12 @@ export default function PrivacyPolicyPage() {
                 <li>{t('privacy.rights.items.portability')}</li>
               </ul>
               <p className="mt-4">
-                {t('privacy.rights.contact')}: <a href="mailto:christendijoux@gmail.com" className="text-blue-400 hover:text-blue-300 underline">christendijoux@gmail.com</a>
+                {t('privacy.rights.contact')}: <a href="mailto:christen.dijoux@gmail.com" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">christen.dijoux@gmail.com</a>
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.retention.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.retention.title')}</h2>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>{t('privacy.retention.items.analytics')}</li>
                 <li>{t('privacy.retention.items.contact')}</li>
@@ -166,13 +158,13 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('privacy.changes.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('privacy.changes.title')}</h2>
               <p>{t('privacy.changes.description')}</p>
             </section>
 
-            <section className="pt-8 border-t border-gray-800">
-              <p className="text-sm text-gray-400">
-                {t('privacy.contact.title')}: <a href="mailto:christendijoux@gmail.com" className="text-blue-400 hover:text-blue-300 underline">christendijoux@gmail.com</a>
+            <section className="pt-8 border-t border-line">
+              <p className="text-sm text-paper/50">
+                {t('privacy.contact.title')}: <a href="mailto:christen.dijoux@gmail.com" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">christen.dijoux@gmail.com</a>
               </p>
             </section>
           </div>

@@ -141,7 +141,7 @@ Complete redesign of CTREQ website as sole full-stack / DevOps developer. Manage
 
 ## Contact
 - **Website**: https://christendijoux.com
-- **Email**: christendijoux@gmail.com
+- **Email**: christen.dijoux@gmail.com
 - **Location**: Saguenay, Quebec, Canada
 - **GitHub**: https://github.com/Akiyo974
 - **LinkedIn**: Available on request

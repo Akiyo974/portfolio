@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import Lenis from '@studio-freight/lenis';
+import { acquireLenis, releaseLenis, scrollToTarget } from '../lib/motion';
 
 /**
- * Custom hook to initialize and configure Lenis smooth scroll
- * Provides smooth scrolling with customizable easing and anchor link support
+ * Initialise le défilement fluide (Lenis partagé, synchronisé avec GSAP ScrollTrigger)
+ * et gère les liens `data-scroll-to="id"`.
  * @example
  * function MyComponent() {
  *   useLenis();
@@ -12,49 +12,21 @@ import Lenis from '@studio-freight/lenis';
  */
 export const useLenis = () => {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-    });
+    acquireLenis();
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    // Add scroll to anchor functionality
     const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a, button');
-      
-      if (anchor && anchor.hasAttribute('data-scroll-to')) {
+      const anchor = (e.target as HTMLElement).closest('a, button');
+      const targetId = anchor?.getAttribute('data-scroll-to');
+      if (targetId && document.getElementById(targetId)) {
         e.preventDefault();
-        const targetId = anchor.getAttribute('data-scroll-to');
-        if (targetId) {
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            lenis.scrollTo(targetElement, {
-              offset: 0,
-              duration: 1.5,
-              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            });
-          }
-        }
+        scrollToTarget(targetId);
       }
     };
 
     document.addEventListener('click', handleAnchorClick);
 
     return () => {
-      lenis.destroy();
+      releaseLenis();
       document.removeEventListener('click', handleAnchorClick);
     };
   }, []);

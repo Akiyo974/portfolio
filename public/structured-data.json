@@ -22,7 +22,7 @@
         "addressRegion": "Quebec",
         "addressCountry": "CA"
       },
-      "email": "christendijoux@gmail.com",
+      "email": "christen.dijoux@gmail.com",
       "telephone": "+1-418-376-2612",
       "knowsAbout": [
         "Full-stack Development",
@@ -56,7 +56,7 @@
       "image": "https://christendijoux.com/assets/capture.webp",
       "url": "https://christendijoux.com",
       "telephone": "+1-418-376-2612",
-      "email": "christendijoux@gmail.com",
+      "email": "christen.dijoux@gmail.com",
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
@@ -256,7 +256,7 @@
           "name": "Êtes-vous disponible pour des projets freelance ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui, je suis disponible pour des projets freelance dans la région du Saguenay-Lac-Saint-Jean, au Québec, et à distance partout au Canada. Je suis disponible du lundi au vendredi de 9h à 18h (heure de l'Est). Contactez-moi par email à christendijoux@gmail.com ou par téléphone au +1 (418) 376-2612 pour discuter de votre projet."
+            "text": "Oui, je suis disponible pour des projets freelance dans la région du Saguenay-Lac-Saint-Jean, au Québec, et à distance partout au Canada. Je suis disponible du lundi au vendredi de 9h à 18h (heure de l'Est). Contactez-moi par email à christen.dijoux@gmail.com ou par téléphone au +1 (418) 376-2612 pour discuter de votre projet."
           }
         },
         {

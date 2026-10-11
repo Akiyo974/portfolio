@@ -21,14 +21,22 @@
   "about": {
     "title": "About",
     "intro": "Full-Stack Developer specializing in automation, artificial intelligence, and digital transformation. I currently work as a Digital Innovation Specialist at Gagnon Frères, where I design technological solutions to automate operations, improve decision-making, and modernize the company's internal tools.",
-    "experience": "My expertise covers modern web development, cloud infrastructure, business-applied artificial intelligence, and process automation. I work on application development, system integration, cloud administration, and infrastructure optimization. On a daily basis, I develop with React, Next.js, TypeScript, Python, and Node.js, while working with Microsoft Dynamics NAV, Power Platform, Azure, Cloudflare, and DigitalOcean environments.",
+    "expertise": "My expertise covers modern web development, cloud infrastructure, business-applied artificial intelligence, and process automation. I work on application development, system integration, cloud administration, and infrastructure optimization. On a daily basis, I develop with React, Next.js, TypeScript, Python, and Node.js, while working with Microsoft Dynamics NAV, Power Platform, Azure, Cloudflare, and DigitalOcean environments.",
     "passion": "Passionate about innovation, I am particularly interested in artificial intelligence and AI agents, Machine Learning and data analysis, business process automation, SaaS development, cloud architecture and DevOps, as well as system observability and performance. Through my company Synaptia Web, I also create custom web projects, e-commerce platforms, and AI integrations for organizations looking to accelerate their digital growth.",
     "viewCV": "View Resume",
     "downloadCV": "Download Resume",
     "education": "Education",
     "skills": "Skills",
     "interests": "Areas of Expertise",
-    "interestsList": ["Artificial Intelligence & AI Agents", "Machine Learning & Data Analysis", "Business Process Automation", "SaaS & Internal Applications Development", "Cloud Architecture & DevOps", "Observability, Monitoring & Performance", "Enterprise Digital Transformation"],
+    "interestsList": [
+      "Artificial Intelligence & AI Agents",
+      "Machine Learning & Data Analysis",
+      "Business Process Automation",
+      "SaaS & Internal Applications Development",
+      "Cloud Architecture & DevOps",
+      "Observability, Monitoring & Performance",
+      "Enterprise Digital Transformation"
+    ],
     "experience": "Professional Experience",
     "experienceList": [
       {
@@ -36,21 +44,36 @@
         "company": "Gagnon Frères",
         "period": "Feb. 2026 - Present",
         "description": "Leading innovation and digital transformation initiatives. Designing custom internal applications, automating data flows (catalogs, suppliers, reports), integrating AI solutions and smart assistants, Power Platform development, monitoring/alerting setup, and infrastructure optimization.",
-        "highlights": ["Custom internal apps & digital tools", "Automation with Python, n8n, Power Automate", "Generative AI & smart assistants integration", "Power Apps, Power BI & Dynamics NAV", "Monitoring, alerting & observability"]
+        "highlights": [
+          "Custom internal apps & digital tools",
+          "Automation with Python, n8n, Power Automate",
+          "Generative AI & smart assistants integration",
+          "Power Apps, Power BI & Dynamics NAV",
+          "Monitoring, alerting & observability"
+        ]
       },
       {
         "title": "Co-founder & Web Developer",
         "company": "Synaptia Web",
         "period": "Apr. 2025 - Present",
         "description": "Responsible for web development from design to integration. Creating high-performance showcase sites and online stores with focus on ergonomics, fluidity, and speed. Supporting businesses in their digital transformation.",
-        "highlights": ["Custom showcase & e-commerce sites", "Shopify integrations", "Technical optimization & performance"]
+        "highlights": [
+          "Custom showcase & e-commerce sites",
+          "Shopify integrations",
+          "Technical optimization & performance"
+        ]
       },
       {
         "title": "Full-Stack Developer & DevOps",
         "company": "CTREQ",
         "period": "Mar. - Aug. 2025",
         "description": "Complete redesign of CTREQ website as sole developer. Managing the entire development cycle: Figma design, Next.js/React front-end, WordPress headless back-end (ACF, WPGraphQL), content migration, and server deployment.",
-        "highlights": ["Next.js + WordPress headless architecture", "UI/UX design & Figma integration", "Data migration with WP All Import", "DevOps: cPanel, DigitalOcean, optimization"]
+        "highlights": [
+          "Next.js + WordPress headless architecture",
+          "UI/UX design & Figma integration",
+          "Data migration with WP All Import",
+          "DevOps: cPanel, DigitalOcean, optimization"
+        ]
       }
     ],
     "impact": "Impact & Results",
@@ -121,20 +144,51 @@
     "welcome": "👋 Hello! How can I help you today?",
     "typing": "Typing...",
     "placeholder": "Type your message...",
-    "assistant": "Assistant"
+    "assistant": "Assistant",
+    "teaser": "A question about my work? Ask my assistant.",
+    "dismiss": "Hide invitation",
+    "open": "Open chat",
+    "status": "Online · local answers",
+    "reset": "New conversation",
+    "expand": "Expand",
+    "minimize": "Minimize",
+    "close": "Close",
+    "send": "Send"
   },
   "game": {
-    "title": "Star Game",
-    "collected": "stars",
-    "continue": "Keep exploring!",
-    "start": "Start",
-    "restart": "Play Again",
+    "title": "Star game",
+    "headline": "Signal hunt",
+    "unlocked": "3 / 3 stars found — game unlocked",
+    "best": "Your best",
+    "rule1": "20 seconds to catch as many stars as you can. They vanish faster and faster.",
+    "rule2": "Inverted stars (white square) are worth 3 points.",
+    "rule3": "Chain quick clicks: the multiplier climbs up to ×4.",
+    "start": "Start game",
+    "later": "Maybe later",
     "score": "Score",
-    "time": "Time",
-    "gameOver": "Game Over!",
-    "enterNickname": "Enter your nickname (3 letters)",
-    "submit": "Submit",
-    "leaderboard": "Leaderboard"
+    "close": "Close game",
+    "star": "Star",
+    "goldenStar": "Bonus star",
+    "over": "Game over",
+    "newRecord": "New personal best!",
+    "enterNickname": "Your initials (3 letters)",
+    "submit": "Save",
+    "rank": "Ranked #{{rank}}",
+    "submitError": "Your score could not be saved.",
+    "restart": "Play again",
+    "backToSite": "Back to site",
+    "leaderboard": "Leaderboard",
+    "offline": "Online leaderboard unavailable — your best is kept on this device.",
+    "found": "Star found",
+    "hintHero": "Hint: at the very top of the home page.",
+    "hintContact": "Hint: near the contact form.",
+    "hintFooter": "Hint: at the very bottom of the page.",
+    "unlockedToast": "All stars found — a game is unlocking…",
+    "starFound": "Star found",
+    "hiddenStar": "Hidden star",
+    "play": "Play the star game",
+    "huntHint": "Stars are hidden across the site…",
+    "starsFound": "stars found"
   },
   "footer": {
     "description": "I help businesses automate, optimize, and modernize their operations through software development, cloud, and artificial intelligence.",
@@ -144,6 +198,8 @@
     "manageCookies": "Manage cookies"
   },
   "cookieConsent": {
+    "acceptShort": "Accept",
+    "declineShort": "Decline",
     "title": "🍪 Cookies & Privacy",
     "description": "This site uses cookies to improve your experience (Google Analytics, preferences) and track technical errors (Sentry). Your data is protected in accordance with GDPR.",
     "privacyLink": "privacy policy",
@@ -230,6 +286,173 @@
         "Technical documentation production for skills transfer to CTREQ team",
         "User training and post-delivery support"
       ]
+    },
+    "akiworkspace": {
+      "title": "AkiWorkspace - Productivity Workspace",
+      "description": "SaaS application for managing ideas, notes, tasks and projects, with a modern full-stack architecture, hardened security and granular sharing. A collaborative platform inspired by Notion and Linear.",
+      "longDescription": "End-to-end design and development of a collaborative workspace web app that lets users centralise notes, ideas, tasks and projects in a modern interface. Server-first architecture built on the Next.js App Router and Server Actions, with all business logic on the server, strict TypeScript + Zod validation and a Prisma database. The project focuses on security by default, performance (React Server Components, streaming, smart caching), a modern developer experience (type safety, Prisma, hot reload, migrations) and an advanced permission system with public, secret-link and group sharing. Built as a working SaaS product with full authentication, admin roles, user onboarding, technical documentation and a user guide.",
+      "features": [
+        "Mandatory authentication with NextAuth v5 (secure JWT)",
+        "Email verification at sign-up",
+        "Private dashboard with full CRUD (notes, ideas, tasks, projects)",
+        "Multiple categories & tags (Prisma many-to-many relations)",
+        "Rich Markdown editor",
+        "P1/P2/P3 priorities + pinning",
+        "Granular visibility: PRIVATE, PUBLIC, UNLISTED (secret link), SHARED (groups)",
+        "Share single items or whole collections through a public slug",
+        "Multi-select + bulk actions",
+        "Reading-optimised public modal + \"article\" mode",
+        "Admin panel (user and role management)",
+        "Interactive onboarding tutorial",
+        "Automatic sign-out for security",
+        "Custom design system (Tailwind + reusable UI components)",
+        "React Server Components (SSR by default)",
+        "Server Actions (business logic server-side only)",
+        "Streaming + Suspense",
+        "Speed Insights (Core Web Vitals)"
+      ],
+      "challenges": [
+        "Full Server Actions architecture with no REST API",
+        "Shared type-safe validation between client and server",
+        "Fine-grained permission system (owner, shared, public, unlisted)",
+        "Secure public sharing without search engine indexing",
+        "Complete XSS/CSRF protection",
+        "Scalable design system",
+        "Server state management + RSC revalidation",
+        "Efficient Prisma many-to-many structure",
+        "Production PostgreSQL deployment",
+        "bcrypt hashing (cost 12)",
+        "httpOnly + secure JWT sessions",
+        "DOMPurify sanitisation against XSS",
+        "Content Security Policy",
+        "Zod validation on the server only",
+        "Rate limiting (sign-up / admin)",
+        "Ownership checks on every action",
+        "Security headers (HSTS, X-Frame-Options, nosniff)",
+        "Blocking dangerous protocols (javascript:, data:, file:)"
+      ]
+    },
+    "ctreq-blog-archive": {
+      "title": "CTREQ Blog/Archive - Institutional Archive Section",
+      "description": "Secondary section of the CTREQ website dedicated to archiving past institutional projects and RIRE articles (3–5 years old). Headless React + WPGraphQL architecture with automatic age-based filtering and a minimal design that keeps the content hierarchy intact.",
+      "longDescription": "The CTREQ Blog / Archive is a secondary section of the CTREQ website built to preserve the history of institutional projects and older RIRE articles. During the full redesign of the main site, CTREQ's leadership wanted only recent, strategic content in the spotlight. Older projects and articles more than three years old (up to five) had to stay accessible, but in a deliberately minimal space that would not pull attention away from the main site. I therefore built a headless archive page, connected to the same WordPress as the main site, with advanced age-based filtering logic (CTREQ + RIRE). The look is intentionally plain and neutral to reflect its role: an institutional archive, not a flagship product. It runs on a modern React and WPGraphQL architecture with optimised handling of content coming from several sources.",
+      "features": [
+        "Displays older CTREQ projects no longer shown on the main site",
+        "Displays older RIRE articles (between 3 and 5 years old)",
+        "Automatic date filtering to separate recent content (main site) from older content (archive)",
+        "Unified headless architecture: one WordPress, two front-end behaviours",
+        "Single WPGraphQL endpoint for CTREQ projects",
+        "Second WPGraphQL endpoint for RIRE articles",
+        "Multi-source data merging in React",
+        "Minimal interface (deliberately pared-back UX)",
+        "Intentionally limited SEO so it does not compete with the main site",
+        "Simple, fast pagination",
+        "Dedicated article / project pages (details + full content)"
+      ],
+      "challenges": [
+        "Unifying two heterogeneous WordPress sources (CTREQ + RIRE) into a single archive",
+        "Handling two distinct time rules: CTREQ (active vs archived projects) and RIRE (3 vs 5 years)",
+        "Content normalisation: formats, fields, metadata",
+        "Neutral design and optimised performance without affecting the main site",
+        "Deliberately limiting this section's SEO without blocking indexing",
+        "Automatic age-based sorting (date-based filtering)",
+        "Front-end merging of multiple GraphQL endpoints",
+        "Stable rendering despite differing WordPress schemas"
+      ]
+    },
+    "innovations-numeriques-fp": {
+      "title": "Digital Innovations in Vocational Training",
+      "description": "Interactive web app built for ECOBES (Cégep de Jonquière) with CTREQ, showcasing the digital innovations of 40+ vocational training teachers across Quebec. Semi-private interface with sector browsing, advanced search and an interactive Mapbox map.",
+      "longDescription": "Interactive web application built for ECOBES, the research and transfer centre of Cégep de Jonquière, in collaboration with CTREQ, the Open Innovation Lab and UQAR, with financial support from the Government of Quebec. The goal was to showcase the digital innovations created by more than 40 vocational training teachers across Quebec. Because some innovations are sensitive or internal to training centres, the app is only reachable through a private link (not indexed, not public). Users can explore the innovations by training sector, through detailed fact sheets, or on an interactive Mapbox map showing their distribution across the province. The app offers dark and light modes for a consistent, modern experience in different contexts.",
+      "features": [
+        "Browse 20 vocational training sectors with illustrated icons and themed colours",
+        "Smart search by keyword, region, training centre or learning type",
+        "Detailed fact sheets: description, learning goals, technologies, impact",
+        "Interactive Mapbox map geolocating innovations across Quebec",
+        "Interactive markers with automatic clustering for readability",
+        "Zoom/hover sync between the innovation list and the map",
+        "Dark + light mode with smooth transitions (CSS variables)",
+        "Modern design with an immersive dark palette or an accessible light version",
+        "Responsive UX optimised for mobile, tablet and desktop",
+        "Semi-private app reachable only through a direct URL (not indexed)",
+        "Smooth navigation with React Router 6",
+        "Elegant animations with Framer Motion",
+        "Professional Lucide icons",
+        "Fast builds and performance with Vite",
+        "WCAG accessibility: contrast, focus states, screen readers, keyboard navigation",
+        "Apache (cPanel) hosting with an optimised configuration",
+        "Google Analytics 4 tracking for usage insights"
+      ],
+      "challenges": [
+        "Cleaning and structuring data supplied in many formats (Word, PDF, text, emails)",
+        "Content normalisation + sector categorisation + precise geolocation",
+        "Advanced Mapbox GL implementation: dynamic clustering, custom markers",
+        "Real-time two-way list ↔ map synchronisation",
+        "Performance optimisation across a very large area (all of Quebec)",
+        "Fast front-end architecture with React Router routing and Vite builds",
+        "CSS variables for dark/light mode with elegant transitions",
+        "Consistent UX across both themes (immersive dark, accessible light)",
+        "Full accessibility: sufficient contrast, focus states, screen reader support",
+        "Intuitive keyboard navigation for every interactive component",
+        "Semi-private app: configuration to prevent indexing (robots.txt, meta noindex)",
+        "Apache/cPanel deployment with .htaccess configuration for a React SPA",
+        "Google Analytics 4 integration without compromising privacy",
+        "Multi-partner collaboration: ECOBES, CTREQ, Open Innovation Lab, UQAR",
+        "Meeting confidentiality requirements for sensitive innovations"
+      ]
+    },
+    "webana": {
+      "title": "Webana - The Art of the Katana",
+      "description": "Demo e-commerce site built with React and TailwindCSS. It tells the history of the katana and simulates sales with dynamic filters, a cart and light/dark mode.",
+      "longDescription": "Webana is an e-commerce project dedicated to the world of Japanese katanas. The site offers a modern, elegant interface where users can discover the fascinating history of the katana while browsing a selection of products. It includes advanced features such as dynamic filters, a working shopping cart and a customisable theme.",
+      "features": [
+        "Complete e-commerce interface with a product catalogue",
+        "Dynamic filters by category and price",
+        "Shopping cart with automatic totals",
+        "Light/dark mode with saved preferences",
+        "Responsive design for mobile, tablet and desktop",
+        "Smooth animations and elegant transitions"
+      ],
+      "challenges": [
+        "Complex state management with React hooks",
+        "Rendering performance for the product list",
+        "Creating a unique design inspired by Japanese aesthetics"
+      ]
+    },
+    "akiproject": {
+      "title": "AkiProject - Task Manager",
+      "description": "Task manager and real-time messaging built with Bootstrap, jQuery and PHP. Designed to demonstrate asynchronous communication and task management skills in an academic context.",
+      "longDescription": "AkiProject is a complete project management and communication web app. It combines an intuitive task manager with real-time messaging so teams can collaborate effectively. The project demonstrates command of traditional web technologies and asynchronous programming concepts.",
+      "features": [
+        "Secure authentication system",
+        "Task management with statuses and priorities",
+        "Real-time messaging with AJAX",
+        "Dashboard with statistics",
+        "Assigning tasks to team members",
+        "Real-time notifications"
+      ],
+      "challenges": [
+        "Implementing asynchronous communication with AJAX",
+        "Securing the application against SQL injection",
+        "User session management"
+      ]
+    },
+    "akimusic": {
+      "title": "AkiMusic - Streaming Platform",
+      "description": "Demo project for a music streaming platform, simulating features such as subscriptions and playlist management. A complete user interface for an online music service.",
+      "longDescription": "AkiMusic is a music streaming platform prototype built for learning purposes. While it does not actually stream music, the project fully illustrates the interface concepts of a streaming service, including navigation, playlist management and a simulated subscription system.",
+      "features": [
+        "Interface inspired by modern streaming platforms",
+        "Custom playlists",
+        "Simulated subscriptions and pricing plans",
+        "Intuitive navigation between artists, albums and songs",
+        "Responsive design for mobile devices"
+      ],
+      "challenges": [
+        "Designing a UX/UI on par with the major platforms",
+        "Structuring the media data model",
+        "Building a complex responsive interface"
+      ]
     }
   },
   "privacy": {
@@ -285,7 +508,8 @@
       "ga4": "We use Google Analytics 4 to analyze traffic. Google may use this data according to its own privacy policy.",
       "emailjs": "Contact form messages are transmitted via EmailJS. Your data is not stored by this service.",
       "sentry": "Sentry collects technical errors to improve stability. Data is stored on servers in Germany (EU).",
-      "supabase": "Supabase hosts star game data (nicknames and scores). Servers located in Canada.",
+      "starGameTitle": "Star game",
+      "starGame": "Star game scores (3-letter initials and score) are stored directly on the site's hosting (o2switch, France), with no third-party service. An anonymised fingerprint of the IP address is kept temporarily to prevent abuse.",
       "viewPolicy": "View their privacy policy"
     },
     "cookies": {
@@ -377,5 +601,82 @@
     "contact": {
       "title": "Contact"
     }
+  },
+  "ui": {
+    "announce": "Available for new projects — Synaptia Web",
+    "announceCta": "Write",
+    "openToWork": "Open to collaborations",
+    "localTime": "Local time",
+    "heroTitle1": "Building",
+    "heroTitle2": "intelligence",
+    "heroTitle3": "into operations",
+    "heroLead": "Full-stack developer and AI engineer. I design applications, agents and automations that save teams time — from prototype to cloud deployment.",
+    "ctaProjects": "See projects",
+    "ctaContact": "Get in touch",
+    "scroll": "Scroll",
+    "manifesto": [
+      "Automate",
+      "Integrate",
+      "Deploy"
+    ],
+    "manifestoSub": "Software, AI and cloud serving real-world operations.",
+    "aboutKicker": "Profile",
+    "aboutTitle": "From code to operations",
+    "aboutAI": "Agents & applied AI",
+    "aboutAIText": "Conversational agents, RAG and LLM integrations shipped to production to automate information retrieval and decision-making.",
+    "aboutOps": "Automation & data",
+    "aboutOpsText": "Python, n8n and Power Automate pipelines that sync catalogs, suppliers and reports — fewer manual tasks, more reliability.",
+    "aboutCloud": "Cloud & observability",
+    "aboutCloudText": "Azure, DigitalOcean, Cloudflare and New Relic: deployment, monitoring and alerting for fast, well-watched systems.",
+    "stackKicker": "Stack",
+    "pathKicker": "Path",
+    "impactKicker": "Results",
+    "projectsKicker": "Work",
+    "contactKicker": "Contact",
+    "contactTitle": "Let's work together",
+    "footerTagline": "Full-stack & AI developer — Saguenay, Québec.",
+    "footerSections": "Sections",
+    "footerSocial": "Social",
+    "present": "Present",
+    "projectsLead": "A selection of SaaS products, headless platforms and internal tools — designed, built and shipped end to end.",
+    "dragHint": "Scroll",
+    "cursorView": "View",
+    "cursorOpen": "Open",
+    "cursorWrite": "Write",
+    "caseStudy": "Case study",
+    "caseStats": "Key figures",
+    "statYear": "Year",
+    "statusLabel": "Status",
+    "typeLabel": "Type",
+    "hoverReveal": "Hover for colour",
+    "whatItDoes": "What it does",
+    "howItWasSolved": "How it was solved",
+    "nextProject": "Next project",
+    "readCase": "Read the case study",
+    "indexTitle": "Index",
+    "caseStudies": "Case studies",
+    "totalEntries": "Entries",
+    "colProject": "Project",
+    "colStack": "Language",
+    "colYear": "Year",
+    "noResults": "No results",
+    "noResultsHint": "Try another term or language",
+    "search": "Search",
+    "searchPlaceholder": "Name, tech, keyword…",
+    "clearSearch": "Clear search",
+    "filterLanguage": "Language",
+    "all": "All",
+    "lostSignal": "Signal lost",
+    "notFoundTitle": "This page dissolved into the grid.",
+    "notFoundText": "The page you are looking for does not exist or has moved.",
+    "backHome": "Back home",
+    "readMore": "Read more",
+    "readLess": "Show less",
+    "credits": "Design & code",
+    "journeyKicker": "[ Journey ] · Indian Ocean → Fjord",
+    "journeyFrom": "From",
+    "journeyTo": "Now",
+    "journeyText": "Originally from Réunion Island, now based in Saguenay, Québec. Two ends of the world, one drive: building useful tools and memorable experiences.",
+    "journeySr": "Journey from Réunion Island to Saguenay: {{km}} km as the crow flies."
   }
 }

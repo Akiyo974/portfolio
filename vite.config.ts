@@ -19,13 +19,14 @@ export default defineConfig(({ command }) => ({
   },
   plugins: [
     react(),
+    // Pas de version compressée du PHP ni des .htaccess (leur source serait téléchargeable)
     compression({
       algorithm: 'gzip',
-      exclude: [/\.(br)$/, /\.(gz)$/],
+      exclude: [/\.(br)$/, /\.(gz)$/, /\.php$/, /\.htaccess$/],
     }),
     compression({
       algorithm: 'brotliCompress',
-      exclude: [/\.(br)$/, /\.(gz)$/],
+      exclude: [/\.(br)$/, /\.(gz)$/, /\.php$/, /\.htaccess$/],
     }),
     VitePWA({
       registerType: 'autoUpdate',

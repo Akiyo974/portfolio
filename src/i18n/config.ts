@@ -25,7 +25,9 @@ i18n
       escapeValue: false
     },
     detection: {
-      order: ['localStorage', 'navigator'],
+      // ?lang=en|fr force la langue (liens partagés, génération du CV PDF)
+      order: ['querystring', 'localStorage', 'navigator'],
+      lookupQuerystring: 'lang',
       caches: ['localStorage']
     }
   });

@@ -1,0 +1,10 @@
+# Seul leaderboard.php est accessible ; les données JSON / clés sont interdites
+<FilesMatch "\.(json|key)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>

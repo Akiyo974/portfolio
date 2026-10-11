@@ -23,7 +23,7 @@ vi.mock('../components/ThreeScene', () => ({
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => {
+    t: (key: string, opts?: { defaultValue?: string }) => {
       const translations: Record<string, string> = {
         'hero.location': 'Montréal, QC',
         'hero.region': 'Canada',
@@ -31,7 +31,7 @@ vi.mock('react-i18next', () => ({
         'hero.roleDetail': 'Full-stack',
         'hero.tagline': 'Portfolio créatif'
       };
-      return translations[key] || key;
+      return translations[key] || opts?.defaultValue || key;
     }
   })
 }));
@@ -67,19 +67,20 @@ describe('HeroSection', () => {
 
   it('devrait afficher l\'heure locale', () => {
     renderHeroSection();
-    expect(screen.getAllByText('14')).toHaveLength(2);
-    expect(screen.getAllByText('30')).toHaveLength(2);
+    expect(screen.getAllByText('14')).toHaveLength(1);
+    expect(screen.getAllByText('30')).toHaveLength(1);
   });
 
   it('devrait afficher l\'année courante dans le tagline', () => {
     renderHeroSection();
     const currentYear = new Date().getFullYear();
-    expect(screen.getAllByText(new RegExp(currentYear.toString()))).toHaveLength(2);
+    expect(screen.getAllByText(new RegExp(currentYear.toString()))).toHaveLength(1);
   });
 
   it('devrait afficher le bouton étoile', () => {
     renderHeroSection();
-    const starButton = screen.getByRole('button', { name: /étoile/i });
+    // une étoile pour mobile, une pour ordinateur (une seule affichée à la fois)
+    const starButton = screen.getAllByRole('button', { name: /étoile/i })[0];
     expect(starButton).toBeInTheDocument();
   });
 });

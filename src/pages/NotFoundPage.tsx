@@ -1,73 +1,48 @@
+import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Home, ArrowLeft } from 'lucide-react';
-import ThreeScene from '../components/ThreeScene';
+import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft } from 'lucide-react';
+import { SplitText } from '../components/ui/Kinetic';
+
+const DitherHero = lazy(() => import('../components/webgl/DitherHero'));
 
 export function NotFoundPage() {
+  const { t } = useTranslation();
+
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
-      <div className="absolute inset-0">
-        <ThreeScene />
-      </div>
+    <main className="grain relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-ink text-paper">
+      <Helmet>
+        <title>404 | Christen Dijoux</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
+      <Suspense fallback={null}>
+        <DitherHero centered />
+      </Suspense>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_75%)]" aria-hidden="true" />
 
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.h1 
-            className="text-9xl font-bold mb-4"
-            initial={{ scale: 0.5 }}
-            animate={{ scale: 1 }}
-            transition={{ 
-              duration: 0.8,
-              type: "spring",
-              bounce: 0.5
-            }}
-          >
-            404
-          </motion.h1>
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h2 className="text-2xl font-semibold mb-6">Page non trouvée</h2>
-            <p className="text-white/60 mb-8 max-w-md mx-auto">
-              La page que vous recherchez n'existe pas ou a été déplacée.
-            </p>
-          </motion.div>
+      <div className="relative z-10 flex flex-1 flex-col justify-between px-4 py-8 sm:px-6 md:px-10">
+        <div className="label flex justify-between">
+          <span>Error · 404</span>
+          <span>{t('ui.lostSignal')}</span>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            <Link 
-              to="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg
-                        hover:bg-white/90 transition-all duration-300 group"
-            >
-              <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-              Retour à l'accueil
+        <div className="text-center">
+          <SplitText as="h1" trigger="intro" text="404" className="display block text-[clamp(8rem,32vw,30rem)] leading-[0.8] mix-blend-difference" />
+          <p className="heading mx-auto mt-4 max-w-xl text-[clamp(1.5rem,3vw,2.5rem)]">{t('ui.notFoundTitle')}</p>
+          <p className="mx-auto mt-3 max-w-md text-paper/60">{t('ui.notFoundText')}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-2">
+            <Link to="/" className="btn-solid" data-magnetic>
+              <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> {t('ui.backHome')}
             </Link>
-          </motion.div>
-        </motion.div>
+            <Link to="/projects" className="btn-ghost" data-magnetic>
+              {t('projects.allProjects')}
+            </Link>
+          </div>
+        </div>
 
-        <motion.div 
-          className="absolute bottom-8 left-0 right-0 text-center text-white/40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
-        >
-          <p className="text-sm">
-            © {new Date().getFullYear()} Christen Dijoux
-          </p>
-        </motion.div>
+        <p className="label text-center">© {new Date().getFullYear()} Christen Dijoux</p>
       </div>
-    </div>
+    </main>
   );
 }

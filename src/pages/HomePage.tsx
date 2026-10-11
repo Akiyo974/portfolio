@@ -1,39 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { HeroSection } from '../components/HeroSection';
+import { ManifestoBand } from '../components/ManifestoBand';
 import { AboutSection } from '../components/AboutSection';
 import { ProjectsSection } from '../components/ProjectsSection';
 import { ContactSection } from '../components/ContactSection';
-import { Chatbot } from '../components/Chatbot/Chatbot';
+
 import { Footer } from '../components/Footer';
 import { useLenis } from '../hooks/useLenis';
+import { scrollToTarget } from '../lib/motion';
+
+// Assistant chargé après le contenu principal
+const Chatbot = lazy(() => import('../components/Chatbot/Chatbot').then((m) => ({ default: m.Chatbot })));
 
 export const HomePage = () => {
   const { t } = useTranslation();
+  const { hash } = useLocation();
   useLenis();
 
   useEffect(() => {
+    // Arrivée depuis une autre page via /#section
+    const target = hash ? document.getElementById(hash.slice(1)) : null;
+    if (target) {
+      const timeout = setTimeout(() => scrollToTarget(target), 150);
+      return () => clearTimeout(timeout);
+    }
     window.scrollTo(0, 0);
-  }, []);
+  }, [hash]);
 
   return (
-    <main className="bg-black">
+    <main className="bg-ink">
       <Helmet>
-        <title>{t('home.title', { defaultValue: 'Christen Dijoux | Développeur Full-stack & Créatif' })}</title>
+        <title>{t('home.title', { defaultValue: 'Christen Dijoux — Développeur Full-stack & IA | Saguenay' })}</title>
         <meta name="description" content={t('home.description', { defaultValue: 'Portfolio de Christen Dijoux - Développeur Full-stack spécialisé en React, Node.js, TypeScript et WordPress Headless. Découvrez mes projets créatifs et mes compétences en développement web moderne.' })} />
         <link rel="canonical" href="https://christendijoux.com/" />
       </Helmet>
       <HeroSection />
+      <ManifestoBand />
       <AboutSection />
       <ProjectsSection />
       <ContactSection />
       <Footer />
-      <Chatbot
-        botName="Assistant"
-        welcomeMessage="👋 Bonjour ! Comment puis-je vous aider aujourd'hui ?"
-        position="bottom-right"
-      />
+      <Suspense fallback={null}>
+        <Chatbot botName="Assistant" position="bottom-right" />
+      </Suspense>
     </main>
   );
 };

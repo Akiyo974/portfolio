@@ -18,70 +18,70 @@ export default function LegalNoticePage() {
         <meta name="robots" content="index, follow" />
       </Helmet>
 
-      <div className="min-h-screen bg-black text-white">
-        <div className="container mx-auto px-4 py-20 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8">{t('legal.title')}</h1>
+      <div className="min-h-screen bg-ink text-paper">
+        <div className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
+          <h1 className="display mb-14 text-[clamp(3.2rem,9vw,9rem)]">{t('legal.title')}</h1>
           
-          <div className="space-y-8 text-gray-300 leading-relaxed">
+          <div className="max-w-3xl space-y-12 leading-relaxed text-paper/70 lg:ml-[25%]">
             <section>
-              <p className="text-sm text-gray-400 mb-8">
+              <p className="label mb-8">
                 {t('legal.lastUpdated')}: 19 novembre 2025
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('legal.editor.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('legal.editor.title')}</h2>
               <div className="space-y-2">
                 <p><strong>{t('legal.editor.name')}:</strong> Christen Dijoux</p>
                 <p><strong>{t('legal.editor.type')}:</strong> {t('legal.editor.typeValue')}</p>
                 <p><strong>{t('legal.editor.location')}:</strong> Saguenay, Québec, Canada</p>
-                <p><strong>{t('legal.editor.email')}:</strong> <a href="mailto:christendijoux@gmail.com" className="text-blue-400 hover:text-blue-300 underline">christendijoux@gmail.com</a></p>
-                <p><strong>{t('legal.editor.website')}:</strong> <a href="https://christendijoux.com" className="text-blue-400 hover:text-blue-300 underline">https://christendijoux.com</a></p>
+                <p><strong>{t('legal.editor.email')}:</strong> <a href="mailto:christen.dijoux@gmail.com" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">christen.dijoux@gmail.com</a></p>
+                <p><strong>{t('legal.editor.website')}:</strong> <a href="https://christendijoux.com" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">https://christendijoux.com</a></p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('legal.hosting.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('legal.hosting.title')}</h2>
               <div className="space-y-2">
                 <p><strong>{t('legal.hosting.provider')}:</strong> {t('legal.hosting.providerName')}</p>
                 <p><strong>Adresse:</strong> {t('legal.hosting.address')}</p>
                 <p><strong>Téléphone:</strong> {t('legal.hosting.phone')}</p>
-                <p><strong>Site web:</strong> <a href={t('legal.hosting.website')} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">{t('legal.hosting.website')}</a></p>
+                <p><strong>Site web:</strong> <a href={t('legal.hosting.website')} target="_blank" rel="noopener noreferrer" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">{t('legal.hosting.website')}</a></p>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('legal.intellectual.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('legal.intellectual.title')}</h2>
               <p className="mb-4">{t('legal.intellectual.copyright')}</p>
               <p className="mb-4">{t('legal.intellectual.usage')}</p>
               <p>{t('legal.intellectual.projects')}</p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('legal.personalData.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('legal.personalData.title')}</h2>
               <p className="mb-4">{t('legal.personalData.description')}</p>
               <p>
-                {t('legal.personalData.link')}: <a href="/privacy-policy" className="text-blue-400 hover:text-blue-300 underline">{t('legal.personalData.linkText')}</a>
+                {t('legal.personalData.link')}: <a href="/privacy-policy" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">{t('legal.personalData.linkText')}</a>
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('legal.liability.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('legal.liability.title')}</h2>
               <p className="mb-4">{t('legal.liability.content')}</p>
               <p className="mb-4">{t('legal.liability.links')}</p>
               <p>{t('legal.liability.availability')}</p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('legal.applicable.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('legal.applicable.title')}</h2>
               <p>{t('legal.applicable.law')}</p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-white mb-4">{t('legal.technologies.title')}</h2>
+              <h2 className="heading mb-5 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">{t('legal.technologies.title')}</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{t('legal.technologies.frontend')}</h3>
+                  <h3 className="text-lg font-semibold text-paper mb-2">{t('legal.technologies.frontend')}</h3>
                   <ul className="text-sm space-y-1">
                     <li>React 18</li>
                     <li>TypeScript</li>
@@ -90,7 +90,7 @@ export default function LegalNoticePage() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{t('legal.technologies.animation')}</h3>
+                  <h3 className="text-lg font-semibold text-paper mb-2">{t('legal.technologies.animation')}</h3>
                   <ul className="text-sm space-y-1">
                     <li>GSAP</li>
                     <li>Three.js</li>
@@ -98,7 +98,7 @@ export default function LegalNoticePage() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{t('legal.technologies.services')}</h3>
+                  <h3 className="text-lg font-semibold text-paper mb-2">{t('legal.technologies.services')}</h3>
                   <ul className="text-sm space-y-1">
                     <li>Google Analytics</li>
                     <li>Sentry</li>
@@ -109,9 +109,9 @@ export default function LegalNoticePage() {
               </div>
             </section>
 
-            <section className="pt-8 border-t border-gray-800">
-              <p className="text-sm text-gray-400">
-                {t('legal.contact.title')}: <a href="mailto:christendijoux@gmail.com" className="text-blue-400 hover:text-blue-300 underline">christendijoux@gmail.com</a>
+            <section className="pt-8 border-t border-line">
+              <p className="text-sm text-paper/50">
+                {t('legal.contact.title')}: <a href="mailto:christen.dijoux@gmail.com" className="text-paper underline decoration-paper/30 underline-offset-4 hover:decoration-paper">christen.dijoux@gmail.com</a>
               </p>
             </section>
           </div>
