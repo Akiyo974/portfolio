@@ -128,7 +128,7 @@
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Restons en Contact",
+    "subtitle": "Restons en contact",
     "description": "Je suis toujours ouvert à de nouvelles opportunités et collaborations. N'hésitez pas à me contacter !",
     "name": "Nom",
     "email": "Email",
@@ -510,6 +510,7 @@
     "journeyFrom": "Départ",
     "journeyTo": "Aujourd’hui",
     "journeyText": "Originaire de La Réunion, installé au Saguenay. Deux bouts du monde, une même envie : construire des outils utiles et des expériences qui marquent.",
-    "journeySr": "Trajet de La Réunion au Saguenay : {{km}} km à vol d’oiseau."
+    "journeySr": "Trajet de La Réunion au Saguenay : {{km}} km à vol d’oiseau.",
+    "showAll": "Voir tout"
   }
 }

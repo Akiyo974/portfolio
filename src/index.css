@@ -221,6 +221,14 @@ html.has-cursor textarea {
 .group\/pixel:hover .pixel-reveal {
   clip-path: circle(150% at var(--rx) var(--ry));
 }
+/* Tactile : dévoilement automatique, en noir et blanc pour rester dans l'identité */
+@media (hover: none) {
+  .group\/pixel[data-revealed='true'] .pixel-reveal {
+    clip-path: circle(150% at 50% 50%);
+    filter: grayscale(1) contrast(1.05);
+    transition-delay: 0.25s;
+  }
+}
 
 /* Réponse de l'assistant : balayage ligne par ligne */
 .chat-reveal {

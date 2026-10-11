@@ -55,8 +55,11 @@ export const HeroSection: React.FC = () => {
       <Suspense fallback={null}>
         <DitherHero intro={introDone} />
       </Suspense>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/70" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-full bg-gradient-to-r from-ink via-ink/70 to-transparent lg:w-[62%]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30 lg:to-ink/70" aria-hidden="true" />
+      {/* Mobile / tablette : voile sous le texte (moitié basse), la sphère reste nette au-dessus */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-ink from-55% via-ink/80 to-transparent lg:hidden" aria-hidden="true" />
+      {/* Voile latéral pour la lisibilité du titre : grand écran seulement (en portrait la sphère est au-dessus du texte) */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[62%] bg-gradient-to-r from-ink via-ink/70 to-transparent lg:block" aria-hidden="true" />
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col px-4 pb-5 pt-5 sm:px-6 md:px-10 lg:pb-[2.2vh] lg:pt-[2.2vh]">
         {/* Bandeau d'annonce */}
@@ -73,8 +76,18 @@ export const HeroSection: React.FC = () => {
           <ArrowRight className="h-3.5 w-3.5 text-paper/70 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
         </a>
 
-        {/* Ligne méta */}
-        <div className="-mx-4 mt-0 grid md:mt-6 shrink-0 grid-cols-2 gap-y-4 border-y border-line bg-ink/90 px-4 py-4 lg:py-[1.6vh] backdrop-blur-md sm:-mx-6 sm:px-6 md:-mx-10 md:mt-8 lg:mt-[2.4vh] md:grid-cols-4 md:px-10">
+        {/* Étoile cachée (mobile : la ligne méta est masquée pour laisser la place à la sphère) */}
+        <button
+          onClick={handleStarClick}
+          className="absolute right-3 top-3 z-10 p-1 md:hidden focus:outline-none focus-visible:ring-1 focus-visible:ring-paper"
+          aria-label={stars.hero ? t('game.starFound', { defaultValue: 'Étoile trouvée' }) : t('game.hiddenStar', { defaultValue: 'Étoile cachée' })}
+          aria-pressed={stars.hero}
+        >
+          <Star className={`h-5 w-5 text-paper ${stars.hero ? 'fill-paper' : 'fill-transparent'}`} />
+        </button>
+
+        {/* Ligne méta (tablette et plus) */}
+        <div className="-mx-4 mt-0 hidden md:grid md:mt-6 shrink-0 grid-cols-2 gap-y-4 border-y border-line bg-ink/90 px-4 py-4 lg:py-[1.6vh] backdrop-blur-md sm:-mx-6 sm:px-6 md:-mx-10 md:mt-8 lg:mt-[2.4vh] md:grid-cols-4 md:px-10">
           <div className="animate-in">
             <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-paper">Christen</p>
             <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-paper/55">Dijoux</p>
@@ -82,14 +95,6 @@ export const HeroSection: React.FC = () => {
           <div className="animate-in text-right md:text-left">
             <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-paper">{t('hero.location')}</p>
             <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-paper/55">{t('hero.region')}</p>
-            <button
-              onClick={handleStarClick}
-              className="mt-2 p-1 md:hidden focus:outline-none focus-visible:ring-1 focus-visible:ring-paper"
-              aria-label={stars.hero ? t('game.starFound', { defaultValue: 'Étoile trouvée' }) : t('game.hiddenStar', { defaultValue: 'Étoile cachée' })}
-              aria-pressed={stars.hero}
-            >
-              <Star className={`h-5 w-5 text-paper ${stars.hero ? 'fill-paper' : 'fill-transparent'}`} />
-            </button>
           </div>
           <div className="animate-in hidden md:block">
             <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-paper">{t('hero.role')}</p>
@@ -118,7 +123,7 @@ export const HeroSection: React.FC = () => {
 
         {/* Titre */}
         <div className="flex min-h-0 flex-1 flex-col justify-end gap-6 py-6 md:gap-8 md:py-8 lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:py-[3vh]">
-          <div ref={titleRef} className="relative">
+          <div ref={titleRef} className="relative" data-sphere-bottom>
             <div className="animate-in label mb-5 flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-paper opacity-60" />
@@ -126,7 +131,8 @@ export const HeroSection: React.FC = () => {
               </span>
               <span>[ 00 ] · {t('ui.openToWork')}</span>
             </div>
-            <h1 className="display text-[clamp(3rem,min(8.5vw,9.5vh),11rem)]" style={{ fontVariationSettings: '"wght" 250' }}>
+            {/* Graisse fine (250) avec la souris ; plus lisible (420) sur mobile et écrans tactiles où elle ne réagit pas */}
+            <h1 className="display text-[clamp(3rem,min(8.5vw,9.5vh),11rem)] [font-variation-settings:'wght'_250] max-lg:[font-variation-settings:'wght'_420] [@media(hover:none)]:[font-variation-settings:'wght'_420]">
               <SplitText as="span" trigger="intro" text={t('ui.heroTitle1')} className="block" delay={0.1} />
               <SplitText as="span" trigger="intro" text={t('ui.heroTitle2')} className="block text-outline-strong" delay={0.2} />
               <SplitText as="span" trigger="intro" text={t('ui.heroTitle3')} className="block" delay={0.3} />

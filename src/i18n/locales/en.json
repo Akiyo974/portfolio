@@ -677,6 +677,7 @@
     "journeyFrom": "From",
     "journeyTo": "Now",
     "journeyText": "Originally from Réunion Island, now based in Saguenay, Québec. Two ends of the world, one drive: building useful tools and memorable experiences.",
-    "journeySr": "Journey from Réunion Island to Saguenay: {{km}} km as the crow flies."
+    "journeySr": "Journey from Réunion Island to Saguenay: {{km}} km as the crow flies.",
+    "showAll": "Show all"
   }
 }

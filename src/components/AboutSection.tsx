@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 type Experience = { title: string; company: string; period: string; description: string; highlights?: string[] };
 
 // Mobile : listes en carrousel horizontal (moins de défilement vertical)
-const CAROUSEL = 'max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:border-0 max-md:px-4 max-md:pb-2 no-scrollbar';
+const CAROUSEL = 'max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:scroll-px-4 max-md:border-0 max-md:px-4 max-md:pb-2 no-scrollbar';
 const SLIDE = 'max-md:w-[82vw] max-md:shrink-0 max-md:snap-start max-md:border';
 
 export const AboutSection = () => {
@@ -176,8 +176,8 @@ export const AboutSection = () => {
           <p className="label mb-4">{t('about.interests')}</p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {interests.map((interest) => (
-              <li key={interest} className="font-display text-2xl text-paper/80 md:text-3xl">
-                {interest}<span className="ml-6 text-paper/25" aria-hidden="true">/</span>
+              <li key={interest} className="font-display text-2xl text-paper/80 max-md:w-full max-md:border-b max-md:border-line max-md:pb-2 md:text-3xl">
+                {interest}<span className="ml-6 text-paper/25 max-md:hidden" aria-hidden="true">/</span>
               </li>
             ))}
           </ul>

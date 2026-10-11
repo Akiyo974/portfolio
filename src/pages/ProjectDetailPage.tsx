@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -15,8 +15,23 @@ import { useLenis } from '../hooks/useLenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/** Sur mobile, les longues listes n'affichent que les premiers éléments. */
+const MOBILE_LIST = 4;
+
+const ShowAllButton: FC<{ count: number; open: boolean; onClick: () => void }> = ({ count, open, onClick }) => {
+  const { t } = useTranslation();
+  if (count <= MOBILE_LIST) return null;
+  return (
+    <button type="button" onClick={onClick} aria-expanded={open} className="btn-ghost w-full justify-between md:hidden">
+      {open ? t('ui.readLess', { defaultValue: 'Réduire' }) : `${t('ui.showAll', { defaultValue: 'Voir tout' })} (${count})`}
+      <span aria-hidden="true">{open ? '−' : '+'}</span>
+    </button>
+  );
+};
+
 export const ProjectDetailPage = () => {
   const { t } = useTranslation();
+  const [showAll, setShowAll] = useState({ features: false, challenges: false });
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const pageRef = useRef<HTMLElement>(null);
@@ -96,7 +111,7 @@ export const ProjectDetailPage = () => {
     { label: t('projectDetail.features'), value: features.length },
     { label: t('projectDetail.challenges'), value: challenges.length },
     { label: t('projectDetail.technologies'), value: techCount },
-    { label: t('ui.statYear'), value: Number(project.year) || 0, pad: 4 },
+    { label: t('ui.statYear'), value: Number(project.year) || 0, pad: 4, fixed: true },
   ].filter((s) => s.value > 0);
 
   const total = customProjects.length;
@@ -229,7 +244,12 @@ export const ProjectDetailPage = () => {
         <section aria-label={t('ui.caseStats')} className="grid grid-cols-2 border-b border-line md:grid-cols-4">
           {stats.map((s, i) => (
             <div key={s.label} className={`reveal border-line p-6 md:p-10 ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''} md:border-r md:last:border-r-0`}>
-              <Counter value={s.value} pad={s.pad ?? 2} className="display block text-[clamp(3.5rem,8vw,8rem)]" />
+              {/* L'année reste fixe (un compteur 0 → 2025 n'a pas de sens) */}
+              {'fixed' in s && s.fixed ? (
+                <span className="display block text-[clamp(3.5rem,8vw,8rem)]">{s.value}</span>
+              ) : (
+                <Counter value={s.value} pad={s.pad ?? 2} className="display block text-[clamp(3.5rem,8vw,8rem)]" />
+              )}
               <p className="label mt-2">{s.label}</p>
             </div>
           ))}
@@ -246,12 +266,18 @@ export const ProjectDetailPage = () => {
             </div>
             <ol className="grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:col-span-9">
               {features.map((f, i) => (
-                <li key={i} className="reveal group flex gap-5 border-b border-r border-line p-5 transition-colors hover:bg-white/[0.03] md:p-6">
+                <li
+                  key={i}
+                  className={`reveal group flex gap-5 border-b border-r border-line p-5 transition-colors hover:bg-white/[0.03] md:p-6 ${
+                    !showAll.features && i >= MOBILE_LIST ? 'max-md:hidden' : ''
+                  }`}
+                >
                   <span className="label shrink-0 pt-1 text-paper/55 group-hover:text-paper">{String(i + 1).padStart(2, '0')}</span>
                   <span className="leading-relaxed text-paper/80">{f}</span>
                 </li>
               ))}
             </ol>
+            <ShowAllButton count={features.length} open={showAll.features} onClick={() => setShowAll((v) => ({ ...v, features: !v.features }))} />
           </div>
         </section>
       )}
@@ -266,12 +292,18 @@ export const ProjectDetailPage = () => {
             </div>
             <ol className="border-t border-line lg:col-span-9">
               {challenges.map((c, i) => (
-                <li key={i} className="reveal grid grid-cols-[3.5rem_1fr] items-baseline gap-4 border-b border-line py-6 md:grid-cols-[6rem_1fr] md:py-8">
+                <li
+                  key={i}
+                  className={`reveal grid grid-cols-[3.5rem_1fr] items-baseline gap-4 border-b border-line py-6 md:grid-cols-[6rem_1fr] md:py-8 ${
+                    !showAll.challenges && i >= MOBILE_LIST ? 'max-md:hidden' : ''
+                  }`}
+                >
                   <span className="display text-4xl text-paper/40 md:text-6xl">{String(i + 1).padStart(2, '0')}</span>
                   <p className="text-lg leading-relaxed text-paper/85 md:text-xl">{c}</p>
                 </li>
               ))}
             </ol>
+            <ShowAllButton count={challenges.length} open={showAll.challenges} onClick={() => setShowAll((v) => ({ ...v, challenges: !v.challenges }))} />
           </div>
         </section>
       )}

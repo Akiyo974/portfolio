@@ -100,7 +100,6 @@ export default defineConfig(({ command }) => ({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'three-vendor': ['three'],
           'gsap-vendor': ['gsap'],
           'framer-motion': ['framer-motion'],
           'i18n': ['i18next', 'react-i18next'],

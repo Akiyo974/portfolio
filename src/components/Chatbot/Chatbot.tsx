@@ -161,6 +161,14 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
     return () => clearTimeout(timer);
   }, []);
 
+  // …puis elle s'efface seule après 8 s pour ne pas masquer le contenu
+  useEffect(() => {
+    if (!teaser) return;
+    const timer = window.setTimeout(() => dismissTeaser(), 8000);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [teaser]);
+
   const dismissTeaser = () => {
     setTeaser(false);
     try {
@@ -257,6 +265,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
               }}
               data-magnetic
               className="group flex items-center gap-3 border border-line bg-ink/90 p-2 sm:pr-4 backdrop-blur-md transition-colors hover:border-paper focus:outline-none focus-visible:ring-1 focus-visible:ring-paper"
+              /* Le nom accessible reprend le texte visible « CD Assistant » (WCAG 2.5.3) */
               aria-label={`CD ${botName} — ${t('chatbot.open', { defaultValue: 'Ouvrir le chat' })}`}
             >
               <span className="relative border border-paper/70 px-1 pt-0.5 font-display text-[15px] font-semibold leading-tight">
@@ -266,6 +275,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-paper" />
                 </span>
               </span>
+              {' '}
               <span className="label hidden text-paper/80 group-hover:text-paper sm:inline">{botName}</span>
             </button>
           </motion.div>

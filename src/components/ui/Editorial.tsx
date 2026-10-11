@@ -11,7 +11,7 @@ export const SectionLabel: React.FC<{ index: number; total: number; children: Re
 }) => (
   <div className={`flex items-center gap-3 label ${className}`}>
     <span className="h-3 w-px bg-paper" aria-hidden="true" />
-    <span aria-hidden="true">
+    <span aria-hidden="true" className="shrink-0 whitespace-nowrap">
       [ <span className="text-paper">{String(index).padStart(2, '0')}</span> / {String(total).padStart(2, '0')} ]
     </span>
     <span aria-hidden="true">·</span>

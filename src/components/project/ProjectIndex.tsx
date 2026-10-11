@@ -36,9 +36,10 @@ export const ProjectIndex: React.FC<{ projects: IndexItem[] }> = ({ projects }) 
     if (!el || !finePointer || typeof gsap.quickTo !== 'function') return;
     const x = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'power3.out' });
     const y = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'power3.out' });
+    // Aperçu (300 × ~260 px) gardé dans l'écran, sous l'en-tête, et basculé à gauche près du bord droit
     const onMove = (e: PointerEvent) => {
-      x(e.clientX + 56);
-      y(e.clientY - 150);
+      x(e.clientX + 356 > window.innerWidth ? e.clientX - 356 : e.clientX + 56);
+      y(Math.min(Math.max(e.clientY - 150, 72), window.innerHeight - 276));
     };
     window.addEventListener('pointermove', onMove, { passive: true });
     return () => window.removeEventListener('pointermove', onMove);

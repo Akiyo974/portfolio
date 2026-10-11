@@ -77,6 +77,9 @@ export const PixelImage: React.FC<{
         if (step < STEPS.length - 1) {
           step++;
           timer = window.setTimeout(next, 85);
+        } else {
+          // Écrans tactiles (pas de survol) : l'original se dévoile seul après la trame
+          wrap.dataset.revealed = 'true';
         }
       };
       next();

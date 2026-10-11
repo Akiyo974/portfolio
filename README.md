@@ -9,7 +9,7 @@ Monochrome editorial design, dithered WebGL, kinetic typography and a few hidden
 
 ## Highlights
 
-- **Dithered WebGL hero** — raymarched noise sphere with Bayer 8×8 dithering (Three.js shader), lighter fallback on mobile.
+- **Dithered WebGL hero** — raymarched noise sphere with Bayer 8×8 dithering — plain WebGL (no 3D library), non-blocking shader compile, framed above the title on mobile.
 - **Kinetic type** — Big Shoulders Display variable font whose weight follows the cursor; split-text reveals.
 - **Journey globe** — canvas globe built from Natural Earth data: a great-circle arc from Réunion Island to Saguenay (14,420 km) drawn on scroll.
 - **Pinned horizontal project gallery** (GSAP ScrollTrigger + Lenis) and full case-study pages.
@@ -24,7 +24,7 @@ Monochrome editorial design, dithered WebGL, kinetic typography and a few hidden
 
 ## Stack
 
-React 18 · TypeScript · Vite 5 · Tailwind CSS 3 · GSAP + ScrollTrigger · Lenis · Three.js · Framer Motion · i18next · Vitest · PHP (leaderboard API) · Apache / cPanel
+React 18 · TypeScript · Vite 5 · Tailwind CSS 3 · GSAP + ScrollTrigger · Lenis · WebGL · Framer Motion · i18next · Vitest · PHP (leaderboard API) · Apache / cPanel
 
 ## Getting started
 

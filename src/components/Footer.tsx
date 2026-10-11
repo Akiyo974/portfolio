@@ -13,9 +13,10 @@ interface FooterProps {
 const linkClass =
   'font-mono text-[12px] uppercase tracking-[0.08em] text-paper/60 hover:text-paper transition-colors focus:outline-none focus-visible:underline';
 
-const Column: React.FC<{ title: string; label: string; children: React.ReactNode }> = ({ title, label, children }) => (
+// Petit numéro au-dessus du titre (le libellé complet reste pour les lecteurs d'écran)
+const Column: React.FC<{ index: number; title: string; label: string; children: React.ReactNode }> = ({ index, title, label, children }) => (
   <nav className="flex flex-col" aria-label={label}>
-    <p className="label mb-2">{label}</p>
+    <p className="label mb-2" aria-hidden="true">{String(index).padStart(2, '0')}</p>
     <h3 className="heading mb-5 text-3xl">{title}</h3>
     <ul className="space-y-3">{children}</ul>
   </nav>
@@ -28,8 +29,7 @@ const FooterSignature: React.FC = () => {
   return (
     <p
       ref={ref}
-      className="display absolute inset-x-0 bottom-0 translate-y-[10%] select-none whitespace-nowrap px-2 text-center text-[16vw]"
-      style={{ fontVariationSettings: '"wght" 120' }}
+      className="display absolute inset-x-0 bottom-0 translate-y-[10%] select-none whitespace-nowrap px-2 text-center text-[16vw] [font-variation-settings:'wght'_120] [@media(hover:none)]:[font-variation-settings:'wght'_300]"
       aria-hidden="true"
     >
       {Array.from('Christen Dijoux').map((ch, i) => (
@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
 
         <div className="lg:col-span-2">
           {variant === 'default' ? (
-            <Column title={t('nav.projects')} label={t('nav.projects')}>
+            <Column index={1} title={t('nav.projects')} label={t('nav.projects')}>
               {customProjects.slice(0, 5).map((project) => (
                 <li key={project.id}>
                   <Link to={`/project/${project.id}`} className={linkClass}>
@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
               ))}
             </Column>
           ) : (
-            <Column title={t('nav.navigation')} label={t('nav.navigation')}>
+            <Column index={1} title={t('nav.navigation')} label={t('nav.navigation')}>
               <li>
                 <Link to="/" onClick={() => window.scrollTo(0, 0)} className={linkClass}>
                   {t('nav.home')}
@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
         </div>
 
         <div className="lg:col-span-2">
-          <Column title={t('ui.footerSocial')} label={t('ui.footerSocial')}>
+          <Column index={2} title={t('ui.footerSocial')} label={t('ui.footerSocial')}>
             <li><a href="https://github.com/Akiyo974" target="_blank" rel="noopener noreferrer" className={linkClass}>GitHub ↗</a></li>
             <li><a href="https://www.linkedin.com/in/christen-dijoux" target="_blank" rel="noopener noreferrer" className={linkClass}>LinkedIn ↗</a></li>
             <li><a href="mailto:christen.dijoux@gmail.com" className={linkClass}>Email ↗</a></li>
@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
         </div>
 
         <div className="lg:col-span-2">
-          <Column title="Légal" label="Informations légales">
+          <Column index={3} title="Légal" label="Informations légales">
             <li>
               <Link to="/privacy-policy" onClick={() => window.scrollTo(0, 0)} className={linkClass}>
                 {t('privacy.title')}
@@ -149,7 +149,7 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
 
         <div className="lg:col-span-2">
           <div className="flex flex-col">
-            <p className="label mb-2">{t('footer.location')}</p>
+            <p className="label mb-2" aria-hidden="true">04</p>
             <h3 className="heading mb-5 text-3xl">{t('hero.location')}</h3>
             <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-paper/60">{t('hero.region')}</p>
             <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-paper/55">48.43°N · 71.07°W</p>
@@ -158,14 +158,14 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
       </div>
 
       {/* Barre du bas */}
-      <div className="flex flex-col items-start justify-between gap-4 border-t border-line px-4 py-6 sm:flex-row sm:items-center sm:px-6 md:px-10">
+      <div className="flex flex-col items-start justify-between gap-4 border-t border-line px-4 py-6 sm:flex-row sm:items-center sm:px-6 md:px-10 lg:pr-48">
         <div className="space-y-1">
           <p className="label">
             © {currentYear} Christen Dijoux. {t('footer.allRightsReserved')}
           </p>
           {/* Crédits */}
           <p className="label text-paper/55">
-            {t('ui.credits', { defaultValue: 'Design & code' })} — Christen Dijoux · Big Shoulders Display, Geist · React, GSAP, Three.js
+            {t('ui.credits', { defaultValue: 'Design & code' })} — Christen Dijoux · Big Shoulders Display, Geist · React, GSAP, WebGL
           </p>
         </div>
         {/* Chasse aux étoiles : progression, puis accès au jeu */}

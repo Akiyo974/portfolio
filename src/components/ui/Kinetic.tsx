@@ -150,12 +150,13 @@ export const ScrollWords: React.FC<{ text: string; className?: string }> = ({ te
     const words = el.querySelectorAll('.word');
     const tween = gsap.fromTo(
       words,
-      { opacity: 0.12 },
+      { opacity: 0.38 }, // ≥ 3:1 sur fond encre (texte ≥ 24 px) : effet conservé, contraste WCAG respecté
       {
         opacity: 1,
         stagger: 0.1,
         ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true },
+        // Texte entièrement révélé tant qu'il est encore bien visible (bas du bloc à 75 % de l'écran)
+        scrollTrigger: { trigger: el, start: 'top 85%', end: 'bottom 75%', scrub: true },
       }
     );
     return () => {

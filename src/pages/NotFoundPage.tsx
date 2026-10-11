@@ -29,8 +29,11 @@ export function NotFoundPage() {
 
         <div className="text-center">
           <SplitText as="h1" trigger="intro" text="404" className="display block text-[clamp(8rem,32vw,30rem)] leading-[0.8] mix-blend-difference" />
-          <p className="heading mx-auto mt-4 max-w-xl text-[clamp(1.5rem,3vw,2.5rem)]">{t('ui.notFoundTitle')}</p>
-          <p className="mx-auto mt-3 max-w-md text-paper/60">{t('ui.notFoundText')}</p>
+          {/* Panneau opaque : le texte reste lisible même posé sur la sphère */}
+          <div className="mx-auto mt-6 max-w-xl border border-line bg-ink/90 px-5 py-4 backdrop-blur-sm">
+            <p className="heading text-[clamp(1.5rem,3vw,2.5rem)]">{t('ui.notFoundTitle')}</p>
+            <p className="mx-auto mt-2 max-w-md text-paper/70">{t('ui.notFoundText')}</p>
+          </div>
           <div className="mt-8 flex flex-wrap justify-center gap-2">
             <Link to="/" className="btn-solid" data-magnetic>
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> {t('ui.backHome')}
