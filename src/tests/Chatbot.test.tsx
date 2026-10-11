@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Chatbot } from '../components/Chatbot/Chatbot';
 
 vi.mock('../components/Chatbot/botLogic/messageHandler', () => ({
@@ -17,6 +17,70 @@ vi.mock('../components/Chatbot/botLogic/messageHandler', () => ({
 describe('Chatbot', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    sessionStorage.clear();
+  });
+
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('devrait suivre le viewport visuel lorsque le clavier réduit la zone visible', async () => {
+    const viewport = Object.assign(new EventTarget(), { width: 390, height: 844, offsetTop: 0, offsetLeft: 0 });
+    vi.stubGlobal('visualViewport', viewport);
+    const removeListener = vi.spyOn(viewport, 'removeEventListener');
+    const { unmount } = render(<Chatbot />);
+    fireEvent.click(screen.getByRole('button', { name: /chat/i }));
+
+    const panel = await screen.findByRole('dialog');
+    expect(panel).toHaveStyle({ '--chat-viewport-width': '390px', '--chat-viewport-height': '844px' });
+
+    viewport.height = 360;
+    act(() => viewport.dispatchEvent(new Event('resize')));
+    expect(panel).toHaveStyle({ '--chat-viewport-height': '360px' });
+
+    viewport.offsetTop = 120;
+    viewport.offsetLeft = 5;
+    act(() => viewport.dispatchEvent(new Event('scroll')));
+    expect(panel).toHaveStyle({ '--chat-viewport-top': '120px', '--chat-viewport-left': '5px' });
+
+    viewport.width = 844;
+    viewport.height = 390;
+    fireEvent(window, new Event('resize'));
+    expect(panel).toHaveStyle({ '--chat-viewport-width': '844px', '--chat-viewport-height': '390px' });
+
+    unmount();
+    expect(removeListener).toHaveBeenCalledWith('resize', expect.any(Function));
+    expect(removeListener).toHaveBeenCalledWith('scroll', expect.any(Function));
+  });
+
+  it('devrait fonctionner sans API VisualViewport', async () => {
+    vi.stubGlobal('visualViewport', undefined);
+    render(<Chatbot />);
+    fireEvent.click(screen.getByRole('button', { name: /chat/i }));
+    expect(await screen.findByRole('dialog')).toHaveStyle({
+      '--chat-viewport-width': `${window.innerWidth}px`,
+      '--chat-viewport-height': `${window.innerHeight}px`,
+    });
+  });
+
+  it('devrait rendre le focus au bouton de chat après Échap', async () => {
+    render(<Chatbot />);
+    fireEvent.click(screen.getByRole('button', { name: /chat/i }));
+    await screen.findByRole('textbox');
+    fireEvent.keyDown(window, { key: 'Escape' });
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('button', { name: /chat/i })).toHaveFocus());
+  });
+
+  it('devrait agrandir un panneau réduit lors du passage au format mobile', async () => {
+    render(<Chatbot />);
+    fireEvent.click(screen.getByRole('button', { name: /chat/i }));
+    const panel = await screen.findByRole('dialog');
+    fireEvent.click(screen.getByRole('button', { name: 'Réduire' }));
+    expect(panel).toHaveAttribute('data-minimized', 'true');
+
+    vi.stubGlobal('innerWidth', 390);
+    fireEvent(window, new Event('resize'));
+    expect(panel).toHaveAttribute('data-minimized', 'false');
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
   it('devrait afficher le bouton de chat', () => {

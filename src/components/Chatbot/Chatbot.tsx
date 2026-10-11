@@ -130,6 +130,31 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
   const [teaser, setTeaser] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const [viewport, setViewport] = useState<{ width: number; height: number; top: number; left: number } | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const visualViewport = window.visualViewport;
+    const updateViewport = () => {
+      setViewport({
+        width: visualViewport?.width ?? window.innerWidth,
+        height: visualViewport?.height ?? window.innerHeight,
+        top: visualViewport?.offsetTop ?? 0,
+        left: visualViewport?.offsetLeft ?? 0,
+      });
+      if (window.innerWidth < 768) setIsMinimized(false);
+    };
+    updateViewport();
+    window.addEventListener('resize', updateViewport);
+    visualViewport?.addEventListener('resize', updateViewport);
+    visualViewport?.addEventListener('scroll', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      visualViewport?.removeEventListener('resize', updateViewport);
+      visualViewport?.removeEventListener('scroll', updateViewport);
+    };
+  }, [isOpen]);
 
   useEffect(() => saveSession(messages, context), [messages, context]);
 
@@ -228,6 +253,12 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
 
   const side = position === 'bottom-right' ? 'right-4' : 'left-4';
   const lastBot = [...messages].reverse().find((m) => m.isBot);
+  const viewportStyle: (React.CSSProperties & Record<string, string>) | undefined = viewport ? {
+    '--chat-viewport-width': `${viewport.width}px`,
+    '--chat-viewport-height': `${viewport.height}px`,
+    '--chat-viewport-top': `${viewport.top}px`,
+    '--chat-viewport-left': `${viewport.left}px`,
+  } : undefined;
 
   return (
     <div className="print:hidden">
@@ -257,6 +288,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
               </div>
             )}
             <button
+              ref={launcherRef}
               type="button"
               onClick={() => {
                 setIsOpen(true);
@@ -282,33 +314,35 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={() => launcherRef.current?.focus({ preventScroll: true })}>
         {isOpen && (
           <motion.section
             key="panel"
             role="dialog"
             aria-label={botName}
+            style={viewportStyle}
+            data-minimized={isMinimized}
             initial={{ opacity: 0, y: 24, clipPath: 'inset(100% 0% 0% 0%)' }}
             animate={{ opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)' }}
             exit={{ opacity: 0, y: 24, clipPath: 'inset(100% 0% 0% 0%)' }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className={`fixed z-50 flex flex-col border border-line bg-ink/95 text-paper shadow-[0_30px_80px_rgba(0,0,0,0.6)] backdrop-blur-xl inset-x-2 bottom-2 md:inset-x-auto md:bottom-4 ${position === 'bottom-right' ? 'md:right-4' : 'md:left-4'} md:w-[400px] ${
-              isMinimized ? 'h-auto' : 'top-[4.25rem] md:top-auto md:h-[min(620px,calc(100vh-6.5rem))]'
+            className={`chat-panel fixed z-50 flex min-w-0 flex-col overflow-hidden border border-line bg-ink/95 text-paper shadow-[0_30px_80px_rgba(0,0,0,0.6)] backdrop-blur-xl inset-x-2 bottom-2 md:inset-x-auto md:bottom-4 ${position === 'bottom-right' ? 'md:right-4' : 'md:left-4'} md:w-[400px] ${
+              isMinimized ? 'h-auto' : 'top-[4.25rem] md:top-auto md:h-[min(620px,calc(100dvh-6.5rem))]'
             }`}
           >
             {/* En-tête */}
-            <header className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
+            <header className="flex shrink-0 items-center justify-between gap-3 border-b border-line px-4 py-3">
               <div className="flex min-w-0 items-center gap-3">
                 <span className="border border-paper/70 px-1 pt-0.5 font-display text-[15px] font-semibold leading-tight">CD</span>
                 <div className="min-w-0">
                   <p className="truncate font-mono text-[12px] uppercase tracking-[0.1em]">{botName}</p>
                   <p className="label flex items-center gap-1.5 text-[10px]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-paper" aria-hidden="true" />
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-paper" aria-hidden="true" />
                     {t('chatbot.status', { defaultValue: 'En ligne · réponses locales' })}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex shrink-0 items-center gap-1">
                 <button
                   type="button"
                   onClick={reset}
@@ -340,7 +374,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
             {!isMinimized && (
               <>
                 {/* Messages */}
-                <div ref={listRef} role="log" aria-live="polite" className="flex-1 space-y-5 overflow-y-auto overscroll-contain px-4 py-5" data-lenis-prevent>
+                <div ref={listRef} role="log" aria-live="polite" className="min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain px-4 py-5 [overflow-wrap:anywhere]" data-lenis-prevent>
                   {messages.map((m) =>
                     m.isBot ? (
                       <div key={m.id} className="max-w-[92%]">
@@ -373,7 +407,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
 
                 {/* Suggestions */}
                 {!isTyping && lastBot?.suggestions && lastBot.suggestions.length > 0 && (
-                  <div className="no-scrollbar flex gap-1.5 overflow-x-auto border-t border-line px-4 py-2.5" data-lenis-prevent>
+                  <div className="no-scrollbar flex shrink-0 gap-1.5 overflow-x-auto border-t border-line px-4 py-2.5" data-lenis-prevent>
                     {lastBot.suggestions.map((sug) => (
                       <button
                         key={sug}
@@ -393,7 +427,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
                     e.preventDefault();
                     send(input);
                   }}
-                  className="flex items-center gap-2 border-t border-line px-4 py-3"
+                  className="flex shrink-0 items-center gap-2 border-t border-line px-4 py-3"
                 >
                   <span className="font-mono text-paper/55" aria-hidden="true">›</span>
                   <input
@@ -404,7 +438,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ botName = 'Assistant', welcome
                     maxLength={300}
                     placeholder={t('chatbot.placeholder', { defaultValue: 'Posez votre question…' })}
                     aria-label={t('chatbot.placeholder', { defaultValue: 'Posez votre question…' })}
-                    className="min-w-0 flex-1 bg-transparent py-1.5 text-[14px] text-paper placeholder:text-paper/40 focus:outline-none"
+                    className="min-w-0 flex-1 bg-transparent py-1.5 text-base md:text-[14px] text-paper placeholder:text-paper/40 focus:outline-none"
                   />
                   <button
                     type="submit"

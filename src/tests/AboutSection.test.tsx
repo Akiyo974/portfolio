@@ -75,4 +75,11 @@ describe('AboutSection', () => {
     const { container } = renderAboutSection();
     expect(container.querySelector('section')).toBeInTheDocument();
   });
+
+  it('devrait contenir le carrousel des piliers sans marges négatives sur la section', () => {
+    renderAboutSection();
+    const carousel = screen.getByRole('heading', { name: 'ui.aboutAI' }).closest('article')?.parentElement;
+    expect(carousel).toHaveClass('max-md:overflow-x-auto');
+    expect(carousel).not.toHaveClass('max-md:-mx-4');
+  });
 });

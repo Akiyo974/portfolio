@@ -230,6 +230,28 @@ html.has-cursor textarea {
   }
 }
 
+/* Le clavier mobile réduit le viewport visuel sans toujours redimensionner la page. */
+@media (max-width: 767px) {
+  .chat-panel {
+    --chat-left-gap: max(8px, env(safe-area-inset-left));
+    --chat-right-gap: max(8px, env(safe-area-inset-right));
+    --chat-top-gap: max(4.25rem, env(safe-area-inset-top));
+    --chat-bottom-gap: max(8px, env(safe-area-inset-bottom));
+    left: calc(var(--chat-viewport-left, 0px) + var(--chat-left-gap));
+    right: auto;
+    width: calc(var(--chat-viewport-width, 100vw) - var(--chat-left-gap) - var(--chat-right-gap));
+    top: calc(var(--chat-viewport-top, 0px) + var(--chat-top-gap));
+    bottom: auto;
+    height: calc(var(--chat-viewport-height, 100dvh) - var(--chat-top-gap) - var(--chat-bottom-gap));
+  }
+
+  .chat-panel[data-minimized='true'] {
+    top: auto;
+    bottom: var(--chat-bottom-gap);
+    height: auto;
+  }
+}
+
 /* Réponse de l'assistant : balayage ligne par ligne */
 .chat-reveal {
   -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 50%);

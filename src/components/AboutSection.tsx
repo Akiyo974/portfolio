@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 type Experience = { title: string; company: string; period: string; description: string; highlights?: string[] };
 
 // Mobile : listes en carrousel horizontal (moins de défilement vertical)
-const CAROUSEL = 'max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:scroll-px-4 max-md:border-0 max-md:px-4 max-md:pb-2 no-scrollbar';
+const CAROUSEL = 'max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:scroll-px-4 max-md:border-0 max-md:px-4 max-md:pb-2 no-scrollbar';
 const SLIDE = 'max-md:w-[82vw] max-md:shrink-0 max-md:snap-start max-md:border';
 
 export const AboutSection = () => {
@@ -154,7 +154,7 @@ export const AboutSection = () => {
           <SplitText as="h3" text={t('about.skills')} className="heading block text-[clamp(2.4rem,5vw,4.5rem)] uppercase" />
           <p className="label hidden md:block">{t('ui.stackKicker')} · {Object.values(skillCategories).reduce((n, c) => n + c.skills.length, 0)}</p>
         </div>
-        <div className={`grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:grid-cols-3 ${CAROUSEL}`}>
+        <div className={`grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:grid-cols-3 max-md:-mx-4 ${CAROUSEL}`}>
           {Object.entries(skillCategories).map(([key, category], i) => (
             <div key={key} className={`reveal crosshair border-b border-r border-line p-5 md:p-6 ${SLIDE}`}>
               <div className="mb-4 flex items-center justify-between">
@@ -234,7 +234,7 @@ export const AboutSection = () => {
           <SplitText as="h3" text={t('about.impact')} className="heading block text-[clamp(2.4rem,5vw,4.5rem)] uppercase" />
           <p className="label hidden md:block">{t('ui.impactKicker')}</p>
         </div>
-        <div className={`grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:grid-cols-3 ${CAROUSEL}`}>
+        <div className={`grid grid-cols-1 border-l border-t border-line md:grid-cols-2 lg:grid-cols-3 max-md:-mx-4 ${CAROUSEL}`}>
           {impacts.map((impact, i) => (
             <div key={impact} className={`reveal group border-b border-r border-line p-6 transition-colors hover:bg-paper hover:text-ink ${SLIDE}`}>
               <p className="font-display text-6xl font-light text-paper/40 transition-colors group-hover:text-ink/40">

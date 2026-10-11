@@ -14,7 +14,7 @@ Monochrome editorial design, dithered WebGL, kinetic typography and a few hidden
 - **Journey globe** — canvas globe built from Natural Earth data: a great-circle arc from Réunion Island to Saguenay (14,420 km) drawn on scroll.
 - **Pinned horizontal project gallery** (GSAP ScrollTrigger + Lenis) and full case-study pages.
 - **Star hunt mini-game** — find 3 hidden stars, then play a 20 s game with a PHP leaderboard (HMAC tokens, rate limiting, no database).
-- **Local assistant** — rule-based chatbot answering about projects, skills and contact (no external API).
+- **Local assistant** — rule-based chatbot answering about projects, skills and contact (no external API); mobile panel follows the visual viewport when the keyboard opens, with safe-area spacing and focus restored on close.
 - **Resume** — screen version + dedicated one-page print layout; FR/EN PDFs generated with headless Chrome.
 - **Privacy & a11y** — analytics and error tracking load only after opt-in consent (Loi 25 / GDPR), `prefers-reduced-motion` support, keyboard and screen-reader friendly.
 
