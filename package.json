@@ -1,7 +1,7 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "christendijoux-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -69,5 +69,7 @@
     "vitest": "^4.0.8",
     "workbox-window": "^7.3.0",
     "world-atlas": "^2.0.2"
-  }
+  },
+  "description": "Portfolio of Christen Dijoux — full-stack & AI developer (christendijoux.com)",
+  "homepage": "https://christendijoux.com"
 }
