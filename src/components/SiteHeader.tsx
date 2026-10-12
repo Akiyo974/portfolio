@@ -17,11 +17,14 @@ const countLogoTap = () => {
   }
 };
 
-const sections = [
+// Sections de l'accueil (ancres) + pages (routes) : deux liens de chaque côté du monogramme
+type NavItem = { key: string; id?: string; to?: string };
+const sections: NavItem[] = [
   { id: 'about', key: 'nav.about' },
   { id: 'projects', key: 'nav.projects' },
+  { to: '/lab', key: 'nav.lab' },
   { id: 'contact', key: 'nav.contact' },
-] as const;
+];
 
 /**
  * En-tête éditorial : navigation mono en majuscules, monogramme centré.
@@ -31,6 +34,32 @@ export const SiteHeader: React.FC = () => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const onHome = pathname === '/';
+  const [inView, setInView] = useState<string | null>(null);
+
+  // Accueil : la section visible au centre de l'écran est marquée active dans le menu
+  useEffect(() => {
+    setInView(null);
+    if (!onHome) return;
+    const els = sections.map((s) => s.id && document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setInView(e.target.id)),
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    els.forEach((el) => io.observe(el));
+    const onTop = () => window.scrollY < 200 && setInView(null);
+    window.addEventListener('scroll', onTop, { passive: true });
+    return () => {
+      io.disconnect();
+      window.removeEventListener('scroll', onTop);
+    };
+  }, [onHome]);
+
+  const isActive = (item: NavItem) =>
+    item.to
+      ? pathname.startsWith(item.to)
+      : item.id === 'projects'
+        ? pathname.startsWith('/project') || inView === 'projects'
+        : inView === item.id;
 
   // Menu mobile plein écran : défilement bloqué, fermeture sur Échap et au changement de page
   useEffect(() => setOpen(false), [pathname]);
@@ -49,7 +78,11 @@ export const SiteHeader: React.FC = () => {
   }, [open]);
 
   const NavLink: React.FC<{ id: string; children: React.ReactNode; className?: string }> = ({ id, children, className = '' }) =>
-    onHome ? (
+    id.startsWith('/') ? (
+      <Link to={id} onClick={() => setOpen(false)} className={className}>
+        {children}
+      </Link>
+    ) : onHome ? (
       <a href={`#${id}`} data-scroll-to={id} onClick={() => setOpen(false)} className={className}>
         {children}
       </a>
@@ -62,17 +95,52 @@ export const SiteHeader: React.FC = () => {
   const linkClass =
     'font-mono text-[12px] uppercase tracking-[0.12em] text-paper/80 hover:text-paper transition-colors focus:outline-none focus-visible:underline';
 
+  const NavGroup: React.FC<{ items: NavItem[]; offset: number; className?: string; compact?: boolean }> = ({
+    items,
+    offset,
+    className = '',
+    compact = false,
+  }) => (
+    <ul className={`hidden items-center lg:flex ${compact ? 'gap-5' : 'gap-8 xl:gap-12'} ${className}`}>
+      {items.map((item, i) => {
+        const active = isActive(item);
+        return (
+          <li key={item.key}>
+            <NavLink
+              id={item.to ?? item.id!}
+              className={`${linkClass} group relative flex items-baseline gap-1.5 ${active ? '!text-paper' : ''}`}
+            >
+              {!compact && (
+                <span className={`text-[9px] tabular-nums transition-colors ${active ? 'text-paper' : 'text-paper/35 group-hover:text-paper/70'}`}>
+                  0{offset + i + 1}
+                </span>
+              )}
+              <span>{t(item.key)}</span>
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1.5 left-0 h-px bg-paper transition-all duration-300 ${active ? 'w-full' : 'w-0 group-hover:w-full'}`}
+              />
+              {active && <span className="sr-only">(current)</span>}
+            </NavLink>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-line bg-ink/85 backdrop-blur-md">
-        <nav aria-label={t('nav.navigation')} className="mx-auto grid h-14 grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 md:h-16 md:grid-cols-5 md:px-10">
+        <nav
+          aria-label={t('nav.navigation')}
+          className="mx-auto grid h-14 grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 md:h-16 md:px-10 lg:grid-cols-[1fr_auto_auto_auto_1fr]"
+        >
           <Link to="/" className={`${linkClass} justify-self-start`} onClick={() => window.scrollTo(0, 0)}>
             Christen<span className="text-paper/55">.</span>Dijoux
           </Link>
 
-          <NavLink id="about" className={`${linkClass} hidden justify-self-center md:block`}>
-            {t('nav.about')}
-          </NavLink>
+          {/* Grand écran : 01 · 02 | CD | 03 · 04, resserrés autour du monogramme */}
+          <NavGroup items={sections.slice(0, 2)} offset={0} className="justify-self-end pr-10 xl:pr-14" />
 
           <Link
             to="/"
@@ -86,17 +154,11 @@ export const SiteHeader: React.FC = () => {
             CD
           </Link>
 
-          <NavLink id="projects" className={`${linkClass} hidden justify-self-center md:block`}>
-            {t('nav.projects')}
-          </NavLink>
+          <NavGroup items={sections.slice(2)} offset={2} className="justify-self-start pl-10 xl:pl-14" />
 
-          <div className="flex items-center gap-3 justify-self-end md:gap-5">
-            <Link to="/lab" className={`${linkClass} hidden md:block`}>
-              {t('nav.lab')}
-            </Link>
-            <NavLink id="contact" className={`${linkClass} hidden md:block`}>
-              {t('nav.contact')}
-            </NavLink>
+          <div className="flex items-center gap-3 justify-self-end">
+            {/* Tablette : liens à droite, le centre reste au monogramme */}
+            <NavGroup items={sections} offset={0} className="hidden md:flex lg:!hidden" compact />
             <LanguageSwitcher />
             <button
               type="button"
@@ -126,13 +188,13 @@ export const SiteHeader: React.FC = () => {
             <ul>
               {sections.map((s, i) => (
                 <motion.li
-                  key={s.id}
+                  key={s.key}
                   initial={{ y: 28, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.18 + i * 0.07, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <NavLink
-                    id={s.id}
+                    id={s.to ?? s.id!}
                     className="flex items-baseline justify-between border-b border-line px-4 py-5 font-display text-[clamp(3rem,15vw,5rem)] uppercase leading-[0.9] text-paper"
                   >
                     <span>{t(s.key)}</span>
@@ -150,7 +212,6 @@ export const SiteHeader: React.FC = () => {
             >
               <div className="flex flex-wrap gap-2">
                 <Link to="/projects" className="btn-ghost">{t('projects.allProjects')}</Link>
-                <Link to="/lab" className="btn-ghost">{t('nav.lab')}</Link>
                 <Link to="/cv" className="btn-ghost">{t('about.viewCV')}</Link>
               </div>
               <a href="mailto:christen.dijoux@gmail.com" className="block font-display text-3xl text-paper underline decoration-paper/30 underline-offset-4">
