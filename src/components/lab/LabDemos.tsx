@@ -5,6 +5,8 @@ import { PixelImage } from '../ui/PixelImage';
 import { Counter } from '../ui/Counter';
 import { ManifestoBand } from '../ManifestoBand';
 import { NEGATIVE_EVENT } from '../NegativeMode';
+import { Expandable, ExpandButton } from '../ui/Expandable';
+import { firstLines } from '../../lib/collapse';
 import { labComponents, type DemoId, type Lang } from '../../data/lab';
 
 /**
@@ -100,6 +102,30 @@ const NegativeDemo: React.FC<{ lang: Lang }> = ({ lang }) => (
   </div>
 );
 
+const ExpandableDemo: React.FC<{ lang: Lang }> = ({ lang }) => {
+  const [open, setOpen] = useState(false);
+  const text =
+    lang === 'fr'
+      ? "Deux couleurs, aucun « … ». Ce paragraphe est replié : cliquez sur « Lire la suite » et regardez les pixels quitter le bord, descendre et se poser un à un sur la forme des lettres, ligne après ligne, jusqu'à écrire les mots cachés. Refermez-le : le texte se défait en pixels qui remontent."
+      : 'Two colours, no "…". This paragraph is folded: click "Read more" and watch the pixels leave the edge, fall and settle one by one onto the shape of the letters, line after line, until they write the hidden words. Close it: the text breaks back into pixels that fly up.';
+  return (
+    <div className="flex h-full flex-col justify-center overflow-y-auto p-6 md:p-10">
+      <Expandable id="lab-expandable-demo" open={open} collapsed={firstLines(3)} mobileOnly={false}>
+        <p className="text-lg leading-relaxed text-paper/85 md:text-xl">{text}</p>
+      </Expandable>
+      <ExpandButton
+        open={open}
+        onClick={() => setOpen((v) => !v)}
+        controls="lab-expandable-demo"
+        label={lang === 'fr' ? 'Lire la suite' : 'Read more'}
+        openLabel={lang === 'fr' ? 'Réduire' : 'Show less'}
+        mobileOnly={false}
+        className="mt-5 self-start"
+      />
+    </div>
+  );
+};
+
 export const LabDemo: React.FC<{ id: DemoId; lang: Lang }> = ({ id, lang }) => {
   switch (id) {
     case 'dither-hero':
@@ -133,6 +159,8 @@ export const LabDemo: React.FC<{ id: DemoId; lang: Lang }> = ({ id, lang }) => {
       return <CursorDemo lang={lang} />;
     case 'negative':
       return <NegativeDemo lang={lang} />;
+    case 'expandable':
+      return <ExpandableDemo lang={lang} />;
     case 'counter':
       return <CounterDemo lang={lang} />;
     default:

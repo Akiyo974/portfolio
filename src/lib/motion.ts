@@ -13,8 +13,29 @@ let lenis: Lenis | null = null;
 let users = 0;
 const tick = (time: number) => lenis?.raf(time * 1000);
 
+/**
+ * Les positions des ScrollTrigger sont calculées une fois : si la page change de hauteur ensuite
+ * (changement de langue, images chargées, blocs repliés/dépliés), les révélations se déclenchent
+ * au mauvais endroit, voire jamais. On les recalcule dès que la hauteur du document change.
+ */
+let pageObserver: ResizeObserver | null = null;
+const watchPageHeight = () => {
+  if (pageObserver || typeof ResizeObserver === 'undefined') return;
+  let last = 0;
+  let timer = 0;
+  pageObserver = new ResizeObserver(([entry]) => {
+    const h = Math.round(entry.contentRect.height);
+    if (Math.abs(h - last) < 2) return;
+    last = h;
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => ScrollTrigger.refresh(), 120);
+  });
+  pageObserver.observe(document.body);
+};
+
 export const acquireLenis = (): Lenis | null => {
   users++;
+  if (typeof window !== 'undefined') watchPageHeight();
   if (lenis || typeof window === 'undefined') return lenis;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
 

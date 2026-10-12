@@ -1,7 +1,23 @@
 {
-  "name": "Portfolio",
-  "short_name": "Portfolio",
+  "name": "Christen Dijoux",
+  "short_name": "Christen Dijoux",
   "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
     {
       "src": "/assets/web-app-manifest-192x192.png",
       "sizes": "192x192",
@@ -15,7 +31,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#050505",
+  "background_color": "#050505",
   "display": "standalone"
 }

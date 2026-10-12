@@ -15,6 +15,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
+    "favicon": "node scripts/generate-favicon.mjs",
     "cv:pdf": "node scripts/generate-cv-pdf.mjs"
   },
   "dependencies": {

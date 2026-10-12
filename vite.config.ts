@@ -33,31 +33,19 @@ export default defineConfig(({ command }) => ({
       registerType: 'autoUpdate',
       includeAssets: ['assets/favicon.ico', 'assets/favicon.svg'],
       manifest: {
-        name: 'Christen Dijoux - Portfolio',
-        short_name: 'Portfolio',
+        name: 'Christen Dijoux',
+        short_name: 'Christen Dijoux',
         description: 'Portfolio interactif de Christen Dijoux - Développeur Full-stack',
-        theme_color: '#000000',
-        background_color: '#000000',
+        theme_color: '#050505',
+        background_color: '#050505',
         display: 'standalone',
         start_url: '/',
         icons: [
-          {
-            src: '/assets/favicon-96x96.png',
-            sizes: '96x96',
-            type: 'image/png'
-          },
-          {
-            src: '/assets/apple-touch-icon.png',
-            sizes: '180x180',
-            type: 'image/png',
-            purpose: 'apple-touch-icon'
-          },
-          {
-            src: '/assets/favicon.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable'
-          }
+          { src: '/assets/favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: '/assets/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+          { src: '/assets/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+          { src: '/assets/web-app-manifest-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'maskable' },
+          { src: '/assets/web-app-manifest-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ]
       },
       workbox: {

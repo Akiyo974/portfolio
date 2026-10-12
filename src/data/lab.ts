@@ -14,7 +14,8 @@ export type DemoId =
   | 'manifesto'
   | 'cursor'
   | 'negative'
-  | 'counter';
+  | 'counter'
+  | 'expandable';
 
 export type LabComponent = {
   id: string;
@@ -211,6 +212,34 @@ export const labComponents: LabComponent[] = [
     },
     cost: { fr: 'Nul au repos.', en: 'Zero at rest.' },
     stack: ['View Transitions API', 'CSS'],
+  },
+  {
+    id: 'expandable',
+    name: 'Expandable · pixel type',
+    file: 'components/ui/Expandable.tsx',
+    demo: 'expandable',
+    role: {
+      fr: "Le « Lire la suite » du site sur mobile. À l'ouverture, des pixels partent du bord replié et viennent former les mots cachés, ligne après ligne en descendant, puis le vrai texte prend le relais. À la fermeture, le texte se défait en pixels qui remontent.",
+      en: 'The site’s mobile "Read more". On opening, pixels leave the folded edge and assemble the hidden words, line after line going down, then the real text takes over. On closing, the text breaks back into pixels that fly up.',
+    },
+    why: {
+      fr: "Sur mobile, les expériences et les listes des études de cas étaient tronquées sans moyen de tout lire. Il fallait un dépliage, et je voulais qu'il reste dans le thème du site : des pixels, deux couleurs.",
+      en: 'On mobile, experience entries and case-study lists were truncated with no way to read everything. They needed to expand, and I wanted it to stay on theme: pixels, two colours.',
+    },
+    how: {
+      fr: "Chaque mot caché est mesuré là où le navigateur l'a mis en page (Range.getClientRects), redessiné hors écran sur un canvas, puis échantillonné en pixels de 2 px. Chaque pixel vole du bord replié vers sa place avec un délai proportionnel à sa hauteur. Pendant ce temps, un masque CSS cache le vrai texte, qui apparaît en fondu à la fin. Le libellé du bouton se décode, et son « + » de 5 pixels se réorganise en « − ».",
+      en: 'Each hidden word is measured where the browser laid it out (Range.getClientRects), redrawn off-screen on a canvas, then sampled into 2 px pixels. Each pixel flies from the folded edge to its spot, with a delay proportional to its height. Meanwhile a CSS mask hides the real text, which fades in at the end. The button label decodes itself and its 5-pixel "+" rearranges into "−".',
+    },
+    score: 3,
+    verdict: {
+      fr: "Un détail utile ET signature : il résout un vrai problème de lecture sur mobile. Respecte « réduire les animations » (ouverture instantanée). Sur ordinateur, le texte est simplement affiché en entier.",
+      en: 'A useful detail AND a signature: it fixes a real mobile reading problem. Honours reduced motion (instant opening). On desktop the full text is simply shown.',
+    },
+    cost: {
+      fr: "Faible et ponctuel : un canvas le temps de l'animation (≈ 1,5 s, 7 000 pixels maximum), puis plus rien.",
+      en: 'Low and short-lived: one canvas for the length of the animation (≈ 1.5 s, 7,000 pixels max), then nothing.',
+    },
+    stack: ['Canvas 2D', 'Range API', 'CSS mask', 'Web Animations API'],
   },
   {
     id: 'counter',

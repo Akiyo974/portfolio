@@ -12,6 +12,7 @@ export const labIndexComponents: LabIndexEntry[] = [
   { id: 'manifesto', name: 'ManifestoBand', tag: 'GSAP ticker', score: 2 },
   { id: 'cursor', name: 'CustomCursor', tag: 'GSAP quickTo', score: 2 },
   { id: 'negative', name: 'NegativeMode', tag: 'View Transitions', score: 3 },
+  { id: 'expandable', name: 'Expandable · pixel type', tag: 'Canvas 2D', score: 3 },
   { id: 'counter', name: 'Counter', tag: 'rAF', score: 1 },
   { id: 'journey', name: 'JourneySection', tag: 'Canvas 2D', score: 2 },
   { id: 'stars', name: 'Star hunt · StarGame', tag: 'React Context', score: 2 },

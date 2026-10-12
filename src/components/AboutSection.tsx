@@ -7,6 +7,8 @@ import { ArrowDownToLine, ArrowRight } from 'lucide-react';
 import { MetaRow, SectionLabel } from './ui/Editorial';
 import { PixelImage } from './ui/PixelImage';
 import { ScrollWords, SplitText } from './ui/Kinetic';
+import { Expandable, ExpandButton } from './ui/Expandable';
+import { firstLines } from '../lib/collapse';
 import { skillCategories } from '../data/skills';
 import { JourneySection } from './JourneySection';
 
@@ -20,6 +22,7 @@ const SLIDE = 'max-md:w-[82vw] max-md:shrink-0 max-md:snap-start max-md:border';
 
 export const AboutSection = () => {
   const [showMore, setShowMore] = useState(false);
+  const [openExp, setOpenExp] = useState<Record<number, boolean>>({});
   const { t, i18n } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const isFr = i18n.language?.startsWith('fr');
@@ -85,21 +88,23 @@ export const AboutSection = () => {
 
       {/* Intro */}
       <div className="grid grid-cols-1 gap-10 border-b border-line px-4 py-12 sm:px-6 md:px-10 md:py-16 lg:grid-cols-12">
-        <div className="space-y-6 lg:col-span-7">
+        <div className="lg:col-span-7">
           <ScrollWords text={t('about.intro')} className="heading text-[clamp(1.6rem,2.6vw,2.6rem)] leading-[1.12] text-paper" />
-          <div id="about-more" className={`space-y-6 ${showMore ? '' : 'max-md:hidden'}`}>
-            <p className="reveal leading-relaxed text-paper/70">{t('about.expertise')}</p>
-            <p className="reveal leading-relaxed text-paper/70">{t('about.passion')}</p>
-          </div>
-          <button
-            type="button"
+          {/* Mobile : on laisse entrevoir le début du paragraphe suivant, tramé */}
+          <Expandable id="about-more" open={showMore} collapsed={firstLines(2)}>
+            <div className="space-y-6 pt-6">
+              <p className="reveal leading-relaxed text-paper/70">{t('about.expertise')}</p>
+              <p className="reveal leading-relaxed text-paper/70">{t('about.passion')}</p>
+            </div>
+          </Expandable>
+          <ExpandButton
+            open={showMore}
             onClick={() => setShowMore((v) => !v)}
-            aria-expanded={showMore}
-            aria-controls="about-more"
-            className="label flex items-center gap-2 text-paper md:hidden"
-          >
-            {showMore ? t('ui.readLess', { defaultValue: 'Réduire' }) : t('ui.readMore', { defaultValue: 'Lire la suite' })} {showMore ? '−' : '+'}
-          </button>
+            controls="about-more"
+            label={t('ui.readMore', { defaultValue: 'Lire la suite' })}
+            openLabel={t('ui.readLess', { defaultValue: 'Réduire' })}
+            className="mt-5"
+          />
         </div>
         <aside className="reveal lg:col-span-4 lg:col-start-9">
           <div className="crosshair border border-line p-5">
@@ -202,14 +207,24 @@ export const AboutSection = () => {
                 <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.1em] text-paper/60">{exp.company}</p>
               </div>
               <div className="md:col-span-6">
-                <p className="leading-relaxed text-paper/70 max-md:line-clamp-4">{exp.description}</p>
-                {exp.highlights && (
-                  <ul className="mt-4 flex flex-wrap gap-1.5 max-md:hidden">
-                    {exp.highlights.map((h) => (
-                      <li key={h} className="chip normal-case tracking-normal">{h}</li>
-                    ))}
-                  </ul>
-                )}
+                <Expandable id={`exp-${i}`} open={!!openExp[i]} collapsed={firstLines(5)}>
+                  <p className="leading-relaxed text-paper/70">{exp.description}</p>
+                  {exp.highlights && (
+                    <ul className="mt-4 flex flex-wrap gap-1.5">
+                      {exp.highlights.map((h) => (
+                        <li key={h} className="chip normal-case tracking-normal">{h}</li>
+                      ))}
+                    </ul>
+                  )}
+                </Expandable>
+                <ExpandButton
+                  open={!!openExp[i]}
+                  onClick={() => setOpenExp((o) => ({ ...o, [i]: !o[i] }))}
+                  controls={`exp-${i}`}
+                  label={t('ui.readMore', { defaultValue: 'Lire la suite' })}
+                  openLabel={t('ui.readLess', { defaultValue: 'Réduire' })}
+                  className="mt-4"
+                />
               </div>
             </li>
           ))}
