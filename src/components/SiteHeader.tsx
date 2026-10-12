@@ -90,7 +90,10 @@ export const SiteHeader: React.FC = () => {
             {t('nav.projects')}
           </NavLink>
 
-          <div className="flex items-center gap-3 justify-self-end">
+          <div className="flex items-center gap-3 justify-self-end md:gap-5">
+            <Link to="/lab" className={`${linkClass} hidden md:block`}>
+              {t('nav.lab')}
+            </Link>
             <NavLink id="contact" className={`${linkClass} hidden md:block`}>
               {t('nav.contact')}
             </NavLink>
@@ -147,6 +150,7 @@ export const SiteHeader: React.FC = () => {
             >
               <div className="flex flex-wrap gap-2">
                 <Link to="/projects" className="btn-ghost">{t('projects.allProjects')}</Link>
+                <Link to="/lab" className="btn-ghost">{t('nav.lab')}</Link>
                 <Link to="/cv" className="btn-ghost">{t('about.viewCV')}</Link>
               </div>
               <a href="mailto:christen.dijoux@gmail.com" className="block font-display text-3xl text-paper underline decoration-paper/30 underline-offset-4">

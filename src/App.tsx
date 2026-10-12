@@ -23,6 +23,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((m) => ({ de
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const LegalNoticePage = lazy(() => import('./pages/LegalNoticePage'));
 const CVPage = lazy(() => import('./pages/CVPage'));
+const LabPage = lazy(() => import('./pages/LabPage'));
 const LetterGeneratorPage = lazy(() => import('./pages/LetterGeneratorPage'));
 const StarGame = lazy(() => import('./components/StarGame/index').then((m) => ({ default: m.StarGame })));
 
@@ -63,6 +64,7 @@ function App() {
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectDetailPage />} />
                 <Route path="/cv" element={<CVPage />} />
+                <Route path="/lab" element={<LabPage />} />
                 <Route path="/generateur-lettre" element={<LetterGeneratorPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 <Route path="/legal-notice" element={<LegalNoticePage />} />

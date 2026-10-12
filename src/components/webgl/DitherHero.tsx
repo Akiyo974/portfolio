@@ -197,10 +197,11 @@ const compileProgram = (gl: WebGLRenderingContext) => {
 /**
  * Fond WebGL du hero : sphère organique tramée, interactive.
  */
-const DitherHero: React.FC<{ className?: string; intro?: boolean; centered?: boolean }> = ({
+const DitherHero: React.FC<{ className?: string; intro?: boolean; centered?: boolean; scrollLinked?: boolean }> = ({
   className = '',
   intro = true,
   centered = false,
+  scrollLinked = true,
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -289,9 +290,9 @@ const DitherHero: React.FC<{ className?: string; intro?: boolean; centered?: boo
           const band = marker.getBoundingClientRect().top - wrap.getBoundingClientRect().top - 12 - bandTop;
           if (band > 90) {
             const m = Math.min(width, height);
-            const visible = Math.min(band * 0.42, width * 0.4);
-            // 0.12 ≈ rayon de la partie éclairée (visible) de la sphère, en uv, à l'échelle 1 (mesuré)
-            U.uFocus = [0, (0.5 * height - (bandTop + band / 2)) / m, 0.12 / (visible / m)];
+            const visible = Math.min(band * 0.4, width * 0.3);
+            // 0.32 ≈ rayon de la partie éclairée (visible) de la sphère entièrement déployée, en uv, à l'échelle 1 (mesuré)
+            U.uFocus = [0, (0.5 * height - (bandTop + band / 2)) / m, 0.32 / (visible / m)];
           } else {
             // Petit écran sans espace libre : sphère hors champ, seul le champ d'étoiles reste
             U.uFocus = [0, 10, 1];
@@ -327,7 +328,8 @@ const DitherHero: React.FC<{ className?: string; intro?: boolean; centered?: boo
       const io = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting));
       io.observe(wrap);
 
-      const scrollRatio = () => Math.min(1, Math.max(0, window.scrollY / (wrap.offsetHeight || 1)));
+      // Hors du hero (ex. Lab), la sphère ne se dissout pas au défilement
+      const scrollRatio = () => (scrollLinked ? Math.min(1, Math.max(0, window.scrollY / (wrap.offsetHeight || 1))) : 0);
 
       const cleanup = () => {
         offIntro();
@@ -419,7 +421,7 @@ const DitherHero: React.FC<{ className?: string; intro?: boolean; centered?: boo
       if (stop) stop();
       else gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [prefersReducedMotion, centered]);
+  }, [prefersReducedMotion, centered, scrollLinked]);
 
   return (
     <div ref={wrapRef} className={`absolute inset-0 ${className}`} aria-hidden="true">

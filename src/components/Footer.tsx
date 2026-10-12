@@ -107,6 +107,11 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
                   {t('nav.projects')}
                 </Link>
               </li>
+              <li>
+                <Link to="/lab" onClick={() => window.scrollTo(0, 0)} className={linkClass}>
+                  {t('nav.lab')}
+                </Link>
+              </li>
             </Column>
           )}
         </div>
