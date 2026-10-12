@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Footer } from '../components/Footer';
 import { SectionLabel, MetaRow } from '../components/ui/Editorial';
@@ -159,11 +159,7 @@ export const LabPage: React.FC = () => {
 
   return (
     <main className="min-h-screen bg-ink text-paper">
-      <Helmet>
-        <title>{t.title}</title>
-        <meta name="description" content={t.description} />
-        <link rel="canonical" href="https://christendijoux.com/lab" />
-      </Helmet>
+      <Seo path="/lab" title={t.title} description={t.description} image="/assets/art/og-lab.jpg" imageAlt="Lab — Gray-Scott reaction-diffusion and particle type" />
 
       <header className="px-4 pb-12 pt-8 sm:px-6 md:px-10 md:pb-20 md:pt-12">
         <Link to="/" className="label group flex w-fit items-center gap-2 hover:text-paper">

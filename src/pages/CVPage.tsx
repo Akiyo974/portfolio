@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, Download, Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
@@ -302,18 +302,16 @@ export default function CVPage() {
 
   return (
     <main className="cv-page min-h-screen bg-ink text-paper px-4 pb-16 pt-10 sm:px-6 md:px-10">
-      <Helmet>
-        <title>{isEn ? 'Resume | Christen Dijoux' : 'CV | Christen Dijoux'}</title>
-        <meta
-          name="description"
-          content={
-            isEn
-              ? 'Resume of Christen Dijoux - Digital Innovation Specialist and Full-Stack Developer.'
-              : 'CV de Christen Dijoux - Spécialiste en Innovation Numérique et Développeur Full-Stack.'
-          }
-        />
-        <link rel="canonical" href="https://christendijoux.com/cv" />
-      </Helmet>
+      <Seo
+        path="/cv"
+        type="profile"
+        title={isEn ? 'Resume — Christen Dijoux' : 'CV — Christen Dijoux'}
+        description={
+          isEn
+            ? 'Resume of Christen Dijoux — Digital Innovation Specialist and full-stack & AI developer in Saguenay, Québec.'
+            : 'CV de Christen Dijoux — Spécialiste en innovation numérique et développeur full-stack & IA à Saguenay, Québec.'
+        }
+      />
 
       {createPortal(<CVPrint isEn={isEn} tx={tx} />, document.body)}
 

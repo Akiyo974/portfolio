@@ -1,3 +1,5 @@
+ErrorDocument 404 /404.html
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -6,25 +8,12 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   
-  # Exceptions - Ne PAS rediriger ces fichiers vers index.html
-  RewriteCond %{REQUEST_URI} !^/robots\.txt$
-  RewriteCond %{REQUEST_URI} !^/sitemap\.xml$
-  RewriteCond %{REQUEST_URI} !^/humans\.txt$
-  RewriteCond %{REQUEST_URI} !^/ai\.txt$
-  RewriteCond %{REQUEST_URI} !^/llms\.txt$
-  RewriteCond %{REQUEST_URI} !^/ads\.txt$
-  RewriteCond %{REQUEST_URI} !^/brand\.txt$
-  RewriteCond %{REQUEST_URI} !^/browserconfig\.xml$
-  RewriteCond %{REQUEST_URI} !^/manifest\.json$
-  RewriteCond %{REQUEST_URI} !^/structured-data\.json$
-  RewriteCond %{REQUEST_URI} !^/\.well-known/
-  
-  # Don't rewrite files or directories
+  # Pages pré-rendues au build (scripts/prerender.mjs) : /lab → lab.html, /project/ctreq → project/ctreq.html
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  
-  # Rewrite everything else to index.html to allow html5 state links
-  RewriteRule . /index.html [L]
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ /$1.html [L]
+
+  # Toute autre adresse : vraie erreur 404 (pas de « soft 404 » qui renverrait l'accueil)
 </IfModule>
 
 # HSTS - Force HTTPS for 1 year

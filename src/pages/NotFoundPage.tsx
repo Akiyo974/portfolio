@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
 import { ArrowLeft } from 'lucide-react';
 import { SplitText } from '../components/ui/Kinetic';
 
@@ -12,10 +12,7 @@ export function NotFoundPage() {
 
   return (
     <main className="grain relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-ink text-paper">
-      <Helmet>
-        <title>404 | Christen Dijoux</title>
-        <meta name="robots" content="noindex" />
-      </Helmet>
+      <Seo noindex path="/404" title="404 | Christen Dijoux" description="Page not found." />
       <Suspense fallback={null}>
         <DitherHero centered />
       </Suspense>

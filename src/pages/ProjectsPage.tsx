@@ -1,7 +1,8 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
+import { breadcrumb } from '../lib/seo';
 import { ArrowLeft, Github } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
 import { Footer } from '../components/Footer';
@@ -214,22 +215,12 @@ export const ProjectsPage = () => {
 
   return (
     <main className="min-h-screen bg-ink text-paper">
-      <Helmet>
-        <title>{t('projects.title')} - Christen Dijoux</title>
-        <meta name="description" content={t('projects.description')} />
-
-        {/* Breadcrumb JSON-LD */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://christendijoux.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Projets", "item": "https://christendijoux.com/projects" }
-            ]
-          })}
-        </script>
-      </Helmet>
+      <Seo path="/projects" title={`${t('projects.title')} — Christen Dijoux`} description={t('projects.description')}>
+        {breadcrumb([
+          { name: t('nav.home'), path: '/' },
+          { name: t('nav.projects'), path: '/projects' },
+        ])}
+      </Seo>
 
       <header className="px-4 pb-12 pt-8 sm:px-6 md:px-10 md:pb-16 md:pt-12">
         <div className="flex items-center justify-between">

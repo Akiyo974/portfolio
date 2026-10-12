@@ -82,7 +82,10 @@ Demos mount only near the viewport and unmount when they leave it, so the page n
 
 ## SEO & discoverability
 
-Per-page titles, descriptions and canonical URLs, JSON-LD structured data, `hreflang` alternates, a generated sitemap, and `llms.txt` / `ai.txt` for AI crawlers.
+- Every route is **pre-rendered to static HTML** at build time (`scripts/prerender.mjs`): its own title, description, canonical, FR/EN `hreflang`, Open Graph / Twitter image and text content — readable by social previews and AI crawlers that don't run JavaScript.
+- One `<Seo>` component per page at runtime, so tags are replaced, never duplicated; French lives on `?lang=fr` with its own canonical.
+- JSON-LD (`Person`, `WebSite`, breadcrumbs), a sitemap with `hreflang` alternates, images and real `lastmod` dates from Git, real 404 status for unknown URLs.
+- [`llms.txt`](https://christendijoux.com/llms.txt) summary for language models, `humans.txt`, `security.txt`.
 
 ## Quality
 

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, type FC, type ReactNode } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
+import { breadcrumb } from '../lib/seo';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from 'lucide-react';
@@ -18,6 +19,9 @@ import { finishImageTransition, useProjectTransition } from '../lib/projectTrans
 import { useLenis } from '../hooks/useLenis';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Images de partage 1200×630 (JPG : les .webp passent mal dans les aperçus LinkedIn)
+const OG_IMAGES = new Set(['akiworkspace', 'ctreq', 'ctreq-blog-archive', 'innovations-numeriques-fp', 'akiproject', 'akimusic']);
 
 /** Sur mobile, les longues listes n'affichent que les premiers éléments. */
 const MOBILE_LIST = 4;
@@ -96,10 +100,7 @@ export const ProjectDetailPage = () => {
   if (!project) {
     return (
       <main className="flex min-h-[80vh] flex-col items-center justify-center bg-ink px-4 text-center text-paper">
-        <Helmet>
-          <title>404 - {t('projectDetail.notFound')} | Christen Dijoux</title>
-          <meta name="robots" content="noindex" />
-        </Helmet>
+        <Seo noindex path={`/project/${id ?? ''}`} title={`404 — ${t('projectDetail.notFound')} | Christen Dijoux`} description={t('projectDetail.notFound')} />
         <p className="label">Error · 404</p>
         <h1 className="display mt-4 text-[clamp(3rem,10vw,9rem)]">{t('projectDetail.notFound')}</h1>
         <Link to="/projects" className="btn-ghost mt-8">
@@ -149,57 +150,24 @@ export const ProjectDetailPage = () => {
 
   return (
     <main ref={pageRef} className="min-h-screen bg-ink text-paper">
-      <Helmet>
-        <title>{`${translatedTitle} — ${t('ui.caseStudy')} | Christen Dijoux`}</title>
-        <meta name="description" content={translatedDescription} />
-        <meta name="keywords" content={`${project.languages.join(', ')}, ${project.topics.join(', ')}, web development, portfolio`} />
-
-        {/* Open Graph */}
-        <meta property="og:title" content={`${translatedTitle} - Projet Personnel`} />
-        <meta property="og:description" content={translatedDescription} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://christendijoux.com/project/${project.id}`} />
-        {project.image && (
-          <>
-            <meta property="og:image" content={`https://christendijoux.com${project.image}`} />
-            <meta property="og:image:width" content="879" />
-            <meta property="og:image:height" content="495" />
-            <meta property="og:image:alt" content={translatedTitle} />
-          </>
-        )}
-        <meta property="article:published_time" content={`${project.year}-01-01`} />
-        <meta property="article:modified_time" content="2025-11-20" />
+      <Seo
+        path={`/project/${project.id}`}
+        type="article"
+        title={`${translatedTitle} — ${t('ui.caseStudy')} | Christen Dijoux`}
+        description={translatedDescription}
+        image={OG_IMAGES.has(project.id) ? `/assets/og/${project.id}.jpg` : undefined}
+        imageAlt={translatedTitle}
+      >
         <meta property="article:author" content="Christen Dijoux" />
-        <meta property="article:tag" content={project.topics.join(', ')} />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${translatedTitle} - Projet Personnel`} />
-        <meta name="twitter:description" content={translatedDescription} />
-        {project.image && (
-          <>
-            <meta name="twitter:image" content={`https://christendijoux.com${project.image}`} />
-            <meta name="twitter:image:alt" content={translatedTitle} />
-          </>
-        )}
-        <meta name="twitter:creator" content="@ChristenDijoux" />
-
-        {/* Canonical */}
-        <link rel="canonical" href={`https://christendijoux.com/project/${project.id}`} />
-
-        {/* Breadcrumb JSON-LD */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://christendijoux.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Projets", "item": "https://christendijoux.com/projects" },
-              { "@type": "ListItem", "position": 3, "name": translatedTitle, "item": `https://christendijoux.com/project/${project.id}` }
-            ]
-          })}
-        </script>
-      </Helmet>
+        {project.topics.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
+        {breadcrumb([
+          { name: t('nav.home'), path: '/' },
+          { name: t('nav.projects'), path: '/projects' },
+          { name: translatedTitle, path: `/project/${project.id}` },
+        ])}
+      </Seo>
 
       {/* En-tête */}
       <header className="px-4 pb-10 pt-8 sm:px-6 md:px-10 md:pb-14 md:pt-12">

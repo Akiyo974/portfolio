@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { HeroSection } from '../components/HeroSection';
@@ -33,11 +33,12 @@ export const HomePage = () => {
 
   return (
     <main className="bg-ink">
-      <Helmet>
-        <title>{t('home.title', { defaultValue: 'Christen Dijoux — Développeur Full-stack & IA | Saguenay' })}</title>
-        <meta name="description" content={t('home.description', { defaultValue: 'Portfolio de Christen Dijoux - Développeur Full-stack spécialisé en React, Node.js, TypeScript et WordPress Headless. Découvrez mes projets créatifs et mes compétences en développement web moderne.' })} />
-        <link rel="canonical" href="https://christendijoux.com/" />
-      </Helmet>
+      <Seo
+        path="/"
+        type="profile"
+        title={t('home.title', { defaultValue: 'Christen Dijoux — Développeur Full-stack & IA | Saguenay' })}
+        description={t('home.description', { defaultValue: 'Portfolio de Christen Dijoux - Développeur Full-stack spécialisé en React, Node.js, TypeScript et WordPress Headless.' })}
+      />
       <HeroSection />
       <ManifestoBand />
       <AboutSection />

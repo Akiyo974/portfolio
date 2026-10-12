@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import Footer from '../components/Footer';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
 
 export default function PrivacyPolicyPage() {
   const { t } = useTranslation();
@@ -12,11 +12,7 @@ export default function PrivacyPolicyPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('privacy.title')} | Christen Dijoux</title>
-        <meta name="description" content={t('privacy.metaDescription')} />
-        <meta name="robots" content="index, follow" />
-      </Helmet>
+      <Seo path="/privacy-policy" title={`${t('privacy.title')} | Christen Dijoux`} description={t('privacy.metaDescription')} />
 
       <div className="min-h-screen bg-ink text-paper">
         <div className="px-4 py-16 sm:px-6 md:px-10 md:py-24">

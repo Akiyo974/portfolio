@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Seo } from '../components/Seo';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -314,14 +314,7 @@ export default function LetterGeneratorPage() {
 
   return (
     <main className="letter-generator min-h-screen bg-black px-4 pb-16 pt-10 text-white sm:px-6 lg:px-10">
-      <Helmet>
-        <title>Générateur de lettre | Christen Dijoux</title>
-        <meta
-          name="description"
-          content="Créer, personnaliser et exporter une lettre professionnelle au format PDF."
-        />
-        <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
+      <Seo noindex path="/generateur-lettre" title="Générateur de lettre | Christen Dijoux" description="Créer, personnaliser et exporter une lettre professionnelle au format PDF." />
 
       <div className="mx-auto max-w-[1500px]">
         <header className="letter-toolbar mb-8 flex flex-col gap-5 border-b border-white/15 pb-6 print:hidden lg:flex-row lg:items-end lg:justify-between">

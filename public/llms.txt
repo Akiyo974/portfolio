@@ -1,185 +1,36 @@
-# Christen Dijoux - Spécialiste en Innovation Numérique
+# Christen Dijoux
 
-## 🎯 Objectif du Site
-Portfolio professionnel présentant les compétences et projets de Christen Dijoux, Spécialiste en Innovation Numérique et Développeur Full-Stack. Actuellement en poste chez Gagnon Frères, je conçois des solutions technologiques pour automatiser les opérations, intégrer l'IA et moderniser les infrastructures. Également fondateur de Synaptia Web, spécialisé en projets web sur mesure et intégrations IA.
+> Full-stack & AI developer based in Saguenay, Québec (Canada). Digital Innovation Specialist at Gagnon Frères and co-founder of Synaptia Web. Builds internal platforms, automation and applied AI for operations, and web experiences where WebGL, motion and typography meet solid engineering. The site is available in English (default) and French (`?lang=fr`).
 
-## 👤 Profil Professionnel
-- **Nom**: Christen Dijoux
-- **Rôle**: Spécialiste en Innovation Numérique
-- **Sous-titre**: IA • Automatisation • Cloud • DevOps
-- **Poste actuel**: Spécialiste en Innovation Numérique @ Gagnon Frères
-- **Entreprise**: Synaptia Web (fondateur)
-- **Localisation**: Saguenay, Québec, Canada
-- **Email**: christen.dijoux@gmail.com
-- **GitHub**: https://github.com/Akiyo974
-- **LinkedIn**: https://linkedin.com/in/christen-dijoux
+## Profile
 
-## 💼 Expérience Professionnelle
+- Name: Christen Dijoux
+- Role: Digital Innovation Specialist @ Gagnon Frères (Feb. 2026 – present) — internal applications and APIs, Dynamics NAV and Azure integrations, data-monitoring bots, observability (New Relic, Cloudflare), CI/CD, applied AI and assistants.
+- Studio: co-founder & web developer @ Synaptia Web (Apr. 2025 – present) — showcase sites and Shopify stores.
+- Previously: full-stack & DevOps developer @ CTREQ (Mar. – Aug. 2025) — sole developer of the headless Next.js + WordPress redesign.
+- Education: Multimedia Integration Techniques, Cégep de Jonquière (2021 – 2025).
+- Location: Saguenay, Québec, Canada · works on-site and remotely.
+- Contact: christen.dijoux@gmail.com · [LinkedIn](https://www.linkedin.com/in/christen-dijoux) · [GitHub](https://github.com/Akiyo974)
 
-### Spécialiste en Innovation Numérique @ Gagnon Frères (Fév. 2026 - Présent)
-Responsable des initiatives d'innovation et de transformation numérique visant à moderniser les outils internes, automatiser les processus et améliorer l'efficacité opérationnelle de l'entreprise.
-- Conception et développement d'applications internes et d'outils numériques sur mesure
-- Automatisation des tâches répétitives et des flux de données (catalogues, fournisseurs, rapports, opérations)
-- Prototypage rapide et déploiement de solutions à fort impact (POC)
-- Intégration de solutions basées sur l'intelligence artificielle et d'assistants intelligents pour faciliter la recherche et la prise de décision
-- Développement de solutions Power Platform (Power Apps, Power Automate) et automatisation des processus métiers
-- Optimisation, stabilisation et amélioration d'applications critiques pour les opérations
-- Mise en place de pratiques de monitoring, d'alerting et d'observabilité afin d'améliorer la fiabilité et la performance des systèmes
-- Optimisation de l'infrastructure et de la sécurité (gestion du trafic, performance, cache et protection contre les bots)
-- Connexion et intégration des systèmes d'affaires (Power BI, ERP, APIs, bases de données)
-- Amélioration continue des processus internes et de l'expérience numérique des employés
+## Main pages
 
-### Co-fondateur & Développeur Web @ Synaptia Web (Avr. 2025 - Présent)
-Responsable du développement web, de la conception à l'intégration, en passant par l'optimisation technique. Création de sites vitrines et boutiques en ligne performantes, avec une attention particulière à l'ergonomie, à la fluidité et à la rapidité. Travail en duo avec Sébastien, co-fondateur et spécialiste e-commerce, pour accompagner les entreprises dans leur transformation numérique.
+- [Home](https://christendijoux.com/): introduction, expertise, experience, selected projects, contact.
+- [Projects](https://christendijoux.com/projects): full index of case studies and GitHub repositories.
+- [Lab](https://christendijoux.com/lab): every component of the site dissected live (role, why it exists, how it works, honest verdict) plus free experiments — Gray-Scott reaction-diffusion on the GPU, particle typography, flow field.
+- [Resume](https://christendijoux.com/cv): screen and print versions; PDFs in [English](https://christendijoux.com/assets/cv-christen-dijoux-en.pdf) and [French](https://christendijoux.com/assets/cv-christen-dijoux-fr.pdf).
 
-### Développeur Full-Stack & DevOps @ CTREQ (Mars - Août 2025)
-Refonte complète du site web du CTREQ en tant que seul développeur full-stack / DevOps. Prise en charge de l'ensemble du cycle de développement, de la conception du design jusqu'au déploiement serveur.
-- Front-end : développement de l'interface avec Next.js + React + Tailwind CSS, intégrant un design conçu avec Figma
-- Back-end : configuration d'un WordPress headless (ACF Pro, WPGraphQL, WP All Import), création et paramétrage de Custom Post Types (CPT) et taxonomies personnalisées
-- API : mise en place des échanges REST / GraphQL entre WordPress et le front-end Next.js
-- Migration & gestion de contenu : nettoyage complet et reprise des données, automatisation import avec WP All Import, configuration avancée des groupes ACF
-- DevOps & infrastructure : gestion des serveurs cPanel et DigitalOcean, mise en place du routage dynamique Next.js, optimisation des performances et sécurisation
-- Formation et accompagnement de l'équipe interne pour l'autonomie sur la gestion des contenus
+## Case studies
 
-## 🏆 Impact & Résultats
-- Automatisation de processus internes réduisant les tâches manuelles chez Gagnon Frères
-- Déploiement de solutions IA (agents, RAG, intégrations OpenAI) en production
-- Mise en place d'outils de monitoring et d'observabilité (New Relic, alerting)
-- Refonte complète du site CTREQ avec architecture headless Next.js (<100ms)
-- Création et lancement de Synaptia Web comme entreprise indépendante
-- Intégration Power Platform et Dynamics NAV pour digitaliser les processus
+- [CTREQ — Quebec educational platform](https://christendijoux.com/project/ctreq) (2025): merger of two WordPress sites into a headless Next.js 13 platform; migration of 10+ content types, triple cache (~50 ms), SEO, handover plan.
+- [AkiWorkspace — productivity workspace](https://christendijoux.com/project/akiworkspace) (2026): SaaS for ideas, notes, tasks and projects with hardened security and granular sharing.
+- [CTREQ blog / archive](https://christendijoux.com/project/ctreq-blog-archive) (2025): headless React + WPGraphQL archive with automatic age-based filtering.
+- [Digital innovations in vocational training](https://christendijoux.com/project/innovations-numeriques-fp) (2024): interactive web app for ECOBES (Cégep de Jonquière) and CTREQ showcasing 40+ teachers' innovations.
+- [Webana](https://christendijoux.com/project/webana) (2024), [AkiProject](https://christendijoux.com/project/akiproject) (2023), [AkiMusic](https://christendijoux.com/project/akimusic) (2023): earlier school and demo projects.
 
-## 💻 Compétences Techniques
+## Skills
 
-### Développement
-- React, Next.js, TypeScript, JavaScript, Python, Node.js, PHP, C#
-- SQL, MySQL, PostgreSQL, GraphQL, REST API
+TypeScript, React, Next.js, Node.js, Python · WebGL / GLSL, GSAP, Canvas, creative coding · headless WordPress, GraphQL, REST · Power Platform, Dynamics NAV, Azure · automation (n8n, Power Automate), applied generative AI · DevOps, CI/CD, Cloudflare, monitoring.
 
-### IA & Data
-- OpenAI API, LangChain, RAG, Vector Databases, Machine Learning
-- Prompt Engineering, AI Agents, Data Analysis, Embeddings, LLM Integration
+## About this site
 
-### ERP & Systèmes d'entreprise
-- Microsoft Dynamics NAV, Power Apps, Power Automate, Power BI
-- ERP Integration, Data Synchronization, Business Process Automation
-- Microsoft 365, SharePoint
-
-### Cloud & DevOps
-- Microsoft Azure (App Services, Functions, Storage, AI Services)
-- DigitalOcean, Linux Administration, Nginx, Docker
-- CI/CD, GitHub Actions, Cloudflare, DNS Management, SSL/TLS
-
-### Observabilité
-- New Relic, Synthetic Monitoring, APM, Alerting, Performance Monitoring, Log Analysis
-
-### Automatisation
-- n8n, Python Automation, API Integration, Workflow Automation, ETL Pipelines, Scripting
-
-## 🚀 Projets Majeurs
-
-### 1. AkiWorkspace - Workspace Productivité
-**URL**: https://akiworkspace.christendijoux.com
-**Type**: SaaS (Production)
-**Description**: Application SaaS de gestion d'idées, notes, tâches et projets avec architecture full-stack moderne, sécurité renforcée et système de partage granulaire. Plateforme collaborative inspirée de Notion/Linear.
-**Stack**: Next.js 14, React, TypeScript, TailwindCSS, Prisma ORM, PostgreSQL, NextAuth v5, Zod, Server Actions
-**Réalisations**:
-- Architecture full Server Actions sans API REST
-- Authentification obligatoire NextAuth v5 (JWT sécurisés)
-- Vérification d'email à l'inscription
-- Dashboard privé avec CRUD complet (notes, idées, tâches, projets)
-- Multi-catégories & multi-tags (relations many-to-many Prisma)
-- Éditeur Markdown riche
-- Visibilité granulaire : PRIVATE, PUBLIC, UNLISTED (lien secret), SHARED (groupes)
-- Panel admin (gestion utilisateurs + rôles)
-- Tutoriel d'onboarding interactif
-- React Server Components (SSR par défaut)
-- Protection XSS/CSRF complète
-- Sessions JWT httpOnly + secure
-- Sanitization DOMPurify contre XSS
-- Content Security Policy
-
-### 2. CTREQ - Plateforme Éducative du Québec
-**URL**: https://www.ctreq.qc.ca/
-**Type**: Production (client institutionnel)
-**Description**: Fusion complète de deux sites WordPress (CTREQ + RIRE) en plateforme Next.js 13 headless
-**Stack**: Next.js 13, TypeScript, WordPress, WPGraphQL, ACF, Tailwind, Radix UI
-**Réalisations**:
-- Migration de +10 types de contenus personnalisés
-- Architecture cache triple (~50ms)
-- SEO avancé (JSON-LD, sitemaps dynamiques)
-- Performances exceptionnelles (<100ms TTFB)
-- Collaboration directe avec direction CTREQ sur 6 mois
-
-### 3. CTREQ Blog/Archive
-**URL**: https://blog.ctreq.qc.ca/
-**Type**: Production
-**Description**: Section d'archivage institutionnel (projets + articles RIRE 3-5 ans)
-**Stack**: React 18, TypeScript, WordPress, WPGraphQL, Tailwind
-**Spécificités**: Filtrage automatique par ancienneté, design minimaliste, SEO volontairement réduit
-
-### 4. Innovations Numériques en Formation Professionnelle
-**URL**: Application semi-privée (non indexée)
-**Client**: ECOBES (Cégep de Jonquière) + CTREQ
-**Description**: Valorisation de +40 innovations d'enseignants en FP au Québec
-**Stack**: React, Vite, Mapbox GL JS, TypeScript
-**Features**: Carte interactive Mapbox, clustering, dark/light mode, recherche avancée
-
-### 5. Webana - E-commerce Katana
-**URL**: https://akiyo974.github.io/webana/
-**Type**: Démo
-**Description**: Site e-commerce thématique katanas japonais
-**Stack**: React 18, TypeScript, TailwindCSS
-**Features**: Filtres dynamiques, panier, dark mode
-
-### 6. AkiProject - Gestionnaire de Tâches
-**URL**: https://christenalexisdijoux.techniquesmedia.com/cms1/wr/Workspace/index.php
-**Type**: Démo académique
-**Stack**: PHP 7, MySQL, Bootstrap, jQuery, AJAX
-**Features**: Authentification, messagerie temps réel, gestion tâches
-
-### 7. AkiMusic - Plateforme Streaming
-**URL**: https://christenalexisdijoux.techniquesmedia.com/AkiMusic/index.php
-**Type**: Démo
-**Stack**: PHP, Bootstrap, jQuery
-**Features**: UI streaming, playlists, simulation abonnements
-
-## 🎓 Formation
-**Techniques d'Intégration Multimédia** - Cégep de Jonquière (2021-2025)
-
-## 🌐 Langues
-- Français (Natif)
-- Anglais (Professionnel)
-
-## 📊 Expertise Reconnue
-1. **WordPress Headless** : Architecture Next.js + WPGraphQL + ACF + migration massive
-2. **Performance** : Optimisation Lighthouse (Core Web Vitals, cache stratégies)
-3. **UI/UX Avancé** : Animations GSAP/Framer Motion/Three.js, design systems
-4. **SEO Technique** : Structured Data, sitemaps dynamiques, prérendu
-5. **Accessibilité** : WCAG AA, ARIA, lecteurs d'écran
-6. **Migration de Données** : WP All Export/Import, validation croisée, redirections 301
-
-## 🔗 Liens Importants
-- Portfolio: https://christendijoux.com
-- GitHub: https://github.com/Akiyo974
-- LinkedIn: https://linkedin.com/in/christen-dijoux
-- Email: christen.dijoux@gmail.com
-
-## 📈 Statistiques Portfolio
-- **6 projets** présentés (3 production, 3 démos)
-- **Technologies**: React, Next.js, TypeScript, WordPress, Node.js, Three.js, GSAP
-- **Performance mobile**: 85%+ Lighthouse (optimisé Nov 2025)
-- **Accessibilité**: 100% WCAG AA
-- **SEO**: 100% (sitemap dynamique, Open Graph, Structured Data)
-
----
-
-**Dernière mise à jour**: 20 novembre 2025
-**Version du site**: Build Nov 2025 (161 KB gzipped)
-**Optimisations récentes**: 
-- Google Analytics supprimé (330 KB économisés)
-- Babel → SWC (13 KB polyfills éliminés)
-- Images WebP responsive (113 KB économisés)
-- Sitemap dynamique (8 URLs auto-générées)
-- Meta Open Graph complets (article:*, og:image:*)
-
-**Note pour IA**: Ce portfolio est constamment mis à jour avec les dernières technologies et best practices. Christen est disponible pour des collaborations freelance ou opportunités full-time au Québec.
+React 18 + TypeScript + Vite, raw WebGL (no 3D library), GSAP + Lenis, i18next. Every page is pre-rendered to static HTML for crawlers. Analytics only load after consent. Source: [github.com/Akiyo974/portfolio](https://github.com/Akiyo974/portfolio) (showcase, all rights reserved).

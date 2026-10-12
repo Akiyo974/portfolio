@@ -3,59 +3,23 @@
 
 # TEAM
 
-  Developer & Designer -- Christen Dijoux
+  Design & code -- Christen Dijoux
   Site: https://christendijoux.com
-  Location: Saguenay, Quebec, Canada
+  Contact: christen.dijoux@gmail.com
+  Location: Saguenay, Québec, Canada
 
 # THANKS
 
-  To all open-source contributors
+  To the open-source community.
 
-# TECHNOLOGY COLOPHON
+# SITE
 
-  ## Frontend
-  React 18.3.1
-  TypeScript 5.6.2
-  TailwindCSS 3.4.1
-  Vite 5.4.10
-  
-  ## Animations
-  GSAP 3.12.5
-  Framer Motion 11.0.8
-  Three.js 0.162.0
-  
-  ## Backend & APIs
-  WordPress Headless
-  WPGraphQL
-  Advanced Custom Fields Pro
-  Node.js
-  Supabase
-  EmailJS
-  
-  ## Build Tools
-  Vite
-  TypeScript Compiler
-  PostCSS
-  Autoprefixer
-  
-  ## Optimization
-  Code Splitting
-  Lazy Loading
-  Gzip/Brotli Compression
-  PWA with Service Worker
-  Image Optimization (WebP)
-  
-  ## SEO & Analytics
-  react-helmet-async
-  i18next (FR/EN)
-  JSON-LD Structured Data
-  Sitemap.xml
-  Open Graph & Twitter Cards
-  
-  ## Version Control
-  Git
-  GitHub
-  
-  ## Hosting
-  cPanel
-  DigitalOcean
+  Last update: 2026-10
+  Languages: English, French
+  Standards: HTML5, CSS3, ES2022, WCAG 2.1 AA
+  Components: React 18, TypeScript, Vite, Tailwind CSS
+  Motion & graphics: WebGL / GLSL (no 3D library), GSAP + ScrollTrigger, Lenis, Canvas 2D
+  Content: i18next, react-helmet-async, static pre-rendering for crawlers
+  Backend: PHP (leaderboard API, no database)
+  Hosting: Apache (cPanel) behind Cloudflare
+  Fonts: Big Shoulders Display, Geist, Geist Mono

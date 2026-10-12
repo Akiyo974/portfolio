@@ -6,34 +6,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Christen Dijoux — full-stack & AI developer in Saguenay, Québec. Web experiences, internal platforms, automation and applied AI. React, Next.js, TypeScript, GSAP, WebGL." />
-    <meta name="keywords" content="Christen Dijoux, portfolio, développeur web, développeur full-stack, React, TypeScript, Node.js, WordPress Headless, GSAP, TailwindCSS, Three.js, intégration multimédia, animation web, UI/UX, Québec, Canada" />
+    <!-- SEO : balises de l'accueil. Chaque page les remplace via <Seo> (data-rh = gérées par Helmet),
+         et le pré-rendu (scripts/prerender.mjs) les écrit déjà dans le HTML statique de chaque page. -->
+    <meta name="description" content="Christen Dijoux — full-stack & AI developer in Saguenay, Québec. Web experiences, internal platforms, automation and applied AI. React, Next.js, TypeScript, GSAP, WebGL." data-rh="true" />
+    <meta name="robots" content="index, follow, max-image-preview:large" data-rh="true" />
     <meta name="author" content="Christen Dijoux" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="French" />
-    <meta name="revisit-after" content="7 days" />
-    
-    <!-- Géolocalisation Saguenay -->
+    <link rel="canonical" href="https://christendijoux.com/" data-rh="true" />
+    <link rel="alternate" hreflang="en" href="https://christendijoux.com/" data-rh="true" />
+    <link rel="alternate" hreflang="fr" href="https://christendijoux.com/?lang=fr" data-rh="true" />
+    <link rel="alternate" hreflang="x-default" href="https://christendijoux.com/" data-rh="true" />
+
+    <!-- Localisation -->
     <meta name="geo.region" content="CA-QC" />
     <meta name="geo.placename" content="Saguenay" />
     <meta name="geo.position" content="48.4167;-71.0667" />
     <meta name="ICBM" content="48.4167, -71.0667" />
-    
-    <link rel="canonical" href="https://christendijoux.com/" />
-    
-    <!-- Hreflang pour ciblage géographique -->
-    <link rel="alternate" href="https://christendijoux.com/" hreflang="en" />
-    <link rel="alternate" href="https://christendijoux.com/?lang=fr" hreflang="fr" />
-    <link rel="alternate" href="https://christendijoux.com/" hreflang="x-default" />
-    
-    <!-- AI & Crawler Information -->
+
+    <!-- Fichiers pour humains et IA -->
     <link rel="author" href="/humans.txt" />
-    <link type="application/ld+json" href="/structured-data.json" />
-    <meta name="ai:description" content="Portfolio of Christen Dijoux - Full-stack Developer specializing in React, Node.js, TypeScript, WordPress Headless, GSAP, and Three.js" />
-    <meta name="ai:contact" content="christen.dijoux@gmail.com" />
-    <meta name="ai:location" content="Saguenay, Quebec, Canada" />
-    <meta name="generator" content="React 18.3.1, Vite 5.4.10, TypeScript 5.6.2" />
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM summary" />
 
     <!-- Favicons -->
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
@@ -54,155 +45,62 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Geist+Mono:wght@400;500&family=Geist:wght@300..600&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Geist+Mono:wght@400;500&family=Geist:wght@300..600&display=swap" /></noscript>
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_CA" />
-    <meta property="og:locale:alternate" content="fr_CA" />
-    <meta property="og:site_name" content="Christen Dijoux - Portfolio" />
-    <meta property="og:title" content="Christen Dijoux — Full-stack & AI Developer" />
-    <meta property="og:description" content="Web experiences where motion, WebGL and typography meet solid engineering — plus internal platforms, automation and applied AI." />
-    <meta property="og:image" content="https://christendijoux.com/assets/art/og-cover.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Christen Dijoux portfolio preview" />
-    <meta property="og:url" content="https://christendijoux.com/" />
+    <!-- Open Graph / Twitter (accueil ; remplacés par page) -->
+    <meta property="og:type" content="profile" data-rh="true" />
+    <meta property="og:site_name" content="Christen Dijoux" data-rh="true" />
+    <meta property="og:locale" content="en_CA" data-rh="true" />
+    <meta property="og:url" content="https://christendijoux.com/" data-rh="true" />
+    <meta property="og:title" content="Christen Dijoux — Full-stack & AI Developer | Saguenay, QC" data-rh="true" />
+    <meta property="og:description" content="Christen Dijoux — full-stack & AI developer in Saguenay, Québec. Web experiences, internal platforms, automation and applied AI. React, Next.js, TypeScript, GSAP, WebGL." data-rh="true" />
+    <meta property="og:image" content="https://christendijoux.com/assets/art/og-cover.png" data-rh="true" />
+    <meta property="og:image:alt" content="Christen Dijoux — Full-stack & AI Developer | Saguenay, QC" data-rh="true" />
+    <meta name="twitter:card" content="summary_large_image" data-rh="true" />
+    <meta name="twitter:title" content="Christen Dijoux — Full-stack & AI Developer | Saguenay, QC" data-rh="true" />
+    <meta name="twitter:description" content="Christen Dijoux — full-stack & AI developer in Saguenay, Québec. Web experiences, internal platforms, automation and applied AI. React, Next.js, TypeScript, GSAP, WebGL." data-rh="true" />
+    <meta name="twitter:image" content="https://christendijoux.com/assets/art/og-cover.png" data-rh="true" />
+    <meta name="twitter:image:alt" content="Christen Dijoux — Full-stack & AI Developer | Saguenay, QC" data-rh="true" />
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Christen Dijoux — Full-stack & AI Developer" />
-    <meta name="twitter:description" content="Web experiences, internal platforms, automation and applied AI — Saguenay, Québec." />
-    <meta name="twitter:image" content="https://christendijoux.com/assets/art/og-cover.png" />
-    <meta name="twitter:image:alt" content="Aperçu du portfolio de Christen Dijoux" />
-    <meta name="twitter:creator" content="@ChristenDijoux" />
-
-    <!-- JSON-LD Structured Data pour SEO -->
+    <!-- Données structurées : la personne et le site (communes à toutes les pages) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Christen Dijoux",
-      "url": "https://christendijoux.com",
-      "image": "https://christendijoux.com/assets/art/og-cover.png",
-      "jobTitle": "Full-stack & AI Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Freelance"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Québec",
-        "addressRegion": "QC",
-        "addressCountry": "CA"
-      },
-      "sameAs": [
-        "https://github.com/Akiyo974",
-        "https://linkedin.com/in/christen-dijoux"
-      ],
-      "knowsAbout": [
-        "React",
-        "TypeScript",
-        "JavaScript",
-        "Next.js",
-        "WordPress",
-        "GraphQL",
-        "GSAP",
-        "Three.js",
-        "TailwindCSS",
-        "Web Development",
-        "Full-stack Development",
-        "UI/UX Design"
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Christen Dijoux - Portfolio",
-      "url": "https://christendijoux.com",
-      "description": "Portfolio of Christen Dijoux, full-stack & AI developer: web experiences, headless platforms, internal tools, automation and applied AI.",
-      "author": {
-        "@type": "Person",
-        "name": "Christen Dijoux"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://christendijoux.com/projects?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-
-    <!-- FAQ Schema pour Rich Snippets Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "What web development services do you offer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Full-stack development: React/Next.js applications, headless WordPress architectures with WPGraphQL, animated interfaces with GSAP and WebGL, internal platforms, automation and applied AI, web performance (Core Web Vitals) and WCAG accessibility."
-          }
+          "@type": "Person",
+          "@id": "https://christendijoux.com/#person",
+          "name": "Christen Dijoux",
+          "url": "https://christendijoux.com/",
+          "image": "https://christendijoux.com/assets/art/og-cover.png",
+          "jobTitle": "Digital Innovation Specialist — Full-stack & AI Developer",
+          "worksFor": [
+            { "@type": "Organization", "name": "Gagnon Frères" },
+            { "@type": "Organization", "name": "Synaptia Web" }
+          ],
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "Cégep de Jonquière" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Saguenay",
+            "addressRegion": "QC",
+            "addressCountry": "CA"
+          },
+          "sameAs": [
+            "https://github.com/Akiyo974",
+            "https://www.linkedin.com/in/christen-dijoux"
+          ],
+          "knowsAbout": [
+            "Full-stack development", "React", "Next.js", "TypeScript", "Node.js", "Python",
+            "WebGL", "GLSL", "GSAP", "Creative coding", "Headless WordPress", "GraphQL",
+            "Applied AI", "Automation", "Power Platform", "Azure", "DevOps", "Cloudflare"
+          ]
         },
         {
-          "@type": "Question",
-          "name": "Which technologies do you mainly use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "React, TypeScript, Next.js, Node.js, Python, headless WordPress (WPGraphQL, ACF), Tailwind CSS, GSAP, Framer Motion, WebGL/Three.js, Vite, MySQL and PostgreSQL, plus Azure, Docker and Cloudflare."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are you available for freelance projects?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes — in Saguenay–Lac-Saint-Jean, Québec, and remotely across Canada and beyond, through Synaptia Web. Reach out at christen.dijoux@gmail.com or +1 (418) 376-2612."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Combien de temps faut-il pour développer un site web ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Le délai dépend de la complexité du projet. Un site vitrine simple peut prendre 2-3 semaines, une application web complexe avec WordPress Headless peut nécessiter 6-12 semaines, et des projets d'envergure avec animations avancées et fonctionnalités personnalisées peuvent s'étendre sur plusieurs mois. Je fournis toujours un calendrier détaillé lors de la phase de planification."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Offrez-vous des services d'optimisation de performance web ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolument ! Je me spécialise dans l'optimisation des performances web en visant des scores Lighthouse de 90%+ sur mobile et desktop. Cela inclut : optimisation des images WebP avec srcset responsive, lazy loading, code splitting, compression Gzip/Brotli, élimination du JavaScript inutilisé, amélioration du LCP, FCP et TBT, et mise en conformité Core Web Vitals."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Travaillez-vous avec WordPress ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui, je me spécialise dans les architectures WordPress Headless modernes. J'utilise WordPress comme CMS backend avec WPGraphQL pour l'API, ACF (Advanced Custom Fields) pour la gestion de contenu flexible, et Next.js ou React comme frontend. Cette approche offre les avantages de WordPress tout en bénéficiant des performances et de la flexibilité d'une application React moderne."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Proposez-vous la maintenance et le support après le lancement ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Oui, je propose des forfaits de maintenance incluant : mises à jour de sécurité, corrections de bugs, ajout de nouvelles fonctionnalités, optimisation continue des performances, sauvegardes régulières, et support technique. Les forfaits peuvent être mensuels ou annuels selon vos besoins."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Vos sites sont-ils optimisés pour le SEO et l'accessibilité ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Tous mes projets sont développés avec le SEO et l'accessibilité en priorité. Cela inclut : meta tags Open Graph complets, Schema.org JSON-LD, sitemap.xml dynamique, robots.txt optimisé, fichiers AI/LLM discovery (llms.txt, ai-plugin.json), conformité WCAG AA (minimum 4.5:1 de contraste), navigation au clavier, ARIA labels, focus management, et support des lecteurs d'écran."
-          }
+          "@type": "WebSite",
+          "@id": "https://christendijoux.com/#website",
+          "name": "Christen Dijoux",
+          "url": "https://christendijoux.com/",
+          "inLanguage": ["en", "fr"],
+          "author": { "@id": "https://christendijoux.com/#person" },
+          "description": "Portfolio of Christen Dijoux, full-stack & AI developer: web experiences, headless platforms, internal tools, automation, applied AI — and a lab that dissects every component of the site."
         }
       ]
     }
