@@ -17,10 +17,6 @@ vi.mock('../hooks/useIntersectionObserver', () => ({
   useIntersectionObserver: () => true
 }));
 
-vi.mock('../components/ThreeScene', () => ({
-  default: () => <div data-testid="three-scene">ThreeScene</div>
-}));
-
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key: string, opts?: { defaultValue?: string }) => {

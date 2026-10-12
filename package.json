@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@sentry/react": "^10.26.0",
-    "@sentry/vite-plugin": "^4.6.0",
     "@studio-freight/lenis": "^1.0.39",
     "canvas-confetti": "^1.9.2",
     "emailjs-com": "^3.2.0",
@@ -35,10 +34,10 @@
     "react-ga4": "^2.1.0",
     "react-helmet-async": "^2.0.5",
     "react-i18next": "^16.3.3",
-    "react-router-dom": "^6.28.0",
-    "three": "^0.162.0"
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
+    "@sentry/vite-plugin": "^4.9.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -46,7 +45,6 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-helmet-async": "^1.0.1",
-    "@types/three": "^0.162.0",
     "@vitejs/plugin-react-swc": "^4.0.1",
     "@vitest/ui": "^4.0.8",
     "autoprefixer": "^10.4.18",

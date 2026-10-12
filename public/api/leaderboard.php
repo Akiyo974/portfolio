@@ -84,6 +84,48 @@ function secret(string $dataDir): string
     return (string) file_get_contents($file);
 }
 
+/**
+ * IP réelle du visiteur. Derrière Cloudflare, REMOTE_ADDR est l'IP du proxy : on lit alors
+ * CF-Connecting-IP, mais seulement si la requête vient vraiment d'une plage Cloudflare
+ * (sinon l'en-tête pourrait être forgé pour contourner la limite de fréquence).
+ */
+function clientIp(): string
+{
+    $remote = $_SERVER['REMOTE_ADDR'] ?? '';
+    $forwarded = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? '';
+    if ($forwarded === '' || !filter_var($forwarded, FILTER_VALIDATE_IP)) {
+        return $remote;
+    }
+    // https://www.cloudflare.com/ips/
+    $ranges = [
+        '173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22', '141.101.64.0/18',
+        '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20', '197.234.240.0/22', '198.41.128.0/17',
+        '162.158.0.0/15', '104.16.0.0/13', '104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22',
+        '2400:cb00::/32', '2606:4700::/32', '2803:f800::/32', '2405:b500::/32', '2405:8100::/32',
+        '2a06:98c0::/29', '2c0f:f248::/32',
+    ];
+    $ip = @inet_pton($remote);
+    if ($ip === false) {
+        return $remote;
+    }
+    foreach ($ranges as $range) {
+        [$net, $bits] = explode('/', $range);
+        $netBin = inet_pton($net);
+        if (strlen($netBin) !== strlen($ip)) {
+            continue;
+        }
+        $bytes = intdiv((int) $bits, 8);
+        $rest = (int) $bits % 8;
+        if (substr($ip, 0, $bytes) !== substr($netBin, 0, $bytes)) {
+            continue;
+        }
+        if ($rest === 0 || ((ord($ip[$bytes]) ^ ord($netBin[$bytes])) >> (8 - $rest)) === 0) {
+            return $forwarded;
+        }
+    }
+    return $remote;
+}
+
 function top(array $scores): array
 {
     usort($scores, fn($a, $b) => $b['score'] <=> $a['score'] ?: strcmp($a['created_at'], $b['created_at']));
@@ -153,7 +195,7 @@ if ($action === 'submit') {
     }
 
     // Jeton à usage unique + limite par IP
-    $ipHash = hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? '') . $secret);
+    $ipHash = hash('sha256', clientIp() . $secret);
     $allowed = withJson($dataDir . '/guard.json', function ($g) use ($nonce, $ipHash) {
         $now = time();
         $g['used'] = array_filter($g['used'] ?? [], fn($t) => $t > $now - TOKEN_TTL);
