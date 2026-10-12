@@ -40,7 +40,8 @@ export const SiteHeader: React.FC = () => {
   useEffect(() => {
     setInView(null);
     if (!onHome) return;
-    const els = sections.map((s) => s.id && document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
+    // #lab : sommaire du Lab sur l'accueil (le lien du menu mène à la page /lab)
+    const els = ['about', 'projects', 'lab', 'contact'].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && setInView(e.target.id)),
       { rootMargin: '-45% 0px -50% 0px' }
@@ -56,7 +57,7 @@ export const SiteHeader: React.FC = () => {
 
   const isActive = (item: NavItem) =>
     item.to
-      ? pathname.startsWith(item.to)
+      ? pathname.startsWith(item.to) || (onHome && inView === item.to.slice(1))
       : item.id === 'projects'
         ? pathname.startsWith('/project') || inView === 'projects'
         : inView === item.id;

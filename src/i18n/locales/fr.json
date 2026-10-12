@@ -692,5 +692,13 @@
   "home": {
     "title": "Christen Dijoux — Développeur Full-stack & IA | Saguenay",
     "description": "Christen Dijoux — développeur full-stack & IA à Saguenay, Québec. Expériences web, plateformes internes, automatisation et IA appliquée. React, Next.js, TypeScript, GSAP, WebGL."
+  },
+  "lab": {
+    "kicker": "Lab",
+    "title": "Le site, démonté.",
+    "cta": "Ouvrir le Lab",
+    "components": "composants disséqués",
+    "experiments": "expériences",
+    "easterEgg": "Easter egg"
   }
 }

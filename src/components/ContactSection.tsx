@@ -102,7 +102,7 @@ export const ContactSection: React.FC = () => {
         className="pointer-events-none absolute -right-40 top-10 hidden w-[620px] opacity-25 lg:block"
       />
       <div className="contact-content relative">
-        <SectionLabel index={3} total={4}>{t('ui.contactKicker')}</SectionLabel>
+        <SectionLabel index={4} total={4}>{t('ui.contactKicker')}</SectionLabel>
         <SplitText as="h2" text={t('ui.contactTitle')} className="display mt-6 block text-[clamp(3rem,9vw,9rem)]" />
         <a
           href="mailto:christen.dijoux@gmail.com"

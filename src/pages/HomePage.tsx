@@ -6,6 +6,7 @@ import { HeroSection } from '../components/HeroSection';
 import { ManifestoBand } from '../components/ManifestoBand';
 import { AboutSection } from '../components/AboutSection';
 import { ProjectsSection } from '../components/ProjectsSection';
+import { LabTeaser } from '../components/LabTeaser';
 import { ContactSection } from '../components/ContactSection';
 
 import { Footer } from '../components/Footer';
@@ -41,6 +42,7 @@ export const HomePage = () => {
       <ManifestoBand />
       <AboutSection />
       <ProjectsSection />
+      <LabTeaser />
       <ContactSection />
       <Footer />
       <Suspense fallback={null}>

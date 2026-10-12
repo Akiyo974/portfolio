@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
@@ -14,6 +14,7 @@ import { ParticleType } from '../components/lab/experiments/ParticleType';
 import { ReactionDiffusion } from '../components/lab/experiments/ReactionDiffusion';
 import { labComponents, labExperiments, labRetired, type ExperimentId, type Lang, type LabComponent } from '../data/lab';
 import { useLenis } from '../hooks/useLenis';
+import { scrollToTarget } from '../lib/motion';
 
 const Chatbot = lazy(() => import('../components/Chatbot/Chatbot').then((m) => ({ default: m.Chatbot })));
 
@@ -143,11 +144,18 @@ export const LabPage: React.FC = () => {
   const { i18n } = useTranslation();
   const lang: Lang = i18n.language?.startsWith('fr') ? 'fr' : 'en';
   const t = copy[lang];
+  const { hash } = useLocation();
   useLenis();
 
   useEffect(() => {
+    // Arrivée depuis le sommaire de l'accueil : /lab#c-dither-hero
+    const target = hash ? document.getElementById(hash.slice(1)) : null;
+    if (target) {
+      const timeout = setTimeout(() => scrollToTarget(target), 150);
+      return () => clearTimeout(timeout);
+    }
     window.scrollTo(0, 0);
-  }, []);
+  }, [hash]);
 
   return (
     <main className="min-h-screen bg-ink text-paper">
