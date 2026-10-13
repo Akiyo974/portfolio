@@ -26,8 +26,17 @@ const projectIds = [...readFileSync(path.join(ROOT, 'src/data/customProjects.ts'
 const routes = ['/', '/projects', '/lab', '/cv', '/privacy-policy', '/legal-notice', '/generateur-lettre', ...projectIds.map((id) => `/project/${id}`)];
 
 const template = readFileSync(path.join(DIST, 'index.html'), 'utf8');
-// Gabarit neutre : balises gérées par Helmet (data-rh) et <title> retirés
-const shell = template.replace(/\s*<(meta|link|script)\b[^>]*\bdata-rh="true"[^>]*>(?:[\s\S]*?<\/script>)?/g, '').replace(/<title>[\s\S]*?<\/title>/, '');
+// Gabarit neutre : balises gérées par Helmet (data-rh) et <title> retirés, balise par balise
+// (une expression trop gourmande avait emporté tout le <head> jusqu'au </script> suivant)
+const shell = template
+  .replace(/[ \t]*<(?:meta|link)\b[^>]*\bdata-rh="true"[^>]*>\r?\n?/g, '')
+  .replace(/[ \t]*<script\b[^>]*\bdata-rh="true"[^>]*>[\s\S]*?<\/script>\r?\n?/g, '')
+  .replace(/<title>[\s\S]*?<\/title>/, '');
+
+// Garde-fou : ces éléments du gabarit doivent survivre au nettoyage, sinon le build échoue
+const MUST_KEEP = ['fonts.googleapis.com/css2', 'rel="icon"', 'apple-touch-icon', 'rel="manifest"', 'theme-color', 'application/ld+json', 'id="shell"', 'type="module"'];
+const lost = MUST_KEEP.filter((k) => template.includes(k) && !shell.includes(k));
+if (lost.length) throw new Error(`Pré-rendu : éléments perdus du <head> : ${lost.join(', ')}`);
 
 // Écrit le HTML et ses versions précompressées (celles du build ne correspondraient plus)
 const writeHtml = (file, html) => {
