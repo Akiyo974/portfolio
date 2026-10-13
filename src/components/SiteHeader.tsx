@@ -40,16 +40,30 @@ export const SiteHeader: React.FC = () => {
   useEffect(() => {
     setInView(null);
     if (!onHome) return;
-    // #lab : sommaire du Lab sur l'accueil (le lien du menu mène à la page /lab)
-    const els = ['about', 'projects', 'lab', 'contact'].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    // #lab : sommaire du Lab sur l'accueil (le lien du menu mène à la page /lab).
+    // Les sections sont montées après le hero : on les observe au fur et à mesure qu'elles apparaissent.
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && setInView(e.target.id)),
       { rootMargin: '-45% 0px -50% 0px' }
     );
-    els.forEach((el) => io.observe(el));
+    const watched = new Set<string>();
+    const watch = () => {
+      ['about', 'projects', 'lab', 'contact'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && !watched.has(id)) {
+          watched.add(id);
+          io.observe(el);
+        }
+      });
+      return watched.size === 4;
+    };
+    let polls = 0;
+    const poll = window.setInterval(() => (watch() || ++polls > 40) && window.clearInterval(poll), 250);
+    watch();
     const onTop = () => window.scrollY < 200 && setInView(null);
     window.addEventListener('scroll', onTop, { passive: true });
     return () => {
+      window.clearInterval(poll);
       io.disconnect();
       window.removeEventListener('scroll', onTop);
     };

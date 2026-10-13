@@ -116,7 +116,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://christendijoux.com/project/akiproject?lang=fr"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://christendijoux.com/project/akiproject"/>
     <image:image>
-      <image:loc>https://christendijoux.com/assets/og/akiproject.jpg</image:loc>
+      <image:loc>https://christendijoux.com/assets/og/akiproject.png</image:loc>
       <image:caption>AkiProject - Task Manager</image:caption>
     </image:image>
   </url>
@@ -129,7 +129,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://christendijoux.com/project/akimusic?lang=fr"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://christendijoux.com/project/akimusic"/>
     <image:image>
-      <image:loc>https://christendijoux.com/assets/og/akimusic.jpg</image:loc>
+      <image:loc>https://christendijoux.com/assets/og/akimusic.png</image:loc>
       <image:caption>AkiMusic - Streaming Platform</image:caption>
     </image:image>
   </url>

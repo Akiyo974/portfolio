@@ -140,7 +140,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           <div className="animate-in w-full max-w-sm shrink-0 md:border md:border-line md:bg-ink/95 md:p-5 lg:p-[2vh] backdrop-blur-md lg:mb-3">
-            <p className="text-[15px] leading-relaxed max-md:line-clamp-3 lg:text-[clamp(13px,1.7vh,16px)] text-paper/80">{t('ui.heroLead')}</p>
+            <p className="text-[15px] leading-relaxed lg:text-[clamp(13px,1.7vh,16px)] text-paper/80">{t('ui.heroLead')}</p>
             <div className="mt-5 flex flex-wrap gap-2 sm:gap-3 lg:mt-[2vh] [&_a]:max-sm:px-3.5">
               <a href="#projects" data-scroll-to="projects" data-magnetic className="btn-ghost backdrop-blur-sm">
                 {t('ui.ctaProjects')}

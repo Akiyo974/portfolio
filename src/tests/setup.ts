@@ -1,4 +1,4 @@
-import { expect, afterEach } from 'vitest';
+import { afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 
@@ -31,7 +31,7 @@ global.IntersectionObserver = class IntersectionObserver {
     return [];
   }
   unobserve() {}
-} as any;
+} as unknown as typeof IntersectionObserver;
 
 // Mock requestAnimationFrame
 global.requestAnimationFrame = (cb: FrameRequestCallback) => {

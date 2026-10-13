@@ -34,7 +34,7 @@ const pages = [
     path: `/project/${id}`,
     priority: '0.8',
     changefreq: 'monthly',
-    image: existsSync(join(ROOT, `public/assets/og/${id}.jpg`)) ? `/assets/og/${id}.jpg` : undefined,
+    image: ['jpg', 'png'].map((ext) => `/assets/og/${id}.${ext}`).find((f) => existsSync(join(ROOT, 'public', f))),
     caption: en.customProjects?.[id]?.title ?? id,
     src: ['src/data/customProjects.ts', 'src/data/caseGallery.ts', ...LOCALES],
   })),

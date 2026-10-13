@@ -189,7 +189,7 @@ export const JourneySection: React.FC = () => {
       shown = p;
       draw(p, time);
       const km = Math.round(JOURNEY_KM * p);
-      if (kmRef.current) kmRef.current.textContent = km.toLocaleString('fr-CA').replace(/ | /g, ' ');
+      if (kmRef.current) kmRef.current.textContent = km.toLocaleString('fr-CA').replace(/\u202f|\u00a0/g, ' ');
       if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
     };
 

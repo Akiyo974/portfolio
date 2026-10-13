@@ -53,5 +53,8 @@ sizes.forEach((s, i) => {
   header.writeUInt32LE(offset, e + 12);
   offset += images[i].length;
 });
-writeFileSync(new URL('favicon.ico', OUT), Buffer.concat([header, ...images]));
+const ico = Buffer.concat([header, ...images]);
+writeFileSync(new URL('favicon.ico', OUT), ico);
+// Copie à la racine : les navigateurs demandent toujours /favicon.ico, quelle que soit la balise <link>
+writeFileSync(new URL('../favicon.ico', OUT), ico);
 console.log('✓ favicons générés');

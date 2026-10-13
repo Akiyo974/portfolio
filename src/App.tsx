@@ -27,11 +27,13 @@ const LabPage = lazy(() => import('./pages/LabPage'));
 const LetterGeneratorPage = lazy(() => import('./pages/LetterGeneratorPage'));
 const StarGame = lazy(() => import('./components/StarGame/index').then((m) => ({ default: m.StarGame })));
 
+/** Service worker (PWA) : le hook vit dans un composant rendu seulement en production. */
+const PwaRegister = () => {
+  usePWA();
+  return null;
+};
+
 function App() {
-  // Initialize PWA
-  if (import.meta.env.PROD) {
-    usePWA();
-  }
 
   // Initialize Google Analytics
   useEffect(() => {
@@ -44,6 +46,7 @@ function App() {
   return (
     <StarProvider>
       <div className="min-h-screen bg-background text-paper">
+        {import.meta.env.PROD && <PwaRegister />}
         <Preloader />
         <SkipToContent />
         <CustomCursor />

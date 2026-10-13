@@ -20,8 +20,15 @@ import { useLenis } from '../hooks/useLenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Images de partage 1200×630 (JPG : les .webp passent mal dans les aperçus LinkedIn)
-const OG_IMAGES = new Set(['akiworkspace', 'ctreq', 'ctreq-blog-archive', 'innovations-numeriques-fp', 'akiproject', 'akimusic']);
+// Images de partage 1200×630 (JPG / PNG : les .webp passent mal dans les aperçus LinkedIn)
+const OG_IMAGES: Record<string, string> = {
+  akiworkspace: 'jpg',
+  ctreq: 'jpg',
+  'ctreq-blog-archive': 'jpg',
+  'innovations-numeriques-fp': 'jpg',
+  akiproject: 'png',
+  akimusic: 'png',
+};
 
 /** Sur mobile, les longues listes n'affichent que les premiers éléments. */
 const MOBILE_LIST = 4;
@@ -155,7 +162,7 @@ export const ProjectDetailPage = () => {
         type="article"
         title={`${translatedTitle} — ${t('ui.caseStudy')} | Christen Dijoux`}
         description={translatedDescription}
-        image={OG_IMAGES.has(project.id) ? `/assets/og/${project.id}.jpg` : undefined}
+        image={OG_IMAGES[project.id] ? `/assets/og/${project.id}.${OG_IMAGES[project.id]}` : undefined}
         imageAlt={translatedTitle}
       >
         <meta property="article:author" content="Christen Dijoux" />

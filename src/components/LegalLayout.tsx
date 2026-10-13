@@ -46,7 +46,7 @@ const BlockView: React.FC<{ block: Block; lang: Lang }> = ({ block, lang }) => {
       <ul className="space-y-2">
         {block.list.map((item, i) => (
           <li key={i} className="grid grid-cols-[1.25rem_1fr] leading-relaxed text-paper/75">
-            <span aria-hidden="true" className="font-mono text-paper/40">—</span>
+            <span aria-hidden="true" className="font-mono text-paper/60">—</span>
             <span><Rich text={t(item)} /></span>
           </li>
         ))}
@@ -122,7 +122,7 @@ export const LegalLayout: React.FC<{ doc: LegalDoc; other: { to: string; label: 
               <ul className="space-y-3">
                 {doc.summary.items.map((item, i) => (
                   <li key={i} className="grid grid-cols-[1.25rem_1fr] text-[15px] leading-relaxed text-paper/80">
-                    <span aria-hidden="true" className="font-mono text-paper/40">✳</span>
+                    <span aria-hidden="true" className="font-mono text-paper/60">✳</span>
                     <span>{t(item)}</span>
                   </li>
                 ))}
@@ -141,7 +141,7 @@ export const LegalLayout: React.FC<{ doc: LegalDoc; other: { to: string; label: 
                       }}
                       className="group flex items-baseline gap-3 border-b border-line py-2 font-mono text-[12px] uppercase tracking-[0.08em] text-paper/65 transition-colors hover:bg-paper hover:text-ink"
                     >
-                      <span className="w-6 pl-1 text-paper/40 group-hover:text-ink/60">{pad(i + 1)}</span>
+                      <span className="w-6 pl-1 text-paper/60 group-hover:text-ink/70">{pad(i + 1)}</span>
                       <span className="normal-case tracking-normal">{t(s.title)}</span>
                     </a>
                   </li>
@@ -155,7 +155,7 @@ export const LegalLayout: React.FC<{ doc: LegalDoc; other: { to: string; label: 
           {doc.sections.map((s, i) => (
             <section key={s.id} id={s.id} className="scroll-mt-24">
               <h2 className="heading flex items-baseline gap-4 border-t border-line pt-6 text-[clamp(1.8rem,3vw,2.6rem)] text-paper">
-                <span className="font-mono text-[12px] tracking-[0.1em] text-paper/40">{pad(i + 1)}</span>{' '}
+                <span className="font-mono text-[12px] tracking-[0.1em] text-paper/60">{pad(i + 1)}</span>{' '}
                 {t(s.title)}
               </h2>
               <div className="mt-6 space-y-5">
