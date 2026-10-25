@@ -18,9 +18,9 @@ export const caseGallery: Record<string, { file: string; alt: { fr: string; en: 
     { file: 'webana-04', alt: { fr: "Page « Histoire du katana »", en: '“History of the katana” page' } },
   ],
   'portfolio-watch': [
-    { file: 'portfolio-watch-01', alt: { fr: 'Portfolio en version montre : le cadran Galaxy Watch', en: 'Portfolio, watch edition: the Galaxy Watch face' } },
-    { file: 'portfolio-watch-02', alt: { fr: 'Menu, liste des projets et étude de cas sur écran rond', en: 'Menu, project list and case study on a round screen' } },
-    { file: 'portfolio-watch-03', alt: { fr: 'Parcours, contact et jeu des étoiles sur la montre', en: 'Journey, contact and star game on the watch' } },
+    { file: 'portfolio-watch-01', alt: { fr: 'Portfolio en version montre : bannière du projet', en: 'Portfolio, watch edition: project banner' } },
+    { file: 'portfolio-watch-02', alt: { fr: "Menu, projets et étude de cas dans l'app réelle", en: 'Menu, projects and case study in the real app' } },
+    { file: 'portfolio-watch-03', alt: { fr: 'Parcours, contact et partie du jeu des étoiles', en: 'Journey, contact and a star game round' } },
   ],
   akiworkspace: [
     { file: 'akiworkspace-01', alt: { fr: "Tableau de bord d'AkiWorkspace", en: 'AkiWorkspace dashboard' } },

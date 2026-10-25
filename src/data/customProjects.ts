@@ -344,33 +344,36 @@ export const customProjects: CustomProject[] = [
     id: 'portfolio-watch',
     name: 'Portfolio Watch',
     title: 'Portfolio Watch - Version Galaxy Watch',
-    description: "Mon portfolio repensé pour un écran rond de 1,4 pouce : une app Wear OS en Kotlin et Jetpack Compose, pensée d'abord pour la Samsung Galaxy Watch. Projets, parcours et contact au poignet, en trois touches maximum.",
-    longDescription: "Portfolio Watch adapte l'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut, listes centrées qui suivent la courbe de l'écran, bouton principal collé au bord, défilement à la lunette. Le projet commence par la conception : sept écrans maquettés au format rond 480 px (cadran, menu, projets, étude de cas, parcours, contact et le jeu des étoiles du site), avec une zone sûre centrale, des cibles tactiles de 48 dp minimum et un contraste d'au moins 4,5:1. Le développement suit en Kotlin et Jetpack Compose for Wear OS (Material 3), avec un cadran au format Watch Face Format et l'ouverture des études de cas sur le téléphone associé.",
+    description: 'Mon portfolio repensé pour un écran rond d\'un pouce et demi : une app Wear OS en Kotlin et Jetpack Compose qui tourne sur ma Galaxy Watch. Projets, parcours et contact au poignet, en trois touches au plus.',
+    longDescription: 'Portfolio Watch adapte l\'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut qui s\'efface au défilement, listes qui suivent la courbe de l\'écran, défilement à la lunette, retour en glissant vers la droite. La version 0.1.0 est en ligne sur GitHub et fonctionne sur une vraie Galaxy Watch : un accueil façon cadran avec l\'heure en direct, le menu, les projets, chaque étude de cas à ouvrir en entier sur le téléphone, le parcours, le contact et le jeu des étoiles du site. L\'app est autonome (aucune app compagnon) et chaque push est compilé et analysé par GitHub Actions, qui produit l\'APK. Prochaines étapes : un cadran installable, une tuile « Disponibilité », la version anglaise et la publication sur le Google Play Store.',
     languages: ['Kotlin'],
     topics: ['wear-os', 'galaxy-watch', 'kotlin', 'jetpack-compose', 'smartwatch', 'ui-design', 'android'],
     image: '/assets/portfolio-watch.webp',
     codeUrl: 'https://github.com/Akiyo974/portfolio-watch',
     features: [
-      'Cadran : heure, disponibilité et deux complications (projets, kilomètres parcourus)',
+      'Accueil façon cadran : heure et date en direct, nom le long du bord, disponibilité, projets et kilomètres',
       'Menu numéroté, comme la navigation du site',
-      'Liste des projets qui s\'agrandit au centre de l\'écran',
-      'Études de cas résumées, à ouvrir sur le téléphone associé',
+      'Les projets du portfolio avec année et statut',
+      'Études de cas résumées, à ouvrir en entier sur le téléphone associé',
       'Parcours La Réunion → Saguenay tracé le long de la lunette',
       'Contact en un toucher : e-mail, appel, LinkedIn, GitHub',
-      'Jeu des étoiles du site, en version montre (20 s, anneau de temps)',
-      'Navigation Wear OS : bouton retour, glisser pour revenir, défilement à la lunette'
+      'Jeu des étoiles du site : 20 s, vibration à chaque touche, record gardé sur la montre',
+      'Navigation Wear OS : glisser pour revenir, défilement à la lunette',
+      'App autonome, sans app compagnon sur le téléphone',
+      'Build, lint et APK automatiques à chaque push (GitHub Actions)'
     ],
     challenges: [
-      'Faire tenir une identité éditoriale dans un cercle de 1,4 pouce',
+      'Faire tenir une identité éditoriale dans un cercle d\'un pouce et demi',
       'Garder le contenu dans la zone sûre centrale d\'un écran rond',
-      'Trois touches maximum pour atteindre n\'importe quelle information',
+      'Trois touches au plus pour atteindre n\'importe quelle information',
       'Texte et listes qui suivent la courbe de l\'écran',
-      'Cibles tactiles de 48 dp minimum et contraste d\'au moins 4,5:1',
-      'Passer de la montre au téléphone sans perdre le contexte'
+      'Cibles tactiles de 48 dp minimum',
+      'Passer de la montre au téléphone sans perdre le contexte',
+      'Embarquer les polices variables du site sans alourdir l\'app'
     ],
     technologies: {
-      frontend: ['Kotlin', 'Jetpack Compose for Wear OS', 'Material 3'],
-      tools: ['Horologist', 'Watch Face Format', 'Android Studio', 'Wear OS 3+']
+      frontend: ['Kotlin 2.1', 'Jetpack Compose for Wear OS', 'ScalingLazyColumn'],
+      tools: ['Wear Remote Interactions', 'Gradle', 'GitHub Actions', 'Wear OS 3+']
     },
     year: '2026',
     status: 'in-progress',
