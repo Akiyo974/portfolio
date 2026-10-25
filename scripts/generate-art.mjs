@@ -93,6 +93,7 @@ const projectSources = {
   ctreq: 'public/assets/ctreq-879.webp',
   'ctreq-blog-archive': 'public/assets/ctreq-archive-878.webp',
   'innovations-numeriques-fp': 'public/assets/innovations-numeriques-fp-879.webp',
+  'portfolio-watch': 'public/assets/portfolio-watch.webp',
   webana: 'src/assets/webana.webp',
   akiproject: 'src/assets/AkiProject.webp',
   akimusic: 'src/assets/AkiMusic.webp',

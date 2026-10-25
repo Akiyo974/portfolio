@@ -23,6 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Images de partage 1200×630 (JPG / PNG : les .webp passent mal dans les aperçus LinkedIn)
 const OG_IMAGES: Record<string, string> = {
   akiworkspace: 'jpg',
+  'portfolio-watch': 'jpg',
   ctreq: 'jpg',
   'ctreq-blog-archive': 'jpg',
   'innovations-numeriques-fp': 'jpg',

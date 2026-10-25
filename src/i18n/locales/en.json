@@ -334,6 +334,29 @@
         "Blocking dangerous protocols (javascript:, data:, file:)"
       ]
     },
+    "portfolio-watch": {
+      "title": "Portfolio Watch - Galaxy Watch Edition",
+      "description": "My portfolio redesigned for a 1.4-inch round screen: a Wear OS app in Kotlin and Jetpack Compose, built first for the Samsung Galaxy Watch. Projects, journey and contact on the wrist, three taps away at most.",
+      "longDescription": "Portfolio Watch carries the site's identity (monochrome, editorial, condensed type) over to Wear OS conventions: time at the top, centred lists that follow the curve of the screen, a primary button hugging the edge, rotating-bezel scrolling. The project starts with design: seven screens mocked up at 480 px round (watch face, menu, projects, case study, journey, contact and the site's star game), with a central safe area, touch targets of at least 48 dp and contrast of at least 4.5:1. Development follows in Kotlin and Jetpack Compose for Wear OS (Material 3), with a Watch Face Format watch face and case studies that open on the paired phone.",
+      "features": [
+        "Watch face: time, availability and two complications (projects, kilometres travelled)",
+        "Numbered menu, like the site's navigation",
+        "Project list that scales up in the centre of the screen",
+        "Short case studies that open on the paired phone",
+        "Réunion Island → Saguenay journey drawn along the bezel",
+        "One-tap contact: email, call, LinkedIn, GitHub",
+        "The site's star game, watch edition (20 s, time ring)",
+        "Wear OS navigation: back button, swipe to dismiss, bezel scrolling"
+      ],
+      "challenges": [
+        "Fitting an editorial identity into a 1.4-inch circle",
+        "Keeping content inside the central safe area of a round screen",
+        "Any piece of information three taps away at most",
+        "Text and lists that follow the curve of the screen",
+        "Touch targets of at least 48 dp and contrast of at least 4.5:1",
+        "Handing off from watch to phone without losing context"
+      ]
+    },
     "ctreq-blog-archive": {
       "title": "CTREQ Blog/Archive - Institutional Archive Section",
       "description": "Secondary section of the CTREQ website dedicated to archiving past institutional projects and RIRE articles (3–5 years old). Headless React + WPGraphQL architecture with automatic age-based filtering and a minimal design that keeps the content hierarchy intact.",
