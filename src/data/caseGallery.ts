@@ -19,6 +19,7 @@ export const caseGallery: Record<string, { file: string; alt: { fr: string; en: 
   ],
   'portfolio-watch': [
     { file: 'portfolio-watch-01', alt: { fr: 'Portfolio en version montre : bannière du projet', en: 'Portfolio, watch edition: project banner' } },
+    { file: 'portfolio-watch-05', alt: { fr: "Le cadran Portfolio sur la Galaxy Watch, sa carte QR ouverte d'un toucher, et l'accueil de l'app", en: 'The Portfolio watch face on the Galaxy Watch, its QR card opened with one tap, and the app home screen' } },
     { file: 'portfolio-watch-02', alt: { fr: 'Menu avec sélecteur FR / EN, liste des 8 projets et étude de cas, sur la vraie Galaxy Watch', en: 'Menu with FR / EN switch, the 8 projects and a case study, on the real Galaxy Watch' } },
     { file: 'portfolio-watch-03', alt: { fr: 'Parcours La Réunion → Saguenay, contact et tuile Wear OS', en: 'Réunion Island → Saguenay journey, contact and Wear OS tile' } },
     { file: 'portfolio-watch-04', alt: { fr: 'Carte de visite en QR code, jeu des étoiles et partie en cours', en: 'QR business card, star game and a round in progress' } },
