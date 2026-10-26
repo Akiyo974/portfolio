@@ -1,7 +1,8 @@
-// Pré-rendu SEO après `vite build` : chaque route reçoit son propre HTML statique avec
+// Pré-rendu SEO après `vite build` : chaque route reçoit son propre HTML statique, en anglais et en français, avec
 // ses vraies balises (titre, description, canonical, hreflang, Open Graph, JSON-LD) et son texte.
 // Utile pour les robots qui n'exécutent pas le JavaScript (aperçus LinkedIn / X / Slack, robots d'IA)
 // et pour que Google voie la bonne canonical dès le HTML brut. React remplace ensuite ce contenu.
+// Les pages françaises vont dans dist/fr/ : .htaccess les sert pour les adresses en ?lang=fr.
 //   node scripts/prerender.mjs   (lancé automatiquement par `npm run build`)
 import { preview } from 'vite';
 import puppeteer from 'puppeteer-core';
@@ -50,20 +51,26 @@ const writeHtml = (file, html) => {
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const server = await preview({ root: ROOT, preview: { port: PORT, strictPort: true }, logLevel: 'error' });
-const browser = await puppeteer.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox'] });
+const launch = () => puppeteer.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox'] });
+let browser = await launch();
 const results = [];
 try {
-  for (const route of routes) {
+  for (const lang of ['en', 'fr']) for (const route of routes) {
+    // Un Chrome neuf toutes les 8 pages : au-delà, les pages WebGL finissent par le faire tomber
+    if (results.length && results.length % 8 === 0) {
+      await browser.close();
+      browser = await launch();
+    }
     const page = await browser.newPage();
     await page.setViewport({ width: 1440, height: 900 });
     await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
-    await page.evaluateOnNewDocument(() => {
+    await page.evaluateOnNewDocument((lng) => {
       try {
-        localStorage.setItem('i18nextLng', 'en');
+        localStorage.setItem('i18nextLng', lng);
         sessionStorage.setItem('cd-intro-seen', '1');
       } catch {}
-    });
-    await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
+    }, lang);
+    await page.goto(`http://localhost:${PORT}${route}${lang === 'fr' ? '?lang=fr' : ''}`, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
     await page.waitForFunction(() => document.querySelector('link[rel="canonical"][data-rh]') || document.querySelector('meta[name="robots"][content*="noindex"]'), { timeout: 15000 });
     await new Promise((r) => setTimeout(r, 800));
 
@@ -99,13 +106,14 @@ try {
       '</div>',
     ].join('\n');
     const html = shell
+      .replace('<html lang="en">', `<html lang="${lang}">`)
       .replace('</head>', `    <title>${esc(data.title)}</title>\n    ${data.head.join('\n    ')}\n  </head>`)
       // Sous l'écran de démarrage (position fixe) : invisible pour le visiteur, lisible par les robots ; React le remplace
       .replace(/(<div id="root">[\s\S]*?<\/div>\s*<\/div>\s*<\/div>)/, `$1\n      ${body}`);
 
-    const file = route === '/' ? 'index.html' : `${route.slice(1)}.html`;
+    const file = (lang === 'fr' ? 'fr/' : '') + (route === '/' ? 'index.html' : `${route.slice(1)}.html`);
     writeHtml(file, html);
-    results.push(`${route} → ${file} (${data.blocks.length} blocs, ${data.head.length} balises)`);
+    results.push(`${lang} ${route} → ${file} (${data.blocks.length} blocs, ${data.head.length} balises)`);
   }
   // Page d'erreur : coquille neutre, non indexable (servie avec le statut 404 par .htaccess)
   writeHtml(

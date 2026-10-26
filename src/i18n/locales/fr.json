@@ -136,6 +136,7 @@
     "email": "Email",
     "message": "Message",
     "send": "Envoyer le Message",
+    "sending": "Envoi en cours…",
     "namePlaceholder": "Votre nom",
     "emailPlaceholder": "votre@email.com",
     "messagePlaceholder": "Votre message...",
