@@ -336,19 +336,19 @@
     },
     "portfolio-watch": {
       "title": "Portfolio Watch - Galaxy Watch Edition",
-      "description": "My portfolio redesigned for a one-and-a-half-inch round screen: a Wear OS app in Kotlin and Jetpack Compose that runs on my Galaxy Watch. Projects, journey and contact on the wrist, three taps away at most.",
-      "longDescription": "Portfolio Watch carries the site's identity (monochrome, editorial, condensed type) over to Wear OS conventions: time at the top that fades as you scroll, lists that follow the curve of the screen, rotating-bezel scrolling, swipe right to go back. Version 0.1.0 is on GitHub and runs on a real Galaxy Watch: a watch-face home screen with live time, the menu, the projects, each case study opening in full on the phone, the journey, contact and the site's star game. The app is standalone (no companion app) and every push is built and analysed by GitHub Actions, which produces the APK. Next steps: an installable watch face, an 'Availability' tile, the English version and a Google Play Store release.",
+      "description": "My portfolio redesigned for a one-and-a-half-inch round screen: a Wear OS app in Kotlin and Jetpack Compose, installed on my Galaxy Watch. Projects, journey, contact and a QR business card on the wrist, three taps away at most.",
+      "longDescription": "Portfolio Watch carries the site's identity (monochrome, editorial, condensed type) over to Wear OS conventions: time at the top that fades as you scroll, lists that follow the curve of the screen, bezel scrolling, swipe right to go back. Version 0.4.0 runs on my Galaxy Watch: a watch-face home screen, the portfolio's eight projects with case studies that open on the phone, the journey, contact, the site's star game and a QR business card that a phone scans to add me to its contacts. A Wear OS tile reaches the QR code, a call or an email in one swipe from the watch face, and the app switches between French and English with a tap. On the engineering side: signed releases published automatically by GitHub Actions on every tag, unit tests that actually read the QR code back, and every version tried on the real watch before it ships. Next steps: an installable watch face and a Google Play Store release.",
       "features": [
         "Watch-face home screen: live time and date, name along the edge, availability, projects and kilometres",
-        "Numbered menu, like the site's navigation",
-        "The portfolio's projects with year and status",
-        "Short case studies that open in full on the paired phone",
-        "Réunion Island → Saguenay journey drawn along the bezel",
+        "The portfolio's eight projects, each case study opening in full on the paired phone",
+        "QR business card (vCard): one scan adds my details to a phone, even with the watch in always-on mode",
+        "Wear OS tile: availability, QR code, call and email in one swipe from the watch face",
+        "French and English, with a remembered FR / EN switch",
+        "Réunion Island → Saguenay journey drawn as a flight path",
         "One-tap contact: email, call, LinkedIn, GitHub",
         "The site's star game: 20 s, haptic feedback on every tap, high score saved on the watch",
-        "Wear OS navigation: swipe to go back, bezel scrolling",
         "Standalone app, no companion app on the phone",
-        "Automatic build, lint and APK on every push (GitHub Actions)"
+        "Signed releases published on every tag; build, tests and lint on every PR (GitHub Actions)"
       ],
       "challenges": [
         "Fitting an editorial identity into a one-and-a-half-inch circle",
@@ -357,6 +357,8 @@
         "Text and lists that follow the curve of the screen",
         "Touch targets of at least 48 dp",
         "Handing off from watch to phone without losing context",
+        "A QR code large enough to scan on 1.4 inches: every byte of the card counts, and tests check it",
+        "Updates that install on top without losing data, thanks to a fixed signing key",
         "Shipping the site's variable fonts without bloating the app"
       ]
     },
