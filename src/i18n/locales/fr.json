@@ -15,7 +15,7 @@
   "hero": {
     "location": "Saguenay",
     "region": "Québec, Canada",
-    "role": "Spécialiste en Innovation Numérique",
+    "role": "Spécialiste en innovation numérique",
     "roleDetail": "IA • Automatisation • Cloud • DevOps",
     "tagline": "Développeur full-stack & ingénieur IA"
   },
@@ -30,7 +30,7 @@
     "skills": "Compétences",
     "interests": "Domaines d'expertise",
     "interestsList": [
-      "Intelligence artificielle & Agents IA",
+      "Intelligence artificielle & agents IA",
       "Machine Learning & Analyse de données",
       "Automatisation des processus métiers",
       "Développement SaaS & applications internes",
@@ -38,10 +38,10 @@
       "Observabilité, monitoring & performance",
       "Transformation numérique des entreprises"
     ],
-    "experience": "Expérience Professionnelle",
+    "experience": "Expérience professionnelle",
     "experienceList": [
       {
-        "title": "Spécialiste en Innovation Numérique",
+        "title": "Spécialiste en innovation numérique",
         "company": "Gagnon Frères",
         "period": "Fév. 2026 - Présent",
         "description": "Responsable des initiatives d'innovation et de transformation numérique. Conception d'applications internes sur mesure, automatisation des flux de données (catalogues, fournisseurs, rapports), intégration de solutions IA et assistants intelligents, développement Power Platform, mise en place de monitoring/alerting et optimisation de l'infrastructure.",
@@ -54,7 +54,7 @@
         ]
       },
       {
-        "title": "Co-fondateur & Développeur Web",
+        "title": "Co-fondateur & développeur web",
         "company": "Synaptia Web",
         "period": "Avr. 2025 - Présent",
         "description": "Responsable du développement web de la conception à l'intégration. Création de sites vitrines et boutiques en ligne performantes avec focus sur l'ergonomie, la fluidité et la rapidité. Accompagnement des entreprises dans leur transformation numérique.",
@@ -77,7 +77,7 @@
         ]
       }
     ],
-    "impact": "Impact & Résultats",
+    "impact": "Impact & résultats",
     "impactList": [
       "Automatisation de processus internes réduisant les tâches manuelles chez Gagnon Frères",
       "Déploiement de solutions IA (agents, RAG, intégrations OpenAI) en production",
@@ -88,9 +88,9 @@
     ]
   },
   "projects": {
-    "title": "Projets Sélectionnés",
-    "allProjects": "Tous les Projets",
-    "viewAll": "Voir Tous les Projets",
+    "title": "Projets sélectionnés",
+    "allProjects": "Tous les projets",
+    "viewAll": "Voir tous les projets",
     "demo": "Voir le site",
     "viewSiteProduction": "Voir le site",
     "viewSiteDemo": "Voir la démo",
@@ -98,8 +98,8 @@
     "technologies": "Technologies",
     "repositories": "Dépôts",
     "backHome": "Retour à l'accueil",
-    "viewDetails": "Voir Détails",
-    "personalProject": "Projet Personnel",
+    "viewDetails": "Voir les détails",
+    "personalProject": "Projet personnel",
     "githubProject": "GitHub",
     "description": "Index des projets de Christen Dijoux : études de cas (plateformes headless, SaaS, e-commerce) et projets open source."
   },
@@ -107,7 +107,7 @@
     "back": "Retour",
     "notFound": "Projet non trouvé",
     "backToProjects": "Retour aux projets",
-    "personalProject": "Projet Personnel",
+    "personalProject": "Projet personnel",
     "viewSite": "Voir le site",
     "viewDemo": "Voir la démo",
     "sourceCode": "Code source",
@@ -135,7 +135,7 @@
     "name": "Nom",
     "email": "Email",
     "message": "Message",
-    "send": "Envoyer le Message",
+    "send": "Envoyer le message",
     "sending": "Envoi en cours…",
     "namePlaceholder": "Votre nom",
     "emailPlaceholder": "votre@email.com",
@@ -203,7 +203,7 @@
   "cookieConsent": {
     "acceptShort": "Accepter",
     "declineShort": "Refuser",
-    "title": "🍪 Cookies et Confidentialité",
+    "title": "🍪 Cookies et confidentialité",
     "description": "Ce site utilise des cookies pour améliorer votre expérience (Google Analytics, préférences) et suivre les erreurs techniques (Sentry). Vos données sont protégées conformément au RGPD.",
     "privacyLink": "politique de confidentialité",
     "accept": "Accepter tous les cookies",
@@ -219,19 +219,19 @@
   },
   "education": {
     "tim": {
-      "title": "Techniques d'Intégration Multimédia",
+      "title": "Techniques d'intégration multimédia",
       "school": "Cégep de Jonquière",
       "role": "Développement front-end, UX/UI",
       "period": "2021 - 2025"
     },
     "react": {
-      "title": "Formation en Développement d'Applications Front-End (React)",
+      "title": "Formation en développement d'applications front-end (React)",
       "school": "edX, en partenariat avec IBM",
       "role": "React.js, JSX, ES6, Redux, hooks",
       "period": "2024"
     },
     "gameDesign": {
-      "title": "Certificat en Design de Jeux Vidéo",
+      "title": "Certificat en design de jeux vidéo",
       "school": "Cégep de Jonquière",
       "role": "Level design et création d'expériences interactives",
       "period": "2023"
@@ -239,7 +239,7 @@
   },
   "customProjects": {
     "ctreq": {
-      "title": "CTREQ - Plateforme Éducative du Québec",
+      "title": "CTREQ - Plateforme éducative du Québec",
       "description": "Refonte complète et fusion de deux sites WordPress (CTREQ + RIRE) en plateforme headless Next.js 13. Migration structurée de +10 types de contenus, architecture cache triple (~50ms), SEO avancé et plan de transfert de compétences pour l'équipe cliente.",
       "longDescription": "Projet d'envergure institutionnelle pour le Centre de Transfert pour la Réussite Éducative du Québec : fusion complète de deux plateformes WordPress historiques (CTREQ + RIRE) en un système unifié moderne. Migration structurée de +10 types de contenus personnalisés avec reconstruction complète de l'architecture (CPT + ACF + taxonomies), harmonisation des schémas de données et validation croisée des relations. Architecture headless Next.js 13 App Router avec performances exceptionnelles (<100ms) grâce à une stratégie de cache triple sophistiquée (mémoire + ISR + SWR). Collaboration directe avec la direction du CTREQ sur 6 mois en autonomie complète, incluant analyse des besoins métier, priorisation des demandes, validation continue des livrables avec Caroline B. et Pape-Moussa D. Production du plan de transfert officiel avec documentation technique complète, formation des éditeurs WordPress et procédures de maintenance. Déploiement Next.js standalone sur cPanel avec configuration Passenger, monitoring des logs et tests Lighthouse CI automatisés.",
       "features": [
@@ -291,7 +291,7 @@
       ]
     },
     "akiworkspace": {
-      "title": "AkiWorkspace - Workspace Productivité",
+      "title": "AkiWorkspace - Workspace de productivité",
       "description": "Application SaaS de gestion d'idées, notes, tâches et projets avec architecture full-stack moderne, sécurité renforcée et système de partage granulaire. Plateforme collaborative inspirée de Notion/Linear.",
       "longDescription": "Conception et développement complet d'une application web type workspace collaboratif, permettant aux utilisateurs de centraliser notes, idées, tâches et projets dans une interface moderne. Architecture server-first basée sur Next.js App Router + Server Actions, avec logique métier entièrement côté serveur, validation stricte TypeScript + Zod et base de données Prisma. Le projet met l'accent sur la sécurité par défaut, la performance (React Server Components, streaming, cache intelligent), la DX moderne (Type-safe, Prisma, hot reload, migrations) et un système de permissions avancé avec partage public/secret/groupé. Développé comme produit SaaS fonctionnel, avec authentification complète, rôles admin, onboarding utilisateur, documentation technique et guide utilisateur.",
       "features": [
@@ -367,7 +367,7 @@
       ]
     },
     "ctreq-blog-archive": {
-      "title": "CTREQ Blog/Archive - Section d'Archivage Institutionnel",
+      "title": "CTREQ Blog/Archive - Section d'archivage institutionnel",
       "description": "Section secondaire du site CTREQ dédiée à l'archivage des anciens projets institutionnels et articles RIRE (3-5 ans). Architecture headless React + WPGraphQL avec filtrage automatique par ancienneté et design minimaliste pour préserver la hiérarchie des contenus.",
       "longDescription": "Le Blog / Archive CTREQ est une section secondaire du site du CTREQ conçue pour conserver l'historique des projets institutionnels ainsi que les articles RIRE plus anciens. Lors de la refonte complète du site principal, la direction du CTREQ a souhaité que seuls les contenus récents et stratégiques soient mis en avant. Les anciens projets et les articles de plus de trois ans (jusqu'à cinq ans) devaient être accessibles, mais dans un espace volontairement minimaliste pour ne pas détourner l'attention du site principal. J'ai donc développé une page d'archives headless, intégrée au même WordPress que le site principal, avec une logique avancée de filtrage par ancienneté (CTREQ + RIRE). L'esthétique est volontairement sobre et neutre afin de refléter son rôle : une archive institutionnelle, non un produit phare. Le tout repose sur une architecture moderne en React et WPGraphQL, avec un traitement optimisé des contenus issus de plusieurs sources.",
       "features": [
@@ -395,7 +395,7 @@
       ]
     },
     "innovations-numeriques-fp": {
-      "title": "Innovations Numériques en Formation Professionnelle",
+      "title": "Innovations numériques en formation professionnelle",
       "description": "Application web interactive développée pour ECOBES (Cégep de Jonquière) en collaboration avec le CTREQ, valorisant les innovations numériques de +40 enseignants en formation professionnelle au Québec. Interface semi-privée avec exploration par secteur, recherche avancée et carte Mapbox interactive.",
       "longDescription": "Application web interactive développée pour ECOBES, centre de recherche et de transfert du Cégep de Jonquière, en collaboration avec le CTREQ, le Laboratoire en Innovation Ouverte et l'UQAR, avec le soutien financier du Gouvernement du Québec. L'objectif du projet était de mettre en valeur les innovations numériques réalisées par plus de 40 enseignantes et enseignants en formation professionnelle partout au Québec. Certaines innovations étant sensibles ou internes à des centres de formation, l'application est accessible uniquement via un lien privé (non indexée, non publique). L'outil permet d'explorer ces innovations par secteur de formation, via des fiches descriptives détaillées, ou à travers une carte Mapbox interactive montrant leur distribution géographique à travers la province. L'application possède un mode sombre et un mode clair, offrant une expérience cohérente, moderne et adaptée à différents contextes d'utilisation.",
       "features": [
@@ -436,7 +436,7 @@
       ]
     },
     "webana": {
-      "title": "Webana - L'Art du Katana",
+      "title": "Webana - L'art du katana",
       "description": "Site e-commerce démonstratif conçu avec React et TailwindCSS. Il présente l'histoire des katanas et simule leur vente avec des filtres dynamiques, un panier, et un mode clair/sombre.",
       "longDescription": "Webana est un projet de site e-commerce dédié à l'univers des katanas japonais. Ce site présente une interface moderne et élégante permettant aux utilisateurs de découvrir l'histoire fascinante des katanas tout en explorant une sélection de produits. Le projet intègre des fonctionnalités avancées comme un système de filtres dynamiques, un panier d'achat fonctionnel, et un thème personnalisable.",
       "features": [
@@ -454,7 +454,7 @@
       ]
     },
     "akiproject": {
-      "title": "AkiProject - Gestionnaire de Tâches",
+      "title": "AkiProject - Gestionnaire de tâches",
       "description": "Gestionnaire de tâches et messagerie en temps réel développés avec Bootstrap, jQuery, et PHP. Conçu pour démontrer les compétences en communication asynchrone et gestion de tâches dans un contexte académique.",
       "longDescription": "AkiProject est une application web complète de gestion de projets et de communication. Elle combine un gestionnaire de tâches intuitif avec un système de messagerie en temps réel, permettant aux équipes de collaborer efficacement. Le projet démontre la maîtrise des technologies web traditionnelles et des concepts de programmation asynchrone.",
       "features": [
@@ -472,7 +472,7 @@
       ]
     },
     "akimusic": {
-      "title": "AkiMusic - Plateforme de Streaming",
+      "title": "AkiMusic - Plateforme de streaming",
       "description": "Projet de démonstration pour une plateforme de streaming musical, conçu pour simuler des fonctionnalités telles que les abonnements et la gestion de playlists. Interface utilisateur complète pour un service de musique en ligne.",
       "longDescription": "AkiMusic est un prototype de plateforme de streaming musical créé à des fins éducatives. Bien qu'il ne diffuse pas réellement de musique, le projet illustre parfaitement les concepts d'interface utilisateur pour un service de streaming, incluant la navigation, la gestion de playlists, et un système d'abonnement simulé.",
       "features": [
@@ -583,7 +583,7 @@
     "negativeBye": "Tout est revenu à l’endroit."
   },
   "home": {
-    "title": "Christen Dijoux — Développeur Full-stack & IA | Saguenay",
+    "title": "Christen Dijoux — Développeur full-stack & IA | Saguenay",
     "description": "Christen Dijoux — développeur full-stack & IA à Saguenay, Québec. Expériences web, plateformes internes, automatisation et IA appliquée. React, Next.js, TypeScript, GSAP, WebGL."
   },
   "lab": {

@@ -98,7 +98,7 @@ export const LegalLayout: React.FC<{ doc: LegalDoc; other: { to: string; label: 
   return (
     <main className="min-h-screen bg-ink text-paper">
       <header className="px-4 pb-12 pt-8 sm:px-6 md:px-10 md:pb-16 md:pt-12">
-        <Link to="/" className="label group flex w-fit items-center gap-2 hover:text-paper">
+        <Link to="/" className="label group -my-1 flex w-fit items-center gap-2 py-1 hover:text-paper">
           <ArrowLeft className="h-3 w-3 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
           {lang === 'fr' ? 'Accueil' : 'Home'}
         </Link>

@@ -90,5 +90,6 @@ ErrorDocument 404 /404.html
 <IfModule mod_mime.c>
   AddType text/plain .txt
   AddType application/json .json
+  AddType application/manifest+json .webmanifest
   AddType application/xml .xml
 </IfModule>

@@ -31,7 +31,7 @@ export const customProjects: CustomProject[] = [
  {
     id: 'akiworkspace',
     name: 'AkiWorkspace',
-    title: 'AkiWorkspace - Workspace Productivité',
+    title: 'AkiWorkspace - Workspace de productivité',
     description: "Application SaaS de gestion d'idées, notes, tâches et projets avec architecture full-stack moderne, sécurité renforcée et système de partage granulaire. Plateforme collaborative inspirée de Notion/Linear.",
     longDescription: "Conception et développement complet d'une application web type workspace collaboratif, permettant aux utilisateurs de centraliser notes, idées, tâches et projets dans une interface moderne. Architecture server-first basée sur Next.js App Router + Server Actions, avec logique métier entièrement côté serveur, validation stricte TypeScript + Zod et base de données Prisma. Le projet met l'accent sur la sécurité par défaut, la performance (React Server Components, streaming, cache intelligent), la DX moderne (Type-safe, Prisma, hot reload, migrations) et un système de permissions avancé avec partage public/secret/groupé. Développé comme produit SaaS fonctionnel, avec authentification complète, rôles admin, onboarding utilisateur, documentation technique et guide utilisateur.",
     languages: ['TypeScript', 'JavaScript', 'SQL'],
@@ -92,7 +92,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'ctreq',
     name: 'CTREQ',
-    title: 'CTREQ - Plateforme Éducative du Québec',
+    title: 'CTREQ - Plateforme éducative du Québec',
     description: "Refonte complète et fusion de deux sites WordPress (CTREQ + RIRE) en plateforme headless Next.js 13. Migration structurée de +10 types de contenus, architecture cache triple (~50ms), SEO avancé et plan de transfert de compétences pour l'équipe cliente.",
     longDescription: "Projet d'envergure institutionnelle pour le Centre de Transfert pour la Réussite Éducative du Québec : fusion complète de deux plateformes WordPress historiques (CTREQ + RIRE) en un système unifié moderne. Migration structurée de +10 types de contenus personnalisés avec reconstruction complète de l'architecture (CPT + ACF + taxonomies), harmonisation des schémas de données et validation croisée des relations. Architecture headless Next.js 13 App Router avec performances exceptionnelles (<100ms) grâce à une stratégie de cache triple sophistiquée (mémoire + ISR + SWR). Collaboration directe avec la direction du CTREQ sur 6 mois en autonomie complète, incluant analyse des besoins métier, priorisation des demandes, validation continue des livrables avec Caroline B. et Pape-Moussa D. Production du plan de transfert officiel avec documentation technique complète, formation des éditeurs WordPress et procédures de maintenance. Déploiement Next.js standalone sur cPanel avec configuration Passenger, monitoring des logs et tests Lighthouse CI automatisés.",
     languages: ['TypeScript', 'Next.js', 'React', 'GraphQL', 'WordPress'],
@@ -262,7 +262,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'innovations-numeriques-fp',
     name: 'Innovations Numériques FP',
-    title: 'Innovations Numériques en Formation Professionnelle',
+    title: 'Innovations numériques en formation professionnelle',
     description: "Application web interactive développée pour ECOBES (Cégep de Jonquière) en collaboration avec le CTREQ, valorisant les innovations numériques de +40 enseignants en formation professionnelle au Québec. Interface semi-privée avec exploration par secteur, recherche avancée et carte Mapbox interactive.",
     longDescription: "Application web interactive développée pour ECOBES, centre de recherche et de transfert du Cégep de Jonquière, en collaboration avec le CTREQ, le Laboratoire en Innovation Ouverte et l'UQAR, avec le soutien financier du Gouvernement du Québec. L'objectif du projet était de mettre en valeur les innovations numériques réalisées par plus de 40 enseignantes et enseignants en formation professionnelle partout au Québec. Certaines innovations étant sensibles ou internes à des centres de formation, l'application est accessible uniquement via un lien privé (non indexée, non publique). L'outil permet d'explorer ces innovations par secteur de formation, via des fiches descriptives détaillées, ou à travers une carte Mapbox interactive montrant leur distribution géographique à travers la province. L'application possède un mode sombre et un mode clair, offrant une expérience cohérente, moderne et adaptée à différents contextes d'utilisation.",
     languages: ['TypeScript', 'JavaScript', 'React', 'HTML5', 'CSS3'],
@@ -388,7 +388,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'webana',
     name: 'Webana',
-    title: "Webana - L'Art du Katana",
+    title: "Webana - L'art du katana",
     description: "Site e-commerce démonstratif conçu avec React et TailwindCSS. Il présente l'histoire des katanas et simule leur vente avec des filtres dynamiques, un panier, et un mode clair/sombre.",
     longDescription: "Webana est un projet de site e-commerce dédié à l'univers des katanas japonais. Ce site présente une interface moderne et élégante permettant aux utilisateurs de découvrir l'histoire fascinante des katanas tout en explorant une sélection de produits. Le projet intègre des fonctionnalités avancées comme un système de filtres dynamiques, un panier d'achat fonctionnel, et un thème personnalisable.",
     languages: ['React', 'TypeScript', 'TailwindCSS'],
@@ -422,7 +422,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'akiproject',
     name: 'AkiProject',
-    title: 'AkiProject - Gestionnaire de Tâches',
+    title: 'AkiProject - Gestionnaire de tâches',
     description: "Gestionnaire de tâches et messagerie en temps réel développés avec Bootstrap, jQuery, et PHP. Conçu pour démontrer les compétences en communication asynchrone et gestion de tâches dans un contexte académique.",
     longDescription: "AkiProject est une application web complète de gestion de projets et de communication. Elle combine un gestionnaire de tâches intuitif avec un système de messagerie en temps réel, permettant aux équipes de collaborer efficacement. Le projet démontre la maîtrise des technologies web traditionnelles et des concepts de programmation asynchrone.",
     languages: ['PHP', 'JavaScript', 'MySQL'],
@@ -456,7 +456,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'akimusic',
     name: 'AkiMusic',
-    title: 'AkiMusic - Plateforme de Streaming',
+    title: 'AkiMusic - Plateforme de streaming',
     description: "Projet de démonstration pour une plateforme de streaming musical, conçu pour simuler des fonctionnalités telles que les abonnements et la gestion de playlists. Interface utilisateur complète pour un service de musique en ligne.",
     longDescription: "AkiMusic est un prototype de plateforme de streaming musical créé à des fins éducatives. Bien qu'il ne diffuse pas réellement de musique, le projet illustre parfaitement les concepts d'interface utilisateur pour un service de streaming, incluant la navigation, la gestion de playlists, et un système d'abonnement simulé.",
     languages: ['PHP', 'JavaScript', 'Bootstrap'],

@@ -21,6 +21,12 @@ import { useLenis } from '../hooks/useLenis';
 gsap.registerPlugin(ScrollTrigger);
 
 // Images de partage 1200×630 (JPG / PNG : les .webp passent mal dans les aperçus LinkedIn)
+/** Titre d'onglet et de résultat Google : le plus complet qui tient dans ~60 caractères. */
+const caseStudyTitle = (title: string, name: string, caseStudy: string) =>
+  [`${title} — ${caseStudy} | Christen Dijoux`, `${title} | Christen Dijoux`, `${name} — ${caseStudy} | Christen Dijoux`].find(
+    (candidate) => candidate.length <= 60
+  ) ?? `${name} | Christen Dijoux`;
+
 const OG_IMAGES: Record<string, string> = {
   akiworkspace: 'jpg',
   'portfolio-watch': 'jpg',
@@ -161,7 +167,7 @@ export const ProjectDetailPage = () => {
       <Seo
         path={`/project/${project.id}`}
         type="article"
-        title={`${translatedTitle} — ${t('ui.caseStudy')} | Christen Dijoux`}
+        title={caseStudyTitle(translatedTitle, project.name, t('ui.caseStudy'))}
         description={translatedDescription}
         image={OG_IMAGES[project.id] ? `/assets/og/${project.id}.${OG_IMAGES[project.id]}` : undefined}
         imageAlt={translatedTitle}

@@ -162,7 +162,7 @@ export const LabPage: React.FC = () => {
       <Seo path="/lab" title={t.title} description={t.description} image="/assets/art/og-lab.jpg" imageAlt="Lab — Gray-Scott reaction-diffusion and particle type" />
 
       <header className="px-4 pb-12 pt-8 sm:px-6 md:px-10 md:pb-20 md:pt-12">
-        <Link to="/" className="label group flex w-fit items-center gap-2 hover:text-paper">
+        <Link to="/" className="label group -my-1 flex w-fit items-center gap-2 py-1 hover:text-paper">
           <ArrowLeft className="h-3 w-3 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
           {t.back}
         </Link>

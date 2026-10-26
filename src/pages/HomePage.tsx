@@ -62,7 +62,7 @@ export const HomePage = () => {
       <Seo
         path="/"
         type="profile"
-        title={t('home.title', { defaultValue: 'Christen Dijoux — Développeur Full-stack & IA | Saguenay' })}
+        title={t('home.title', { defaultValue: 'Christen Dijoux — Développeur full-stack & IA | Saguenay' })}
         description={t('home.description', { defaultValue: 'Portfolio de Christen Dijoux - Développeur Full-stack spécialisé en React, Node.js, TypeScript et WordPress Headless.' })}
       />
       <HeroSection />

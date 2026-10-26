@@ -45,7 +45,7 @@ const skillGroups: SkillGroup[] = [
 
 const experiences: Experience[] = [
   {
-    title: 'Spécialiste en Innovation Numérique',
+    title: 'Spécialiste en innovation numérique',
     company: 'Gagnon Frères',
     period: 'Fév. 2026 – Présent',
     bullets: [
@@ -106,7 +106,7 @@ const education: Education[] = [
     description: 'Renforcement des compétences en React.js, JSX, ES6, Redux et hooks, dans un contexte technique anglophone.',
   },
   {
-    title: 'Certificat en Design de Jeux Vidéo',
+    title: 'Certificat en design de jeux vidéo',
     school: 'Cégep de Jonquière',
     period: '2023',
     description: 'Acquisition de compétences en level design et création d\'expériences interactives.',
@@ -133,7 +133,7 @@ const EN: Record<string, string> = {
   'Cloud, Outils et Observabilité': 'Cloud, Tooling and Observability',
   'Design et Produit': 'Design and Product',
   'Accessibilité web': 'Web accessibility',
-  'Spécialiste en Innovation Numérique': 'Digital Innovation Specialist',
+  'Spécialiste en innovation numérique': 'Digital Innovation Specialist',
   'Co-fondateur et Développeur Web': 'Co-founder and Web Developer',
   'Développeur Full-Stack et DevOps': 'Full-Stack and DevOps Developer',
   'Chargé de Communication': 'Communications Officer',
@@ -164,7 +164,7 @@ const EN: Record<string, string> = {
     'Introduction of young learners to information technologies with an adapted pedagogical approach.',
   'Techniques d\'Intégration Multimédia': 'Multimedia Integration Techniques',
   'Formation en Développement Front-End (React)': 'Front-End Application Development Training (React)',
-  'Certificat en Design de Jeux Vidéo': 'Video Game Design Certificate',
+  'Certificat en design de jeux vidéo': 'Video Game Design Certificate',
   'Cégep de Jonquière': 'Cégep de Jonquière (College)',
   'edX en partenariat avec IBM': 'edX in partnership with IBM',
   'Concentration sur le développement front-end, l\'expérience utilisateur et la conception d\'interfaces immersives.':
@@ -342,7 +342,7 @@ export default function CVPage() {
           <header className="border-b border-line pb-8">
             <h1 className="display text-[clamp(3rem,8vw,7.5rem)]">CHRISTEN DIJOUX</h1>
             <p className="heading mt-3 text-[clamp(1.4rem,2.4vw,2.2rem)] text-paper/70">
-              {isEn ? 'Digital Innovation Specialist | Full-Stack Developer' : 'Spécialiste en Innovation Numérique | Développeur Full-Stack'}
+              {isEn ? 'Digital Innovation Specialist | Full-Stack Developer' : 'Spécialiste en innovation numérique | Développeur Full-Stack'}
             </p>
 
             <div className="mt-8 grid grid-cols-1 gap-3 font-mono text-[12px] uppercase tracking-[0.06em] md:grid-cols-2 lg:grid-cols-4">
@@ -378,7 +378,7 @@ export default function CVPage() {
 
               <section>
                 <h2 className="heading mb-5 border-b border-line pb-2 text-3xl uppercase">
-                  {isEn ? 'Professional Experience' : 'Expérience Professionnelle'}
+                  {isEn ? 'Professional Experience' : 'Expérience professionnelle'}
                 </h2>
                 <div className="space-y-6">
                   {experiences.map((experience) => (
