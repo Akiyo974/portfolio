@@ -11,7 +11,7 @@ interface FooterProps {
 }
 
 const linkClass =
-  'font-mono text-[12px] uppercase tracking-[0.08em] text-paper/60 hover:text-paper transition-colors focus:outline-none focus-visible:underline';
+  'inline-block py-1 -my-1 font-mono text-[12px] uppercase tracking-[0.08em] text-paper/60 hover:text-paper transition-colors focus:outline-none focus-visible:underline';
 
 // Petit numéro au-dessus du titre (le libellé complet reste pour les lecteurs d'écran)
 const Column: React.FC<{ index: number; title: string; label: string; children: React.ReactNode }> = ({ index, title, label, children }) => (
@@ -191,7 +191,7 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'default' }) => {
         )}
         <button
           onClick={scrollToTop}
-          className="label group flex items-center gap-2 hover:text-paper focus:outline-none focus-visible:underline"
+          className="label group -my-1 flex items-center gap-2 py-1 hover:text-paper focus:outline-none focus-visible:underline"
           aria-label={t('footer.backToTop')}
         >
           {t('footer.backToTop')}

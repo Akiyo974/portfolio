@@ -35,7 +35,7 @@ const buildProjects = (lang: Lang): ProjectInfo[] => {
   const tr = ((locales[lang] as unknown as { customProjects?: ProjectTranslations }).customProjects ?? {}) as ProjectTranslations;
   return customProjects.map((p) => {
     const t = tr[p.id] ?? {};
-    const stack = Array.from(
+    const all = Array.from(
       new Set([
         ...p.languages,
         ...(p.technologies?.frontend ?? []),
@@ -43,6 +43,8 @@ const buildProjects = (lang: Lang): ProjectInfo[] => {
         ...(p.technologies?.tools ?? []),
       ])
     );
+    // « Kotlin » est inutile à côté de « Kotlin 2.1 » : on garde seulement la mention la plus précise
+    const stack = all.filter((tech) => !all.some((other) => other !== tech && other.toLowerCase().startsWith(`${tech.toLowerCase()} `)));
     return {
       id: p.id,
       name: p.name,
