@@ -92,6 +92,25 @@ Demos mount only near the viewport and unmount when they leave it, so the page n
 - **Vitest + Testing Library** — 60 tests: components, chatbot logic, star-hunt state, reduced-motion hook, FR/EN translation parity, and Lab index consistency.
 - Strict TypeScript and ESLint.
 
+## Continuous deployment
+
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs on every pull request and every merge to `main`:
+
+1. **Tests, lint and build** — Node 22, `vitest run`, ESLint, `npm run build` (sitemap, Vite build, pre-rendering with Chrome). A guard fails the build if the public EmailJS / GA4 keys are missing from the bundle, so a build without them can never reach production.
+2. **Deploy** (merges to `main` only) — the `dist/` folder is uploaded to the o2switch web root over **FTPS**. Only changed files are sent; files are deleted only when the workflow itself uploaded them and they left the build. The leaderboard data, stored outside the web root, is never touched.
+
+Configuration (*Settings → Secrets and variables → Actions*):
+
+| Kind | Name | Content |
+| --- | --- | --- |
+| Variable | `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public identifiers |
+| Variable | `VITE_GA4_MEASUREMENT_ID` | GA4 measurement ID |
+| Variable | `VITE_SENTRY_DSN` | Sentry DSN (public) |
+| Secret | `FTP_SERVER` | `grue.o2switch.net` |
+| Secret | `FTP_USERNAME`, `FTP_PASSWORD` | Dedicated cPanel FTP account whose root is `public_html` |
+
+For a local build, put the same `VITE_*` values in a git-ignored `.env` file.
+
 ## Stack
 
 | Layer | Tools |
