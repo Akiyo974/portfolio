@@ -3,9 +3,9 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ContactSection } from '../components/ContactSection';
 import { StarProvider } from '../contexts/StarContext';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
-vi.mock('emailjs-com', () => ({ default: { sendForm: vi.fn() } }));
+vi.mock('@emailjs/browser', () => ({ default: { sendForm: vi.fn() } }));
 
 describe('ContactSection Component', () => {
   it('should render contact form with all fields', () => {

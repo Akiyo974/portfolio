@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin, Github, Linkedin, X, ArrowRight, ArrowUpRight, Star } from 'lucide-react';
 import { useStar } from '../contexts/StarContext';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SectionLabel } from './ui/Editorial';

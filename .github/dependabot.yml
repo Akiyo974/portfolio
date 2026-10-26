@@ -1,0 +1,18 @@
+# Mises à jour automatiques des dépendances : une PR groupée par semaine,
+# soumise à la CI « Tests et build » avant toute fusion
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: America/Toronto
+    open-pull-requests-limit: 5
+    groups:
+      mineures:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
