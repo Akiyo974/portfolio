@@ -61,7 +61,8 @@ function App() {
         <Suspense fallback={<LoadingScreen />}>
           <AnimatePresence mode="wait">
             <PageTransition>
-              <main id="main-content" tabIndex={-1} className="focus:outline-none">
+              {/* Cible du lien d'évitement ; chaque page porte son propre <main> (un seul par page) */}
+              <div id="main-content" tabIndex={-1} className="focus:outline-none">
                 <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
@@ -73,7 +74,7 @@ function App() {
                 <Route path="/legal-notice" element={<LegalNoticePage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
-              </main>
+              </div>
             </PageTransition>
           </AnimatePresence>
         </Suspense>

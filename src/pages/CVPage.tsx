@@ -226,7 +226,7 @@ function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
       </header>
 
       <div className="cvp-grid">
-        <main>
+        <div>
           <section>
             <H n="01">{L.profile}</H>
             <p className="cvp-lead">{tx(profile)}</p>
@@ -247,7 +247,7 @@ function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
               </article>
             ))}
           </section>
-        </main>
+        </div>
 
         <aside>
           <section>
