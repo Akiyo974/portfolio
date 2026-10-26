@@ -1,8 +1,11 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ContactSection } from '../components/ContactSection';
 import { StarProvider } from '../contexts/StarContext';
+import emailjs from 'emailjs-com';
+
+vi.mock('emailjs-com', () => ({ default: { sendForm: vi.fn() } }));
 
 describe('ContactSection Component', () => {
   it('should render contact form with all fields', () => {
@@ -43,5 +46,53 @@ describe('ContactSection Component', () => {
     expect(screen.getByLabelText(/entrez votre nom complet/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/entrez votre adresse email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/entrez votre message/i)).toBeInTheDocument();
+  });
+
+  describe('envoi', () => {
+    // Réponse d'EmailJS que le test déclenche quand il veut
+    const pendingSend = () => {
+      let resolve!: () => void;
+      vi.mocked(emailjs.sendForm).mockReturnValue(
+        new Promise((r) => { resolve = () => r({ status: 200, text: 'OK' }); }),
+      );
+      return () => resolve();
+    };
+    const form = () => screen.getByRole('button', { name: /envoyer/i }).closest('form')!;
+
+    beforeEach(() => {
+      vi.mocked(emailjs.sendForm).mockReset();
+    });
+
+    it("n'envoie qu'une fois même si on valide deux fois pendant l'envoi", async () => {
+      const respond = pendingSend();
+      render(<StarProvider><ContactSection /></StarProvider>);
+
+      fireEvent.submit(form());
+      fireEvent.submit(form());
+
+      expect(emailjs.sendForm).toHaveBeenCalledTimes(1);
+      expect(screen.getByRole('button', { name: /envoyer/i })).toBeDisabled();
+      await act(async () => respond());
+      expect(screen.getByRole('button', { name: /envoyer/i })).toBeEnabled();
+    });
+
+    it('masque le message 3 s après la réponse, même si elle arrive tard', async () => {
+      vi.useFakeTimers();
+      try {
+        const respond = pendingSend();
+        render(<StarProvider><ContactSection /></StarProvider>);
+        fireEvent.submit(form());
+
+        // EmailJS répond au bout de 5 s : le message doit tout de même s'afficher
+        await act(async () => { vi.advanceTimersByTime(5000); });
+        await act(async () => respond());
+        expect(screen.getByRole('dialog')).toBeInTheDocument();
+
+        await act(async () => { vi.advanceTimersByTime(3000); });
+        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      } finally {
+        vi.useRealTimers();
+      }
+    });
   });
 });

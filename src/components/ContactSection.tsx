@@ -23,6 +23,7 @@ export const ContactSection: React.FC = () => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
   const [popupType, setPopupType] = useState<'success' | 'error'>('success');
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -54,8 +55,18 @@ export const ContactSection: React.FC = () => {
     });
   };
 
+  // Masquer le popup 3 secondes après son affichage, c'est-à-dire après la réponse d'EmailJS
+  useEffect(() => {
+    if (!popupVisible) return;
+    const timer = setTimeout(() => setPopupVisible(false), 3000);
+    return () => clearTimeout(timer);
+  }, [popupVisible, popupMessage]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Un seul envoi à la fois : pas de doublon si on clique deux fois
+    if (sending) return;
+    setSending(true);
 
     emailjs.sendForm(
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -76,12 +87,7 @@ export const ContactSection: React.FC = () => {
         setPopupVisible(true);
         console.error(error.text);
       }
-    );
-
-    // Masquer le popup après 3 secondes
-    setTimeout(() => {
-      setPopupVisible(false);
-    }, 3000);
+    ).finally(() => setSending(false));
   };
 
   const inputClass =
@@ -255,8 +261,15 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn-solid w-full py-4" data-magnetic aria-label="Envoyer le formulaire de contact">
-              {t('contact.send')} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            <button
+              type="submit"
+              className="btn-solid w-full py-4 disabled:cursor-wait disabled:opacity-60"
+              data-magnetic
+              aria-label="Envoyer le formulaire de contact"
+              disabled={sending}
+              aria-busy={sending}
+            >
+              {sending ? t('contact.sending') : t('contact.send')} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
             </button>
           </form>
         </div>
