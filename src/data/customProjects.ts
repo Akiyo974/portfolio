@@ -344,10 +344,10 @@ export const customProjects: CustomProject[] = [
     id: 'portfolio-watch',
     name: 'Portfolio Watch',
     title: 'Portfolio Watch - Version Galaxy Watch',
-    description: 'Mon portfolio repensé pour un écran rond d\'un pouce et demi : une app Wear OS en Kotlin et Jetpack Compose, installée sur ma Galaxy Watch. Projets, parcours, contact et carte de visite en QR code au poignet, en trois touches au plus.',
-    longDescription: 'Portfolio Watch adapte l\'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut qui s\'efface au défilement, listes qui suivent la courbe de l\'écran, défilement à la lunette, retour en glissant vers la droite. La version 0.4.0 tourne sur ma Galaxy Watch : un accueil façon cadran, les huit projets du portfolio avec leurs études de cas à ouvrir sur le téléphone, le parcours, le contact, le jeu des étoiles du site et une carte de visite en QR code qu\'un téléphone scanne pour m\'ajouter à ses contacts. Une tuile Wear OS donne accès au QR, à l\'appel et à l\'e-mail en un glissement depuis le cadran, et l\'app passe du français à l\'anglais d\'un toucher. Côté ingénierie : des releases signées publiées automatiquement par GitHub Actions à chaque tag, des tests unitaires qui relisent réellement le QR, et chaque version essayée sur la vraie montre avant d\'être publiée. Prochaines étapes : un cadran installable et la publication sur le Google Play Store.',
+    description: 'Mon portfolio repensé pour un écran rond d\'un pouce et demi : une app Wear OS en Kotlin et Jetpack Compose, installée sur ma Galaxy Watch. Projets, parcours, contact, carte de visite en QR code et mon propre cadran, au poignet.',
+    longDescription: 'Portfolio Watch adapte l\'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut qui s\'efface au défilement, listes qui suivent la courbe de l\'écran, défilement à la lunette, retour en glissant vers la droite. La version 0.5.0 tourne sur ma Galaxy Watch : un accueil façon cadran, les huit projets du portfolio avec leurs études de cas à ouvrir sur le téléphone, le parcours, le contact, le jeu des étoiles du site et une carte de visite en QR code qu\'un téléphone scanne pour m\'ajouter à ses contacts. Une tuile Wear OS donne accès au QR, à l\'appel et à l\'e-mail en un glissement depuis le cadran, et l\'app passe du français à l\'anglais d\'un toucher. L\'accueil existe aussi en vrai cadran, au Watch Face Format : il remplace celui de Samsung, et sa complication « Ma carte » ouvre le QR d\'un toucher. Côté ingénierie : des releases signées publiées automatiquement par GitHub Actions à chaque tag, des tests unitaires qui relisent réellement le QR, un cadran vérifié par le validateur officiel de Google, et chaque version essayée sur la vraie montre avant d\'être publiée. Prochaine étape : la publication sur le Google Play Store.',
     languages: ['Kotlin'],
-    topics: ['wear-os', 'galaxy-watch', 'kotlin', 'jetpack-compose', 'wear-os-tiles', 'qr-code', 'smartwatch', 'android'],
+    topics: ['wear-os', 'galaxy-watch', 'kotlin', 'jetpack-compose', 'wear-os-tiles', 'watch-face', 'qr-code', 'smartwatch', 'android'],
     image: '/assets/portfolio-watch.webp',
     codeUrl: 'https://github.com/Akiyo974/portfolio-watch',
     features: [
@@ -355,6 +355,8 @@ export const customProjects: CustomProject[] = [
       'Les huit projets du portfolio, chaque étude de cas à ouvrir en entier sur le téléphone associé',
       'Carte de visite en QR code (vCard) : un scan ajoute mes coordonnées aux contacts, même montre en veille',
       'Tuile Wear OS : disponibilité, QR, appel et e-mail en un glissement depuis le cadran',
+      'Cadran installable (Watch Face Format) : graduations, nom le long du bord, heure, date et deux complications au choix',
+      'Complication « Ma carte » : le QR en un toucher, sur ce cadran ou sur n\'importe quel autre',
       'Français et anglais, avec un sélecteur FR / EN mémorisé',
       'Parcours La Réunion → Saguenay tracé comme une trajectoire de vol',
       'Contact en un toucher : e-mail, appel, LinkedIn, GitHub',
@@ -371,10 +373,11 @@ export const customProjects: CustomProject[] = [
       'Passer de la montre au téléphone sans perdre le contexte',
       'Un QR assez gros pour être scanné sur 1,4 pouce : chaque octet de la carte compte, et les tests le vérifient',
       'Des mises à jour qui s\'installent par-dessus sans perdre de données, grâce à une clé de signature fixe',
-      'Embarquer les polices variables du site sans alourdir l\'app'
+      'Embarquer les polices variables du site sans alourdir l\'app',
+      'Un cadran sans une ligne de code (Watch Face Format), vérifié par le validateur officiel de Google à chaque PR'
     ],
     technologies: {
-      frontend: ['Kotlin 2.1', 'Jetpack Compose for Wear OS', 'Jetpack Tiles', 'ZXing (QR code)'],
+      frontend: ['Kotlin 2.1', 'Jetpack Compose for Wear OS', 'Jetpack Tiles', 'Watch Face Format', 'ZXing (QR code)'],
       tools: ['Wear Remote Interactions', 'Gradle', 'GitHub Actions', 'JUnit', 'Wear OS 3+']
     },
     year: '2026',
