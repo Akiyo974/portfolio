@@ -199,7 +199,15 @@ if ($action === 'submit') {
     $allowed = withJson($dataDir . '/guard.json', function ($g) use ($nonce, $ipHash) {
         $now = time();
         $g['used'] = array_filter($g['used'] ?? [], fn($t) => $t > $now - TOKEN_TTL);
-        $g['ips'] = array_filter($g['ips'] ?? [], fn($list) => !empty($list));
+        // Purge à chaque envoi : on ne garde, pour chaque IP, que les envois de la fenêtre en cours,
+        // et on oublie les IP sans envoi récent (sinon le fichier grossit sans fin)
+        $g['ips'] = array_filter(
+            array_map(
+                fn($list) => array_values(array_filter($list, fn($t) => $t > $now - RATE_WINDOW)),
+                $g['ips'] ?? []
+            ),
+            fn($list) => !empty($list)
+        );
         if (isset($g['used'][$nonce])) {
             return [false, null];
         }
