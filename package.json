@@ -71,5 +71,8 @@
     "world-atlas": "^2.0.2"
   },
   "description": "Portfolio of Christen Dijoux — full-stack & AI developer (christendijoux.com)",
-  "homepage": "https://christendijoux.com"
+  "homepage": "https://christendijoux.com",
+  "engines": {
+    "node": ">=22.12"
+  }
 }

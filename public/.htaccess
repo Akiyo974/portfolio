@@ -8,6 +8,14 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   
+  # Version française pré-rendue (dist/fr/) pour les adresses en ?lang=fr,
+  # celles que déclarent les balises canonical et hreflang : /?lang=fr → fr/index.html, /lab?lang=fr → fr/lab.html
+  RewriteCond %{QUERY_STRING} (^|&)lang=fr(&|$)
+  RewriteRule ^$ /fr/index.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)lang=fr(&|$)
+  RewriteCond %{DOCUMENT_ROOT}/fr/$1.html -f
+  RewriteRule ^(.+?)/?$ /fr/$1.html [L]
+
   # Pages pré-rendues au build (scripts/prerender.mjs) : /lab → lab.html, /project/ctreq → project/ctreq.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
