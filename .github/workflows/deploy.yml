@@ -103,7 +103,10 @@ jobs:
           fi
 
       # N'envoie que les fichiers modifiés ; ne supprime que ce qu'il a lui-même envoyé et qui a disparu du build
-      - uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      - name: Envoi FTPS
+        id: ftp
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -111,6 +114,18 @@ jobs:
           protocol: ftps
           local-dir: ./dist/
           # Le compte FTP a pour racine public_html
+          server-dir: ./
+
+      # Le serveur coupe parfois le canal de données (ECONNRESET) : une seconde tentative suffit
+      - name: Envoi FTPS (nouvelle tentative)
+        if: steps.ftp.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
           server-dir: ./
 
       - name: Vérifier le site en ligne
