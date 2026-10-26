@@ -1,0 +1,121 @@
+name: Build et déploiement
+
+# Chaque PR est testée et compilée ; chaque fusion dans main est mise en ligne sur o2switch (FTPS).
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Tests et build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # Valeurs publiques (incluses dans le JavaScript servi aux visiteurs) : variables du dépôt, pas des secrets
+      VITE_EMAILJS_SERVICE_ID: ${{ vars.VITE_EMAILJS_SERVICE_ID }}
+      VITE_EMAILJS_TEMPLATE_ID: ${{ vars.VITE_EMAILJS_TEMPLATE_ID }}
+      VITE_EMAILJS_PUBLIC_KEY: ${{ vars.VITE_EMAILJS_PUBLIC_KEY }}
+      VITE_GA4_MEASUREMENT_ID: ${{ vars.VITE_GA4_MEASUREMENT_ID }}
+      VITE_SENTRY_DSN: ${{ vars.VITE_SENTRY_DSN }}
+      VITE_SENTRY_ENVIRONMENT: production
+      # Chrome est préinstallé sur les runners Ubuntu (pré-rendu des pages)
+      CHROME_PATH: /usr/bin/google-chrome
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          # Les tests (jsdom 27) demandent Node 22.12 ou plus
+          node-version: 22
+          cache: npm
+
+      - name: Vérifier les variables de build
+        run: |
+          missing=""
+          for v in VITE_EMAILJS_SERVICE_ID VITE_EMAILJS_TEMPLATE_ID VITE_EMAILJS_PUBLIC_KEY VITE_GA4_MEASUREMENT_ID VITE_SENTRY_DSN; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Variables manquantes (Settings → Secrets and variables → Actions → Variables) :$missing"
+            exit 1
+          fi
+
+      - run: npm ci
+
+      - name: Tests
+        run: npx vitest run
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build et pré-rendu
+        run: npm run build
+
+      # Garde-fou : un build sans clés casserait le formulaire de contact en production
+      - name: Vérifier que les clés sont dans le build
+        run: |
+          grep -q "$VITE_EMAILJS_SERVICE_ID" dist/assets/*.js || { echo "::error::Clé EmailJS absente du build"; exit 1; }
+          grep -q "$VITE_GA4_MEASUREMENT_ID" dist/assets/*.js || { echo "::error::ID Google Analytics absent du build"; exit 1; }
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/
+          # .htaccess et .well-known/ sont des fichiers cachés, indispensables en production
+          include-hidden-files: true
+          retention-days: 7
+
+  deploy:
+    name: Mise en ligne (o2switch)
+    needs: build
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: https://christendijoux.com
+    # Un seul déploiement à la fois, sans annuler celui en cours
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - name: Vérifier les secrets FTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          if [ -z "$FTP_SERVER" ] || [ -z "$FTP_USERNAME" ] || [ -z "$FTP_PASSWORD" ]; then
+            echo "::error::Secrets FTP_SERVER, FTP_USERNAME et FTP_PASSWORD requis (Settings → Secrets and variables → Actions)"
+            exit 1
+          fi
+
+      # N'envoie que les fichiers modifiés ; ne supprime que ce qu'il a lui-même envoyé et qui a disparu du build
+      - uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          # Le compte FTP a pour racine public_html
+          server-dir: ./
+
+      - name: Vérifier le site en ligne
+        run: |
+          sleep 5
+          code=$(curl -s -o /dev/null -w '%{http_code}' "https://christendijoux.com/?deploy=${GITHUB_SHA}")
+          echo "Accueil : HTTP $code"
+          [ "$code" = "200" ]
