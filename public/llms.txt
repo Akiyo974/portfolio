@@ -23,7 +23,7 @@
 
 - [CTREQ — Quebec educational platform](https://christendijoux.com/project/ctreq) (2025): merger of two WordPress sites into a headless Next.js 13 platform; migration of 10+ content types, triple cache (~50 ms), SEO, handover plan.
 - [AkiWorkspace — productivity workspace](https://christendijoux.com/project/akiworkspace) (2026): SaaS for ideas, notes, tasks and projects with hardened security and granular sharing.
-- [Portfolio Watch — Galaxy Watch edition](https://christendijoux.com/project/portfolio-watch) (2026, v0.1.0, in development): this portfolio as a standalone Wear OS app (Kotlin, Jetpack Compose) running on a Galaxy Watch; code on [GitHub](https://github.com/Akiyo974/portfolio-watch).
+- [Portfolio Watch — Galaxy Watch edition](https://christendijoux.com/project/portfolio-watch) (2026, v0.4.0, in development): this portfolio as a standalone Wear OS app (Kotlin, Jetpack Compose) running on a Galaxy Watch, with a Wear OS tile, a QR business card and an FR / EN switch; code on [GitHub](https://github.com/Akiyo974/portfolio-watch).
 - [CTREQ blog / archive](https://christendijoux.com/project/ctreq-blog-archive) (2025): headless React + WPGraphQL archive with automatic age-based filtering.
 - [Digital innovations in vocational training](https://christendijoux.com/project/innovations-numeriques-fp) (2024): interactive web app for ECOBES (Cégep de Jonquière) and CTREQ showcasing 40+ teachers' innovations.
 - [Webana](https://christendijoux.com/project/webana) (2024), [AkiProject](https://christendijoux.com/project/akiproject) (2023), [AkiMusic](https://christendijoux.com/project/akimusic) (2023): earlier school and demo projects.
