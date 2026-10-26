@@ -50,7 +50,9 @@ export default defineConfig(({ command }) => ({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,webp}'],
-        globIgnores: ['**/apple-touch-icon.png', '**/favicon*.{png,ico,svg}'],
+        // html2pdf (1 Mo, générateur de lettres) et Sentry (400 Ko, seulement après consentement) se chargent à la demande :
+        // inutile de les télécharger d'avance pour chaque visiteur
+        globIgnores: ['**/apple-touch-icon.png', '**/favicon*.{png,ico,svg}', '**/html2pdf-*.js', '**/sentry-*.js'],
         dontCacheBustURLsMatching: /\.(webp)$/,
         runtimeCaching: [
           {
@@ -92,6 +94,8 @@ export default defineConfig(({ command }) => ({
           'gsap-vendor': ['gsap'],
           'framer-motion': ['framer-motion'],
           'i18n': ['i18next', 'react-i18next'],
+          // Nommé pour pouvoir l'exclure du précache (voir workbox.globIgnores)
+          'sentry': ['@sentry/react'],
         },
       },
     },

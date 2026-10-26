@@ -30,7 +30,7 @@ const EMAIL = 'christen.dijoux@gmail.com';
 export const privacy: LegalDoc = {
   title: { fr: 'Confidentialité', en: 'Privacy' },
   kicker: { fr: 'Politique de confidentialité', en: 'Privacy policy' },
-  updated: '2026-10-12',
+  updated: '2026-10-26',
   summary: {
     title: { fr: 'En bref', en: 'In short' },
     items: [
@@ -67,7 +67,7 @@ export const privacy: LegalDoc = {
         { p: { fr: "Suivi des erreurs (avec votre accord)", en: 'Error tracking (with your consent)' } },
         { list: [
           { fr: 'Outil : Sentry. Il enregistre les erreurs techniques (message, navigateur, système, actions ayant précédé l’erreur).', en: 'Tool: Sentry. It records technical errors (message, browser, OS, actions that led to the error).' },
-          { fr: "Il enregistre aussi une relecture de session : environ 10 % des visites, et toutes celles où une erreur survient. Les champs de formulaire y sont toujours masqués.", en: 'It also records a session replay of about 10 % of visits and of every visit where an error occurs. Form fields are always masked.' },
+          { fr: "Il enregistre aussi une relecture de session : environ 10 % des visites, et toutes celles où une erreur survient. Tout le texte y est masqué : ce que vous tapez (formulaire, assistant) et le contenu des pages n'apparaissent jamais en clair.", en: 'It also records a session replay of about 10 % of visits and of every visit where an error occurs. All text is masked: what you type (forms, assistant) and page content never appear in clear.' },
           { fr: 'Finalité : corriger les bugs et garder le site stable.', en: 'Purpose: fixing bugs and keeping the site stable.' },
         ] },
         { p: { fr: 'Jeu des étoiles', en: 'Star game' } },
