@@ -648,6 +648,8 @@ html.lenis body {
 }
 .cvp-title-sm { font-size: 10.5pt; }
 .cvp-org { color: #555; font-size: 8.2pt; }
+.cvp-proj { margin-top: 0.6mm; color: #222; }
+.cvp-proj a { color: #6b6b67; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 6.8pt; white-space: nowrap; }
 .cvp-bullets { margin-top: 1.2mm !important; }
 .cvp-bullets li { position: relative; padding-left: 3.2mm; color: #222; }
 .cvp-bullets li + li { margin-top: 0.6mm; }
