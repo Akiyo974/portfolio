@@ -89,6 +89,7 @@ async function svgToImage(svg, file, colors = 8) {
 
 // ---------- 1. Captures de projets tramées ----------
 const projectSources = {
+  'gagnon-freres': 'public/assets/gagnon-freres.webp',
   akiworkspace: 'public/assets/preview_akiworkspace.png',
   ctreq: 'public/assets/ctreq-879.webp',
   'ctreq-blog-archive': 'public/assets/ctreq-archive-878.webp',
@@ -202,6 +203,53 @@ async function ridgeLines() {
   await svgToImage(svg, 'ridge-lines.png');
 }
 
+// ---------- 4b. Construction de design (nombre d'or, Bézier, grille) ----------
+async function designConstruction() {
+  const W = 1600, H = 1200, PHI = (1 + Math.sqrt(5)) / 2;
+  // Grille de mise en page : 12 colonnes, gouttières
+  let grid = '';
+  for (let c = 0; c <= 12; c++) {
+    const x = 80 + c * ((W - 160) / 12);
+    grid += `<line x1="${x.toFixed(1)}" y1="60" x2="${x.toFixed(1)}" y2="${H - 60}" stroke-width="0.6" opacity="0.12"/>`;
+  }
+  for (let r = 0; r <= 8; r++) {
+    const y = 80 + r * ((H - 160) / 8);
+    grid += `<line x1="60" y1="${y.toFixed(1)}" x2="${W - 60}" y2="${y.toFixed(1)}" stroke-width="0.6" opacity="0.12"/>`;
+  }
+  // Rectangle d'or découpé en carrés, avec la spirale
+  let x = 230, w = 1140, h = w / PHI, y = (H - h) / 2;
+  let squares = `<rect x="${x}" y="${y.toFixed(1)}" width="${w}" height="${h.toFixed(1)}" fill="none" stroke-width="1.4" opacity="0.7"/>`;
+  let spiral = '';
+  for (let i = 0; i < 10; i++) {
+    let sx, sy, s, from, to;
+    if (i % 4 === 0) { s = h; sx = x; sy = y; from = [x, y + h]; to = [x + h, y]; x += h; w -= h; }
+    else if (i % 4 === 1) { s = w; sx = x; sy = y; from = [x, y]; to = [x + w, y + w]; y += w; h -= w; }
+    else if (i % 4 === 2) { s = h; sx = x + w - h; sy = y; from = [x + w, y]; to = [x + w - h, y + h]; w -= h; }
+    else { s = w; sx = x; sy = y + h - w; from = [x + w, y + h]; to = [x, y + h - w]; h -= w; }
+    squares += `<rect x="${sx.toFixed(1)}" y="${sy.toFixed(1)}" width="${s.toFixed(1)}" height="${s.toFixed(1)}" fill="none" stroke-width="0.9" opacity="${(0.55 - i * 0.03).toFixed(2)}"/>`;
+    spiral += `${i === 0 ? `M${from[0].toFixed(1)} ${from[1].toFixed(1)}` : ''} A${s.toFixed(1)} ${s.toFixed(1)} 0 0 1 ${to[0].toFixed(1)} ${to[1].toFixed(1)}`;
+  }
+  // Courbe de Bézier et ses poignées
+  const A = [150, 980], C1 = [520, 260], C2 = [1060, 1080], B = [1450, 300];
+  const handle = (p, c) => `<line x1="${p[0]}" y1="${p[1]}" x2="${c[0]}" y2="${c[1]}" stroke-width="1" opacity="0.6" stroke-dasharray="5 6"/>`
+    + `<circle cx="${c[0]}" cy="${c[1]}" r="9" fill="${INK}" stroke-width="1.5"/>`;
+  const anchor = (p) => `<rect x="${p[0] - 10}" y="${p[1] - 10}" width="20" height="20" fill="${PAPER}"/>`;
+  const bezier = `<path d="M${A} C${C1} ${C2} ${B}" fill="none" stroke-width="3.2"/>`
+    + handle(A, C1) + handle(B, C2) + anchor(A) + anchor(B);
+  // Cercles de construction et repères
+  const circles = [[x + w / 2, y + h / 2, 300], [x + w / 2, y + h / 2, 185]]
+    .map(([cx, cy, r]) => `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r}" fill="none" stroke-width="0.8" opacity="0.3"/>`).join('');
+  const crop = [[60, 60, 1, 1], [W - 60, 60, -1, 1], [60, H - 60, 1, -1], [W - 60, H - 60, -1, -1]]
+    .map(([cx, cy, dx, dy]) => `<path d="M${cx} ${cy + dy * 28} V${cy} H${cx + dx * 28}" fill="none" stroke-width="1.4" opacity="0.6"/>`).join('');
+  const label = (lx, ly, t) => `<text x="${lx}" y="${ly}" font-family="Consolas, monospace" font-size="18" letter-spacing="3" fill="${PAPER}" fill-opacity="0.55">${t}</text>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
+  <rect width="100%" height="100%" fill="${INK}"/>
+  <g stroke="${PAPER}">${grid}${squares}${circles}
+  <path d="${spiral}" fill="none" stroke-width="2" opacity="0.9"/>${bezier}${crop}</g>
+  ${label(96, 120, 'φ = 1.618')}${label(W - 290, H - 100, 'GRID 12 · 8')}${label(A[0] + 24, A[1] + 44, 'P0')}${label(B[0] - 40, B[1] - 26, 'P3')}</svg>`;
+  await svgToImage(svg, 'design-construction.png');
+}
+
 // ---------- 5. Champ de bruit tramé (texture / bannière) ----------
 async function noiseField(file, seed, W, H, scale) {
   const noise = makeNoise(seed);
@@ -245,6 +293,7 @@ if (!onlyProjects) {
   await halftoneGlobe();
   await rayBurst();
   await ridgeLines();
+  await designConstruction();
   await noiseField('noise-band.png', 3, 1600, 500, 0.004);
   await noiseField('noise-square.png', 21, 900, 900, 0.006);
   await ogImage();

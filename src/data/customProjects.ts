@@ -24,10 +24,51 @@ export interface CustomProject {
   year?: string;
   status?: 'completed' | 'in-progress' | 'archived';
   relatedProjects?: string[]; // IDs des projets liés
+  kind?: 'professional'; // expérience en entreprise (sinon projet personnel)
   isCustom: true; // Toujours true pour différencier des projets GitHub
 }
 
 export const customProjects: CustomProject[] = [
+  {
+    id: 'gagnon-freres',
+    name: 'Gagnon Frères',
+    title: 'Gagnon Frères - Logiciels internes et IA pour un détaillant',
+    description: "Spécialiste en innovation numérique dans une équipe TI de cinq personnes : je conçois et développe les logiciels internes, l'IA appliquée et les outils des magasins d'un détaillant québécois de 7 magasins.",
+    languages: ['Python', 'TypeScript', 'C/AL'],
+    topics: ['innovation', 'ai', 'internal-tools', 'azure', 'dynamics-nav', 'github', 'retail'],
+    longDescription: "Depuis février 2026, je suis spécialiste en innovation numérique chez Gagnon Frères, un détaillant québécois de 7 magasins, dans une équipe TI de cinq personnes. Mon rôle : repérer où le logiciel et l'IA font gagner du temps, puis livrer. J'ai conçu et développé de bout en bout la plateforme interne des équipes, un outil d'accueil des clients en magasin et une application de vente sur tablette reliée à l'ERP. Je développe aussi un assistant IA qui répond en langage naturel à partir des données de l'entreprise. À côté, je travaille dans l'ERP Dynamics NAV, je m'occupe de l'architecture Azure, de toute l'organisation GitHub et de la sécurité des dépôts. Ces outils et leurs données sont internes : cette page reste volontairement générale, sans captures d'écran ni code, et les visuels sont des schémas.",
+    image: '/assets/gagnon-freres.webp',
+    features: [
+      "Plateforme interne des équipes : conçue et développée de bout en bout",
+      "Outils d'aide à la décision pour les acheteurs, avec des données mises à jour automatiquement",
+      "Accueil des clients en magasin géré en temps réel dans les 7 magasins, sur tablette, mobile et poste d'accueil",
+      "Vente assistée sur tablette : le client suit son dossier et signe à l'écran, les documents finaux sont produits automatiquement",
+      "Assistant IA qui répond en langage naturel à partir des données de l'ERP",
+      "Développement et mises à jour de l'ERP Dynamics NAV, point de vente compris",
+      "Architecture Azure et choix technologiques, avec l'évaluation des coûts",
+      "Organisation GitHub complète : passage à GitHub Team, règles, rôles, CI/CD et guide de l'équipe",
+      "Sécurité des dépôts et des secrets, monitoring et observabilité",
+      "Pilote IA pour l'équipe (Copilot, agents) et formation aux bonnes pratiques"
+    ],
+    challenges: [
+      "Faire dialoguer des outils web modernes avec un ERP en place depuis des années",
+      "Livrer des outils utilisés chaque jour en magasin, sur des appareils variés, sans formation lourde",
+      "Mettre l'IA au service de questions concrètes sans exposer de données sensibles",
+      "Poser des règles GitHub et de sécurité dans une petite équipe sans la ralentir",
+      "Choisir des technologies qui restent abordables à faire tourner",
+      "Garder un design soigné, même pour des outils que seule l'équipe verra"
+    ],
+    technologies: {
+      frontend: ['TypeScript', 'Tablettes, mobiles et postes en magasin'],
+      backend: ['Python', 'Azure App Service', 'Azure SQL', 'Dynamics NAV / LS Retail'],
+      tools: ['GitHub Team', 'GitHub Actions', 'GitHub Copilot', 'New Relic', 'Cloudflare']
+    },
+    year: '2026',
+    status: 'in-progress',
+    relatedProjects: ['badger', 'akiworkspace'],
+    kind: 'professional',
+    isCustom: true
+  },
  {
     id: 'akiworkspace',
     name: 'AkiWorkspace',

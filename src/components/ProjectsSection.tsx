@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Projets : galerie horizontale épinglée sur grand écran, pile verticale sur mobile.
  */
 // Projets mis en avant sur l'accueil, dans cet ordre (les autres restent dans l'index /projects)
-const FEATURED = ['badger', 'ctreq', 'akiworkspace', 'portfolio-watch'];
+const FEATURED = ['gagnon-freres', 'badger', 'akiworkspace', 'ctreq'];
 
 export const ProjectsSection = () => {
   const { t } = useTranslation();
@@ -107,7 +107,7 @@ export const ProjectsSection = () => {
                 <span className="text-paper">{String(index + 1).padStart(2, '0')}</span> / {total}
               </span>
               <span>
-                {t('projects.personalProject')}
+                {t(project.kind === 'professional' ? 'projects.professionalProject' : 'projects.personalProject')}
                 {project.year ? ` · ${project.year}` : ''}
               </span>
             </div>
