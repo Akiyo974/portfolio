@@ -24,7 +24,11 @@ export const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
-  const featured = FEATURED.map((id) => customProjects.find((p) => p.id === id)).filter((p) => p !== undefined);
+  // Complétés par les premiers projets de la liste si un identifiant manque
+  const featured = [
+    ...FEATURED.map((id) => customProjects.find((p) => p.id === id)).filter((p) => p !== undefined),
+    ...customProjects.filter((p) => !FEATURED.includes(p.id)),
+  ].slice(0, FEATURED.length);
   const total = String(featured.length).padStart(2, '0');
 
   // useLayoutEffect : le pin GSAP est retiré avant que React ne supprime le DOM
