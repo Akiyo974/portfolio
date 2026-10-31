@@ -7,6 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
+import { projectKindKey } from '../data/projectKind';
 import { Footer } from '../components/Footer';
 import { SectionLabel, MetaRow } from '../components/ui/Editorial';
 import { PixelImage } from '../components/ui/PixelImage';
@@ -205,7 +206,7 @@ export const ProjectDetailPage = () => {
           <div className="lg:col-span-5">
             <MetaRow k={t('ui.statYear')} v={project.year ?? '—'} />
             <MetaRow k={t('ui.statusLabel')} v={statusLabel} />
-            <MetaRow k={t('ui.typeLabel')} v={t(project.kind === 'professional' ? 'projectDetail.professionalProject' : 'projectDetail.personalProject')} />
+            <MetaRow k={t('ui.typeLabel')} v={t(`projectDetail.${projectKindKey(project)}`)} />
             <MetaRow k={t('projectDetail.languages')} v={project.languages.join(' · ')} />
           </div>
           <div className="flex flex-wrap items-end gap-2 lg:col-span-6 lg:col-start-7 lg:justify-end">

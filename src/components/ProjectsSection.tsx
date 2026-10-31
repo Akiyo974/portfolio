@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Github, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
+import { projectKindKey } from '../data/projectKind';
 import { SectionLabel } from './ui/Editorial';
 import { PixelImage } from './ui/PixelImage';
 import { useProjectTransition } from '../lib/projectTransition';
@@ -107,7 +108,7 @@ export const ProjectsSection = () => {
                 <span className="text-paper">{String(index + 1).padStart(2, '0')}</span> / {total}
               </span>
               <span>
-                {t(project.kind === 'professional' ? 'projects.professionalProject' : 'projects.personalProject')}
+                {t(`projects.${projectKindKey(project)}`)}
                 {project.year ? ` · ${project.year}` : ''}
               </span>
             </div>

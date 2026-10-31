@@ -101,6 +101,7 @@
     "viewDetails": "View Details",
     "personalProject": "Personal Project",
     "professionalProject": "Professional work",
+    "clientProject": "Client work",
     "githubProject": "GitHub",
     "description": "Index of projects by Christen Dijoux: case studies (headless platforms, SaaS, e-commerce) and open-source work.",
     "openSource": "Open source",
@@ -117,6 +118,7 @@
     "backToProjects": "Back to projects",
     "personalProject": "Personal Project",
     "professionalProject": "Professional work",
+    "clientProject": "Client work",
     "viewSite": "View Site",
     "viewDemo": "View Demo",
     "sourceCode": "Source Code",
@@ -600,9 +602,9 @@
     "metaDescription": "Legal notice for Christen Dijoux’s website: publisher, hosting, intellectual property, credits and governing law."
   },
   "ui": {
-    "announce": "Available for new projects — Synaptia Web",
+    "announce": "Software, AI and web — an idea to share?",
     "announceCta": "Write",
-    "openToWork": "Open to collaborations",
+    "openToWork": "Currently at Gagnon Frères",
     "localTime": "Local time",
     "heroTitle1": "Building",
     "heroTitle2": "intelligence",

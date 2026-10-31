@@ -24,7 +24,7 @@ export interface CustomProject {
   year?: string;
   status?: 'completed' | 'in-progress' | 'archived';
   relatedProjects?: string[]; // IDs des projets liés
-  kind?: 'professional'; // expérience en entreprise (sinon projet personnel)
+  kind?: 'professional' | 'client'; // expérience en entreprise ou mandat client (sinon projet personnel)
   isCustom: true; // Toujours true pour différencier des projets GitHub
 }
 
@@ -230,6 +230,7 @@ export const customProjects: CustomProject[] = [
     year: '2025',
     status: 'in-progress',
     relatedProjects: ['ctreq-blog-archive', 'innovations-numeriques-fp'],
+    kind: 'client',
     isCustom: true,
   },
   {
@@ -298,6 +299,7 @@ export const customProjects: CustomProject[] = [
     },
     year: '2025',
     status: 'completed',
+    kind: 'client',
     isCustom: true
   },
   {
@@ -379,6 +381,7 @@ export const customProjects: CustomProject[] = [
     year: '2024',
     status: 'completed',
     relatedProjects: ['ctreq'],
+    kind: 'client',
     isCustom: true,
   },
   {
