@@ -24,6 +24,18 @@ export const caseGallery: Record<string, { file: string; alt: { fr: string; en: 
     { file: 'portfolio-watch-03', alt: { fr: 'Parcours La Réunion → Saguenay, contact et tuile Wear OS', en: 'Réunion Island → Saguenay journey, contact and Wear OS tile' } },
     { file: 'portfolio-watch-04', alt: { fr: 'Carte de visite en QR code, jeu des étoiles et partie en cours', en: 'QR business card, star game and a round in progress' } },
   ],
+  badger: [
+    { file: 'badger-01', alt: { fr: "Le site de Badger et Badge Studio, l'app store du badge dans le navigateur", en: 'The Badger site and Badge Studio, the badge app store in the browser' } },
+    { file: 'badger-02', alt: { fr: "Les apps Badge, Radar et Contacts sur l'écran du badge", en: 'The Badge, Radar and Contacts apps on the badge screen' } },
+    { file: 'badger-03', alt: { fr: 'La Galaxy Watch pilote le badge, avec le podomètre et Mona Pet', en: 'The Galaxy Watch driving the badge, with the pedometer and Mona Pet' } },
+    { file: 'badger-04', alt: { fr: 'Duck Maze, le jeu chaud / froid du Radar et Mona étourdie', en: 'Duck Maze, the Radar hot / cold game and dizzy Mona' } },
+  ],
+  'mona-game': [
+    { file: 'mona-game-01', alt: { fr: "L'écran titre et la carte de Fort Mason", en: 'The title screen and the Fort Mason map' } },
+    { file: 'mona-game-02', alt: { fr: "Un combat devant le Golden Gate et l'Octodex", en: 'A battle in front of the Golden Gate and the Octodex' } },
+    { file: 'mona-game-03', alt: { fr: "Le mode Badger : titre, mini-carte et combat sur l'écran du badge", en: 'Badger mode: title, mini-map and battle on the badge screen' } },
+    { file: 'mona-game-04', alt: { fr: 'Les douze Octocats à attraper', en: 'The twelve Octocats to catch' } },
+  ],
   akiworkspace: [
     { file: 'akiworkspace-01', alt: { fr: "Tableau de bord d'AkiWorkspace", en: 'AkiWorkspace dashboard' } },
     { file: 'akiworkspace-02', alt: { fr: 'Écran de connexion, ordinateur et mobile', en: 'Sign-in screen, desktop and mobile' } },

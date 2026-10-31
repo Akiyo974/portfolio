@@ -101,7 +101,14 @@
     "viewDetails": "View Details",
     "personalProject": "Personal Project",
     "githubProject": "GitHub",
-    "description": "Index of projects by Christen Dijoux: case studies (headless platforms, SaaS, e-commerce) and open-source work."
+    "description": "Index of projects by Christen Dijoux: case studies (headless platforms, SaaS, e-commerce) and open-source work.",
+    "openSource": "Open source",
+    "openSourceTitle": "Contributions",
+    "openSourceIntro": "Pull requests to other teams' projects: {{count}} merged so far.",
+    "prsMerged_one": "{{count}} PR merged",
+    "prsMerged_other": "{{count}} PRs merged",
+    "prsOpen_one": "{{count}} PR open",
+    "prsOpen_other": "{{count}} PRs open"
   },
   "projectDetail": {
     "back": "Back",
@@ -364,6 +371,56 @@
         "Updates that install on top without losing data, thanks to a fixed signing key",
         "Shipping the site's variable fonts without bloating the app",
         "A watch face without a single line of code (Watch Face Format), checked by Google's official validator on every PR"
+      ]
+    },
+    "badger": {
+      "title": "Badger - Apps and Badge Studio for the GitHub Universe badge",
+      "description": "The GitHub Universe '26 badge is a real little computer (RP2350, colour screen, MicroPython). I opened it up: new apps, an app store that runs in the browser, and a remote on my Galaxy Watch.",
+      "longDescription": "At GitHub Universe '26 in San Francisco, every attendee gets a Badger 2350: an RP2350 chip, a 320×240 colour screen, Bluetooth, Wi-Fi and MicroPython running MonaOS. Badger gathers what I built for it. On the badge: a Radar that finds nearby badges over Bluetooth and places them by signal strength (with a hot / cold game and an encounter history), a Badge app that shows my GitHub stats and QR codes and answers NFC scans, safer Contacts that still swap with stock badges, a pedometer, Mona Pet fed by steps, the Duck Maze game and a menu that keeps my apps apart. In the browser: Badge Studio, an app store that talks to the badge over USB (Web Serial) to install, update or remove apps, replace a built-in one, repair system files, reorder the home screen, change settings, take screenshots and open a MicroPython console, with nothing to install. On the wrist: Badger Remote, a Kotlin Wear OS app that presses the badge's buttons over Bluetooth Low Energy (2 bytes per press, merged into the badge's loop so every app sees them as real presses) and sends it my steps for the day. It is all tested in CI (simulated apps, contacts compatibility, Radar, Duck Maze levels, the watch app build), documented with one guide per app and open to contributions.",
+      "features": [
+        "Badge Studio: an app store in the browser that talks to the badge over USB (Web Serial), nothing to install",
+        "Install, update, remove or replace a built-in app, with the old version backed up",
+        "Repair system files, reorder the home screen, change settings, take screenshots and open a MicroPython console",
+        "Radar: nearby badges found over Bluetooth and placed by signal strength, hot / cold game and history",
+        "Badge app: GitHub stats, QR codes for my site and profiles, NFC scan response",
+        "Badger Remote: the Galaxy Watch becomes the badge controller (Bluetooth LE, tap or hold, crown)",
+        "Pedometer and Mona Pet fed by the watch steps, kept on the badge between syncs",
+        "Duck Maze, dizzy Mona when you shake the badge, and a menu that separates my apps from the stock ones",
+        "PC tools: deploy and screenshots over the serial port (RGB565 → PNG)",
+        "GitHub Actions CI: simulated apps, contacts compatibility, Radar, Duck Maze levels and the watch app build"
+      ],
+      "challenges": [
+        "Coding for 520 KB of RAM and a 320×240 screen, inside MonaOS's render loop",
+        "Estimating distance from Bluetooth signal strength alone, with no direction",
+        "Staying compatible with the stock badges contact swap",
+        "Writing to the badge from the browser without ever leaving it broken: every file is read back after it is written",
+        "Making the watch presses look like real presses, in every app, menu included",
+        "Sharing the badge's Bluetooth between the remote and the apps that need it",
+        "Testing in CI code made for a device CI does not have"
+      ]
+    },
+    "mona-game": {
+      "title": "Fort Mason Octodex - A GitHub team game",
+      "description": "A monster-collector adventure built as a team during GitHub Day of Learning in San Francisco: catch the twelve Octocats of Fort Mason, in the browser and on the GitHub Universe badge.",
+      "longDescription": "Fort Mason Octodex was born at the GitHub Day of Learning workshop, the day before GitHub Universe '26, as a canvas extension for the GitHub Copilot app. The team (Brett Post, Don Ebben, Chanrattnak Mong, Luke Vandekieft and me) laid the groundwork: the Fort Mason map, a first battle system, the chiptune music and the Octocat drawings. I first hooked up the gamepad and the Badger badge, then wrote most of what followed (39 of the 47 commits): a real type-based battle system (Git, Code, Ops, Security), the twelve Octocats redrawn in the Octodex style, Badger mode where the badge becomes a controller and second screen (mini-map, battles, Octodex) over USB, saving, items, trainers, a final boss and its credits, shiny Octocats, thirteen achievements, accessibility settings, touch controls, an installable version that plays offline, every building open to visit with its characters, and a bus ride to GitHub HQ. It all fits in a single HTML file: canvas, Web Audio for the music and sounds, Web Serial for the badge.",
+      "features": [
+        "A map of Fort Mason: the piers, the Great Meadow, Fort Mason Center where GitHub Universe is held, Alcatraz and the Golden Gate in the distance",
+        "Twelve Octocats to catch, each with its own type, stats and four moves",
+        "Type-based battles (Code beats Ops, Ops beats Security, Security beats Code): critical hits, effects, switching Octocats",
+        "Badger mode: the badge becomes a controller and second screen (mini-map, battles, Octodex) over USB (Web Serial)",
+        "Three trainers, a Merge Conflict boss and credits with your play time",
+        "Shiny Octocats, thirteen GitHub-profile-style achievements and a numbered Octodex",
+        "Every building can be visited, with nine characters, and a bus goes all the way to GitHub HQ",
+        "Keyboard, gamepad, touch screen and badge; remappable keys",
+        "Accessibility: colour-blind palette, less shake and fewer flashes, separate volumes",
+        "Saved in the browser, and an installable version that plays offline"
+      ],
+      "challenges": [
+        "Building as a team of five, in one day, on a shared codebase",
+        "Fitting a whole game in one HTML file, with no engine or dependency",
+        "Keeping the game and the badge in sync over the serial port: two screens, one state",
+        "Music and sound effects fully synthesised with Web Audio",
+        "Making the game playable with a keyboard, a gamepad, a finger and the badge"
       ]
     },
     "ctreq-blog-archive": {

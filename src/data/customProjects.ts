@@ -386,6 +386,90 @@ export const customProjects: CustomProject[] = [
     isCustom: true
   },
   {
+    id: 'badger',
+    name: "Badger",
+    title: "Badger - Apps et Badge Studio pour le badge GitHub Universe",
+    description: "Le badge de GitHub Universe '26 est un vrai petit ordinateur (RP2350, écran couleur, MicroPython). Je l'ai ouvert : de nouvelles apps, un app store qui tourne dans le navigateur et une télécommande sur ma Galaxy Watch.",
+    longDescription: "À GitHub Universe '26 à San Francisco, chaque participant reçoit un Badger 2350 : une puce RP2350, un écran couleur 320×240, du Bluetooth, du Wi-Fi et MicroPython sous MonaOS. Badger regroupe ce que j'en ai fait. Côté badge : un Radar qui repère les badges voisins en Bluetooth et les place selon la force du signal (avec un jeu chaud / froid et l'historique des rencontres), une app Badge qui affiche mes stats GitHub, des QR codes et répond aux scans NFC, des Contacts plus sûrs mais toujours compatibles avec les badges d'origine, un podomètre, Mona Pet nourrie par les pas, le jeu Duck Maze et un menu qui range mes apps à part. Côté navigateur : Badge Studio, un app store qui parle au badge en USB (Web Serial) pour installer, mettre à jour ou retirer des apps, remplacer une app d'origine, réparer les fichiers système, réordonner l'écran d'accueil, régler le badge, prendre des captures et ouvrir une console MicroPython, sans rien installer. Côté poignet : Badger Remote, une app Wear OS en Kotlin qui appuie sur les boutons du badge en Bluetooth Low Energy (2 octets par appui, fusionnés dans la boucle du badge pour que chaque app les voie comme de vrais appuis) et lui envoie mes pas du jour. Le tout est testé en CI (apps simulées, compatibilité des contacts, Radar, niveaux de Duck Maze, build de l'app montre), documenté par un guide par app et ouvert aux contributions.",
+    languages: ['Python', 'Kotlin', 'JavaScript'],
+    topics: ['micropython', 'github-universe', 'badger2350', 'web-serial', 'bluetooth-le', 'wear-os', 'app-store', 'embedded'],
+    image: '/assets/badger.webp',
+    siteUrl: 'https://akiyo974.github.io/badger/',
+    codeUrl: 'https://github.com/Akiyo974/badger',
+    siteType: 'production',
+    features: [
+      "Badge Studio : un app store dans le navigateur qui parle au badge en USB (Web Serial), sans rien installer",
+      "Installer, mettre à jour, retirer ou remplacer une app d'origine, avec sauvegarde de l'ancienne version",
+      "Réparer les fichiers système, réordonner l'écran d'accueil, régler le badge, captures d'écran et console MicroPython",
+      "Radar : les badges voisins repérés en Bluetooth et placés selon la force du signal, jeu chaud / froid et historique",
+      "App Badge : stats GitHub, QR codes de mon site et de mes profils, réponse aux scans NFC",
+      "Badger Remote : la Galaxy Watch devient la manette du badge (Bluetooth LE, appui court ou maintenu, couronne)",
+      "Podomètre et Mona Pet nourris par les pas de la montre, gardés sur le badge entre deux synchros",
+      "Duck Maze, Mona étourdie quand on secoue le badge et un menu qui sépare mes apps de celles d'origine",
+      "Outils PC : déploiement et captures d'écran par le port série (RGB565 → PNG)",
+      "CI GitHub Actions : apps simulées, compatibilité des contacts, Radar, niveaux de Duck Maze et build de l'app montre"
+    ],
+    challenges: [
+      "Coder pour 520 Ko de RAM et un écran de 320×240, avec la boucle de rendu de MonaOS",
+      "Estimer une distance avec la seule force du signal Bluetooth, sans direction",
+      "Rester compatible avec l'échange de contacts des badges d'origine",
+      "Écrire sur le badge depuis le navigateur sans jamais le laisser dans un état cassé : chaque fichier est relu après écriture",
+      "Faire passer les appuis de la montre pour de vrais appuis, dans toutes les apps, menu compris",
+      "Partager le Bluetooth du badge entre la télécommande et les apps qui en ont besoin",
+      "Tester en CI du code fait pour un appareil que la CI n'a pas"
+    ],
+    technologies: {
+      frontend: ["MicroPython (MonaOS 4.0)", "Badge Studio : HTML, CSS, JavaScript", "Kotlin + Compose for Wear OS"],
+      backend: ["Web Serial (USB)", "Bluetooth Low Energy (GATT)", "Health Services"],
+      tools: ["GitHub Actions", "GitHub Pages", "PowerShell", "pytest"]
+    },
+    year: '2026',
+    status: 'in-progress',
+    relatedProjects: ['mona-game', 'portfolio-watch'],
+    isCustom: true
+  },
+  {
+    id: 'mona-game',
+    name: "Fort Mason Octodex",
+    title: "Fort Mason Octodex - Jeu GitHub en équipe",
+    description: "Un jeu d'aventure façon collection de monstres, créé en équipe pendant le GitHub Day of Learning à San Francisco : attraper les douze Octocats de Fort Mason, dans le navigateur et sur le badge GitHub Universe.",
+    longDescription: "Fort Mason Octodex est né pendant l'atelier GitHub Day of Learning, la veille de GitHub Universe '26, comme extension canvas de l'app GitHub Copilot. L'équipe (Brett Post, Don Ebben, Chanrattnak Mong, Luke Vandekieft et moi) a posé la base : la carte de Fort Mason, un premier système de combat, la musique chiptune et le dessin des Octocats. J'y ai d'abord branché la manette et le badge Badger, puis j'ai écrit la plus grande partie de la suite (39 des 47 commits) : un vrai système de combat par types (Git, Code, Ops, Security), les douze Octocats redessinés façon Octodex, le mode Badger où le badge devient manette et second écran (mini-carte, combats, Octodex) par USB, la sauvegarde, les objets, les dresseurs, un boss final et son générique, les Octocats chromatiques, treize succès, des réglages d'accessibilité, des commandes tactiles, une version installable qui marche hors ligne, chaque bâtiment visitable avec ses personnages, et un trajet en bus jusqu'au siège de GitHub. Le tout tient dans un seul fichier HTML : canvas, Web Audio pour la musique et les sons, Web Serial pour le badge.",
+    languages: ['JavaScript', 'HTML', 'Python'],
+    topics: ['game', 'html5-canvas', 'web-audio', 'web-serial', 'pwa', 'github-copilot', 'github-universe', 'team-project'],
+    image: '/assets/mona-game.webp',
+    siteUrl: 'https://akiyo974.github.io/Mona-Game/',
+    codeUrl: 'https://github.com/Akiyo974/Mona-Game',
+    siteType: 'demo',
+    features: [
+      "Une carte de Fort Mason : quais, Great Meadow, Fort Mason Center où se tient GitHub Universe, Alcatraz et le Golden Gate au loin",
+      "Douze Octocats à attraper, chacun avec son type, ses stats et quatre attaques",
+      "Combats par types (Code bat Ops, Ops bat Security, Security bat Code) : coups critiques, effets, changement d'Octocat",
+      "Mode Badger : le badge devient manette et second écran (mini-carte, combats, Octodex) par USB (Web Serial)",
+      "Trois dresseurs, un boss Merge Conflict et le générique avec le temps de jeu",
+      "Octocats chromatiques, treize succès façon profil GitHub et un Octodex numéroté",
+      "Chaque bâtiment se visite, avec neuf personnages, et un bus mène jusqu'au siège de GitHub",
+      "Clavier, manette, écran tactile et badge ; touches réglables",
+      "Accessibilité : palette pour daltoniens, moins de tremblements et de flashs, volumes séparés",
+      "Sauvegarde dans le navigateur et version installable qui marche hors ligne"
+    ],
+    challenges: [
+      "Construire à cinq, en une journée, sur une base de code commune",
+      "Faire tenir un jeu complet dans un seul fichier HTML, sans moteur ni dépendance",
+      "Synchroniser le jeu et le badge par le port série : deux écrans, un seul état",
+      "Une musique et des sons entièrement synthétisés avec Web Audio",
+      "Rendre le jeu jouable au clavier, à la manette, au doigt et sur le badge"
+    ],
+    technologies: {
+      frontend: ["HTML5 Canvas", "JavaScript", "Web Audio API", "Gamepad API"],
+      backend: ["Web Serial (badge)", "MicroPython (app du badge)"],
+      tools: ["GitHub Copilot", "GitHub Pages", "PWA (service worker)"]
+    },
+    year: '2026',
+    status: 'completed',
+    relatedProjects: ['badger'],
+    isCustom: true
+  },
+  {
     id: 'webana',
     name: 'Webana',
     title: "Webana - L'art du katana",

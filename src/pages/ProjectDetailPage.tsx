@@ -30,6 +30,8 @@ const caseStudyTitle = (title: string, name: string, caseStudy: string) =>
 const OG_IMAGES: Record<string, string> = {
   akiworkspace: 'jpg',
   'portfolio-watch': 'jpg',
+  badger: 'jpg',
+  'mona-game': 'jpg',
   ctreq: 'jpg',
   'ctreq-blog-archive': 'jpg',
   'innovations-numeriques-fp': 'jpg',

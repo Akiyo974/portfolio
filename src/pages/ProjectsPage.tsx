@@ -8,6 +8,7 @@ import { customProjects } from '../data/customProjects';
 import { Footer } from '../components/Footer';
 import { ProjectFilter } from '../components/project/ProjectFilter';
 import { ProjectIndex } from '../components/project/ProjectIndex';
+import { OpenSourceList } from '../components/project/OpenSourceList';
 import { SectionLabel } from '../components/ui/Editorial';
 import { SplitText } from '../components/ui/Kinetic';
 import { Counter } from '../components/ui/Counter';
@@ -24,6 +25,7 @@ interface Repository {
   language: string;
   stargazers_count: number;
   homepage?: string;
+  fork?: boolean;
   isCustom?: boolean;
   customLabel?: string;
   customDescription?: string;
@@ -116,7 +118,7 @@ export const ProjectsPage = () => {
         const cached = getCachedRepos();
         if (cached) {
           const filteredRepos = cached.data.filter((repo) =>
-            !EXCLUDED_REPOS.includes(repo.name)
+            !repo.fork && !EXCLUDED_REPOS.includes(repo.name)
           ).map(repo => ({
             ...repo,
             ...(CUSTOM_REPO_INFO[repo.name.toLowerCase()] || {})
@@ -163,7 +165,7 @@ export const ProjectsPage = () => {
         setCachedRepos(data);
 
         const filteredRepos = data.filter((repo) =>
-          !EXCLUDED_REPOS.includes(repo.name)
+          !repo.fork && !EXCLUDED_REPOS.includes(repo.name)
         ).map(repo => ({
           ...repo,
           ...(CUSTOM_REPO_INFO[repo.name.toLowerCase()] || {})
@@ -241,7 +243,7 @@ export const ProjectsPage = () => {
 
         <div className="mt-10 flex flex-col justify-between gap-6 md:mt-14 md:flex-row md:items-end">
           <div>
-            <SectionLabel index={1} total={1}>{t('projects.allProjects')}</SectionLabel>
+            <SectionLabel index={1} total={2}>{t('projects.allProjects')}</SectionLabel>
             <SplitText as="h1" trigger="intro" text={t('ui.indexTitle')} className="display mt-6 block text-[clamp(3.6rem,13vw,14rem)]" />
           </div>
           <div className="grid grid-cols-2 gap-8 md:mb-4">
@@ -279,6 +281,8 @@ export const ProjectsPage = () => {
           <ProjectIndex projects={filteredRepos} />
         )}
       </section>
+
+      <OpenSourceList />
 
       <Footer variant="minimal" />
       <Suspense fallback={null}>
