@@ -49,9 +49,10 @@ const experiences: Experience[] = [
     company: 'Gagnon Frères',
     period: 'Fév. 2026 – Présent',
     bullets: [
-      'Conception d\'applications internes et automatisation de flux métiers (catalogues, fournisseurs, opérations).',
-      'Intégration de solutions IA et assistants intelligents pour la recherche et l\'aide à la décision.',
-      'Mise en place de monitoring, alerting et observabilité pour améliorer la fiabilité des systèmes.',
+      'Plateforme interne, accueil client des 7 magasins et app de vente sur tablette reliée à l\'ERP, de bout en bout.',
+      'Assistant IA en langage naturel sur l\'ERP ; pilote Copilot et agents.',
+      'Dynamics NAV (point de vente compris) et architecture Azure.',
+      'Organisation GitHub (Team, règles, CI/CD) et sécurité des dépôts.',
     ],
   },
   {
@@ -60,7 +61,7 @@ const experiences: Experience[] = [
     period: 'Avr. 2025 – Présent',
     bullets: [
       'Création de sites vitrines et boutiques en ligne performantes, axées UX, SEO et conversion.',
-      'Accompagnement technique d\'entreprises sur leurs projets web et intégrations numériques.',
+      'Accompagnement technique d\'entreprises sur leurs projets web.',
     ],
   },
   {
@@ -69,7 +70,7 @@ const experiences: Experience[] = [
     period: 'Mars 2025 – Août 2025',
     bullets: [
       'Refonte complète d\'une plateforme WordPress headless vers Next.js (front, back, infra).',
-      'Migration de contenus, optimisation des performances et transfert de compétences à l\'équipe.',
+      'Migration de contenus, performances et transfert de compétences.',
     ],
   },
   {
@@ -93,6 +94,12 @@ const experiences: Experience[] = [
 ];
 
 const education: Education[] = [
+  {
+    title: 'Certifications IA',
+    school: 'Microsoft · DeepLearning.AI · Coursera',
+    period: '2025 – 2026',
+    description: 'GitHub Copilot (Microsoft Pro Badge, Proficient), ChatGPT Prompt Engineering pour les développeurs, Machine Learning et Data Science avec Python (en cours).',
+  },
   {
     title: 'Techniques d\'Intégration Multimédia',
     school: 'Cégep de Jonquière',
@@ -143,19 +150,19 @@ const projects: Project[] = [
 
 const highlights = [
   'Automatisation de processus internes à fort impact opérationnel.',
-  'Mise en production de solutions IA (agents, workflows, assistance métier).',
+  'Mise en production de solutions IA (agents, workflows).',
   'Architecture web moderne orientée performance, accessibilité et fiabilité.',
 ];
 
 const interests = ['Nouvelles technologies', 'Réalité virtuelle', 'Snowboard', 'Randonnées', 'Vélo', 'Voyages', 'Nature et plein air'];
 
 const profile =
-  'Développeur passionné par la création d\'interfaces innovantes et de solutions numériques utiles, je conçois des expériences web performantes alliant front-end moderne, automatisation et intelligence artificielle. Mon objectif est de contribuer à des projets à forte valeur métier, visibles et impactants.';
+  'Spécialiste en innovation numérique, je conçois et développe des logiciels de bout en bout : plateformes internes, applications pour les magasins, assistants IA et automatisations, du prototype au déploiement cloud. Formé en intégration multimédia, je soigne leurs interfaces autant que leur code.';
 
 /** Traductions anglaises des contenus du CV (clé = texte français). */
 const EN: Record<string, string> = {
   [profile]:
-    'Developer focused on building useful digital products and modern user experiences. I design robust web solutions combining frontend engineering, process automation and practical AI integration to deliver measurable business value.',
+    'Digital innovation specialist, I design and build software end to end: internal platforms, in-store apps, AI assistants and automations, from prototype to cloud deployment. Trained in multimedia integration, I care about their interfaces as much as their code.',
   'Développement Front-End': 'Front-End Development',
   'Back-End et Données': 'Back-End and Data',
   'Cloud, Outils et Observabilité': 'Cloud, Tooling and Observability',
@@ -170,20 +177,25 @@ const EN: Record<string, string> = {
   'Fév. 2026 – Présent': 'Feb. 2026 – Present',
   'Avr. 2025 – Présent': 'Apr. 2025 – Present',
   'Mars 2025 – Août 2025': 'Mar. 2025 – Aug. 2025',
-  'Conception d\'applications internes et automatisation de flux métiers (catalogues, fournisseurs, opérations).':
-    'Design of internal applications and automation of business workflows (catalogs, suppliers, operations).',
-  'Intégration de solutions IA et assistants intelligents pour la recherche et l\'aide à la décision.':
-    'Integration of AI solutions and intelligent assistants for search and decision support.',
-  'Mise en place de monitoring, alerting et observabilité pour améliorer la fiabilité des systèmes.':
-    'Implementation of monitoring, alerting and observability to improve system reliability.',
+  'Plateforme interne, accueil client des 7 magasins et app de vente sur tablette reliée à l\'ERP, de bout en bout.':
+    'Internal platform, customer reception for 7 stores and a tablet sales app connected to the ERP, end to end.',
+  'Assistant IA en langage naturel sur l\'ERP ; pilote Copilot et agents.':
+    'Plain-language AI assistant over the ERP; Copilot and agents pilot.',
+  'Dynamics NAV (point de vente compris) et architecture Azure.':
+    'Dynamics NAV (point of sale included) and Azure architecture.',
+  'Organisation GitHub (Team, règles, CI/CD) et sécurité des dépôts.':
+    'GitHub organization (Team, rules, CI/CD) and repository security.',
+  'Certifications IA': 'AI certifications',
+  'GitHub Copilot (Microsoft Pro Badge, Proficient), ChatGPT Prompt Engineering pour les développeurs, Machine Learning et Data Science avec Python (en cours).':
+    'GitHub Copilot (Microsoft Pro Badge, Proficient), ChatGPT Prompt Engineering for Developers, Machine Learning and Data Science with Python (in progress).',
   'Création de sites vitrines et boutiques en ligne performantes, axées UX, SEO et conversion.':
     'Creation of high-performance showcase websites and online stores focused on UX, SEO and conversion.',
-  'Accompagnement technique d\'entreprises sur leurs projets web et intégrations numériques.':
-    'Technical guidance for companies on web projects and digital integrations.',
+  'Accompagnement technique d\'entreprises sur leurs projets web.':
+    'Technical guidance for companies on their web projects.',
   'Refonte complète d\'une plateforme WordPress headless vers Next.js (front, back, infra).':
     'Full rebuild of a headless WordPress platform to Next.js (frontend, backend, infrastructure).',
-  'Migration de contenus, optimisation des performances et transfert de compétences à l\'équipe.':
-    'Content migration, performance optimization and knowledge transfer to internal teams.',
+  'Migration de contenus, performances et transfert de compétences.':
+    'Content migration, performance and knowledge transfer.',
   'Gestion de contenu WordPress, création de supports graphiques et communication institutionnelle.':
     'WordPress content management, graphic support creation and institutional communication.',
   'Gestion des stocks, relation client et suivi des commandes avec support Excel.':
@@ -202,8 +214,8 @@ const EN: Record<string, string> = {
   'Acquisition de compétences en level design et création d\'expériences interactives.':
     'Acquired skills in level design and interactive experience creation.',
   'Automatisation de processus internes à fort impact opérationnel.': 'Business process automation with measurable operational impact.',
-  'Mise en production de solutions IA (agents, workflows, assistance métier).':
-    'Production deployment of AI solutions (agents, workflows, decision support).',
+  'Mise en production de solutions IA (agents, workflows).':
+    'Production deployment of AI solutions (agents, workflows).',
   'Architecture web moderne orientée performance, accessibilité et fiabilité.':
     'Modern web architecture focused on performance, accessibility and reliability.',
   'Apps MicroPython pour le badge de GitHub Universe, un app store dans le navigateur (Web Serial) et une télécommande Wear OS.':
@@ -238,8 +250,8 @@ const RECENT_JOBS = 3;
 function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
   const earlier = experiences.slice(RECENT_JOBS);
   const L = isEn
-    ? { role: 'Digital Innovation Specialist · Full-Stack & AI Developer', profile: 'Profile', exp: 'Experience', earlier: 'Earlier roles', projects: 'Recent projects', edu: 'Education', skills: 'Skills', strengths: 'Key strengths', interests: 'Interests', place: 'Saguenay, QC, Canada' }
-    : { role: 'Spécialiste en innovation numérique · Développeur full-stack & IA', profile: 'Profil', exp: 'Expérience', earlier: 'Expériences antérieures', projects: 'Projets récents', edu: 'Formation', skills: 'Compétences', strengths: 'Points forts', interests: 'Intérêts', place: 'Saguenay, QC, Canada' };
+    ? { role: 'Digital Innovation Specialist · Software, AI and Cloud', profile: 'Profile', exp: 'Experience', earlier: 'Earlier roles', projects: 'Recent projects', edu: 'Education', skills: 'Skills', strengths: 'Key strengths', interests: 'Interests', place: 'Saguenay, QC, Canada' }
+    : { role: 'Spécialiste en innovation numérique · Logiciel, IA et cloud', profile: 'Profil', exp: 'Expérience', earlier: 'Expériences antérieures', projects: 'Projets récents', edu: 'Formation', skills: 'Compétences', strengths: 'Points forts', interests: 'Intérêts', place: 'Saguenay, QC, Canada' };
   const H = ({ n, children }: { n: string; children: string }) => (
     <h2 className="cvp-h">
       <span>{n}</span>
