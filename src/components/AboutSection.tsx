@@ -39,7 +39,7 @@ export const AboutSection = () => {
     { img: '/assets/art/ray-burst-800.webp', title: t('ui.aboutAI'), text: t('ui.aboutAIText'), tag: 'IA' },
     { img: '/assets/art/ridge-lines.png', title: t('ui.aboutOps'), text: t('ui.aboutOpsText'), tag: 'OPS' },
     { img: '/assets/art/globe-halftone.png', title: t('ui.aboutCloud'), text: t('ui.aboutCloudText'), tag: 'CLOUD' },
-    { img: '/assets/art/og-cover.png', title: t('ui.aboutDesign'), text: t('ui.aboutDesignText'), tag: 'DESIGN' },
+    { img: '/assets/art/design-construction.png', title: t('ui.aboutDesign'), text: t('ui.aboutDesignText'), tag: 'DESIGN' },
   ];
 
   const experiences = t('about.experienceList', { returnObjects: true }) as Experience[];
