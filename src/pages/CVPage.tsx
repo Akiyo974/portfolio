@@ -27,15 +27,15 @@ interface Education {
 const skillGroups: SkillGroup[] = [
   {
     title: 'Développement Front-End',
-    items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'jQuery', 'Bootstrap', 'SASS', 'GSAP'],
+    items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'GSAP', 'Kotlin (Wear OS)', 'jQuery', 'Bootstrap', 'SASS'],
   },
   {
     title: 'Back-End et Données',
-    items: ['PHP', 'MySQL', 'API REST', 'CodeIgniter', 'Node.js', 'PostgreSQL', 'GraphQL'],
+    items: ['PHP', 'Python', 'MicroPython', 'Node.js', 'MySQL', 'PostgreSQL', 'GraphQL', 'API REST', 'CodeIgniter'],
   },
   {
     title: 'Cloud, Outils et Observabilité',
-    items: ['Azure', 'Power Platform', 'Git', 'GitHub', 'VSCode', 'Postman', 'New Relic', 'Cloudflare'],
+    items: ['Azure', 'Power Platform', 'Git', 'GitHub', 'GitHub Actions', 'VSCode', 'Postman', 'New Relic', 'Cloudflare'],
   },
   {
     title: 'Design et Produit',
@@ -113,6 +113,34 @@ const education: Education[] = [
   },
 ];
 
+interface Project {
+  name: string;
+  period: string;
+  text: string;
+  url: string;
+}
+
+const projects: Project[] = [
+  {
+    name: 'Badger',
+    period: 'Oct. 2026',
+    text: 'Apps MicroPython pour le badge de GitHub Universe, un app store dans le navigateur (Web Serial) et une télécommande Wear OS.',
+    url: 'github.com/Akiyo974/badger',
+  },
+  {
+    name: 'Fort Mason Octodex',
+    period: 'Oct. 2026',
+    text: 'Jeu créé à cinq à San Francisco : 39 des 47 commits, dont le badge en manette et second écran.',
+    url: 'github.com/Akiyo974/Mona-Game',
+  },
+  {
+    name: 'Open source',
+    period: 'Depuis oct. 2026',
+    text: '11 pull requests fusionnées dans Tempest Highlight (PHP) et dev-null.sh.',
+    url: 'github.com/tempestphp/highlight',
+  },
+];
+
 const highlights = [
   'Automatisation de processus internes à fort impact opérationnel.',
   'Mise en production de solutions IA (agents, workflows, assistance métier).',
@@ -178,6 +206,13 @@ const EN: Record<string, string> = {
     'Production deployment of AI solutions (agents, workflows, decision support).',
   'Architecture web moderne orientée performance, accessibilité et fiabilité.':
     'Modern web architecture focused on performance, accessibility and reliability.',
+  'Apps MicroPython pour le badge de GitHub Universe, un app store dans le navigateur (Web Serial) et une télécommande Wear OS.':
+    'MicroPython apps for the GitHub Universe badge, an in-browser app store (Web Serial) and a Wear OS remote.',
+  'Jeu créé à cinq à San Francisco : 39 des 47 commits, dont le badge en manette et second écran.':
+    'A game built by a team of five in San Francisco: 39 of the 47 commits, including the badge as controller and second screen.',
+  '11 pull requests fusionnées dans Tempest Highlight (PHP) et dev-null.sh.':
+    '11 merged pull requests in Tempest Highlight (PHP) and dev-null.sh.',
+  'Depuis oct. 2026': 'Since Oct. 2026',
   'Nouvelles technologies': 'Emerging technologies',
   'Réalité virtuelle': 'Virtual reality',
   Snowboard: 'Snowboarding',
@@ -196,11 +231,15 @@ const CONTACT = {
   linkedin: 'linkedin.com/in/christen-dijoux',
 };
 
+/** Postes détaillés dans le PDF ; les suivants tiennent sur une ligne. */
+const RECENT_JOBS = 3;
+
 /** Version imprimable (PDF) : une page Lettre, papier blanc, identité du site. */
 function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
+  const earlier = experiences.slice(RECENT_JOBS);
   const L = isEn
-    ? { role: 'Digital Innovation Specialist · Full-Stack & AI Developer', profile: 'Profile', exp: 'Experience', edu: 'Education', skills: 'Skills', strengths: 'Key strengths', interests: 'Interests', place: 'Saguenay, QC, Canada' }
-    : { role: 'Spécialiste en innovation numérique · Développeur full-stack & IA', profile: 'Profil', exp: 'Expérience', edu: 'Formation', skills: 'Compétences', strengths: 'Points forts', interests: 'Intérêts', place: 'Saguenay, QC, Canada' };
+    ? { role: 'Digital Innovation Specialist · Full-Stack & AI Developer', profile: 'Profile', exp: 'Experience', earlier: 'Earlier roles', projects: 'Recent projects', edu: 'Education', skills: 'Skills', strengths: 'Key strengths', interests: 'Interests', place: 'Saguenay, QC, Canada' }
+    : { role: 'Spécialiste en innovation numérique · Développeur full-stack & IA', profile: 'Profil', exp: 'Expérience', earlier: 'Expériences antérieures', projects: 'Projets récents', edu: 'Formation', skills: 'Compétences', strengths: 'Points forts', interests: 'Intérêts', place: 'Saguenay, QC, Canada' };
   const H = ({ n, children }: { n: string; children: string }) => (
     <h2 className="cvp-h">
       <span>{n}</span>
@@ -234,7 +273,7 @@ function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
 
           <section>
             <H n="02">{L.exp}</H>
-            {experiences.map((e) => (
+            {experiences.slice(0, RECENT_JOBS).map((e) => (
               <article key={e.title + e.period} className="cvp-item">
                 <p className="cvp-date">{tx(e.period)}</p>
                 <div>
@@ -246,12 +285,33 @@ function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
                 </div>
               </article>
             ))}
+            {/* Emplois plus anciens regroupés en une ligne : le PDF tient sur une page */}
+            <article className="cvp-item">
+              <p className="cvp-date">{earlier[earlier.length - 1]?.period} – {earlier[0]?.period}</p>
+              <div>
+                <h3 className="cvp-title cvp-title-sm">{L.earlier}</h3>
+                <p className="cvp-org">{earlier.map((e) => e.company).join(' · ')}</p>
+              </div>
+            </article>
+          </section>
+
+          <section>
+            <H n="03">{L.projects}</H>
+            {projects.map((p) => (
+              <article key={p.name} className="cvp-item">
+                <p className="cvp-date">{tx(p.period)}</p>
+                <div>
+                  <h3 className="cvp-title">{p.name}</h3>
+                  <p className="cvp-proj">{tx(p.text)} <a href={`https://${p.url}`}>{p.url}</a></p>
+                </div>
+              </article>
+            ))}
           </section>
         </div>
 
         <aside>
           <section>
-            <H n="03">{L.skills}</H>
+            <H n="04">{L.skills}</H>
             {skillGroups.map((g) => (
               <div key={g.title} className="cvp-skill">
                 <p className="cvp-k">{tx(g.title)}</p>
@@ -261,7 +321,7 @@ function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
           </section>
 
           <section>
-            <H n="04">{L.edu}</H>
+            <H n="05">{L.edu}</H>
             {education.map((ed) => (
               <div key={ed.title} className="cvp-edu">
                 <p className="cvp-k">{ed.period}</p>
@@ -272,14 +332,14 @@ function CVPrint({ isEn, tx }: { isEn: boolean; tx: (s: string) => string }) {
           </section>
 
           <section>
-            <H n="05">{L.strengths}</H>
+            <H n="06">{L.strengths}</H>
             <ul className="cvp-bullets">
               {highlights.map((h) => <li key={h}>{tx(h)}</li>)}
             </ul>
           </section>
 
           <section>
-            <H n="06">{L.interests}</H>
+            <H n="07">{L.interests}</H>
             <p>{interests.map(tx).join(' · ')}</p>
           </section>
         </aside>
@@ -395,6 +455,24 @@ export default function CVPage() {
                           <li key={bullet} className="leading-relaxed">• {tx(bullet)}</li>
                         ))}
                       </ul>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section>
+                <h2 className="heading mb-5 border-b border-line pb-2 text-3xl uppercase">{isEn ? 'Recent Projects' : 'Projets récents'}</h2>
+                <div className="space-y-5">
+                  {projects.map((p) => (
+                    <article key={p.name} className="border border-line bg-white/[0.02] p-4 transition-colors hover:border-paper/30">
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+                        <h3 className="heading text-2xl">{p.name}</h3>
+                        <span className="label shrink-0">{tx(p.period)}</span>
+                      </div>
+                      <p className="mt-2 text-paper/80 text-sm leading-relaxed">{tx(p.text)}</p>
+                      <a href={`https://${p.url}`} target="_blank" rel="noopener noreferrer" className="label mt-2 inline-block py-1 -my-1 hover:text-paper">
+                        {p.url} ↗
+                      </a>
                     </article>
                   ))}
                 </div>

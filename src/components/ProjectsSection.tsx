@@ -15,13 +15,16 @@ gsap.registerPlugin(ScrollTrigger);
 /**
  * Projets : galerie horizontale épinglée sur grand écran, pile verticale sur mobile.
  */
+// Projets mis en avant sur l'accueil, dans cet ordre (les autres restent dans l'index /projects)
+const FEATURED = ['badger', 'ctreq', 'akiworkspace', 'portfolio-watch'];
+
 export const ProjectsSection = () => {
   const { t } = useTranslation();
   const openProject = useProjectTransition();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
-  const featured = customProjects.slice(0, 4);
+  const featured = FEATURED.map((id) => customProjects.find((p) => p.id === id)).filter((p) => p !== undefined);
   const total = String(featured.length).padStart(2, '0');
 
   // useLayoutEffect : le pin GSAP est retiré avant que React ne supprime le DOM

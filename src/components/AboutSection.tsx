@@ -113,6 +113,7 @@ export const AboutSection = () => {
             <MetaRow k={isFr ? 'Rôle' : 'Role'} v={experiences[0]?.title ?? '—'} />
             <MetaRow k={isFr ? 'Chez' : 'At'} v={experiences[0]?.company ?? '—'} />
             <MetaRow k="Studio" v="Synaptia Web" />
+            <MetaRow k={isFr ? 'Récemment' : 'Lately'} v="GitHub Universe '26 · San Francisco" />
             <MetaRow k="Focus" v={t('hero.roleDetail')} />
             {/* Boutons empilés tant que la colonne est étroite : jamais de libellé sur deux lignes */}
             <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 [&>a]:whitespace-nowrap">
