@@ -28,6 +28,7 @@ const caseStudyTitle = (title: string, name: string, caseStudy: string) =>
   ) ?? `${name} | Christen Dijoux`;
 
 const OG_IMAGES: Record<string, string> = {
+  'gagnon-freres': 'jpg',
   akiworkspace: 'jpg',
   'portfolio-watch': 'jpg',
   badger: 'jpg',
@@ -204,7 +205,7 @@ export const ProjectDetailPage = () => {
           <div className="lg:col-span-5">
             <MetaRow k={t('ui.statYear')} v={project.year ?? '—'} />
             <MetaRow k={t('ui.statusLabel')} v={statusLabel} />
-            <MetaRow k={t('ui.typeLabel')} v={t('projectDetail.personalProject')} />
+            <MetaRow k={t('ui.typeLabel')} v={t(project.kind === 'professional' ? 'projectDetail.professionalProject' : 'projectDetail.personalProject')} />
             <MetaRow k={t('projectDetail.languages')} v={project.languages.join(' · ')} />
           </div>
           <div className="flex flex-wrap items-end gap-2 lg:col-span-6 lg:col-start-7 lg:justify-end">
@@ -275,7 +276,7 @@ export const ProjectDetailPage = () => {
               <SectionLabel index={++section} total={sectionCount}>{t('ui.gallery')}</SectionLabel>
               <SplitText as="h2" text={t('ui.galleryTitle')} className="heading mt-6 block text-[clamp(2.4rem,4vw,4rem)] uppercase" />
             </div>
-            <p className="label hidden md:block">{t('ui.galleryHint')}</p>
+            <p className="label hidden md:block">{t(project.kind === 'professional' ? 'ui.galleryHintDiagrams' : 'ui.galleryHint')}</p>
           </div>
           {/* Première image en pleine largeur, les suivantes sur deux colonnes (la dernière s'étire si impaire) */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">

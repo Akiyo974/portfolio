@@ -16,12 +16,12 @@
     "location": "Saguenay",
     "region": "Quebec, Canada",
     "role": "Digital Innovation Specialist",
-    "roleDetail": "AI • Automation • Cloud • DevOps",
+    "roleDetail": "Software • AI • Cloud • Web",
     "tagline": "Full-Stack Developer & AI Engineer"
   },
   "about": {
     "title": "About",
-    "intro": "Full-Stack Developer specializing in automation, artificial intelligence, and digital transformation. I currently work as a Digital Innovation Specialist at Gagnon Frères, where I design technological solutions to automate operations, improve decision-making, and modernize the company's internal tools.",
+    "intro": "Digital innovation specialist at Gagnon Frères, I design and build software end to end: internal platforms, in-store apps, AI assistants and automations. Design is still how I work: an internal tool deserves the same care as an award-winning website.",
     "expertise": "My expertise covers modern web development, cloud infrastructure, business-applied artificial intelligence, and process automation. I work on application development, system integration, cloud administration, and infrastructure optimization. On a daily basis, I develop with React, Next.js, TypeScript, Python, and Node.js, while working with Microsoft Dynamics NAV, Power Platform, Azure, Cloudflare, and DigitalOcean environments.",
     "passion": "Passionate about innovation, I am particularly interested in artificial intelligence and AI agents, Machine Learning and data analysis, business process automation, SaaS development, cloud architecture and DevOps, as well as system observability and performance. Through my company Synaptia Web, I also create custom web projects, e-commerce platforms, and AI integrations for organizations looking to accelerate their digital growth.",
     "viewCV": "View Resume",
@@ -100,6 +100,7 @@
     "backHome": "Back to Home",
     "viewDetails": "View Details",
     "personalProject": "Personal Project",
+    "professionalProject": "Professional work",
     "githubProject": "GitHub",
     "description": "Index of projects by Christen Dijoux: case studies (headless platforms, SaaS, e-commerce) and open-source work.",
     "openSource": "Open source",
@@ -115,6 +116,7 @@
     "notFound": "Project not found",
     "backToProjects": "Back to projects",
     "personalProject": "Personal Project",
+    "professionalProject": "Professional work",
     "viewSite": "View Site",
     "viewDemo": "View Demo",
     "sourceCode": "Source Code",
@@ -225,6 +227,24 @@
     "currentLanguage": "Current language"
   },
   "education": {
+    "copilot": {
+      "title": "Microsoft Pro Badge: GitHub Copilot (Proficient)",
+      "school": "Microsoft",
+      "role": "AI-assisted development, agents and best practices",
+      "period": "2026"
+    },
+    "prompt": {
+      "title": "ChatGPT Prompt Engineering for Developers",
+      "school": "DeepLearning.AI × OpenAI",
+      "role": "LLMs, prompt engineering, AI development",
+      "period": "2026"
+    },
+    "ml": {
+      "title": "Applied Machine Learning & Data Science with Python",
+      "school": "Coursera, professional certificate",
+      "role": "Models, data analysis, Python",
+      "period": "2025 - 2026"
+    },
     "tim": {
       "title": "Multimedia Integration Techniques",
       "school": "Cégep de Jonquière",
@@ -245,6 +265,31 @@
     }
   },
   "customProjects": {
+    "gagnon-freres": {
+      "title": "Gagnon Frères - Internal software and AI for a retailer",
+      "description": "Digital innovation specialist in a five-person IT team: I design and build the internal software, applied AI and in-store tools of a Quebec retailer with 7 stores.",
+      "longDescription": "Since February 2026, I have been a digital innovation specialist at Gagnon Frères, a Quebec retailer with 7 stores, in a five-person IT team. My role: find where software and AI save time, then ship. I designed and built, end to end, the teams' internal platform, an in-store customer reception tool and a tablet sales app connected to the ERP. I am also building an AI assistant that answers plain-language questions from company data. Alongside that, I work in the Dynamics NAV ERP, handle the Azure architecture, the whole GitHub organization and repository security. These tools and their data are internal: this page stays deliberately general, with no screenshots or code, and the visuals are diagrams.",
+      "features": [
+        "Internal platform for the teams: designed and built end to end",
+        "Decision-support tools for buyers, with automatically refreshed data",
+        "In-store customer reception managed in real time across 7 stores, on tablet, mobile and front desk",
+        "Assisted selling on tablet: customers follow their file and sign on screen, final documents are produced automatically",
+        "AI assistant that answers plain-language questions from ERP data",
+        "Dynamics NAV ERP development and upgrades, point of sale included",
+        "Azure architecture and technology choices, with cost assessment",
+        "Full GitHub organization: move to GitHub Team, rules, roles, CI/CD and team guide",
+        "Repository and secrets security, monitoring and observability",
+        "AI pilot for the team (Copilot, agents) and best-practice training"
+      ],
+      "challenges": [
+        "Making modern web tools talk to an ERP that has been running for years",
+        "Shipping tools used every day in stores, on varied devices, without heavy training",
+        "Putting AI to work on concrete questions without exposing sensitive data",
+        "Setting GitHub and security rules in a small team without slowing it down",
+        "Choosing technologies that stay affordable to run",
+        "Keeping a polished design, even for tools only the team will see"
+      ]
+    },
     "ctreq": {
       "title": "CTREQ - Quebec Educational Platform",
       "description": "Complete redesign and merger of two WordPress sites (CTREQ + RIRE) into a headless Next.js 13 platform. Structured migration of +10 content types, triple cache architecture (~50ms), advanced SEO and skills transfer plan for client team.",
@@ -562,7 +607,7 @@
     "heroTitle1": "Building",
     "heroTitle2": "intelligence",
     "heroTitle3": "into operations",
-    "heroLead": "Full-stack developer and AI engineer. I design applications, agents and automations that save teams time — from prototype to cloud deployment.",
+    "heroLead": "I build internal software, AI assistants and automations that save teams time, from prototype to cloud deployment. And I care about their interfaces as much as their code.",
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
     "scroll": "Scroll",
@@ -580,6 +625,8 @@
     "aboutOpsText": "Python, n8n and Power Automate pipelines that sync catalogs, suppliers and reports — fewer manual tasks, more reliability.",
     "aboutCloud": "Cloud & observability",
     "aboutCloudText": "Azure, DigitalOcean, Cloudflare and New Relic: deployment, monitoring and alerting for fast, well-watched systems.",
+    "aboutDesign": "Crafted interfaces",
+    "aboutDesignText": "Trained in multimedia integration, I keep design at the heart of the code: every tool, internal ones included, gets a clear, accessible and pleasant interface.",
     "stackKicker": "Stack",
     "pathKicker": "Path",
     "impactKicker": "Results",
@@ -590,7 +637,7 @@
     "footerSections": "Sections",
     "footerSocial": "Social",
     "present": "Present",
-    "projectsLead": "A selection of SaaS products, headless platforms and internal tools — designed, built and shipped end to end.",
+    "projectsLead": "Internal software, applied AI, connected devices and a few websites: a selection designed, built and shipped end to end.",
     "dragHint": "Scroll",
     "cursorView": "View",
     "cursorOpen": "Open",
@@ -634,6 +681,7 @@
     "gallery": "Gallery",
     "galleryTitle": "In the wild",
     "galleryHint": "Live captures · hover for colour",
+    "galleryHintDiagrams": "Diagrams · no screenshots of internal tools",
     "negativeOn": "Negative mode",
     "negativeOff": "Back to positive",
     "negativeHint": "You found the hidden inversion. Same code to flip back.",

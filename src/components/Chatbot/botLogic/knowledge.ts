@@ -23,6 +23,7 @@ const statusLabels: Record<Lang, Record<string, string>> = {
 const extraAliases: Record<string, string[]> = {
   akiworkspace: ['aki workspace', 'workspace'],
   'portfolio-watch': ['portfolio watch', 'galaxy watch', 'wear os', 'montre', 'watch', 'smartwatch'],
+  'gagnon-freres': ['gagnon', 'gagnon freres', 'gagnon frères', 'innovation numérique', 'digital innovation'],
   badger: ['badger', 'badge studio', 'badger remote', 'github universe badge', 'badge github'],
   'mona-game': ['mona game', 'fort mason', 'octodex', 'octocat'],
   ctreq: ['ctreq'],

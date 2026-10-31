@@ -24,6 +24,12 @@ export const caseGallery: Record<string, { file: string; alt: { fr: string; en: 
     { file: 'portfolio-watch-03', alt: { fr: 'Parcours La Réunion → Saguenay, contact et tuile Wear OS', en: 'Réunion Island → Saguenay journey, contact and Wear OS tile' } },
     { file: 'portfolio-watch-04', alt: { fr: 'Carte de visite en QR code, jeu des étoiles et partie en cours', en: 'QR business card, star game and a round in progress' } },
   ],
+  'gagnon-freres': [
+    { file: 'gagnon-freres-01', alt: { fr: "Schéma : l'ERP, la plateforme interne et les 7 magasins reliés", en: 'Diagram: the ERP, the internal platform and the 7 stores connected' } },
+    { file: 'gagnon-freres-02', alt: { fr: 'Schéma : la vente assistée, du poste du conseiller à la tablette du client', en: "Diagram: assisted selling, from the advisor's desk to the customer's tablet" } },
+    { file: 'gagnon-freres-03', alt: { fr: "Schéma : une question en langage naturel, l'assistant IA et les données de l'ERP", en: 'Diagram: a plain-language question, the AI assistant and the ERP data' } },
+    { file: 'gagnon-freres-04', alt: { fr: 'Schéma : branche, revue, CI et déploiement sur Azure', en: 'Diagram: branch, review, CI and deployment to Azure' } },
+  ],
   badger: [
     { file: 'badger-01', alt: { fr: "Le site de Badger et Badge Studio, l'app store du badge dans le navigateur", en: 'The Badger site and Badge Studio, the badge app store in the browser' } },
     { file: 'badger-02', alt: { fr: "Les apps Badge, Radar et Contacts sur l'écran du badge", en: 'The Badge, Radar and Contacts apps on the badge screen' } },

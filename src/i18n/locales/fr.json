@@ -16,12 +16,12 @@
     "location": "Saguenay",
     "region": "Québec, Canada",
     "role": "Spécialiste en innovation numérique",
-    "roleDetail": "IA • Automatisation • Cloud • DevOps",
+    "roleDetail": "Logiciel • IA • Cloud • Web",
     "tagline": "Développeur full-stack & ingénieur IA"
   },
   "about": {
     "title": "À propos",
-    "intro": "Développeur Full-Stack, spécialiste en automatisation, intelligence artificielle et transformation numérique. Je travaille actuellement comme Spécialiste en innovation numérique chez Gagnon Frères, où je conçois des solutions technologiques permettant d'automatiser les opérations, améliorer la prise de décision et moderniser les outils internes de l'entreprise.",
+    "intro": "Spécialiste en innovation numérique chez Gagnon Frères, je conçois et développe des logiciels de bout en bout : plateformes internes, applications pour les magasins, assistants IA et automatisations. Le design reste ma façon de travailler : un outil interne mérite la même attention qu'un site primé.",
     "expertise": "Mon expertise couvre le développement web moderne, les infrastructures cloud, l'intelligence artificielle appliquée aux affaires et l'automatisation de processus. J'interviens autant sur le développement d'applications que sur l'intégration de systèmes, l'administration cloud et l'optimisation des infrastructures. Au quotidien, je développe avec React, Next.js, TypeScript, Python et Node.js, tout en travaillant sur des environnements Microsoft Dynamics NAV, Power Platform, Azure, Cloudflare et DigitalOcean.",
     "passion": "Passionné par l'innovation, je m'intéresse particulièrement à l'intelligence artificielle et aux agents IA, au Machine Learning et à l'analyse de données, à l'automatisation des processus métiers, au développement SaaS, à l'architecture cloud et DevOps, ainsi qu'à l'observabilité et la performance des systèmes. À travers mon entreprise Synaptia Web, je réalise également des projets web sur mesure, des plateformes e-commerce et des intégrations d'IA pour des organisations souhaitant accélérer leur croissance numérique.",
     "viewCV": "Voir le CV",
@@ -100,6 +100,7 @@
     "backHome": "Retour à l'accueil",
     "viewDetails": "Voir les détails",
     "personalProject": "Projet personnel",
+    "professionalProject": "Expérience professionnelle",
     "githubProject": "GitHub",
     "description": "Index des projets de Christen Dijoux : études de cas (plateformes headless, SaaS, e-commerce) et projets open source.",
     "openSource": "Open source",
@@ -115,6 +116,7 @@
     "notFound": "Projet non trouvé",
     "backToProjects": "Retour aux projets",
     "personalProject": "Projet personnel",
+    "professionalProject": "Expérience professionnelle",
     "viewSite": "Voir le site",
     "viewDemo": "Voir la démo",
     "sourceCode": "Code source",
@@ -225,6 +227,24 @@
     "currentLanguage": "Langue actuelle"
   },
   "education": {
+    "copilot": {
+      "title": "Microsoft Pro Badge : GitHub Copilot (Proficient)",
+      "school": "Microsoft",
+      "role": "Développement assisté par IA, agents et bonnes pratiques",
+      "period": "2026"
+    },
+    "prompt": {
+      "title": "ChatGPT Prompt Engineering pour les développeurs",
+      "school": "DeepLearning.AI × OpenAI",
+      "role": "LLM, prompt engineering, développement IA",
+      "period": "2026"
+    },
+    "ml": {
+      "title": "Machine Learning & Data Science appliqués avec Python",
+      "school": "Coursera, certificat professionnel",
+      "role": "Modèles, analyse de données, Python",
+      "period": "2025 - 2026"
+    },
     "tim": {
       "title": "Techniques d'intégration multimédia",
       "school": "Cégep de Jonquière",
@@ -245,6 +265,31 @@
     }
   },
   "customProjects": {
+    "gagnon-freres": {
+      "title": "Gagnon Frères - Logiciels internes et IA pour un détaillant",
+      "description": "Spécialiste en innovation numérique dans une équipe TI de cinq personnes : je conçois et développe les logiciels internes, l'IA appliquée et les outils des magasins d'un détaillant québécois de 7 magasins.",
+      "longDescription": "Depuis février 2026, je suis spécialiste en innovation numérique chez Gagnon Frères, un détaillant québécois de 7 magasins, dans une équipe TI de cinq personnes. Mon rôle : repérer où le logiciel et l'IA font gagner du temps, puis livrer. J'ai conçu et développé de bout en bout la plateforme interne des équipes, un outil d'accueil des clients en magasin et une application de vente sur tablette reliée à l'ERP. Je développe aussi un assistant IA qui répond en langage naturel à partir des données de l'entreprise. À côté, je travaille dans l'ERP Dynamics NAV, je m'occupe de l'architecture Azure, de toute l'organisation GitHub et de la sécurité des dépôts. Ces outils et leurs données sont internes : cette page reste volontairement générale, sans captures d'écran ni code, et les visuels sont des schémas.",
+      "features": [
+        "Plateforme interne des équipes : conçue et développée de bout en bout",
+        "Outils d'aide à la décision pour les acheteurs, avec des données mises à jour automatiquement",
+        "Accueil des clients en magasin géré en temps réel dans les 7 magasins, sur tablette, mobile et poste d'accueil",
+        "Vente assistée sur tablette : le client suit son dossier et signe à l'écran, les documents finaux sont produits automatiquement",
+        "Assistant IA qui répond en langage naturel à partir des données de l'ERP",
+        "Développement et mises à jour de l'ERP Dynamics NAV, point de vente compris",
+        "Architecture Azure et choix technologiques, avec l'évaluation des coûts",
+        "Organisation GitHub complète : passage à GitHub Team, règles, rôles, CI/CD et guide de l'équipe",
+        "Sécurité des dépôts et des secrets, monitoring et observabilité",
+        "Pilote IA pour l'équipe (Copilot, agents) et formation aux bonnes pratiques"
+      ],
+      "challenges": [
+        "Faire dialoguer des outils web modernes avec un ERP en place depuis des années",
+        "Livrer des outils utilisés chaque jour en magasin, sur des appareils variés, sans formation lourde",
+        "Mettre l'IA au service de questions concrètes sans exposer de données sensibles",
+        "Poser des règles GitHub et de sécurité dans une petite équipe sans la ralentir",
+        "Choisir des technologies qui restent abordables à faire tourner",
+        "Garder un design soigné, même pour des outils que seule l'équipe verra"
+      ]
+    },
     "ctreq": {
       "title": "CTREQ - Plateforme éducative du Québec",
       "description": "Refonte complète et fusion de deux sites WordPress (CTREQ + RIRE) en plateforme headless Next.js 13. Migration structurée de +10 types de contenus, architecture cache triple (~50ms), SEO avancé et plan de transfert de compétences pour l'équipe cliente.",
@@ -562,7 +607,7 @@
     "heroTitle1": "Construire",
     "heroTitle2": "l'intelligence",
     "heroTitle3": "des opérations",
-    "heroLead": "Développeur full-stack et ingénieur IA. Je conçois des applications, des agents et des automatisations qui font gagner du temps aux équipes — du prototype au déploiement cloud.",
+    "heroLead": "Je conçois des logiciels internes, des assistants IA et des automatisations qui font gagner du temps aux équipes, du prototype au déploiement cloud. Et je soigne leurs interfaces autant que leur code.",
     "ctaProjects": "Voir les projets",
     "ctaContact": "Me contacter",
     "scroll": "Défiler",
@@ -580,6 +625,8 @@
     "aboutOpsText": "Pipelines Python, n8n et Power Automate qui synchronisent catalogues, fournisseurs et rapports — moins de tâches manuelles, plus de fiabilité.",
     "aboutCloud": "Cloud & observabilité",
     "aboutCloudText": "Azure, DigitalOcean, Cloudflare et New Relic : déploiement, monitoring et alerting pour des systèmes rapides et surveillés.",
+    "aboutDesign": "Interfaces soignées",
+    "aboutDesignText": "Formé en intégration multimédia, je garde le design au cœur du code : chaque outil, même interne, a une interface claire, accessible et agréable à utiliser.",
     "stackKicker": "Stack",
     "pathKicker": "Parcours",
     "impactKicker": "Résultats",
@@ -590,7 +637,7 @@
     "footerSections": "Sections",
     "footerSocial": "Réseaux",
     "present": "Présent",
-    "projectsLead": "Une sélection de produits SaaS, de plateformes headless et d'outils internes — conçus, développés et déployés de bout en bout.",
+    "projectsLead": "Logiciels internes, IA appliquée, objets connectés et quelques sites : une sélection conçue, développée et déployée de bout en bout.",
     "dragHint": "Défiler",
     "cursorView": "Voir",
     "cursorOpen": "Ouvrir",
@@ -634,6 +681,7 @@
     "gallery": "Galerie",
     "galleryTitle": "En situation",
     "galleryHint": "Captures du site en ligne · survoler pour la couleur",
+    "galleryHintDiagrams": "Schémas · aucune capture des outils internes",
     "negativeOn": "Mode négatif",
     "negativeOff": "Retour au positif",
     "negativeHint": "Vous avez trouvé l’inversion cachée. Même code pour revenir.",

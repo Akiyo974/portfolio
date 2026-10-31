@@ -89,6 +89,7 @@ async function svgToImage(svg, file, colors = 8) {
 
 // ---------- 1. Captures de projets tramées ----------
 const projectSources = {
+  'gagnon-freres': 'public/assets/gagnon-freres.webp',
   akiworkspace: 'public/assets/preview_akiworkspace.png',
   ctreq: 'public/assets/ctreq-879.webp',
   'ctreq-blog-archive': 'public/assets/ctreq-archive-878.webp',
