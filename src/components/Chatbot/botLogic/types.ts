@@ -44,7 +44,6 @@ export interface Knowledge {
   focus: string;
   intro: string;
   location: string;
-  availability: string;
   experiences: Array<{ title: string; company: string; period: string; description: string }>;
   education: Array<{ title: string; school: string; period: string }>;
   skills: Array<{ title: string; items: string[] }>;

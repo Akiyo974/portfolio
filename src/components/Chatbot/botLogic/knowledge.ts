@@ -77,7 +77,6 @@ export const getKnowledge = (lang: Lang): Knowledge => {
     focus: L.hero.roleDetail,
     intro: L.about.intro,
     location: `${L.hero.location}, ${L.hero.region}`,
-    availability: L.ui.announce,
     experiences: (L.about.experienceList as Array<{ title: string; company: string; period: string; description: string }>).map((e) => ({
       title: e.title,
       company: e.company,

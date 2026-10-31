@@ -272,8 +272,8 @@ const intentReply = (intent: IntentKey, k: Knowledge, lang: Lang, ctx: BotContex
     case 'availability':
       return {
         text: fr
-          ? `Oui — ${k.availability.replace(/^Disponible/, 'disponible')}. Il intervient sur des sites et applications sur mesure, de l'automatisation et des intégrations IA, à distance ou au Saguenay. Le plus simple : lui écrire en décrivant votre besoin.`
-          : `Yes — ${k.availability.replace(/^Available/, 'available')}. He takes on custom websites and apps, automation and AI integrations, remotely or in Saguenay. Easiest is to email him with a short description of your needs.`,
+          ? `Il est spécialiste en innovation numérique chez Gagnon Frères, à temps plein. Pour un site ou une intégration sur mesure, il travaille aussi avec Synaptia Web, son studio. Le plus simple : lui écrire en décrivant votre besoin.`
+          : `He works full time as a digital innovation specialist at Gagnon Frères. For a custom website or integration, he also works through Synaptia Web, his studio. Easiest is to email him with a short description of your needs.`,
         actions: contactActions(k, lang),
       };
     case 'contact':
