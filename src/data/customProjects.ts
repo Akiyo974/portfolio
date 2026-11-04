@@ -90,6 +90,52 @@ export const customProjects: CustomProject[] = [
     isCustom: true
   },
   {
+    id: 'countersigned',
+    name: 'Countersigned',
+    title: 'Countersigned - Plan / Approve / Apply pour agents IA',
+    description: 'Le plan / approve / apply de Terraform, appliqué aux actions des agents IA : l\'agent propose, un humain contresigne le plan exact, puis chaque étape s\'exécute et est vérifiée sur le vrai système. Bibliothèque TypeScript open source, zéro dépendance, compatible MCP.',
+    longDescription: 'Les agents IA ne se contentent plus de répondre : ils écrivent dans de vrais systèmes (ERP, CRM, facturation, bases de données), et un meilleur prompt ne règle pas ce qui casse alors. Countersigned sépare la proposition de l\'exécution. L\'agent dépose un plan : l\'état lu, les règles vérifiées, les effets exacts. Un humain ou une politique approuve ce plan précis, épinglé par son empreinte SHA-256. Au moment d\'appliquer, l\'état est relu et toute dérive annule l\'opération ; chaque étape part avec une clé d\'idempotence et est vérifiée sur le système réel ; en cas d\'échec, les étapes précédentes sont compensées dans l\'ordre inverse ; et tout est écrit dans un registre chaîné par hachage. L\'agent n\'a jamais d\'outil pour s\'approuver lui-même. Le projet comprend un serveur MCP sans dépendance, une CLI, des stockages fichier et SQLite, un paquet npm et un site interactif où l\'on signe un plan soi-même. La version 0.2.0 intègre les correctifs de revues de sécurité adverses, et la documentation liste aussi ce qui n\'est pas garanti.',
+    languages: ['TypeScript', 'JavaScript'],
+    topics: ['ai-agents', 'mcp', 'agent-safety', 'human-in-the-loop', 'typescript', 'open-source', 'audit-log'],
+    image: '/assets/countersigned.webp',
+    siteUrl: 'https://akiyo974.github.io/countersigned/',
+    codeUrl: 'https://github.com/Akiyo974/countersigned',
+    siteType: 'production',
+    features: [
+      'Plan, approbation, puis exécution : rien ne bouge sans signature du plan exact',
+      'Approbation épinglée à l\'empreinte SHA-256 du plan : toute modification l\'invalide',
+      'Détection de dérive : l\'état est relu avant d\'appliquer, et le plan est refusé s\'il a changé',
+      'Clé d\'idempotence stable par étape : une étape terminée n\'est jamais rejouée',
+      'Vérification obligatoire sur le système réel, avec preuves dans le rapport',
+      'Compensation en ordre inverse, et liste explicite de ce qui ne peut pas être annulé',
+      'Registre chaîné par hachage : modifications et suppressions détectées',
+      'Serveur MCP sans dépendance : Claude, Cursor, VS Code et tout client MCP',
+      'L\'agent ne voit jamais d\'outil d\'approbation',
+      'Règles de politique : approbation automatique, refus, limite d\'effets',
+      'CLI pour lister, inspecter, approuver et vérifier le registre',
+      'Stockage mémoire, fichiers ou SQLite, extensible à toute base de données',
+      'Site interactif : signer un plan, casser le registre, provoquer une dérive'
+    ],
+    challenges: [
+      'Empêcher qu\'un agent s\'approuve lui-même ou plante le serveur pour rejouer une étape',
+      'Reprendre une exécution interrompue sans jamais relancer une étape à l\'aveugle',
+      'Refermer la fenêtre entre la relecture de l\'état et l\'écriture (ETag, If-Match)',
+      'Concevoir une API où déclarer une action oblige à prévoir sa vérification et son annulation',
+      'Hacher les plans de façon canonique pour que rien ne masque une dérive',
+      'Implémenter MCP, le schéma et le stockage sans aucune dépendance',
+      'Détecter la troncature du registre, pas seulement sa modification',
+      'Rendre visibles les limites : compensation, atomicité et registre ne promettent pas tout'
+    ],
+    technologies: {
+      frontend: ['HTML', 'CSS', 'JavaScript'],
+      backend: ['TypeScript', 'Node.js', 'node:sqlite', 'Model Context Protocol'],
+      tools: ['npm', 'GitHub Actions', 'CodeQL', 'GitHub Pages']
+    },
+    year: '2026',
+    status: 'in-progress',
+    isCustom: true
+  },
+  {
     id: 'ctreq',
     name: 'CTREQ',
     title: 'CTREQ - Plateforme Éducative du Québec',

@@ -22,6 +22,7 @@ const statusLabels: Record<Lang, Record<string, string>> = {
 // Alias supplémentaires pour reconnaître les projets dans une question
 const extraAliases: Record<string, string[]> = {
   akiworkspace: ['aki workspace', 'workspace'],
+  countersigned: ['countersigned', 'counter signed', 'agent safety', 'agents ia', 'ai agents'],
   'portfolio-watch': ['portfolio watch', 'galaxy watch', 'wear os', 'montre', 'watch', 'smartwatch'],
   ctreq: ['ctreq'],
   'ctreq-blog-archive': ['ctreq blog', 'ctreq archive', 'archive', 'blog archive'],

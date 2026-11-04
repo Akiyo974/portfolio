@@ -334,6 +334,36 @@
         "Blocking dangerous protocols (javascript:, data:, file:)"
       ]
     },
+    "countersigned": {
+      "title": "Countersigned - Plan / Approve / Apply for AI Agents",
+      "description": "Terraform's plan / approve / apply, applied to AI agent actions: the agent proposes, a human countersigns the exact plan, then every step runs and is verified against the real system. Open-source TypeScript library, zero dependencies, MCP native.",
+      "longDescription": "AI agents no longer just answer: they write to real systems (ERPs, CRMs, billing, databases), and a better prompt cannot fix what breaks there. Countersigned separates proposing from doing. The agent files a plan: the state it read, the rules it checked, the exact effects. A human or a policy approves that exact plan, pinned by its SHA-256 hash. At apply time the state is re-read and any drift refuses the run; each step carries an idempotency key and is verified against the real system; on failure, earlier steps are compensated in reverse; and everything lands in a hash-chained ledger. The agent never gets a tool to approve itself. The project ships a dependency-free MCP server, a CLI, file and SQLite stores, an npm package and an interactive site where you sign a plan yourself. Version 0.2.0 includes the fixes from adversarial security reviews, and the documentation also lists what is not guaranteed.",
+      "features": [
+        "Plan, approve, then apply: nothing moves until the exact plan is signed",
+        "Approval pinned to the plan's SHA-256 hash: any edit invalidates it",
+        "Drift detection: state is re-read before apply, and a changed world refuses the plan",
+        "Stable idempotency key per step: a finished step is never repeated",
+        "Mandatory verification against the real system, with evidence in the report",
+        "Compensation in reverse order, and an explicit list of what cannot be undone",
+        "Hash-chained ledger: edits and deletions are detected",
+        "Dependency-free MCP server: Claude, Cursor, VS Code and any MCP client",
+        "The agent never sees an approve tool",
+        "Policy rules: auto-approval, deny, blast-radius limits",
+        "CLI to list, inspect, approve and verify the ledger",
+        "Memory, file or SQLite storage, extensible to any database",
+        "Interactive site: sign a plan, break the ledger, trigger drift"
+      ],
+      "challenges": [
+        "Stopping an agent from approving itself or crashing the server to replay a step",
+        "Resuming an interrupted run without ever blindly re-executing a step",
+        "Closing the window between the state recheck and the write (ETag, If-Match)",
+        "Designing an API where declaring an action forces you to plan its verification and undo",
+        "Hashing plans canonically so nothing can hide drift",
+        "Implementing MCP, schemas and storage with zero dependencies",
+        "Detecting ledger truncation, not just edits",
+        "Being upfront about the limits: compensation, atomicity and the ledger do not promise everything"
+      ]
+    },
     "portfolio-watch": {
       "title": "Portfolio Watch - Galaxy Watch Edition",
       "description": "My portfolio redesigned for a one-and-a-half-inch round screen: a Wear OS app in Kotlin and Jetpack Compose that runs on my Galaxy Watch. Projects, journey and contact on the wrist, three taps away at most.",

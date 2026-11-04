@@ -22,6 +22,12 @@ export const caseGallery: Record<string, { file: string; alt: { fr: string; en: 
     { file: 'portfolio-watch-02', alt: { fr: "Menu, projets et étude de cas dans l'app réelle", en: 'Menu, projects and case study in the real app' } },
     { file: 'portfolio-watch-03', alt: { fr: 'Parcours, contact et partie du jeu des étoiles', en: 'Journey, contact and a star game round' } },
   ],
+  countersigned: [
+    { file: 'countersigned-01', alt: { fr: 'Plan contresigné et exécuté dans la démo', en: 'Plan countersigned and applied in the demo' } },
+    { file: 'countersigned-02', alt: { fr: "Registre d'incidents : ce que les prompts ne règlent pas", en: 'Incident register: what prompts do not fix' } },
+    { file: 'countersigned-03', alt: { fr: 'Registre modifié : la chaîne de hachage se casse', en: 'Edited ledger: the hash chain breaks' } },
+    { file: 'countersigned-04', alt: { fr: 'Trois écrans mobiles du site', en: 'Three mobile screens of the site' } },
+  ],
   akiworkspace: [
     { file: 'akiworkspace-01', alt: { fr: "Tableau de bord d'AkiWorkspace", en: 'AkiWorkspace dashboard' } },
     { file: 'akiworkspace-02', alt: { fr: 'Écran de connexion, ordinateur et mobile', en: 'Sign-in screen, desktop and mobile' } },

@@ -90,6 +90,7 @@ async function svgToImage(svg, file, colors = 8) {
 // ---------- 1. Captures de projets tramées ----------
 const projectSources = {
   akiworkspace: 'public/assets/preview_akiworkspace.png',
+  countersigned: 'public/assets/countersigned.webp',
   ctreq: 'public/assets/ctreq-879.webp',
   'ctreq-blog-archive': 'public/assets/ctreq-archive-878.webp',
   'innovations-numeriques-fp': 'public/assets/innovations-numeriques-fp-879.webp',

@@ -53,16 +53,17 @@ const server = await preview({ root: ROOT, preview: { port: PORT, strictPort: tr
 const browser = await puppeteer.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox'] });
 const results = [];
 try {
+  // Un seul onglet pour toutes les routes : Chrome refuse d'en ouvrir un 16e dans la même session
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1440, height: 900 });
+  await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+  await page.evaluateOnNewDocument(() => {
+    try {
+      localStorage.setItem('i18nextLng', 'en');
+      sessionStorage.setItem('cd-intro-seen', '1');
+    } catch {}
+  });
   for (const route of routes) {
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1440, height: 900 });
-    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
-    await page.evaluateOnNewDocument(() => {
-      try {
-        localStorage.setItem('i18nextLng', 'en');
-        sessionStorage.setItem('cd-intro-seen', '1');
-      } catch {}
-    });
     await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
     await page.waitForFunction(() => document.querySelector('link[rel="canonical"][data-rh]') || document.querySelector('meta[name="robots"][content*="noindex"]'), { timeout: 15000 });
     await new Promise((r) => setTimeout(r, 800));
@@ -90,8 +91,6 @@ try {
       ).entries()];
       return { head, title, blocks, links };
     });
-    await page.close();
-
     const body = [
       '<div class="prerender">',
       ...data.blocks.map(([tag, text]) => `<${tag}>${esc(text)}</${tag}>`),
