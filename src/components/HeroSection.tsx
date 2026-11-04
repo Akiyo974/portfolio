@@ -209,7 +209,7 @@ export const HeroSection: React.FC = () => {
             <p className="label text-paper/80">
               {t('hero.tagline')} — {year}
             </p>
-            <a href="#about" data-scroll-to="about" className="label flex items-center gap-2 hover:text-paper">
+            <a href="#about" data-scroll-to="about" className="label -my-1 flex items-center gap-2 py-1 hover:text-paper">
               {t('ui.scroll')} <ArrowDown className="h-3 w-3 animate-bounce" aria-hidden="true" />
             </a>
           </div>

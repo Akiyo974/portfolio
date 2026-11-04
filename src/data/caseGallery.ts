@@ -19,8 +19,28 @@ export const caseGallery: Record<string, { file: string; alt: { fr: string; en: 
   ],
   'portfolio-watch': [
     { file: 'portfolio-watch-01', alt: { fr: 'Portfolio en version montre : bannière du projet', en: 'Portfolio, watch edition: project banner' } },
-    { file: 'portfolio-watch-02', alt: { fr: "Menu, projets et étude de cas dans l'app réelle", en: 'Menu, projects and case study in the real app' } },
-    { file: 'portfolio-watch-03', alt: { fr: 'Parcours, contact et partie du jeu des étoiles', en: 'Journey, contact and a star game round' } },
+    { file: 'portfolio-watch-05', alt: { fr: "Le cadran sur la Galaxy Watch (anneau des pas, météo et UV, ville actuelle), la carte de visite en QR code et l'accueil de l'app", en: 'The watch face on the Galaxy Watch (step ring, weather and UV, current city), the QR business card and the app home screen' } },
+    { file: 'portfolio-watch-02', alt: { fr: 'Menu avec sélecteur FR / EN, liste des 8 projets et étude de cas, sur la vraie Galaxy Watch', en: 'Menu with FR / EN switch, the 8 projects and a case study, on the real Galaxy Watch' } },
+    { file: 'portfolio-watch-03', alt: { fr: 'Parcours La Réunion → Saguenay, contact et tuile Wear OS', en: 'Réunion Island → Saguenay journey, contact and Wear OS tile' } },
+    { file: 'portfolio-watch-04', alt: { fr: 'Carte de visite en QR code, jeu des étoiles et partie en cours', en: 'QR business card, star game and a round in progress' } },
+  ],
+  'gagnon-freres': [
+    { file: 'gagnon-freres-01', alt: { fr: "Schéma : l'ERP, la plateforme interne et les 7 magasins reliés", en: 'Diagram: the ERP, the internal platform and the 7 stores connected' } },
+    { file: 'gagnon-freres-02', alt: { fr: 'Schéma : la vente assistée, du poste du conseiller à la tablette du client', en: "Diagram: assisted selling, from the advisor's desk to the customer's tablet" } },
+    { file: 'gagnon-freres-03', alt: { fr: "Schéma : une question en langage naturel, l'assistant IA et les données de l'ERP", en: 'Diagram: a plain-language question, the AI assistant and the ERP data' } },
+    { file: 'gagnon-freres-04', alt: { fr: 'Schéma : branche, revue, CI et déploiement sur Azure', en: 'Diagram: branch, review, CI and deployment to Azure' } },
+  ],
+  badger: [
+    { file: 'badger-01', alt: { fr: "Le site de Badger et Badge Studio, l'app store du badge dans le navigateur", en: 'The Badger site and Badge Studio, the badge app store in the browser' } },
+    { file: 'badger-02', alt: { fr: "Les apps Badge, Radar et Contacts sur l'écran du badge", en: 'The Badge, Radar and Contacts apps on the badge screen' } },
+    { file: 'badger-03', alt: { fr: 'La Galaxy Watch pilote le badge, avec le podomètre et Mona Pet', en: 'The Galaxy Watch driving the badge, with the pedometer and Mona Pet' } },
+    { file: 'badger-04', alt: { fr: 'Duck Maze, le jeu chaud / froid du Radar et Mona étourdie', en: 'Duck Maze, the Radar hot / cold game and dizzy Mona' } },
+  ],
+  'mona-game': [
+    { file: 'mona-game-01', alt: { fr: "L'écran titre et la carte de Fort Mason", en: 'The title screen and the Fort Mason map' } },
+    { file: 'mona-game-02', alt: { fr: "Un combat devant le Golden Gate et l'Octodex", en: 'A battle in front of the Golden Gate and the Octodex' } },
+    { file: 'mona-game-03', alt: { fr: "Le mode Badger : titre, mini-carte et combat sur l'écran du badge", en: 'Badger mode: title, mini-map and battle on the badge screen' } },
+    { file: 'mona-game-04', alt: { fr: 'Les douze Octocats à attraper', en: 'The twelve Octocats to catch' } },
   ],
   countersigned: [
     { file: 'countersigned-01', alt: { fr: 'Plan contresigné et exécuté dans la démo', en: 'Plan countersigned and applied in the demo' } },

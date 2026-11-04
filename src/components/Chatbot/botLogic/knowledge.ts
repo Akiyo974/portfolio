@@ -24,6 +24,9 @@ const extraAliases: Record<string, string[]> = {
   akiworkspace: ['aki workspace', 'workspace'],
   countersigned: ['countersigned', 'counter signed', 'agent safety', 'agents ia', 'ai agents'],
   'portfolio-watch': ['portfolio watch', 'galaxy watch', 'wear os', 'montre', 'watch', 'smartwatch'],
+  'gagnon-freres': ['gagnon', 'gagnon freres', 'gagnon frères', 'innovation numérique', 'digital innovation'],
+  badger: ['badger', 'badge studio', 'badger remote', 'github universe badge', 'badge github'],
+  'mona-game': ['mona game', 'fort mason', 'octodex', 'octocat'],
   ctreq: ['ctreq'],
   'ctreq-blog-archive': ['ctreq blog', 'ctreq archive', 'archive', 'blog archive'],
   'innovations-numeriques-fp': ['innovations numeriques', 'formation professionnelle', 'innovations'],
@@ -36,7 +39,7 @@ const buildProjects = (lang: Lang): ProjectInfo[] => {
   const tr = ((locales[lang] as unknown as { customProjects?: ProjectTranslations }).customProjects ?? {}) as ProjectTranslations;
   return customProjects.map((p) => {
     const t = tr[p.id] ?? {};
-    const stack = Array.from(
+    const all = Array.from(
       new Set([
         ...p.languages,
         ...(p.technologies?.frontend ?? []),
@@ -44,6 +47,8 @@ const buildProjects = (lang: Lang): ProjectInfo[] => {
         ...(p.technologies?.tools ?? []),
       ])
     );
+    // « Kotlin » est inutile à côté de « Kotlin 2.1 » : on garde seulement la mention la plus précise
+    const stack = all.filter((tech) => !all.some((other) => other !== tech && other.toLowerCase().startsWith(`${tech.toLowerCase()} `)));
     return {
       id: p.id,
       name: p.name,
@@ -73,7 +78,6 @@ export const getKnowledge = (lang: Lang): Knowledge => {
     focus: L.hero.roleDetail,
     intro: L.about.intro,
     location: `${L.hero.location}, ${L.hero.region}`,
-    availability: L.ui.announce,
     experiences: (L.about.experienceList as Array<{ title: string; company: string; period: string; description: string }>).map((e) => ({
       title: e.title,
       company: e.company,

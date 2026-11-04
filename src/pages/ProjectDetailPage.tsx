@@ -7,6 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
+import { projectKindKey } from '../data/projectKind';
 import { Footer } from '../components/Footer';
 import { SectionLabel, MetaRow } from '../components/ui/Editorial';
 import { PixelImage } from '../components/ui/PixelImage';
@@ -21,10 +22,19 @@ import { useLenis } from '../hooks/useLenis';
 gsap.registerPlugin(ScrollTrigger);
 
 // Images de partage 1200×630 (JPG / PNG : les .webp passent mal dans les aperçus LinkedIn)
+/** Titre d'onglet et de résultat Google : le plus complet qui tient dans ~60 caractères. */
+const caseStudyTitle = (title: string, name: string, caseStudy: string) =>
+  [`${title} — ${caseStudy} | Christen Dijoux`, `${title} | Christen Dijoux`, `${name} — ${caseStudy} | Christen Dijoux`].find(
+    (candidate) => candidate.length <= 60
+  ) ?? `${name} | Christen Dijoux`;
+
 const OG_IMAGES: Record<string, string> = {
+  'gagnon-freres': 'jpg',
   akiworkspace: 'jpg',
   countersigned: 'jpg',
   'portfolio-watch': 'jpg',
+  badger: 'jpg',
+  'mona-game': 'jpg',
   ctreq: 'jpg',
   'ctreq-blog-archive': 'jpg',
   'innovations-numeriques-fp': 'jpg',
@@ -162,7 +172,7 @@ export const ProjectDetailPage = () => {
       <Seo
         path={`/project/${project.id}`}
         type="article"
-        title={`${translatedTitle} — ${t('ui.caseStudy')} | Christen Dijoux`}
+        title={caseStudyTitle(translatedTitle, project.name, t('ui.caseStudy'))}
         description={translatedDescription}
         image={OG_IMAGES[project.id] ? `/assets/og/${project.id}.${OG_IMAGES[project.id]}` : undefined}
         imageAlt={translatedTitle}
@@ -197,7 +207,7 @@ export const ProjectDetailPage = () => {
           <div className="lg:col-span-5">
             <MetaRow k={t('ui.statYear')} v={project.year ?? '—'} />
             <MetaRow k={t('ui.statusLabel')} v={statusLabel} />
-            <MetaRow k={t('ui.typeLabel')} v={t('projectDetail.personalProject')} />
+            <MetaRow k={t('ui.typeLabel')} v={t(`projectDetail.${projectKindKey(project)}`)} />
             <MetaRow k={t('projectDetail.languages')} v={project.languages.join(' · ')} />
           </div>
           <div className="flex flex-wrap items-end gap-2 lg:col-span-6 lg:col-start-7 lg:justify-end">
@@ -268,7 +278,7 @@ export const ProjectDetailPage = () => {
               <SectionLabel index={++section} total={sectionCount}>{t('ui.gallery')}</SectionLabel>
               <SplitText as="h2" text={t('ui.galleryTitle')} className="heading mt-6 block text-[clamp(2.4rem,4vw,4rem)] uppercase" />
             </div>
-            <p className="label hidden md:block">{t('ui.galleryHint')}</p>
+            <p className="label hidden md:block">{t(project.kind === 'professional' ? 'ui.galleryHintDiagrams' : 'ui.galleryHint')}</p>
           </div>
           {/* Première image en pleine largeur, les suivantes sur deux colonnes (la dernière s'étire si impaire) */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">

@@ -382,7 +382,7 @@ export const ExpandButton: React.FC<{
       onClick={onClick}
       aria-expanded={open}
       aria-controls={controls}
-      className={`label group inline-flex items-center gap-2.5 text-paper ${mobileOnly ? 'md:hidden' : ''} ${className}`}
+      className={`label group -my-1 inline-flex items-center gap-2.5 py-1 text-paper ${mobileOnly ? 'md:hidden' : ''} ${className}`}
     >
       <PixelPlus open={open} />
       <span className="sr-only">{text}</span>

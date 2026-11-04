@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Github, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { customProjects } from '../data/customProjects';
+import { projectKindKey } from '../data/projectKind';
 import { SectionLabel } from './ui/Editorial';
 import { PixelImage } from './ui/PixelImage';
 import { useProjectTransition } from '../lib/projectTransition';
@@ -15,13 +16,20 @@ gsap.registerPlugin(ScrollTrigger);
 /**
  * Projets : galerie horizontale épinglée sur grand écran, pile verticale sur mobile.
  */
+// Projets mis en avant sur l'accueil, dans cet ordre (les autres restent dans l'index /projects)
+const FEATURED = ['gagnon-freres', 'badger', 'akiworkspace', 'ctreq'];
+
 export const ProjectsSection = () => {
   const { t } = useTranslation();
   const openProject = useProjectTransition();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
-  const featured = customProjects.slice(0, 4);
+  // Complétés par les premiers projets de la liste si un identifiant manque
+  const featured = [
+    ...FEATURED.map((id) => customProjects.find((p) => p.id === id)).filter((p) => p !== undefined),
+    ...customProjects.filter((p) => !FEATURED.includes(p.id)),
+  ].slice(0, FEATURED.length);
   const total = String(featured.length).padStart(2, '0');
 
   // useLayoutEffect : le pin GSAP est retiré avant que React ne supprime le DOM
@@ -100,7 +108,7 @@ export const ProjectsSection = () => {
                 <span className="text-paper">{String(index + 1).padStart(2, '0')}</span> / {total}
               </span>
               <span>
-                {t('projects.personalProject')}
+                {t(`projects.${projectKindKey(project)}`)}
                 {project.year ? ` · ${project.year}` : ''}
               </span>
             </div>

@@ -15,13 +15,13 @@
   "hero": {
     "location": "Saguenay",
     "region": "Québec, Canada",
-    "role": "Spécialiste en Innovation Numérique",
-    "roleDetail": "IA • Automatisation • Cloud • DevOps",
+    "role": "Spécialiste en innovation numérique",
+    "roleDetail": "Logiciel • IA • Cloud • Web",
     "tagline": "Développeur full-stack & ingénieur IA"
   },
   "about": {
     "title": "À propos",
-    "intro": "Développeur Full-Stack, spécialiste en automatisation, intelligence artificielle et transformation numérique. Je travaille actuellement comme Spécialiste en innovation numérique chez Gagnon Frères, où je conçois des solutions technologiques permettant d'automatiser les opérations, améliorer la prise de décision et moderniser les outils internes de l'entreprise.",
+    "intro": "Spécialiste en innovation numérique chez Gagnon Frères, je conçois et développe des logiciels de bout en bout : plateformes internes, applications pour les magasins, assistants IA et automatisations. Le design reste ma façon de travailler : un outil interne mérite la même attention qu'un site primé.",
     "expertise": "Mon expertise couvre le développement web moderne, les infrastructures cloud, l'intelligence artificielle appliquée aux affaires et l'automatisation de processus. J'interviens autant sur le développement d'applications que sur l'intégration de systèmes, l'administration cloud et l'optimisation des infrastructures. Au quotidien, je développe avec React, Next.js, TypeScript, Python et Node.js, tout en travaillant sur des environnements Microsoft Dynamics NAV, Power Platform, Azure, Cloudflare et DigitalOcean.",
     "passion": "Passionné par l'innovation, je m'intéresse particulièrement à l'intelligence artificielle et aux agents IA, au Machine Learning et à l'analyse de données, à l'automatisation des processus métiers, au développement SaaS, à l'architecture cloud et DevOps, ainsi qu'à l'observabilité et la performance des systèmes. À travers mon entreprise Synaptia Web, je réalise également des projets web sur mesure, des plateformes e-commerce et des intégrations d'IA pour des organisations souhaitant accélérer leur croissance numérique.",
     "viewCV": "Voir le CV",
@@ -30,7 +30,7 @@
     "skills": "Compétences",
     "interests": "Domaines d'expertise",
     "interestsList": [
-      "Intelligence artificielle & Agents IA",
+      "Intelligence artificielle & agents IA",
       "Machine Learning & Analyse de données",
       "Automatisation des processus métiers",
       "Développement SaaS & applications internes",
@@ -38,10 +38,10 @@
       "Observabilité, monitoring & performance",
       "Transformation numérique des entreprises"
     ],
-    "experience": "Expérience Professionnelle",
+    "experience": "Expérience professionnelle",
     "experienceList": [
       {
-        "title": "Spécialiste en Innovation Numérique",
+        "title": "Spécialiste en innovation numérique",
         "company": "Gagnon Frères",
         "period": "Fév. 2026 - Présent",
         "description": "Responsable des initiatives d'innovation et de transformation numérique. Conception d'applications internes sur mesure, automatisation des flux de données (catalogues, fournisseurs, rapports), intégration de solutions IA et assistants intelligents, développement Power Platform, mise en place de monitoring/alerting et optimisation de l'infrastructure.",
@@ -54,7 +54,7 @@
         ]
       },
       {
-        "title": "Co-fondateur & Développeur Web",
+        "title": "Co-fondateur & développeur web",
         "company": "Synaptia Web",
         "period": "Avr. 2025 - Présent",
         "description": "Responsable du développement web de la conception à l'intégration. Création de sites vitrines et boutiques en ligne performantes avec focus sur l'ergonomie, la fluidité et la rapidité. Accompagnement des entreprises dans leur transformation numérique.",
@@ -77,7 +77,7 @@
         ]
       }
     ],
-    "impact": "Impact & Résultats",
+    "impact": "Impact & résultats",
     "impactList": [
       "Automatisation de processus internes réduisant les tâches manuelles chez Gagnon Frères",
       "Déploiement de solutions IA (agents, RAG, intégrations OpenAI) en production",
@@ -88,9 +88,9 @@
     ]
   },
   "projects": {
-    "title": "Projets Sélectionnés",
-    "allProjects": "Tous les Projets",
-    "viewAll": "Voir Tous les Projets",
+    "title": "Projets sélectionnés",
+    "allProjects": "Tous les projets",
+    "viewAll": "Voir tous les projets",
     "demo": "Voir le site",
     "viewSiteProduction": "Voir le site",
     "viewSiteDemo": "Voir la démo",
@@ -98,16 +98,27 @@
     "technologies": "Technologies",
     "repositories": "Dépôts",
     "backHome": "Retour à l'accueil",
-    "viewDetails": "Voir Détails",
-    "personalProject": "Projet Personnel",
+    "viewDetails": "Voir les détails",
+    "personalProject": "Projet personnel",
+    "professionalProject": "Expérience professionnelle",
+    "clientProject": "Mandat client",
     "githubProject": "GitHub",
-    "description": "Index des projets de Christen Dijoux : études de cas (plateformes headless, SaaS, e-commerce) et projets open source."
+    "description": "Index des projets de Christen Dijoux : études de cas (plateformes headless, SaaS, e-commerce) et projets open source.",
+    "openSource": "Open source",
+    "openSourceTitle": "Contributions",
+    "openSourceIntro": "Des pull requests dans les projets d'autres équipes : {{count}} déjà fusionnées.",
+    "prsMerged_one": "{{count}} PR fusionnée",
+    "prsMerged_other": "{{count}} PR fusionnées",
+    "prsOpen_one": "{{count}} PR ouverte",
+    "prsOpen_other": "{{count}} PR ouvertes"
   },
   "projectDetail": {
     "back": "Retour",
     "notFound": "Projet non trouvé",
     "backToProjects": "Retour aux projets",
-    "personalProject": "Projet Personnel",
+    "personalProject": "Projet personnel",
+    "professionalProject": "Expérience professionnelle",
+    "clientProject": "Mandat client",
     "viewSite": "Voir le site",
     "viewDemo": "Voir la démo",
     "sourceCode": "Code source",
@@ -135,7 +146,8 @@
     "name": "Nom",
     "email": "Email",
     "message": "Message",
-    "send": "Envoyer le Message",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours…",
     "namePlaceholder": "Votre nom",
     "emailPlaceholder": "votre@email.com",
     "messagePlaceholder": "Votre message...",
@@ -202,7 +214,7 @@
   "cookieConsent": {
     "acceptShort": "Accepter",
     "declineShort": "Refuser",
-    "title": "🍪 Cookies et Confidentialité",
+    "title": "🍪 Cookies et confidentialité",
     "description": "Ce site utilise des cookies pour améliorer votre expérience (Google Analytics, préférences) et suivre les erreurs techniques (Sentry). Vos données sont protégées conformément au RGPD.",
     "privacyLink": "politique de confidentialité",
     "accept": "Accepter tous les cookies",
@@ -217,28 +229,71 @@
     "currentLanguage": "Langue actuelle"
   },
   "education": {
+    "copilot": {
+      "title": "Microsoft Pro Badge : GitHub Copilot (Proficient)",
+      "school": "Microsoft",
+      "role": "Développement assisté par IA, agents et bonnes pratiques",
+      "period": "2026"
+    },
+    "prompt": {
+      "title": "ChatGPT Prompt Engineering pour les développeurs",
+      "school": "DeepLearning.AI × OpenAI",
+      "role": "LLM, prompt engineering, développement IA",
+      "period": "2026"
+    },
+    "ml": {
+      "title": "Machine Learning & Data Science appliqués avec Python",
+      "school": "Coursera, certificat professionnel",
+      "role": "Modèles, analyse de données, Python",
+      "period": "2025 - 2026"
+    },
     "tim": {
-      "title": "Techniques d'Intégration Multimédia",
+      "title": "Techniques d'intégration multimédia",
       "school": "Cégep de Jonquière",
       "role": "Développement front-end, UX/UI",
       "period": "2021 - 2025"
     },
     "react": {
-      "title": "Formation en Développement d'Applications Front-End (React)",
+      "title": "Formation en développement d'applications front-end (React)",
       "school": "edX, en partenariat avec IBM",
       "role": "React.js, JSX, ES6, Redux, hooks",
       "period": "2024"
     },
     "gameDesign": {
-      "title": "Certificat en Design de Jeux Vidéo",
+      "title": "Certificat en design de jeux vidéo",
       "school": "Cégep de Jonquière",
       "role": "Level design et création d'expériences interactives",
       "period": "2023"
     }
   },
   "customProjects": {
+    "gagnon-freres": {
+      "title": "Gagnon Frères - Logiciels internes et IA pour un détaillant",
+      "description": "Spécialiste en innovation numérique dans une équipe TI de cinq personnes : je conçois et développe les logiciels internes, l'IA appliquée et les outils des magasins d'un détaillant québécois de 7 magasins.",
+      "longDescription": "Depuis février 2026, je suis spécialiste en innovation numérique chez Gagnon Frères, un détaillant québécois de 7 magasins, dans une équipe TI de cinq personnes. Mon rôle : repérer où le logiciel et l'IA font gagner du temps, puis livrer. J'ai conçu et développé de bout en bout la plateforme interne des équipes, un outil d'accueil des clients en magasin et une application de vente sur tablette reliée à l'ERP. Je développe aussi un assistant IA qui répond en langage naturel à partir des données de l'entreprise. À côté, je travaille dans l'ERP Dynamics NAV, je m'occupe de l'architecture Azure, de toute l'organisation GitHub et de la sécurité des dépôts. Ces outils et leurs données sont internes : cette page reste volontairement générale, sans captures d'écran ni code, et les visuels sont des schémas.",
+      "features": [
+        "Plateforme interne des équipes : conçue et développée de bout en bout",
+        "Outils d'aide à la décision pour les acheteurs, avec des données mises à jour automatiquement",
+        "Accueil des clients en magasin géré en temps réel dans les 7 magasins, sur tablette, mobile et poste d'accueil",
+        "Vente assistée sur tablette : le client suit son dossier et signe à l'écran, les documents finaux sont produits automatiquement",
+        "Assistant IA qui répond en langage naturel à partir des données de l'ERP",
+        "Développement et mises à jour de l'ERP Dynamics NAV, point de vente compris",
+        "Architecture Azure et choix technologiques, avec l'évaluation des coûts",
+        "Organisation GitHub complète : passage à GitHub Team, règles, rôles, CI/CD et guide de l'équipe",
+        "Sécurité des dépôts et des secrets, monitoring et observabilité",
+        "Pilote IA pour l'équipe (Copilot, agents) et formation aux bonnes pratiques"
+      ],
+      "challenges": [
+        "Faire dialoguer des outils web modernes avec un ERP en place depuis des années",
+        "Livrer des outils utilisés chaque jour en magasin, sur des appareils variés, sans formation lourde",
+        "Mettre l'IA au service de questions concrètes sans exposer de données sensibles",
+        "Poser des règles GitHub et de sécurité dans une petite équipe sans la ralentir",
+        "Choisir des technologies qui restent abordables à faire tourner",
+        "Garder un design soigné, même pour des outils que seule l'équipe verra"
+      ]
+    },
     "ctreq": {
-      "title": "CTREQ - Plateforme Éducative du Québec",
+      "title": "CTREQ - Plateforme éducative du Québec",
       "description": "Refonte complète et fusion de deux sites WordPress (CTREQ + RIRE) en plateforme headless Next.js 13. Migration structurée de +10 types de contenus, architecture cache triple (~50ms), SEO avancé et plan de transfert de compétences pour l'équipe cliente.",
       "longDescription": "Projet d'envergure institutionnelle pour le Centre de Transfert pour la Réussite Éducative du Québec : fusion complète de deux plateformes WordPress historiques (CTREQ + RIRE) en un système unifié moderne. Migration structurée de +10 types de contenus personnalisés avec reconstruction complète de l'architecture (CPT + ACF + taxonomies), harmonisation des schémas de données et validation croisée des relations. Architecture headless Next.js 13 App Router avec performances exceptionnelles (<100ms) grâce à une stratégie de cache triple sophistiquée (mémoire + ISR + SWR). Collaboration directe avec la direction du CTREQ sur 6 mois en autonomie complète, incluant analyse des besoins métier, priorisation des demandes, validation continue des livrables avec Caroline B. et Pape-Moussa D. Production du plan de transfert officiel avec documentation technique complète, formation des éditeurs WordPress et procédures de maintenance. Déploiement Next.js standalone sur cPanel avec configuration Passenger, monitoring des logs et tests Lighthouse CI automatisés.",
       "features": [
@@ -290,7 +345,7 @@
       ]
     },
     "akiworkspace": {
-      "title": "AkiWorkspace - Workspace Productivité",
+      "title": "AkiWorkspace - Workspace de productivité",
       "description": "Application SaaS de gestion d'idées, notes, tâches et projets avec architecture full-stack moderne, sécurité renforcée et système de partage granulaire. Plateforme collaborative inspirée de Notion/Linear.",
       "longDescription": "Conception et développement complet d'une application web type workspace collaboratif, permettant aux utilisateurs de centraliser notes, idées, tâches et projets dans une interface moderne. Architecture server-first basée sur Next.js App Router + Server Actions, avec logique métier entièrement côté serveur, validation stricte TypeScript + Zod et base de données Prisma. Le projet met l'accent sur la sécurité par défaut, la performance (React Server Components, streaming, cache intelligent), la DX moderne (Type-safe, Prisma, hot reload, migrations) et un système de permissions avancé avec partage public/secret/groupé. Développé comme produit SaaS fonctionnel, avec authentification complète, rôles admin, onboarding utilisateur, documentation technique et guide utilisateur.",
       "features": [
@@ -366,19 +421,21 @@
     },
     "portfolio-watch": {
       "title": "Portfolio Watch - Version Galaxy Watch",
-      "description": "Mon portfolio repensé pour un écran rond d'un pouce et demi : une app Wear OS en Kotlin et Jetpack Compose qui tourne sur ma Galaxy Watch. Projets, parcours et contact au poignet, en trois touches au plus.",
-      "longDescription": "Portfolio Watch adapte l'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut qui s'efface au défilement, listes qui suivent la courbe de l'écran, défilement à la lunette, retour en glissant vers la droite. La version 0.1.0 est en ligne sur GitHub et fonctionne sur une vraie Galaxy Watch : un accueil façon cadran avec l'heure en direct, le menu, les projets, chaque étude de cas à ouvrir en entier sur le téléphone, le parcours, le contact et le jeu des étoiles du site. L'app est autonome (aucune app compagnon) et chaque push est compilé et analysé par GitHub Actions, qui produit l'APK. Prochaines étapes : un cadran installable, une tuile « Disponibilité », la version anglaise et la publication sur le Google Play Store.",
+      "description": "Mon portfolio repensé pour un écran rond d'un pouce et demi : une app Wear OS en Kotlin et Jetpack Compose, installée sur ma Galaxy Watch. Projets, parcours, contact, carte de visite en QR code et mon propre cadran, au poignet.",
+      "longDescription": "Portfolio Watch adapte l'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut qui s'efface au défilement, listes qui suivent la courbe de l'écran, défilement à la lunette, retour en glissant vers la droite. La version 0.6.0 tourne sur ma Galaxy Watch : un accueil façon cadran, les huit projets du portfolio avec leurs études de cas à ouvrir sur le téléphone, le parcours, le contact, le jeu des étoiles du site et une carte de visite en QR code qu'un téléphone scanne pour m'ajouter à ses contacts. Une tuile Wear OS donne accès au QR, à l'appel et à l'e-mail en un glissement depuis le cadran, et l'app passe du français à l'anglais d'un toucher. S'y ajoute un vrai cadran au thème du site, écrit au Watch Face Format : un anneau qui se remplit avec les pas du jour, la température et l'indice UV, l'heure, la date et la ville où je me trouve, fournie par l'app à partir de la position de la montre. Côté ingénierie : des releases signées publiées automatiquement par GitHub Actions à chaque tag, des tests unitaires qui relisent réellement le QR, un cadran vérifié par le validateur officiel de Google, et chaque version essayée sur la vraie montre avant d'être publiée. Prochaine étape : la publication sur le Google Play Store.",
       "features": [
         "Accueil façon cadran : heure et date en direct, nom le long du bord, disponibilité, projets et kilomètres",
-        "Menu numéroté, comme la navigation du site",
-        "Les projets du portfolio avec année et statut",
-        "Études de cas résumées, à ouvrir en entier sur le téléphone associé",
-        "Parcours La Réunion → Saguenay tracé le long de la lunette",
+        "Les huit projets du portfolio, chaque étude de cas à ouvrir en entier sur le téléphone associé",
+        "Carte de visite en QR code (vCard) : un scan ajoute mes coordonnées aux contacts, même montre en veille",
+        "Tuile Wear OS : disponibilité, QR, appel et e-mail en un glissement depuis le cadran",
+        "Cadran installable (Watch Face Format) : anneau des pas vers l'objectif du jour, température et UV, heure, date et ville actuelle",
+        "Complication « Ma carte » : le QR en un toucher, sur ce cadran ou sur n'importe quel autre",
+        "Français et anglais, avec un sélecteur FR / EN mémorisé",
+        "Parcours La Réunion → Saguenay tracé comme une trajectoire de vol",
         "Contact en un toucher : e-mail, appel, LinkedIn, GitHub",
         "Jeu des étoiles du site : 20 s, vibration à chaque touche, record gardé sur la montre",
-        "Navigation Wear OS : glisser pour revenir, défilement à la lunette",
         "App autonome, sans app compagnon sur le téléphone",
-        "Build, lint et APK automatiques à chaque push (GitHub Actions)"
+        "Releases signées publiées à chaque tag ; build, tests et lint à chaque PR (GitHub Actions)"
       ],
       "challenges": [
         "Faire tenir une identité éditoriale dans un cercle d'un pouce et demi",
@@ -387,11 +444,64 @@
         "Texte et listes qui suivent la courbe de l'écran",
         "Cibles tactiles de 48 dp minimum",
         "Passer de la montre au téléphone sans perdre le contexte",
-        "Embarquer les polices variables du site sans alourdir l'app"
+        "Un QR assez gros pour être scanné sur 1,4 pouce : chaque octet de la carte compte, et les tests le vérifient",
+        "Des mises à jour qui s'installent par-dessus sans perdre de données, grâce à une clé de signature fixe",
+        "Embarquer les polices variables du site sans alourdir l'app",
+        "Un cadran sans une ligne de code (Watch Face Format), vérifié par le validateur officiel de Google à chaque PR"
+      ]
+    },
+    "badger": {
+      "title": "Badger - Apps et Badge Studio pour le badge GitHub Universe",
+      "description": "Le badge de GitHub Universe '26 est un vrai petit ordinateur (RP2350, écran couleur, MicroPython). Je l'ai ouvert : de nouvelles apps, un app store qui tourne dans le navigateur et une télécommande sur ma Galaxy Watch.",
+      "longDescription": "À GitHub Universe '26 à San Francisco, chaque participant reçoit un Badger 2350 : une puce RP2350, un écran couleur 320×240, du Bluetooth, du Wi-Fi et MicroPython sous MonaOS. Badger regroupe ce que j'en ai fait. Côté badge : un Radar qui repère les badges voisins en Bluetooth et les place selon la force du signal (avec un jeu chaud / froid et l'historique des rencontres), une app Badge qui affiche mes stats GitHub, des QR codes et répond aux scans NFC, des Contacts plus sûrs mais toujours compatibles avec les badges d'origine, un podomètre, Mona Pet nourrie par les pas, le jeu Duck Maze et un menu qui range mes apps à part. Côté navigateur : Badge Studio, un app store qui parle au badge en USB (Web Serial) pour installer, mettre à jour ou retirer des apps, remplacer une app d'origine, réparer les fichiers système, réordonner l'écran d'accueil, régler le badge, prendre des captures et ouvrir une console MicroPython, sans rien installer. Côté poignet : Badger Remote, une app Wear OS en Kotlin qui appuie sur les boutons du badge en Bluetooth Low Energy (2 octets par appui, fusionnés dans la boucle du badge pour que chaque app les voie comme de vrais appuis) et lui envoie mes pas du jour. Le tout est testé en CI (apps simulées, compatibilité des contacts, Radar, niveaux de Duck Maze, build de l'app montre), documenté par un guide par app et ouvert aux contributions.",
+      "features": [
+        "Badge Studio : un app store dans le navigateur qui parle au badge en USB (Web Serial), sans rien installer",
+        "Installer, mettre à jour, retirer ou remplacer une app d'origine, avec sauvegarde de l'ancienne version",
+        "Réparer les fichiers système, réordonner l'écran d'accueil, régler le badge, captures d'écran et console MicroPython",
+        "Radar : les badges voisins repérés en Bluetooth et placés selon la force du signal, jeu chaud / froid et historique",
+        "App Badge : stats GitHub, QR codes de mon site et de mes profils, réponse aux scans NFC",
+        "Badger Remote : la Galaxy Watch devient la manette du badge (Bluetooth LE, appui court ou maintenu, couronne)",
+        "Podomètre et Mona Pet nourris par les pas de la montre, gardés sur le badge entre deux synchros",
+        "Duck Maze, Mona étourdie quand on secoue le badge et un menu qui sépare mes apps de celles d'origine",
+        "Outils PC : déploiement et captures d'écran par le port série (RGB565 → PNG)",
+        "CI GitHub Actions : apps simulées, compatibilité des contacts, Radar, niveaux de Duck Maze et build de l'app montre"
+      ],
+      "challenges": [
+        "Coder pour 520 Ko de RAM et un écran de 320×240, avec la boucle de rendu de MonaOS",
+        "Estimer une distance avec la seule force du signal Bluetooth, sans direction",
+        "Rester compatible avec l'échange de contacts des badges d'origine",
+        "Écrire sur le badge depuis le navigateur sans jamais le laisser dans un état cassé : chaque fichier est relu après écriture",
+        "Faire passer les appuis de la montre pour de vrais appuis, dans toutes les apps, menu compris",
+        "Partager le Bluetooth du badge entre la télécommande et les apps qui en ont besoin",
+        "Tester en CI du code fait pour un appareil que la CI n'a pas"
+      ]
+    },
+    "mona-game": {
+      "title": "Fort Mason Octodex - Jeu GitHub en équipe",
+      "description": "Un jeu d'aventure façon collection de monstres, créé en équipe pendant le GitHub Day of Learning à San Francisco : attraper les douze Octocats de Fort Mason, dans le navigateur et sur le badge GitHub Universe.",
+      "longDescription": "Fort Mason Octodex est né pendant l'atelier GitHub Day of Learning, la veille de GitHub Universe '26, comme extension canvas de l'app GitHub Copilot. L'équipe (Brett Post, Don Ebben, Chanrattnak Mong, Luke Vandekieft et moi) a posé la base : la carte de Fort Mason, un premier système de combat, la musique chiptune et le dessin des Octocats. J'y ai d'abord branché la manette et le badge Badger, puis j'ai écrit la plus grande partie de la suite (39 des 47 commits) : un vrai système de combat par types (Git, Code, Ops, Security), les douze Octocats redessinés façon Octodex, le mode Badger où le badge devient manette et second écran (mini-carte, combats, Octodex) par USB, la sauvegarde, les objets, les dresseurs, un boss final et son générique, les Octocats chromatiques, treize succès, des réglages d'accessibilité, des commandes tactiles, une version installable qui marche hors ligne, chaque bâtiment visitable avec ses personnages, et un trajet en bus jusqu'au siège de GitHub. Le tout tient dans un seul fichier HTML : canvas, Web Audio pour la musique et les sons, Web Serial pour le badge.",
+      "features": [
+        "Une carte de Fort Mason : quais, Great Meadow, Fort Mason Center où se tient GitHub Universe, Alcatraz et le Golden Gate au loin",
+        "Douze Octocats à attraper, chacun avec son type, ses stats et quatre attaques",
+        "Combats par types (Code bat Ops, Ops bat Security, Security bat Code) : coups critiques, effets, changement d'Octocat",
+        "Mode Badger : le badge devient manette et second écran (mini-carte, combats, Octodex) par USB (Web Serial)",
+        "Trois dresseurs, un boss Merge Conflict et le générique avec le temps de jeu",
+        "Octocats chromatiques, treize succès façon profil GitHub et un Octodex numéroté",
+        "Chaque bâtiment se visite, avec neuf personnages, et un bus mène jusqu'au siège de GitHub",
+        "Clavier, manette, écran tactile et badge ; touches réglables",
+        "Accessibilité : palette pour daltoniens, moins de tremblements et de flashs, volumes séparés",
+        "Sauvegarde dans le navigateur et version installable qui marche hors ligne"
+      ],
+      "challenges": [
+        "Construire à cinq, en une journée, sur une base de code commune",
+        "Faire tenir un jeu complet dans un seul fichier HTML, sans moteur ni dépendance",
+        "Synchroniser le jeu et le badge par le port série : deux écrans, un seul état",
+        "Une musique et des sons entièrement synthétisés avec Web Audio",
+        "Rendre le jeu jouable au clavier, à la manette, au doigt et sur le badge"
       ]
     },
     "ctreq-blog-archive": {
-      "title": "CTREQ Blog/Archive - Section d'Archivage Institutionnel",
+      "title": "CTREQ Blog/Archive - Section d'archivage institutionnel",
       "description": "Section secondaire du site CTREQ dédiée à l'archivage des anciens projets institutionnels et articles RIRE (3-5 ans). Architecture headless React + WPGraphQL avec filtrage automatique par ancienneté et design minimaliste pour préserver la hiérarchie des contenus.",
       "longDescription": "Le Blog / Archive CTREQ est une section secondaire du site du CTREQ conçue pour conserver l'historique des projets institutionnels ainsi que les articles RIRE plus anciens. Lors de la refonte complète du site principal, la direction du CTREQ a souhaité que seuls les contenus récents et stratégiques soient mis en avant. Les anciens projets et les articles de plus de trois ans (jusqu'à cinq ans) devaient être accessibles, mais dans un espace volontairement minimaliste pour ne pas détourner l'attention du site principal. J'ai donc développé une page d'archives headless, intégrée au même WordPress que le site principal, avec une logique avancée de filtrage par ancienneté (CTREQ + RIRE). L'esthétique est volontairement sobre et neutre afin de refléter son rôle : une archive institutionnelle, non un produit phare. Le tout repose sur une architecture moderne en React et WPGraphQL, avec un traitement optimisé des contenus issus de plusieurs sources.",
       "features": [
@@ -419,7 +529,7 @@
       ]
     },
     "innovations-numeriques-fp": {
-      "title": "Innovations Numériques en Formation Professionnelle",
+      "title": "Innovations numériques en formation professionnelle",
       "description": "Application web interactive développée pour ECOBES (Cégep de Jonquière) en collaboration avec le CTREQ, valorisant les innovations numériques de +40 enseignants en formation professionnelle au Québec. Interface semi-privée avec exploration par secteur, recherche avancée et carte Mapbox interactive.",
       "longDescription": "Application web interactive développée pour ECOBES, centre de recherche et de transfert du Cégep de Jonquière, en collaboration avec le CTREQ, le Laboratoire en Innovation Ouverte et l'UQAR, avec le soutien financier du Gouvernement du Québec. L'objectif du projet était de mettre en valeur les innovations numériques réalisées par plus de 40 enseignantes et enseignants en formation professionnelle partout au Québec. Certaines innovations étant sensibles ou internes à des centres de formation, l'application est accessible uniquement via un lien privé (non indexée, non publique). L'outil permet d'explorer ces innovations par secteur de formation, via des fiches descriptives détaillées, ou à travers une carte Mapbox interactive montrant leur distribution géographique à travers la province. L'application possède un mode sombre et un mode clair, offrant une expérience cohérente, moderne et adaptée à différents contextes d'utilisation.",
       "features": [
@@ -460,7 +570,7 @@
       ]
     },
     "webana": {
-      "title": "Webana - L'Art du Katana",
+      "title": "Webana - L'art du katana",
       "description": "Site e-commerce démonstratif conçu avec React et TailwindCSS. Il présente l'histoire des katanas et simule leur vente avec des filtres dynamiques, un panier, et un mode clair/sombre.",
       "longDescription": "Webana est un projet de site e-commerce dédié à l'univers des katanas japonais. Ce site présente une interface moderne et élégante permettant aux utilisateurs de découvrir l'histoire fascinante des katanas tout en explorant une sélection de produits. Le projet intègre des fonctionnalités avancées comme un système de filtres dynamiques, un panier d'achat fonctionnel, et un thème personnalisable.",
       "features": [
@@ -478,7 +588,7 @@
       ]
     },
     "akiproject": {
-      "title": "AkiProject - Gestionnaire de Tâches",
+      "title": "AkiProject - Gestionnaire de tâches",
       "description": "Gestionnaire de tâches et messagerie en temps réel développés avec Bootstrap, jQuery, et PHP. Conçu pour démontrer les compétences en communication asynchrone et gestion de tâches dans un contexte académique.",
       "longDescription": "AkiProject est une application web complète de gestion de projets et de communication. Elle combine un gestionnaire de tâches intuitif avec un système de messagerie en temps réel, permettant aux équipes de collaborer efficacement. Le projet démontre la maîtrise des technologies web traditionnelles et des concepts de programmation asynchrone.",
       "features": [
@@ -496,7 +606,7 @@
       ]
     },
     "akimusic": {
-      "title": "AkiMusic - Plateforme de Streaming",
+      "title": "AkiMusic - Plateforme de streaming",
       "description": "Projet de démonstration pour une plateforme de streaming musical, conçu pour simuler des fonctionnalités telles que les abonnements et la gestion de playlists. Interface utilisateur complète pour un service de musique en ligne.",
       "longDescription": "AkiMusic est un prototype de plateforme de streaming musical créé à des fins éducatives. Bien qu'il ne diffuse pas réellement de musique, le projet illustre parfaitement les concepts d'interface utilisateur pour un service de streaming, incluant la navigation, la gestion de playlists, et un système d'abonnement simulé.",
       "features": [
@@ -522,14 +632,14 @@
     "metaDescription": "Mentions légales du site de Christen Dijoux : éditeur, hébergement, propriété intellectuelle, crédits et droit applicable."
   },
   "ui": {
-    "announce": "Disponible pour de nouveaux projets — Synaptia Web",
+    "announce": "Logiciel, IA et web — une idée à partager ?",
     "announceCta": "Écrire",
-    "openToWork": "Ouvert aux collaborations",
+    "openToWork": "En poste chez Gagnon Frères",
     "localTime": "Heure locale",
     "heroTitle1": "Construire",
     "heroTitle2": "l'intelligence",
     "heroTitle3": "des opérations",
-    "heroLead": "Développeur full-stack et ingénieur IA. Je conçois des applications, des agents et des automatisations qui font gagner du temps aux équipes — du prototype au déploiement cloud.",
+    "heroLead": "Je conçois des logiciels internes, des assistants IA et des automatisations qui font gagner du temps aux équipes, du prototype au déploiement cloud. Et je soigne leurs interfaces autant que leur code.",
     "ctaProjects": "Voir les projets",
     "ctaContact": "Me contacter",
     "scroll": "Défiler",
@@ -547,6 +657,8 @@
     "aboutOpsText": "Pipelines Python, n8n et Power Automate qui synchronisent catalogues, fournisseurs et rapports — moins de tâches manuelles, plus de fiabilité.",
     "aboutCloud": "Cloud & observabilité",
     "aboutCloudText": "Azure, DigitalOcean, Cloudflare et New Relic : déploiement, monitoring et alerting pour des systèmes rapides et surveillés.",
+    "aboutDesign": "Interfaces soignées",
+    "aboutDesignText": "Formé en intégration multimédia, je garde le design au cœur du code : chaque outil, même interne, a une interface claire, accessible et agréable à utiliser.",
     "stackKicker": "Stack",
     "pathKicker": "Parcours",
     "impactKicker": "Résultats",
@@ -557,7 +669,7 @@
     "footerSections": "Sections",
     "footerSocial": "Réseaux",
     "present": "Présent",
-    "projectsLead": "Une sélection de produits SaaS, de plateformes headless et d'outils internes — conçus, développés et déployés de bout en bout.",
+    "projectsLead": "Logiciels internes, IA appliquée, objets connectés et quelques sites : une sélection conçue, développée et déployée de bout en bout.",
     "dragHint": "Défiler",
     "cursorView": "Voir",
     "cursorOpen": "Ouvrir",
@@ -601,13 +713,14 @@
     "gallery": "Galerie",
     "galleryTitle": "En situation",
     "galleryHint": "Captures du site en ligne · survoler pour la couleur",
+    "galleryHintDiagrams": "Schémas · aucune capture des outils internes",
     "negativeOn": "Mode négatif",
     "negativeOff": "Retour au positif",
     "negativeHint": "Vous avez trouvé l’inversion cachée. Même code pour revenir.",
     "negativeBye": "Tout est revenu à l’endroit."
   },
   "home": {
-    "title": "Christen Dijoux — Développeur Full-stack & IA | Saguenay",
+    "title": "Christen Dijoux — Développeur full-stack & IA | Saguenay",
     "description": "Christen Dijoux — développeur full-stack & IA à Saguenay, Québec. Expériences web, plateformes internes, automatisation et IA appliquée. React, Next.js, TypeScript, GSAP, WebGL."
   },
   "lab": {

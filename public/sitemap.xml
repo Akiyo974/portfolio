@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://christendijoux.com/lab</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://christendijoux.com/lab"/>
@@ -45,6 +45,19 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://christendijoux.com/cv"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://christendijoux.com/cv?lang=fr"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://christendijoux.com/cv"/>
+  </url>
+  <url>
+    <loc>https://christendijoux.com/project/gagnon-freres</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://christendijoux.com/project/gagnon-freres"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://christendijoux.com/project/gagnon-freres?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://christendijoux.com/project/gagnon-freres"/>
+    <image:image>
+      <image:loc>https://christendijoux.com/assets/og/gagnon-freres.jpg</image:loc>
+      <image:caption>Gagnon Frères - Internal software and AI for a retailer</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://christendijoux.com/project/akiworkspace</loc>
@@ -122,6 +135,32 @@
     <image:image>
       <image:loc>https://christendijoux.com/assets/og/portfolio-watch.jpg</image:loc>
       <image:caption>Portfolio Watch - Galaxy Watch Edition</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://christendijoux.com/project/badger</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://christendijoux.com/project/badger"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://christendijoux.com/project/badger?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://christendijoux.com/project/badger"/>
+    <image:image>
+      <image:loc>https://christendijoux.com/assets/og/badger.jpg</image:loc>
+      <image:caption>Badger - Apps and Badge Studio for the GitHub Universe badge</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://christendijoux.com/project/mona-game</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://christendijoux.com/project/mona-game"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://christendijoux.com/project/mona-game?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://christendijoux.com/project/mona-game"/>
+    <image:image>
+      <image:loc>https://christendijoux.com/assets/og/mona-game.jpg</image:loc>
+      <image:caption>Fort Mason Octodex - A GitHub team game</image:caption>
     </image:image>
   </url>
   <url>

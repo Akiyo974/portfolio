@@ -108,7 +108,7 @@ export const SiteHeader: React.FC = () => {
     );
 
   const linkClass =
-    'font-mono text-[12px] uppercase tracking-[0.12em] text-paper/80 hover:text-paper transition-colors focus:outline-none focus-visible:underline';
+    '-my-1 inline-block py-1 font-mono text-[12px] uppercase tracking-[0.12em] text-paper/80 hover:text-paper transition-colors focus:outline-none focus-visible:underline';
 
   const NavGroup: React.FC<{ items: NavItem[]; offset: number; className?: string; compact?: boolean }> = ({
     items,
@@ -126,7 +126,7 @@ export const SiteHeader: React.FC = () => {
               className={`${linkClass} group relative flex items-baseline gap-1.5 ${active ? '!text-paper' : ''}`}
             >
               {!compact && (
-                <span className={`text-[9px] tabular-nums transition-colors ${active ? 'text-paper' : 'text-paper/35 group-hover:text-paper/70'}`}>
+                <span className={`text-[9px] tabular-nums transition-colors ${active ? 'text-paper' : 'text-paper/55 group-hover:text-paper/80'}`}>
                   0{offset + i + 1}
                 </span>
               )}

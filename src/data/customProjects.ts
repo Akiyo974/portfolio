@@ -24,14 +24,55 @@ export interface CustomProject {
   year?: string;
   status?: 'completed' | 'in-progress' | 'archived';
   relatedProjects?: string[]; // IDs des projets liés
+  kind?: 'professional' | 'client'; // expérience en entreprise ou mandat client (sinon projet personnel)
   isCustom: true; // Toujours true pour différencier des projets GitHub
 }
 
 export const customProjects: CustomProject[] = [
+  {
+    id: 'gagnon-freres',
+    name: 'Gagnon Frères',
+    title: 'Gagnon Frères - Logiciels internes et IA pour un détaillant',
+    description: "Spécialiste en innovation numérique dans une équipe TI de cinq personnes : je conçois et développe les logiciels internes, l'IA appliquée et les outils des magasins d'un détaillant québécois de 7 magasins.",
+    languages: ['Python', 'TypeScript', 'C/AL'],
+    topics: ['innovation', 'ai', 'internal-tools', 'azure', 'dynamics-nav', 'github', 'retail'],
+    longDescription: "Depuis février 2026, je suis spécialiste en innovation numérique chez Gagnon Frères, un détaillant québécois de 7 magasins, dans une équipe TI de cinq personnes. Mon rôle : repérer où le logiciel et l'IA font gagner du temps, puis livrer. J'ai conçu et développé de bout en bout la plateforme interne des équipes, un outil d'accueil des clients en magasin et une application de vente sur tablette reliée à l'ERP. Je développe aussi un assistant IA qui répond en langage naturel à partir des données de l'entreprise. À côté, je travaille dans l'ERP Dynamics NAV, je m'occupe de l'architecture Azure, de toute l'organisation GitHub et de la sécurité des dépôts. Ces outils et leurs données sont internes : cette page reste volontairement générale, sans captures d'écran ni code, et les visuels sont des schémas.",
+    image: '/assets/gagnon-freres.webp',
+    features: [
+      "Plateforme interne des équipes : conçue et développée de bout en bout",
+      "Outils d'aide à la décision pour les acheteurs, avec des données mises à jour automatiquement",
+      "Accueil des clients en magasin géré en temps réel dans les 7 magasins, sur tablette, mobile et poste d'accueil",
+      "Vente assistée sur tablette : le client suit son dossier et signe à l'écran, les documents finaux sont produits automatiquement",
+      "Assistant IA qui répond en langage naturel à partir des données de l'ERP",
+      "Développement et mises à jour de l'ERP Dynamics NAV, point de vente compris",
+      "Architecture Azure et choix technologiques, avec l'évaluation des coûts",
+      "Organisation GitHub complète : passage à GitHub Team, règles, rôles, CI/CD et guide de l'équipe",
+      "Sécurité des dépôts et des secrets, monitoring et observabilité",
+      "Pilote IA pour l'équipe (Copilot, agents) et formation aux bonnes pratiques"
+    ],
+    challenges: [
+      "Faire dialoguer des outils web modernes avec un ERP en place depuis des années",
+      "Livrer des outils utilisés chaque jour en magasin, sur des appareils variés, sans formation lourde",
+      "Mettre l'IA au service de questions concrètes sans exposer de données sensibles",
+      "Poser des règles GitHub et de sécurité dans une petite équipe sans la ralentir",
+      "Choisir des technologies qui restent abordables à faire tourner",
+      "Garder un design soigné, même pour des outils que seule l'équipe verra"
+    ],
+    technologies: {
+      frontend: ['TypeScript', 'Tablettes, mobiles et postes en magasin'],
+      backend: ['Python', 'Azure App Service', 'Azure SQL', 'Dynamics NAV / LS Retail'],
+      tools: ['GitHub Team', 'GitHub Actions', 'GitHub Copilot', 'New Relic', 'Cloudflare']
+    },
+    year: '2026',
+    status: 'in-progress',
+    relatedProjects: ['badger', 'akiworkspace'],
+    kind: 'professional',
+    isCustom: true
+  },
  {
     id: 'akiworkspace',
     name: 'AkiWorkspace',
-    title: 'AkiWorkspace - Workspace Productivité',
+    title: 'AkiWorkspace - Workspace de productivité',
     description: "Application SaaS de gestion d'idées, notes, tâches et projets avec architecture full-stack moderne, sécurité renforcée et système de partage granulaire. Plateforme collaborative inspirée de Notion/Linear.",
     longDescription: "Conception et développement complet d'une application web type workspace collaboratif, permettant aux utilisateurs de centraliser notes, idées, tâches et projets dans une interface moderne. Architecture server-first basée sur Next.js App Router + Server Actions, avec logique métier entièrement côté serveur, validation stricte TypeScript + Zod et base de données Prisma. Le projet met l'accent sur la sécurité par défaut, la performance (React Server Components, streaming, cache intelligent), la DX moderne (Type-safe, Prisma, hot reload, migrations) et un système de permissions avancé avec partage public/secret/groupé. Développé comme produit SaaS fonctionnel, avec authentification complète, rôles admin, onboarding utilisateur, documentation technique et guide utilisateur.",
     languages: ['TypeScript', 'JavaScript', 'SQL'],
@@ -138,7 +179,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'ctreq',
     name: 'CTREQ',
-    title: 'CTREQ - Plateforme Éducative du Québec',
+    title: 'CTREQ - Plateforme éducative du Québec',
     description: "Refonte complète et fusion de deux sites WordPress (CTREQ + RIRE) en plateforme headless Next.js 13. Migration structurée de +10 types de contenus, architecture cache triple (~50ms), SEO avancé et plan de transfert de compétences pour l'équipe cliente.",
     longDescription: "Projet d'envergure institutionnelle pour le Centre de Transfert pour la Réussite Éducative du Québec : fusion complète de deux plateformes WordPress historiques (CTREQ + RIRE) en un système unifié moderne. Migration structurée de +10 types de contenus personnalisés avec reconstruction complète de l'architecture (CPT + ACF + taxonomies), harmonisation des schémas de données et validation croisée des relations. Architecture headless Next.js 13 App Router avec performances exceptionnelles (<100ms) grâce à une stratégie de cache triple sophistiquée (mémoire + ISR + SWR). Collaboration directe avec la direction du CTREQ sur 6 mois en autonomie complète, incluant analyse des besoins métier, priorisation des demandes, validation continue des livrables avec Caroline B. et Pape-Moussa D. Production du plan de transfert officiel avec documentation technique complète, formation des éditeurs WordPress et procédures de maintenance. Déploiement Next.js standalone sur cPanel avec configuration Passenger, monitoring des logs et tests Lighthouse CI automatisés.",
     languages: ['TypeScript', 'Next.js', 'React', 'GraphQL', 'WordPress'],
@@ -235,6 +276,7 @@ export const customProjects: CustomProject[] = [
     year: '2025',
     status: 'in-progress',
     relatedProjects: ['ctreq-blog-archive', 'innovations-numeriques-fp'],
+    kind: 'client',
     isCustom: true,
   },
   {
@@ -303,12 +345,13 @@ export const customProjects: CustomProject[] = [
     },
     year: '2025',
     status: 'completed',
+    kind: 'client',
     isCustom: true
   },
   {
     id: 'innovations-numeriques-fp',
     name: 'Innovations Numériques FP',
-    title: 'Innovations Numériques en Formation Professionnelle',
+    title: 'Innovations numériques en formation professionnelle',
     description: "Application web interactive développée pour ECOBES (Cégep de Jonquière) en collaboration avec le CTREQ, valorisant les innovations numériques de +40 enseignants en formation professionnelle au Québec. Interface semi-privée avec exploration par secteur, recherche avancée et carte Mapbox interactive.",
     longDescription: "Application web interactive développée pour ECOBES, centre de recherche et de transfert du Cégep de Jonquière, en collaboration avec le CTREQ, le Laboratoire en Innovation Ouverte et l'UQAR, avec le soutien financier du Gouvernement du Québec. L'objectif du projet était de mettre en valeur les innovations numériques réalisées par plus de 40 enseignantes et enseignants en formation professionnelle partout au Québec. Certaines innovations étant sensibles ou internes à des centres de formation, l'application est accessible uniquement via un lien privé (non indexée, non publique). L'outil permet d'explorer ces innovations par secteur de formation, via des fiches descriptives détaillées, ou à travers une carte Mapbox interactive montrant leur distribution géographique à travers la province. L'application possède un mode sombre et un mode clair, offrant une expérience cohérente, moderne et adaptée à différents contextes d'utilisation.",
     languages: ['TypeScript', 'JavaScript', 'React', 'HTML5', 'CSS3'],
@@ -384,29 +427,32 @@ export const customProjects: CustomProject[] = [
     year: '2024',
     status: 'completed',
     relatedProjects: ['ctreq'],
+    kind: 'client',
     isCustom: true,
   },
   {
     id: 'portfolio-watch',
     name: 'Portfolio Watch',
     title: 'Portfolio Watch - Version Galaxy Watch',
-    description: 'Mon portfolio repensé pour un écran rond d\'un pouce et demi : une app Wear OS en Kotlin et Jetpack Compose qui tourne sur ma Galaxy Watch. Projets, parcours et contact au poignet, en trois touches au plus.',
-    longDescription: 'Portfolio Watch adapte l\'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut qui s\'efface au défilement, listes qui suivent la courbe de l\'écran, défilement à la lunette, retour en glissant vers la droite. La version 0.1.0 est en ligne sur GitHub et fonctionne sur une vraie Galaxy Watch : un accueil façon cadran avec l\'heure en direct, le menu, les projets, chaque étude de cas à ouvrir en entier sur le téléphone, le parcours, le contact et le jeu des étoiles du site. L\'app est autonome (aucune app compagnon) et chaque push est compilé et analysé par GitHub Actions, qui produit l\'APK. Prochaines étapes : un cadran installable, une tuile « Disponibilité », la version anglaise et la publication sur le Google Play Store.',
+    description: 'Mon portfolio repensé pour un écran rond d\'un pouce et demi : une app Wear OS en Kotlin et Jetpack Compose, installée sur ma Galaxy Watch. Projets, parcours, contact, carte de visite en QR code et mon propre cadran, au poignet.',
+    longDescription: 'Portfolio Watch adapte l\'identité du site (monochrome, éditoriale, typographie condensée) aux codes de Wear OS : heure en haut qui s\'efface au défilement, listes qui suivent la courbe de l\'écran, défilement à la lunette, retour en glissant vers la droite. La version 0.6.0 tourne sur ma Galaxy Watch : un accueil façon cadran, les huit projets du portfolio avec leurs études de cas à ouvrir sur le téléphone, le parcours, le contact, le jeu des étoiles du site et une carte de visite en QR code qu\'un téléphone scanne pour m\'ajouter à ses contacts. Une tuile Wear OS donne accès au QR, à l\'appel et à l\'e-mail en un glissement depuis le cadran, et l\'app passe du français à l\'anglais d\'un toucher. S\'y ajoute un vrai cadran au thème du site, écrit au Watch Face Format : un anneau qui se remplit avec les pas du jour, la température et l\'indice UV, l\'heure, la date et la ville où je me trouve, fournie par l\'app à partir de la position de la montre. Côté ingénierie : des releases signées publiées automatiquement par GitHub Actions à chaque tag, des tests unitaires qui relisent réellement le QR, un cadran vérifié par le validateur officiel de Google, et chaque version essayée sur la vraie montre avant d\'être publiée. Prochaine étape : la publication sur le Google Play Store.',
     languages: ['Kotlin'],
-    topics: ['wear-os', 'galaxy-watch', 'kotlin', 'jetpack-compose', 'smartwatch', 'ui-design', 'android'],
+    topics: ['wear-os', 'galaxy-watch', 'kotlin', 'jetpack-compose', 'wear-os-tiles', 'watch-face', 'qr-code', 'smartwatch', 'android'],
     image: '/assets/portfolio-watch.webp',
     codeUrl: 'https://github.com/Akiyo974/portfolio-watch',
     features: [
       'Accueil façon cadran : heure et date en direct, nom le long du bord, disponibilité, projets et kilomètres',
-      'Menu numéroté, comme la navigation du site',
-      'Les projets du portfolio avec année et statut',
-      'Études de cas résumées, à ouvrir en entier sur le téléphone associé',
-      'Parcours La Réunion → Saguenay tracé le long de la lunette',
+      'Les huit projets du portfolio, chaque étude de cas à ouvrir en entier sur le téléphone associé',
+      'Carte de visite en QR code (vCard) : un scan ajoute mes coordonnées aux contacts, même montre en veille',
+      'Tuile Wear OS : disponibilité, QR, appel et e-mail en un glissement depuis le cadran',
+      'Cadran installable (Watch Face Format) : anneau des pas vers l\'objectif du jour, température et UV, heure, date et ville actuelle',
+      'Complication « Ma carte » : le QR en un toucher, sur ce cadran ou sur n\'importe quel autre',
+      'Français et anglais, avec un sélecteur FR / EN mémorisé',
+      'Parcours La Réunion → Saguenay tracé comme une trajectoire de vol',
       'Contact en un toucher : e-mail, appel, LinkedIn, GitHub',
       'Jeu des étoiles du site : 20 s, vibration à chaque touche, record gardé sur la montre',
-      'Navigation Wear OS : glisser pour revenir, défilement à la lunette',
       'App autonome, sans app compagnon sur le téléphone',
-      'Build, lint et APK automatiques à chaque push (GitHub Actions)'
+      'Releases signées publiées à chaque tag ; build, tests et lint à chaque PR (GitHub Actions)'
     ],
     challenges: [
       'Faire tenir une identité éditoriale dans un cercle d\'un pouce et demi',
@@ -415,11 +461,14 @@ export const customProjects: CustomProject[] = [
       'Texte et listes qui suivent la courbe de l\'écran',
       'Cibles tactiles de 48 dp minimum',
       'Passer de la montre au téléphone sans perdre le contexte',
-      'Embarquer les polices variables du site sans alourdir l\'app'
+      'Un QR assez gros pour être scanné sur 1,4 pouce : chaque octet de la carte compte, et les tests le vérifient',
+      'Des mises à jour qui s\'installent par-dessus sans perdre de données, grâce à une clé de signature fixe',
+      'Embarquer les polices variables du site sans alourdir l\'app',
+      'Un cadran sans une ligne de code (Watch Face Format), vérifié par le validateur officiel de Google à chaque PR'
     ],
     technologies: {
-      frontend: ['Kotlin 2.1', 'Jetpack Compose for Wear OS', 'ScalingLazyColumn'],
-      tools: ['Wear Remote Interactions', 'Gradle', 'GitHub Actions', 'Wear OS 3+']
+      frontend: ['Kotlin 2.1', 'Jetpack Compose for Wear OS', 'Jetpack Tiles', 'Watch Face Format', 'ZXing (QR code)'],
+      tools: ['Wear Remote Interactions', 'Gradle', 'GitHub Actions', 'JUnit', 'Wear OS 3+']
     },
     year: '2026',
     status: 'in-progress',
@@ -427,9 +476,93 @@ export const customProjects: CustomProject[] = [
     isCustom: true
   },
   {
+    id: 'badger',
+    name: "Badger",
+    title: "Badger - Apps et Badge Studio pour le badge GitHub Universe",
+    description: "Le badge de GitHub Universe '26 est un vrai petit ordinateur (RP2350, écran couleur, MicroPython). Je l'ai ouvert : de nouvelles apps, un app store qui tourne dans le navigateur et une télécommande sur ma Galaxy Watch.",
+    longDescription: "À GitHub Universe '26 à San Francisco, chaque participant reçoit un Badger 2350 : une puce RP2350, un écran couleur 320×240, du Bluetooth, du Wi-Fi et MicroPython sous MonaOS. Badger regroupe ce que j'en ai fait. Côté badge : un Radar qui repère les badges voisins en Bluetooth et les place selon la force du signal (avec un jeu chaud / froid et l'historique des rencontres), une app Badge qui affiche mes stats GitHub, des QR codes et répond aux scans NFC, des Contacts plus sûrs mais toujours compatibles avec les badges d'origine, un podomètre, Mona Pet nourrie par les pas, le jeu Duck Maze et un menu qui range mes apps à part. Côté navigateur : Badge Studio, un app store qui parle au badge en USB (Web Serial) pour installer, mettre à jour ou retirer des apps, remplacer une app d'origine, réparer les fichiers système, réordonner l'écran d'accueil, régler le badge, prendre des captures et ouvrir une console MicroPython, sans rien installer. Côté poignet : Badger Remote, une app Wear OS en Kotlin qui appuie sur les boutons du badge en Bluetooth Low Energy (2 octets par appui, fusionnés dans la boucle du badge pour que chaque app les voie comme de vrais appuis) et lui envoie mes pas du jour. Le tout est testé en CI (apps simulées, compatibilité des contacts, Radar, niveaux de Duck Maze, build de l'app montre), documenté par un guide par app et ouvert aux contributions.",
+    languages: ['Python', 'Kotlin', 'JavaScript'],
+    topics: ['micropython', 'github-universe', 'badger2350', 'web-serial', 'bluetooth-le', 'wear-os', 'app-store', 'embedded'],
+    image: '/assets/badger.webp',
+    siteUrl: 'https://akiyo974.github.io/badger/',
+    codeUrl: 'https://github.com/Akiyo974/badger',
+    siteType: 'production',
+    features: [
+      "Badge Studio : un app store dans le navigateur qui parle au badge en USB (Web Serial), sans rien installer",
+      "Installer, mettre à jour, retirer ou remplacer une app d'origine, avec sauvegarde de l'ancienne version",
+      "Réparer les fichiers système, réordonner l'écran d'accueil, régler le badge, captures d'écran et console MicroPython",
+      "Radar : les badges voisins repérés en Bluetooth et placés selon la force du signal, jeu chaud / froid et historique",
+      "App Badge : stats GitHub, QR codes de mon site et de mes profils, réponse aux scans NFC",
+      "Badger Remote : la Galaxy Watch devient la manette du badge (Bluetooth LE, appui court ou maintenu, couronne)",
+      "Podomètre et Mona Pet nourris par les pas de la montre, gardés sur le badge entre deux synchros",
+      "Duck Maze, Mona étourdie quand on secoue le badge et un menu qui sépare mes apps de celles d'origine",
+      "Outils PC : déploiement et captures d'écran par le port série (RGB565 → PNG)",
+      "CI GitHub Actions : apps simulées, compatibilité des contacts, Radar, niveaux de Duck Maze et build de l'app montre"
+    ],
+    challenges: [
+      "Coder pour 520 Ko de RAM et un écran de 320×240, avec la boucle de rendu de MonaOS",
+      "Estimer une distance avec la seule force du signal Bluetooth, sans direction",
+      "Rester compatible avec l'échange de contacts des badges d'origine",
+      "Écrire sur le badge depuis le navigateur sans jamais le laisser dans un état cassé : chaque fichier est relu après écriture",
+      "Faire passer les appuis de la montre pour de vrais appuis, dans toutes les apps, menu compris",
+      "Partager le Bluetooth du badge entre la télécommande et les apps qui en ont besoin",
+      "Tester en CI du code fait pour un appareil que la CI n'a pas"
+    ],
+    technologies: {
+      frontend: ["MicroPython (MonaOS 4.0)", "Badge Studio : HTML, CSS, JavaScript", "Kotlin + Compose for Wear OS"],
+      backend: ["Web Serial (USB)", "Bluetooth Low Energy (GATT)", "Health Services"],
+      tools: ["GitHub Actions", "GitHub Pages", "PowerShell", "pytest"]
+    },
+    year: '2026',
+    status: 'in-progress',
+    relatedProjects: ['mona-game', 'portfolio-watch'],
+    isCustom: true
+  },
+  {
+    id: 'mona-game',
+    name: "Fort Mason Octodex",
+    title: "Fort Mason Octodex - Jeu GitHub en équipe",
+    description: "Un jeu d'aventure façon collection de monstres, créé en équipe pendant le GitHub Day of Learning à San Francisco : attraper les douze Octocats de Fort Mason, dans le navigateur et sur le badge GitHub Universe.",
+    longDescription: "Fort Mason Octodex est né pendant l'atelier GitHub Day of Learning, la veille de GitHub Universe '26, comme extension canvas de l'app GitHub Copilot. L'équipe (Brett Post, Don Ebben, Chanrattnak Mong, Luke Vandekieft et moi) a posé la base : la carte de Fort Mason, un premier système de combat, la musique chiptune et le dessin des Octocats. J'y ai d'abord branché la manette et le badge Badger, puis j'ai écrit la plus grande partie de la suite (39 des 47 commits) : un vrai système de combat par types (Git, Code, Ops, Security), les douze Octocats redessinés façon Octodex, le mode Badger où le badge devient manette et second écran (mini-carte, combats, Octodex) par USB, la sauvegarde, les objets, les dresseurs, un boss final et son générique, les Octocats chromatiques, treize succès, des réglages d'accessibilité, des commandes tactiles, une version installable qui marche hors ligne, chaque bâtiment visitable avec ses personnages, et un trajet en bus jusqu'au siège de GitHub. Le tout tient dans un seul fichier HTML : canvas, Web Audio pour la musique et les sons, Web Serial pour le badge.",
+    languages: ['JavaScript', 'HTML', 'Python'],
+    topics: ['game', 'html5-canvas', 'web-audio', 'web-serial', 'pwa', 'github-copilot', 'github-universe', 'team-project'],
+    image: '/assets/mona-game.webp',
+    siteUrl: 'https://akiyo974.github.io/Mona-Game/',
+    codeUrl: 'https://github.com/Akiyo974/Mona-Game',
+    siteType: 'demo',
+    features: [
+      "Une carte de Fort Mason : quais, Great Meadow, Fort Mason Center où se tient GitHub Universe, Alcatraz et le Golden Gate au loin",
+      "Douze Octocats à attraper, chacun avec son type, ses stats et quatre attaques",
+      "Combats par types (Code bat Ops, Ops bat Security, Security bat Code) : coups critiques, effets, changement d'Octocat",
+      "Mode Badger : le badge devient manette et second écran (mini-carte, combats, Octodex) par USB (Web Serial)",
+      "Trois dresseurs, un boss Merge Conflict et le générique avec le temps de jeu",
+      "Octocats chromatiques, treize succès façon profil GitHub et un Octodex numéroté",
+      "Chaque bâtiment se visite, avec neuf personnages, et un bus mène jusqu'au siège de GitHub",
+      "Clavier, manette, écran tactile et badge ; touches réglables",
+      "Accessibilité : palette pour daltoniens, moins de tremblements et de flashs, volumes séparés",
+      "Sauvegarde dans le navigateur et version installable qui marche hors ligne"
+    ],
+    challenges: [
+      "Construire à cinq, en une journée, sur une base de code commune",
+      "Faire tenir un jeu complet dans un seul fichier HTML, sans moteur ni dépendance",
+      "Synchroniser le jeu et le badge par le port série : deux écrans, un seul état",
+      "Une musique et des sons entièrement synthétisés avec Web Audio",
+      "Rendre le jeu jouable au clavier, à la manette, au doigt et sur le badge"
+    ],
+    technologies: {
+      frontend: ["HTML5 Canvas", "JavaScript", "Web Audio API", "Gamepad API"],
+      backend: ["Web Serial (badge)", "MicroPython (app du badge)"],
+      tools: ["GitHub Copilot", "GitHub Pages", "PWA (service worker)"]
+    },
+    year: '2026',
+    status: 'completed',
+    relatedProjects: ['badger'],
+    isCustom: true
+  },
+  {
     id: 'webana',
     name: 'Webana',
-    title: "Webana - L'Art du Katana",
+    title: "Webana - L'art du katana",
     description: "Site e-commerce démonstratif conçu avec React et TailwindCSS. Il présente l'histoire des katanas et simule leur vente avec des filtres dynamiques, un panier, et un mode clair/sombre.",
     longDescription: "Webana est un projet de site e-commerce dédié à l'univers des katanas japonais. Ce site présente une interface moderne et élégante permettant aux utilisateurs de découvrir l'histoire fascinante des katanas tout en explorant une sélection de produits. Le projet intègre des fonctionnalités avancées comme un système de filtres dynamiques, un panier d'achat fonctionnel, et un thème personnalisable.",
     languages: ['React', 'TypeScript', 'TailwindCSS'],
@@ -463,7 +596,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'akiproject',
     name: 'AkiProject',
-    title: 'AkiProject - Gestionnaire de Tâches',
+    title: 'AkiProject - Gestionnaire de tâches',
     description: "Gestionnaire de tâches et messagerie en temps réel développés avec Bootstrap, jQuery, et PHP. Conçu pour démontrer les compétences en communication asynchrone et gestion de tâches dans un contexte académique.",
     longDescription: "AkiProject est une application web complète de gestion de projets et de communication. Elle combine un gestionnaire de tâches intuitif avec un système de messagerie en temps réel, permettant aux équipes de collaborer efficacement. Le projet démontre la maîtrise des technologies web traditionnelles et des concepts de programmation asynchrone.",
     languages: ['PHP', 'JavaScript', 'MySQL'],
@@ -497,7 +630,7 @@ export const customProjects: CustomProject[] = [
   {
     id: 'akimusic',
     name: 'AkiMusic',
-    title: 'AkiMusic - Plateforme de Streaming',
+    title: 'AkiMusic - Plateforme de streaming',
     description: "Projet de démonstration pour une plateforme de streaming musical, conçu pour simuler des fonctionnalités telles que les abonnements et la gestion de playlists. Interface utilisateur complète pour un service de musique en ligne.",
     longDescription: "AkiMusic est un prototype de plateforme de streaming musical créé à des fins éducatives. Bien qu'il ne diffuse pas réellement de musique, le projet illustre parfaitement les concepts d'interface utilisateur pour un service de streaming, incluant la navigation, la gestion de playlists, et un système d'abonnement simulé.",
     languages: ['PHP', 'JavaScript', 'Bootstrap'],

@@ -23,6 +23,8 @@ export const Seo: React.FC<{
 }> = ({ title, description, path, image, imageAlt, type = 'website', noindex = false, children }) => {
   const { i18n } = useTranslation();
   const fr = i18n.language?.startsWith('fr');
+  // Google coupe au-delà d'environ 160 caractères : on coupe nous-mêmes, sur un mot entier
+  const desc = description.length > 160 ? `${description.slice(0, 157).replace(/[\s,;:.—-]+\S*$/, '')}…` : description;
   const en = `${SITE_URL}${path}`;
   const frUrl = `${en}?lang=fr`;
   const self = fr ? frUrl : en;
@@ -31,7 +33,7 @@ export const Seo: React.FC<{
   return (
     <Helmet>
       <title>{title}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={desc} />
       <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
       {!noindex && <link rel="canonical" href={self} />}
       {!noindex && <link rel="alternate" hrefLang="en" href={en} />}
@@ -43,13 +45,13 @@ export const Seo: React.FC<{
       <meta property="og:locale" content={fr ? 'fr_CA' : 'en_CA'} />
       <meta property="og:url" content={self} />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={desc} />
       <meta property="og:image" content={img} />
       <meta property="og:image:alt" content={imageAlt ?? title} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={img} />
       <meta name="twitter:image:alt" content={imageAlt ?? title} />
       {children}

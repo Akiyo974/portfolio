@@ -32,7 +32,8 @@ export const initSentry = async () => {
     integrations: [
       Sentry.browserTracingIntegration(),
       Sentry.replayIntegration({
-        maskAllText: false,
+        // Texte masqué : les messages tapés dans l'assistant et le contenu des pages ne sont jamais enregistrés
+        maskAllText: true,
         maskAllInputs: true, // les champs du formulaire de contact ne sont jamais enregistrés
         blockAllMedia: false,
       }),

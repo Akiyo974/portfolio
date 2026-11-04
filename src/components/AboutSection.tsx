@@ -27,31 +27,19 @@ export const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isFr = i18n.language?.startsWith('fr');
 
-  const formations = [
-    {
-      title: t('education.tim.title'),
-      place: t('education.tim.school'),
-      role: t('education.tim.role'),
-      period: t('education.tim.period')
-    },
-    {
-      title: t('education.react.title'),
-      place: t('education.react.school'),
-      role: t('education.react.role'),
-      period: t('education.react.period')
-    },
-    {
-      title: t('education.gameDesign.title'),
-      place: t('education.gameDesign.school'),
-      role: t('education.gameDesign.role'),
-      period: t('education.gameDesign.period')
-    }
-  ];
+  // Du plus récent au plus ancien
+  const formations = ['copilot', 'prompt', 'ml', 'tim', 'react', 'gameDesign'].map((key) => ({
+    title: t(`education.${key}.title`),
+    place: t(`education.${key}.school`),
+    role: t(`education.${key}.role`),
+    period: t(`education.${key}.period`)
+  }));
 
   const pillars = [
     { img: '/assets/art/ray-burst-800.webp', title: t('ui.aboutAI'), text: t('ui.aboutAIText'), tag: 'IA' },
     { img: '/assets/art/ridge-lines.png', title: t('ui.aboutOps'), text: t('ui.aboutOpsText'), tag: 'OPS' },
     { img: '/assets/art/globe-halftone.png', title: t('ui.aboutCloud'), text: t('ui.aboutCloudText'), tag: 'CLOUD' },
+    { img: '/assets/art/design-construction.png', title: t('ui.aboutDesign'), text: t('ui.aboutDesignText'), tag: 'DESIGN' },
   ];
 
   const experiences = t('about.experienceList', { returnObjects: true }) as Experience[];
@@ -113,6 +101,7 @@ export const AboutSection = () => {
             <MetaRow k={isFr ? 'Rôle' : 'Role'} v={experiences[0]?.title ?? '—'} />
             <MetaRow k={isFr ? 'Chez' : 'At'} v={experiences[0]?.company ?? '—'} />
             <MetaRow k="Studio" v="Synaptia Web" />
+            <MetaRow k={isFr ? 'Récemment' : 'Lately'} v="GitHub Universe '26 · San Francisco" />
             <MetaRow k="Focus" v={t('hero.roleDetail')} />
             {/* Boutons empilés tant que la colonne est étroite : jamais de libellé sur deux lignes */}
             <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 [&>a]:whitespace-nowrap">
